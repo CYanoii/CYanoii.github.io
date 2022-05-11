@@ -421,6 +421,333 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="CYHei_mu">
+      <meta itemprop="description" content="人生苦短，摸鱼乃大~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十字路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/" class="post-title-link" itemprop="url">博弈论</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-12 11:03:00" itemprop="dateCreated datePublished" datetime="2022-02-12T11:03:00+08:00">2022-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-11 21:32:34" itemprop="dateModified" datetime="2022-05-11T21:32:34+08:00">2022-05-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E6%AF%94%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">算法比赛</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>博弈论就是指有若干个人进行一些对弈，并且默认每个人都可以找到当前的最优解，最后寻找有没有哪个人有必胜&#x2F;必败的的策略。</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p><strong>移动（Move）</strong>：对游戏局面的改变。</p>
+<p><strong>局面（Position）</strong>：游戏进行中的一种状态。每个局面都对应着一个当前合法操作的集合。</p>
+<p>​	<strong>必败态（P-Position）</strong>：在当前的局面下，先手必败</p>
+<p>​	<strong>必胜态（N-Position）</strong>：在当前的局面下，先手必胜</p>
+<p><strong>有关局面的性质：</strong></p>
+<ul>
+<li>合法操作集合为空的局面是必败态</li>
+<li>可以移动到必败态的局面是必胜态</li>
+<li>只能移动到必胜态的局面是必败态</li>
+</ul>
+<h1 id="公平组合游戏（ICG）"><a href="#公平组合游戏（ICG）" class="headerlink" title="公平组合游戏（ICG）"></a>公平组合游戏（ICG）</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>两名选手</li>
+<li>两名选手轮流行动，每一次行动可以在有限合法操作集合中选择一个</li>
+<li>游戏的任何一种可能的局面，合法操作集合只取决于这个局面本身，不取决于轮到哪名选手操作、以前的任何操作、骰子的点数或者其它因素</li>
+<li>如果轮到某名选手移动，且这个局面的合法的移动集合为空（也就是说此时无法进行移动），则这名选手负</li>
+</ul>
+<h2 id="nim游戏"><a href="#nim游戏" class="headerlink" title="nim游戏"></a>nim游戏</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2197">nim游戏</a></p>
+<p><strong>题目大意</strong>：有n堆石子，每堆有$s_i$个，两人依次从中任意一堆中取至少1个的任意数量的石子，问先手有没有必胜策略。</p>
+<p><strong>在本游戏中可以得到一个结论：</strong><br>$$<br>当且仅当s_1 \oplus s_2 \oplus s_3 \oplus \cdots \oplus s_n &#x3D; 0时，局面为必败态<br>$$<br><strong>证明：</strong></p>
+<ul>
+<li>当石子数量和为0时为必败态（此时异或和为0）</li>
+<li>当各石子堆异或和为$k(k \neq 0)$时，设k的最高位二进制1的位数为j，则我们一定能找到一堆石子$s_i$，且$s_i$的二进制第j位为1。将$s_i$的数量变为$s_i \oplus k$（显然在第j位为1的前提下$s_i &gt; s_i \oplus k$），此时各石子堆异或和便为0了（$x \oplus y \oplus y &#x3D; x$）。（必胜态转必败态）</li>
+<li>若异或和为0且存在数量不为0的石子堆，不能找到一种方法使异或和仍为0。（异或的性质）（必败态转必胜态）</li>
+</ul>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t,n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=t;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> ans,lin;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;ans);</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;lin);</span><br><span class="line">			ans^=lin;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(ans) <span class="built_in">printf</span>(<span class="string">&quot;Yes\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;No\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SG函数"><a href="#SG函数" class="headerlink" title="SG函数"></a>SG函数</h2><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>给定一个有向无环图和一个起始顶点上的一枚棋子，Alice和Bob交替的将这枚棋子沿有向边进行移动，无法移动者判负。问是否有必胜策略。</p>
+<p>该游戏可以认为是所有ICG游戏的抽象模型。也就是说，任何一个ICG游戏都可以通过把每个局面看成一个顶点，对每个局面和它的子局面连一条有向边来抽象成这个“有向图游戏”。</p>
+<h3 id="函数建立"><a href="#函数建立" class="headerlink" title="函数建立"></a>函数建立</h3><p><strong>mex运算</strong>：这是施加于一个集合的运算，表示最小的不属于这个集合的非负整数，如mex{0, 1, 2, 4} &#x3D; 3、mex{2, 3, 5} &#x3D; 0、mex{} &#x3D; 0。</p>
+<p>对于一个给定的有向无环图，定义关于图的每个顶点的SG函数sg如下：sg(x) &#x3D; mex{sg(y) | y是x的后继 }。也就是说，一个点的SG函数为在它所有后继中都未出现的最小的值。</p>
+<p><strong>注意</strong>：由于这是一种类似递归的定义，所以对于一张有向无环图，每个点的SG值都是会被直接计算出来的。</p>
+<h3 id="函数性质"><a href="#函数性质" class="headerlink" title="函数性质"></a>函数性质</h3><ul>
+<li>没有出边的点，SG值为0。</li>
+<li>对于一个$sg(x) &#x3D; 0$的顶点x，它的后继y都满足$sg(y) \neq 0$。</li>
+<li>对于一个$sg(x) \neq 0$的顶点x，必定存在一个后继y都满足$sg(y) &#x3D; 0$。</li>
+</ul>
+<p>可以发现，SG函数的性质与必败态、必胜态的性质十分相似：</p>
+<ul>
+<li>顶点x所代表的局面是必败态当且仅当$sg(x) &#x3D; 0$。</li>
+<li>顶点x所代表的局面是必胜态当且仅当$sg(x) &gt; 0$。</li>
+</ul>
+<h3 id="SG值的阶"><a href="#SG值的阶" class="headerlink" title="SG值的阶"></a>SG值的阶</h3><p>当$sg(x) &#x3D; k$时，表明对于任意一个$0 \leq i &lt; k$，都存在x的一个后继y满足$sg(y) &#x3D; i$。</p>
+<p>因此当$sg(x) &#x3D; k$时，我们可以把这个点的SG值称为k阶SG值，它一定可以通过移动转换到一个拥有更低阶SG值的点。</p>
+<h2 id="nim游戏与SG函数的联系"><a href="#nim游戏与SG函数的联系" class="headerlink" title="nim游戏与SG函数的联系"></a>nim游戏与SG函数的联系</h2><p>设有$G_1,G_2,G_3, \cdots ,G_n$个有向图游戏，定义游戏$G &#x3D; G_1 + G_2 + G_3 + \cdots + G_n$（游戏本身的加和，不是数学意义上的加和），移动规则为任选一个有向图$G_i$并移动上面的棋子。</p>
+<p>Sprague-Grundy定理就是：<br>$$<br>\begin{aligned}<br>    &amp; 对于任意G &#x3D; G_1 + G_2 + G_3 + \cdots + G_n \\<br>    &amp; 有sg(G) &#x3D; sg(G_1) \oplus sg(G_2) \oplus \cdots \oplus sg(G_n) \\<br>    &amp; SG值相同局面，可以认为局面本质相同<br>\end{aligned}<br>$$<br>也就是说，游戏的和的SG函数值是它所有子游戏的SG函数值的异或。</p>
+<p>之后我们可以发现，若将nim游戏中的每一堆石头看成一个有向图游戏，则nim游戏是一个符合上述定义的多个有向图相加的游戏G。因此我们可以分别计算每一堆石头的有向图所对应的SG值，再将所有的SG值进行异或从而得到nim游戏的SG值，从而找到必胜策略。</p>
+<p><strong>注</strong>：对于任意一张子图$G_i$，它上面的不同的点要理解成本堆石头的当前状态，而不是整个nim游戏的当前状态，是多堆石头的不同状态得到的SG值异或得到了整个nim游戏的SG值，不存在一张有向图代表整个nim游戏（虽然的确可以存在这样一张有向图），而是nim游戏本身就是许多有向图的加和。这是我一开始不理解这个联系的重要一点。</p>
+<p>不妨设第i个有向图游戏的点的值为$s_i$，当且仅当本点与本石子堆还剩$s_i$个石子的状态对应。</p>
+<p>因此还剩一个问题：对于nim游戏来说，由于直接异或每堆石子的数量即可得到答案，因此：<br>$$<br>\begin{aligned}<br>    &amp; sg(G) &#x3D; s_1 \oplus s_2 \oplus s_3 \oplus \cdots \oplus s_n \\<br>    &amp; sg(G) &#x3D; sg(s_1) \oplus sg(s_2) \oplus \cdots \oplus sg(s_n) \\<br>\end{aligned}<br>$$<br>我们可以得到一个结论：$sg(s_i) &#x3D; s_i$。那么为什么？</p>
+<p>这里不做严格证明，不过不难想象，这与SG值阶的转换有关。在标准的nim游戏中，<strong>对于每一堆石子我们每次都可以取任意数量的石子</strong>，由于石子的所有可能数量与有向图上的点一一对应，因此这句话与<strong>本点的SG值可以转换为任意SG值更低阶的点</strong>相对应，也便是<strong>本点的后继是所有小于本点值的点的集合</strong>，因此：<br>$$<br>sg(s_i) &#x3D; mex { x | 0 \leq x &lt; s_i 且x为非负整数 } &#x3D; s_i<br>$$<br>至此，nim游戏与SG函数的联系论述完成。</p>
+<h2 id="nim游戏的变形与SG值的计算方法"><a href="#nim游戏的变形与SG值的计算方法" class="headerlink" title="nim游戏的变形与SG值的计算方法"></a>nim游戏的变形与SG值的计算方法</h2><p>在标准的nim游戏中，我们每次可以取不少于1个的任意个石子，使得在转换中有$sg(s_i) &#x3D; s_i$。但大多的时候转换的规律不会这么简单。</p>
+<p><strong>第一个例子：</strong></p>
+<img src="2.png">
+
+<img src="3.png">
+
+<p><strong>第二个例子：</strong></p>
+<p>有n个石子，每次只能取{1, 3, 4}个石子，先取完石子者胜利，那么各个数的SG值为多少？</p>
+<img src="1.png" alt="img" style="zoom:67%;" />
+
+<p>sg[0]&#x3D;0，f[]&#x3D;{1,3,4}；</p>
+<p>x&#x3D;1时，可以取走1-f{1}个石子，剩余{0}个，mex{sg[0]}&#x3D;{0}，故sg[1]&#x3D;1；</p>
+<p>x&#x3D;2时，可以取走2-f{1}个石子，剩余{1}个，mex{sg[1]}&#x3D;{1}，故sg[2]&#x3D;0；</p>
+<p>x&#x3D;3时，可以取走3-f{1,3}个石子，剩余{2,0}个，mex{sg[2],sg[0]}&#x3D;{0,0}，故sg[3]&#x3D;1；</p>
+<p>x&#x3D;4时，可以取走4-f{1,3,4}个石子，剩余{3,1,0}个，mex{sg[3],sg[1],sg[0]}&#x3D;{1,1,0},故sg[4]&#x3D;2；</p>
+<p>x&#x3D;5时，可以取走5-f{1,3,4}个石子，剩余{4,2,1}个，mex{sg[4],sg[2],sg[1]}&#x3D;{2,0,1},故sg[5]&#x3D;3；</p>
+<p>以此类推…</p>
+<table>
+<thead>
+<tr>
+<th align="center">x</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">sg[x]</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<p>由此我们可以得到一些规律，总结出<strong>SG值的计算方法</strong>：</p>
+<ul>
+<li>可选步数为任意步，SG(x) &#x3D; x。</li>
+<li>可选步数为1~m的连续整数，SG(x) &#x3D; x % (m+1)。</li>
+<li>可选步数为一系列不连续的数，用模板计算。</li>
+</ul>
+<p><strong>模板</strong> 两种方法我觉得都是搜索</p>
+<p>方法一：打表 f[]可以取走的石子个数,注意f[]需要从小到大排序 sg[]SG函数值；vis[]标记数组，用于求mex{}</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> f[MAXN],sg[MAXN];</span><br><span class="line"><span class="type">bool</span> vis[MAXN];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getSG</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sort</span>(f+<span class="number">1</span>,f+<span class="number">1</span>+n);</span><br><span class="line">	<span class="built_in">memset</span>(sg,<span class="number">0</span>,<span class="built_in">sizeof</span>(sg));</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>; f[j]&lt;=i; j++)<span class="comment">//f排序是为了让每一种取法都循环到</span></span><br><span class="line">			vis[sg[i-f[j]]]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (vis[j]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				sg[i]=j; <span class="keyword">break</span>;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：dfs s数组是定义特殊取法规则的数组，注意要按照从小到大排序；n表示集合大小 SG函数要初始化为-1，每个集合只需初始化一遍</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> s[MAXN],sg[MAXN],n;</span><br><span class="line"><span class="type">bool</span> vis[MAXN];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">SG_dfs</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (sh[x]!=<span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> sg[x];</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (x&gt;=s[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">SG_dfs</span>(x-s[i]);</span><br><span class="line">			vis[sg[x-s[i]]]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!vis[i])</span><br><span class="line">			<span class="keyword">return</span> sg[x]=i;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/solution/P2197">https://www.luogu.com.cn/problem/solution/P2197</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/amf12345/article/details/97934508">https://blog.csdn.net/amf12345/article/details/97934508</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/SG%E5%87%BD%E6%95%B0/1004609?fr=aladdin">https://baike.baidu.com/item/SG%E5%87%BD%E6%95%B0/1004609?fr=aladdin</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/11/%E7%BD%91%E7%BB%9C%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="CYHei_mu">
+      <meta itemprop="description" content="人生苦短，摸鱼乃大~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十字路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/11/%E7%BD%91%E7%BB%9C%E6%B5%81/" class="post-title-link" itemprop="url">网络流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-11 16:33:00" itemprop="dateCreated datePublished" datetime="2022-02-11T16:33:00+08:00">2022-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-11 21:13:57" itemprop="dateModified" datetime="2022-05-11T21:13:57+08:00">2022-05-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E6%AF%94%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">算法比赛</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h1><p>首先想象一张有n个点，m条边的有向图。</p>
+<p><strong>源点</strong>：只出不进的点。</p>
+<p><strong>汇点</strong>：只进不出的点。</p>
+<p><strong>容量</strong>：边的属性，通常使用c[i, j]表示。</p>
+<p><strong>流量</strong>：边的属性，通常使用f[i, j]表示。</p>
+<p>可以把边想象成道路，容量即本路最多能承载的车流量，流量即车流量，显然<strong>流量≤容量</strong>。</p>
+<p>可以把不是源点和汇点的点想象成没有储存功能的货物中转站，<strong>进入的流量&#x3D;出去的流量</strong>。</p>
+<p><strong>最大流</strong>：若把源点比作工厂，问题就是求从工厂最大发出多少货物同时不超过道路的容量限制，即<strong>最大流</strong>。</p>
+<p><strong>可行流</strong>：所有边上的流量都不超过容量的这一组流量（或者说这个流）。</p>
+<p><strong>零流</strong>：所有流量都为0的流，易得零流是可行流。</p>
+<p><strong>增广路</strong>：一条从源点到汇点的比之前的流大delta的流。（后面解释）</p>
+<p><strong>残量网络</strong>：在原图的基础之上，添加每条边对应的反向边，并储存每条边的当前流量。残量网络会在算法进行的过程中被修改。</p>
+<h1 id="求解思路"><a href="#求解思路" class="headerlink" title="求解思路"></a>求解思路</h1><ol>
+<li>从零流开始考虑。假设存在一条从源点到汇点的路，其每一段都满足流量＜容量（注意不是≤）。</li>
+<li>则一定能找到本路上每一段的(容量 - 流量)的<strong>最小值delta</strong>，显然本路上的每一段的流量加上delta仍是可行流。</li>
+<li>于是我们得到了一个更大的流，他的流量为其原来的流量+delta，这条路被叫做<strong>增广路</strong>。我们不断地从起点开始寻找增广路，每次都对其进行增广，直到源点和汇点不连通，也就是找不到增广路为止。</li>
+<li>当找不到增广路时，当前的流量就是最大流。</li>
+</ol>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li>寻找增广路可以简单的从源点开始做BFS，并不断修改这条路上的delta量，直到找到源点或者找不到增广路。</li>
+<li>程序实现时，通常只用一个数组c记录容量，当流量+delta时使用容量-delta实现，从而方便程序实现。（个人认为此时数组c的意义发生了改变，叫做<strong>能容量</strong>，也就是当前状态下能容下的量更为准确，后面也使用本叫法）</li>
+</ul>
+<h1 id="增加反向边"><a href="#增加反向边" class="headerlink" title="增加反向边"></a>增加反向边</h1><p><strong>为什么增加反向边：</strong>在寻找增广路时不同的寻找顺序可能会导致结果不同，加入反向边使得能够自我调整寻找顺序。</p>
+<p><strong>例子：</strong></p>
+<p>求本模型最大流。</p>
+<p><img src="/2022/02/11/%E7%BD%91%E7%BB%9C%E6%B5%81/1.jpg" alt="img"></p>
+<p>找到1-2-3-4这条增广路，delta显然是1，进行修改。</p>
+<p><img src="/2022/02/11/%E7%BD%91%E7%BB%9C%E6%B5%81/2.jpg" alt="img"></p>
+<p>此时找不到增广路了，当前流量是1。但显然这不是正确答案。</p>
+<p>正确答案应该是走1-2-4和1-3-4，得到流量为2的流。</p>
+<p>因此可以看到，错误的找增广路顺序使程序得出了错误的答案，应当给程序一个“后悔”改路的机会，于是引入反向边。</p>
+<p>反向边初始能容量均为0，每一次找到增广路时，进行如下操作。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c[i][j]-=delta;	<span class="comment">//正向边减delta</span></span><br><span class="line">c[j][i]+=delta;	<span class="comment">//反向边加delta</span></span><br></pre></td></tr></table></figure>
+
+<p>按此方法重新寻找到增广路1-2-3-4并修改。</p>
+<p><img src="/2022/02/11/%E7%BD%91%E7%BB%9C%E6%B5%81/3.jpg" alt="img"></p>
+<p>再次寻找增广路，找到1-3-2-4这条，delta为1，将这条路增广后不再有增广路，得到了最大流2。</p>
+<p><img src="/2022/02/11/%E7%BD%91%E7%BB%9C%E6%B5%81/4.jpg" alt="img"></p>
+<p>可以认为，两次通过的2、3的相反的等大小流相互抵消了，因此1-2-3-4与1-3-2-4这两个流合起来的作用效果也就是1-2-4和1-3-4这两个流加起来的作用效果。</p>
+<h1 id="最大流"><a href="#最大流" class="headerlink" title="最大流"></a>最大流</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3376">模板题点我</a></p>
+<p>听说有dinic和sap（isap），这里只写dinic。</p>
+<h2 id="FF"><a href="#FF" class="headerlink" title="FF"></a>FF</h2><p>FF为一种直接深搜找增广路的暴力方法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LL long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line"><span class="type">int</span> a[<span class="number">210</span>],tot=<span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> vis[<span class="number">210</span>];</span><br><span class="line">LL ans=<span class="number">0</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	tot=1是为了更方便的找到反向边。 </span></span><br><span class="line"><span class="comment">	tot=1会使第一条边编号为2（二进制10），第二条边编号为3（二进制11），以此类推。</span></span><br><span class="line"><span class="comment">	又由于在加边时会把相反的两条边依次加入，所以每条边与他的反向边在编号上只在末位差1。</span></span><br><span class="line"><span class="comment">	因此只要将现编号与1异或就可以方便的得到反向边的编号。 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">bian</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> to;</span><br><span class="line">	LL w;</span><br><span class="line">	<span class="type">int</span> next;</span><br><span class="line">&#125;e[<span class="number">10010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> from,<span class="type">int</span> to,LL w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tot++;</span><br><span class="line">	e[tot].next=a[from];</span><br><span class="line">	a[from]=tot;</span><br><span class="line">	e[tot].to=to;</span><br><span class="line">	e[tot].w=w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">dfs</span><span class="params">(<span class="type">int</span> now,LL delta)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(now==t) <span class="keyword">return</span> delta;</span><br><span class="line">	</span><br><span class="line">	vis[now]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=a[now];v;v=e[v].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> tto=e[v].to;</span><br><span class="line">		LL ww=e[v].w;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(vis[tto]||!ww) <span class="keyword">continue</span>;</span><br><span class="line">		</span><br><span class="line">		LL res=<span class="built_in">dfs</span>(tto,<span class="built_in">min</span>(delta,ww));</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(res)</span><br><span class="line">		&#123;</span><br><span class="line">			e[v].w-=res;</span><br><span class="line">			e[v^<span class="number">1</span>].w+=res; </span><br><span class="line">			</span><br><span class="line">			<span class="keyword">return</span> res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LL x,y,z;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;s,&amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">		<span class="built_in">add</span>(x,y,z);</span><br><span class="line">		<span class="built_in">add</span>(y,x,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	LL lin;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">		lin=<span class="built_in">dfs</span>(s,<span class="number">1e18</span>);</span><br><span class="line">		<span class="keyword">if</span>(lin) ans+=lin;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于每次只找一条路，这条路还可能绕远路，而且增加流量是路上最小的权值，所以效率低。</p>
+<p>网上有些题解试图简单卡 FF：</p>
+<p><img src="/2022/02/11/%E7%BD%91%E7%BB%9C%E6%B5%81/5.gif" alt="img"></p>
+<p>虽然这种图卡不掉FF，但是你可以看出，<strong>FF的复杂度和流量有关</strong>，这很糟糕。</p>
+<h2 id="Dinic"><a href="#Dinic" class="headerlink" title="Dinic"></a>Dinic</h2><p>Dinic可解决FF效率低的问题。</p>
+<ul>
+<li><p>每次多路增广：u 点通过一条边，向 v 输出流量以后，v 会尝试到达汇点（到达汇点才真正增广），然后 v 返回实际增广量。这时，<strong>如果 u 还有没用完的供给，就继续尝试输出到其它边。</strong></p>
+<p>但是要警惕绕远路、甚至绕回的情况，不加管制的话极易发生。怎么管？</p>
+</li>
+<li><p>源点<strong>顺着残量网络</strong>想要到达其它点，需要经过一些边对吧？<strong>按照经过的边数（即源点出发以后的距离）把图分层，即用 bfs 分层。</strong> 每次尝试给予时，<strong>只考虑给予自己下一层的点</strong>，就可以防止混乱。</p>
+</li>
+<li><p>综合上面两条。每回合也是从源点出发，<strong>先按照当前残量网络分一次层</strong>，随后多路增广，尽可能增加流量。增广过程中，会加入一些反向边，这些反向边逆着层次图，本回合并不会走。所以还需要进入下一回合。一直到 bfs 分层时搜不到汇点（即残量网络断了）为止。</p>
+</li>
+</ul>
+<p>可是它每次只按照 bfs 分层的固定方向进行增广，还能保证正确性吗？这个好理解：只要图中还有增广路（源点顺着残量网络到达汇点的路），<strong>bfs 分层就会搜索到汇点</strong>，于是增广就不会停止，最终也止于没有增广路的局面。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LL long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line"><span class="type">int</span> a[<span class="number">210</span>],tot=<span class="number">1</span>;	<span class="comment">//tot为1和FF同理 </span></span><br><span class="line"><span class="type">int</span> dep[<span class="number">210</span>];</span><br><span class="line">LL ans=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">bian</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> to;</span><br><span class="line">	LL w;</span><br><span class="line">	<span class="type">int</span> next;</span><br><span class="line">&#125;e[<span class="number">10010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> from,<span class="type">int</span> to,LL w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tot++;</span><br><span class="line">	e[tot].next=a[from];</span><br><span class="line">	a[from]=tot;</span><br><span class="line">	e[tot].to=to;</span><br><span class="line">	e[tot].w=w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dep,<span class="number">0</span>,<span class="built_in">sizeof</span>(dep));</span><br><span class="line">	<span class="type">int</span> l=<span class="number">1</span>,r=<span class="number">1</span>,q[<span class="number">210</span>];</span><br><span class="line">	q[l]=s;</span><br><span class="line">	dep[s]=<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> now=q[l++];</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> v=a[now];v;v=e[v].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> tto=e[v].to,ww=e[v].w;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(ww&amp;&amp;!dep[tto])</span><br><span class="line">			&#123;</span><br><span class="line">				dep[tto]=dep[now]+<span class="number">1</span>;</span><br><span class="line">				q[++r]=tto;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> dep[t];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">dfs</span><span class="params">(<span class="type">int</span> now,LL in)</span>	<span class="comment">//in不一定真的能用掉 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(now==t) <span class="keyword">return</span> in;</span><br><span class="line">	</span><br><span class="line">	LL out=<span class="number">0</span>;	<span class="comment">//in是前面流入这点的流量，out是这点向下层发出的总流量 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=a[now];v;v=e[v].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> tto=e[v].to;</span><br><span class="line">		LL ww=e[v].w;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(ww&amp;&amp;dep[tto]==dep[now]+<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			LL res=<span class="built_in">dfs</span>(tto,<span class="built_in">min</span>(in,ww));</span><br><span class="line">			e[v].w-=res;</span><br><span class="line">			e[v^<span class="number">1</span>].w+=res;</span><br><span class="line">			in-=res;</span><br><span class="line">			out+=res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!out) dep[now]=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LL x,y,z;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;s,&amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">		<span class="built_in">add</span>(x,y,z);</span><br><span class="line">		<span class="built_in">add</span>(y,x,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">bfs</span>()) ans+=<span class="built_in">dfs</span>(s,<span class="number">1e18</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/02/11/%E7%BD%91%E7%BB%9C%E6%B5%81/6.gif" alt="img"></p>
+<p>注意理解多路增广：虽然一个点要枚举所有出边，但<strong>实质仍然是dfs</strong>，过程图类似于树。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ZJUT-jiangnan/p/3632525.html">https://www.cnblogs.com/ZJUT-jiangnan/p/3632525.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43907802/article/details/84705855">https://blog.csdn.net/weixin_43907802/article/details/84705855</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/solution/P3376">https://www.luogu.com.cn/problem/solution/P3376</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -851,7 +1178,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -864,7 +1191,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
