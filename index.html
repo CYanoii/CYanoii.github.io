@@ -115,6 +115,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -172,7 +177,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-11 10:07:20 / 修改时间：12:39:37" itemprop="dateCreated datePublished" datetime="2022-05-11T10:07:20+08:00">2022-05-11</time>
+              <time title="创建时间：2022-05-11 10:07:20 / 修改时间：16:49:41" itemprop="dateCreated datePublished" datetime="2022-05-11T10:07:20+08:00">2022-05-11</time>
             </span>
 
           
@@ -195,8 +200,7 @@
 
 <h1 id="如何支持数学函数"><a href="#如何支持数学函数" class="headerlink" title="如何支持数学函数"></a>如何支持数学函数</h1><p>我采用的方法是使用 next 主题自带的方式。</p>
 <p>打开 next 的 _config.yml，设置 mathjax 为 true ：</p>
-<p>_config.yml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">  mathjax:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>之后，在每篇博客前加入 mathjax: true 即可正常显示数学函数了。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 博客问题指南</span><br><span class="line">date: 2022-05-11 10:07:20</span><br><span class="line">tags:</span><br><span class="line">mathjax: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
@@ -204,17 +208,31 @@
 <h1 id="如何支持-md-语法显示图片"><a href="#如何支持-md-语法显示图片" class="headerlink" title="如何支持 md 语法显示图片"></a>如何支持 md 语法显示图片</h1><p>网上给出了诸多解决办法，但我使用了他们的方法后均没有成功，反而把博客搞崩了一次：（。最后我在官方文档里找到了适合我的解决方法，在此复述一遍。</p>
 <p>[Hexo资源文件夹][<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders]">https://hexo.io/zh-cn/docs/asset-folders]</a></p>
 <p>首先对 hexo 的 _config.yml 进行如下修改：</p>
-<p>_config.yml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>修改后每当进行 new post 时，将会自动生成一个同名文件夹。我们要把需使用的图片放入此文件夹。</p>
 <p>之后安装 hexo-renderer-marked 插件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-marked --save</span><br></pre></td></tr></table></figure>
 
 <p>安装完成后，在 hexo 的 _config.yml 中添加如下语句：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>此时，我们就已经可以使用 <code>![](image.jpg)</code> 来引用图片了。</p>
+<h1 id="Cannot-GET-tags-系列问题"><a href="#Cannot-GET-tags-系列问题" class="headerlink" title="Cannot GET \tags\ 系列问题"></a>Cannot GET \tags\ 系列问题</h1><p><img src="/2022/05/11/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/1.png" alt="img"></p>
+<p>在 next 的 _config.yml中取消了 tags 的注释，后产生了此错误。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br></pre></td></tr></table></figure>
+
+<p>原因是还需要进行后续的配置。首先创建新的 page：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+
+<p>此时 source 文件夹下会新建 tags 文件夹，其下还会产生 index.md 文件，对其进行如下修改：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-05-11 16:15:22</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span>	<span class="comment">#写入本句，这句话的作用似乎是用来识别这个页面是&quot;tags&quot;预置页面</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>在这之后，我们就可以愉快的为文章添加标签了，格式如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">博客问题指南</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-05-11 10:07:20</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">博客</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">其他</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">另一个</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>其余几项如关于（about）、分类（categories）等同理。</p>
+<p>[参考][<a target="_blank" rel="noopener" href="https://www.icode9.com/content-4-1119485.html]">https://www.icode9.com/content-4-1119485.html]</a></p>
 
       
     </div>
@@ -335,7 +353,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 10:03:34" itemprop="dateModified" datetime="2022-05-11T10:03:34+08:00">2022-05-11</time>
+                <time title="修改时间：2022-05-11 16:21:12" itemprop="dateModified" datetime="2022-05-11T16:21:12+08:00">2022-05-11</time>
               </span>
 
           
@@ -508,7 +526,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 09:55:15" itemprop="dateModified" datetime="2022-05-11T09:55:15+08:00">2022-05-11</time>
+                <time title="修改时间：2022-05-11 16:21:31" itemprop="dateModified" datetime="2022-05-11T16:21:31+08:00">2022-05-11</time>
               </span>
 
           
@@ -631,6 +649,12 @@
           <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
