@@ -360,23 +360,6 @@
       </tags>
   </entry>
   <entry>
-    <title>快速幂</title>
-    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
-    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
-<p>时间复杂度$O(\log b)$</p>
-<p><strong>原理：</strong></p>
-<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
-<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>筛法</title>
     <url>/2020/10/25/%E7%AD%9B%E6%B3%95/</url>
     <content><![CDATA[<p>筛法是一种用来求素数的方法。一般来说可以循序渐进的掌握暴力判断素数、埃氏筛法、欧拉筛法。</p>
@@ -410,6 +393,39 @@
       </categories>
       <tags>
         <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速幂</title>
+    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
+    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
+<p>时间复杂度$O(\log b)$</p>
+<p><strong>原理：</strong></p>
+<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
+<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>除法取模</title>
+    <url>/2022/05/12/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/</url>
+    <content><![CDATA[<p>由费马小定理可推出：${1 \over a} % m &#x3D; a^{m - 2} % m$，其中$m$为素数。</p>
+<p>那么，${b \over a} % m$就可以变成$b \cdot a^{m - 2} % m$。</p>
+<p>当$m$太大时，可以使用<strong>快速幂</strong>。</p>
+<p><a href="https://blog.csdn.net/qq742762377/article/details/83278688">来源</a></p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+        <tag>模运算</tag>
       </tags>
   </entry>
   <entry>
@@ -487,22 +503,6 @@
       </categories>
       <tags>
         <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>除法取模</title>
-    <url>/2022/05/12/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/</url>
-    <content><![CDATA[<p>由费马小定理可推出：${1 \over a} % m &#x3D; a^{m - 2} % m$，其中$m$为素数。</p>
-<p>那么，${b \over a} % m$就可以变成$b \cdot a^{m - 2} % m$。</p>
-<p>当$m$太大时，可以使用<strong>快速幂</strong>。</p>
-<p><a href="https://blog.csdn.net/qq742762377/article/details/83278688">来源</a></p>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-        <tag>模运算</tag>
       </tags>
   </entry>
 </search>
