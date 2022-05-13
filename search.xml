@@ -214,6 +214,285 @@
       </tags>
   </entry>
   <entry>
+    <title>层次分析法</title>
+    <url>/2022/02/09/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/</url>
+    <content><![CDATA[<p>层次分析法（AHP）用来解决评价类问题。</p>
+<h1 id="评价类问题"><a href="#评价类问题" class="headerlink" title="评价类问题"></a>评价类问题</h1><p>解决评价类问题，首先要想到以下三个问题：</p>
+<ul>
+<li>我们评价的目标是什么？</li>
+<li>我们为了达到这个目标有哪几种可选的方案？</li>
+<li>评价的准则或者说指标是什么（我们根据什么东西来评价好坏）</li>
+</ul>
+<h1 id="打分法"><a href="#打分法" class="headerlink" title="打分法"></a>打分法</h1><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"><strong>指标权重</strong></th>
+<th align="center"><strong>方案1</strong></th>
+<th align="center"><strong>方案2</strong></th>
+<th align="center"><strong>…</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>指标1</strong></td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center"><strong>指标2</strong></td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center"><strong>指标3</strong></td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><strong>…</strong></td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+</tbody></table>
+<p>同数字格相加为1。</p>
+<h1 id="分治思想"><a href="#分治思想" class="headerlink" title="分治思想"></a>分治思想</h1><p>一次性考虑多个指标间的关系往往考虑不周，因此两两指标进行比较，最终推算出总权重。</p>
+<h1 id="重要程度（或满意度）"><a href="#重要程度（或满意度）" class="headerlink" title="重要程度（或满意度）"></a>重要程度（或满意度）</h1><table>
+<thead>
+<tr>
+<th>标度</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>两个因素相比，同样重要</td>
+</tr>
+<tr>
+<td>3</td>
+<td>两个因素相比，一个比另一个稍微重要</td>
+</tr>
+<tr>
+<td>5</td>
+<td>两个因素相比，一个比另一个明显重要</td>
+</tr>
+<tr>
+<td>7</td>
+<td>两个因素相比，一个比另一个强烈重要</td>
+</tr>
+<tr>
+<td>9</td>
+<td>两个因素相比，一个比另一个极端重要</td>
+</tr>
+<tr>
+<td>2，4，6，8</td>
+<td>上述两相邻判断的中值</td>
+</tr>
+<tr>
+<td>倒数</td>
+<td>若A和B比标度是3，则B和A比标度是1&#x2F;3</td>
+</tr>
+</tbody></table>
+<h1 id="判断矩阵"><a href="#判断矩阵" class="headerlink" title="判断矩阵"></a>判断矩阵</h1><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"><strong>指标1</strong></th>
+<th align="center"><strong>指标2</strong></th>
+<th align="center"><strong>指标3</strong></th>
+<th align="center"><strong>指标4</strong></th>
+<th align="center"><strong>指标5</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>指标1</strong></td>
+<td align="center"><strong>1</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>指标2</strong></td>
+<td align="center"></td>
+<td align="center"><strong>1</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>指标3</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><strong>1</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>指标4</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><strong>1</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>指标5</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><strong>1</strong></td>
+</tr>
+</tbody></table>
+<p>方案矩阵同理。</p>
+<p><strong>注：</strong>指标矩阵由专家填写，方案矩阵由主角填写，判断矩阵在填写后可能有逻辑错误。</p>
+<p>填好的5X5方阵记为A，其对应元素为$a_{ij}$，A有如下特点：</p>
+<ul>
+<li>$a_{ij}$的意义为与指标j相比，i的重要程度。</li>
+<li>当$i&#x3D;j$时，两指标相同，记为1。</li>
+<li>$a_{ij}&gt;0$且满足$a_{ij} \cdot a_{ji} &#x3D; 1$（正互反矩阵）</li>
+</ul>
+<h1 id="一致矩阵"><a href="#一致矩阵" class="headerlink" title="一致矩阵"></a>一致矩阵</h1><p>$$<br>\begin{aligned}<br>    &amp; a_{ij} &#x3D; {i的重要程度 \over j的重要程度} , a_{jk} &#x3D; {j的重要程度 \over k的重要程度} \<br>    &amp; a_{ik} &#x3D; {i的重要程度 \over k的重要程度} &#x3D; a_{ij} \cdot a_{jk} \<br>\end{aligned}<br>$$</p>
+<p>若正互反矩阵满足$a_{ik} &#x3D; a_{ij} \cdot a_{jk}$，则为一致矩阵。</p>
+<p>一致矩阵各行（各列）之间成倍数关系。</p>
+<p><strong>注：</strong>因此可知，在使用判断矩阵求权重前，一定要进行<strong>一致性检验</strong>。</p>
+<h1 id="一致性检验"><a href="#一致性检验" class="headerlink" title="一致性检验"></a>一致性检验</h1><p><strong>原理：</strong>检验构造的判断矩阵和一致矩阵是否有太大区别。<br>$$<br>\left[<br>    \begin{matrix}<br>        a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \<br>        a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \<br>        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>        a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} \<br>    \end{matrix}<br>\right]<br>为一致矩阵的充要条件：<br>\begin{cases}<br>    a_{ij} &gt; 0 \<br>    a_{11} &#x3D; a_{22} &#x3D; \cdots &#x3D; a_{nn} &#x3D; 1 \<br>    [a_{i1}, a_{i2}, \cdots , a_{in}] &#x3D; k_i[a_{11}, a_{12}, \cdots , a_{1n}]\<br>\end{cases}<br>$$<br>引理：A为n阶方阵，且$r(A) &#x3D; 1$则A有一个特征值为$tr(A)$，其余特征值为0。</p>
+<p>因为一致矩阵各行成比例，其秩一定为1。</p>
+<p>由引理可知：一致矩阵有一个特征值为n，其余特征值均为0。</p>
+<p>另外易得，当特征值为n时，对应的特征向量刚好为$k[{1 \over a_{11}}, {1 \over a_{12}}, \cdots , {1 \over a_{1n}}]^T \ (k \neq 0)$。</p>
+<p>引理：n阶正互反矩阵A为一致矩阵当且仅当最大特征值$\lambda_{max} &#x3D; n$，且当正互反矩阵A非一致时一定满足$\lambda_{max} &gt; n$。</p>
+<p><strong>步骤：</strong></p>
+<p>第一步：计算<strong>一致性指标CI</strong><br>$$<br>CI &#x3D; {\lambda_{max} - n \over n - 1}<br>$$<br>第二步：查找对应的<strong>平均随机一致性指标RI</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>n</strong></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>RI</strong></td>
+<td>0</td>
+<td>0</td>
+<td>0.52</td>
+<td>0.89</td>
+<td>1.12</td>
+<td>1.26</td>
+<td>1.36</td>
+<td>1.41</td>
+<td>1.46</td>
+<td>1.49</td>
+<td>1.52</td>
+<td>1.54</td>
+<td>1.56</td>
+<td>1.58</td>
+<td>1.59</td>
+</tr>
+</tbody></table>
+<p><strong>注：</strong>在实际应用中，n很少超过10，如果指标的个数大于10，则可考虑建立二级指标体系。</p>
+<p>第三步：计算<strong>一致性比例CR</strong><br>$$<br>CR &#x3D; {CI \over RI}<br>$$<br>若$CR &lt; 0.1$，则可认为判断矩阵的一致性可以接受；否则需要对判断矩阵进行修正。</p>
+<h1 id="一致矩阵计算权重"><a href="#一致矩阵计算权重" class="headerlink" title="一致矩阵计算权重"></a>一致矩阵计算权重</h1><p>因为各列成比例，所以随便选一列计算权重并进行归一化处理（各项相加等于1）。</p>
+<h1 id="判断矩阵计算权重"><a href="#判断矩阵计算权重" class="headerlink" title="判断矩阵计算权重"></a>判断矩阵计算权重</h1><p>因为各列不成比例，所以每列计算权重并进行归一化处理，最后取平均值。</p>
+<h2 id="方法1-算术平均法求权重"><a href="#方法1-算术平均法求权重" class="headerlink" title="方法1 算术平均法求权重"></a>方法1 算术平均法求权重</h2><p>第一步：将判断矩阵按照列归一化（每一个元素除以其所在列的和）</p>
+<p>第二步：将归一化的各列相加（按行求和）</p>
+<p>第三步：将相加后得到的向量中每个元素除以n即可得到权重向量</p>
+<p><strong>数学描述：</strong><br>$$<br>\begin{aligned}<br>    &amp; 假设判断矩阵A &#x3D;<br>    \left[<br>    \begin{matrix}<br>        a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \<br>        a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \<br>        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>        a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} \<br>    \end{matrix}<br>\right], \<br>    &amp; 那么算术平均法求得的权重向量 w_i &#x3D; {1 \over n} \sum^n_{j&#x3D;1} {a_{ij} \over \sum^n_{k&#x3D;1} a_{kj}} \ (i &#x3D; 1, 2, \cdots , n)\<br>\end{aligned}<br>$$</p>
+<h2 id="方法2-几何平均法求权重"><a href="#方法2-几何平均法求权重" class="headerlink" title="方法2 几何平均法求权重"></a>方法2 几何平均法求权重</h2><p>待补充</p>
+<h2 id="方法3-特征值法求权重"><a href="#方法3-特征值法求权重" class="headerlink" title="方法3 特征值法求权重"></a>方法3 特征值法求权重</h2><p>一致矩阵有一个特征值为n，其余特征值均为0。</p>
+<p>另外易得，当特征值为n时，对应的特征向量刚好为$k[{1 \over a_{11}}, {1 \over a_{12}}, \cdots , {1 \over a_{1n}}]^T \ (k \neq 0)$。</p>
+<p>这一特征向量刚好就是一致矩阵的第一列</p>
+<p>还是先归一化。</p>
+<p>假如判断矩阵的一致性可以接受，则可仿照一致矩阵求权重的方法。</p>
+<p>第一步：求出矩阵A的最大特征值以及其对应的特征向量</p>
+<p>第二步：对求出的特征向量进行归一化即得到权重</p>
+<h1 id="整体步骤"><a href="#整体步骤" class="headerlink" title="整体步骤"></a>整体步骤</h1><h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>分析系统中各因素之间的关系，建议系统的递阶层次结构。</p>
+<p>目标层（Objective）</p>
+<p>准则层（Criterion）</p>
+<p>方案层（Plan）</p>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>对于同一层次的各元素关于上一层次中某一准则的重要性进行两两比较，构造两两比较矩阵（判断矩阵）。</p>
+<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><p>由判断矩阵计算被比较元素对于该准则的相对权重，并进行一致性检验（检验通过权重才能用）。</p>
+<p>三种方法计算权重：</p>
+<ul>
+<li>算数平均法</li>
+<li>几何平均法</li>
+<li>特征值法</li>
+</ul>
+<p>建议三种方法都使用。</p>
+<p><strong>CR &gt; 0.1如何修正：</strong></p>
+<p>往一致矩阵上调整，一致矩阵各行成倍数关系。</p>
+<h2 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h2><p>计算各层元素对系统目标的合成权重，并进行排序。</p>
+<h1 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h1><p>（1）评价的决策层不能太多，太多的话n会很大，判断矩阵和一致矩阵差异可能会很大。</p>
+<table>
+<thead>
+<tr>
+<th><strong>n</strong></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>RI</strong></td>
+<td>0</td>
+<td>0</td>
+<td>0.52</td>
+<td>0.89</td>
+<td>1.12</td>
+<td>1.26</td>
+<td>1.36</td>
+<td>1.41</td>
+<td>1.46</td>
+<td>1.49</td>
+<td>1.52</td>
+<td>1.54</td>
+<td>1.56</td>
+<td>1.58</td>
+<td>1.59</td>
+</tr>
+</tbody></table>
+<p>（2）如果决策层中指标的数据是已知的，那么如何利用这些数据来使得评价更加准确？</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">%% 测试数据</span></span><br><span class="line"><span class="comment">% [1 1 4 1/3 3; 1 1 4 1/3 3; 1/4 1/4 1 1/3 1/2; 3 3 3 1 3; 1/3 1/3 2 1/3 1] </span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 输入判断矩阵</span></span><br><span class="line">clear; clc</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;请输入判断矩阵A：&#x27;</span>)</span><br><span class="line">A = input(<span class="string">&#x27;判断矩阵A=&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">%% 方法1：算数平均法求权重</span></span><br><span class="line"><span class="comment">% 第一步：将判断矩阵按照列归一化（每一个元素除以其所在列的和）</span></span><br><span class="line">Sum_A = sum(A)</span><br><span class="line"></span><br><span class="line">[n, n] = <span class="built_in">size</span>(A)	<span class="comment">% 也可以写成n = size(A, 1)</span></span><br><span class="line"><span class="comment">% 因为我们的判断矩阵A是一个方阵，所以这里的r和c相同，我们可以就用同一个字母n表示</span></span><br><span class="line">SUM_A = <span class="built_in">repmat</span>(Sum_A, n, <span class="number">1</span>)	<span class="comment">% repeat matrix的缩写</span></span><br><span class="line"><span class="comment">% 另外一种替代的方法如下：</span></span><br><span class="line"><span class="comment">%	SUM_A = [];</span></span><br><span class="line"><span class="comment">%	for i = 1 : n</span></span><br><span class="line"><span class="comment">%		SUM_A = [SUM_A; Sum_A]</span></span><br><span class="line"><span class="comment">%	end</span></span><br><span class="line">clc; A</span><br><span class="line">SUM_A</span><br><span class="line">Stand_A = A ./ SUM_A</span><br><span class="line"><span class="comment">% 这里我们直接将两个矩阵对应的元素相除即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 第二步：将归一化的各列相加（按行求和）</span></span><br><span class="line">sum(Stand_A, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% 第三步：将相加后得到的向量中每个元素除以n即可得到权重向量</span></span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;算术平均法求权重的结果为：&#x27;</span>);</span><br><span class="line"><span class="built_in">disp</span>(sum(Stand_A, <span class="number">2</span>) / n)</span><br><span class="line"><span class="comment">% 首先对标准化后的矩阵按照行求和，得到一个列向量</span></span><br><span class="line"><span class="comment">% 然后再将这个列向量的每个元素同时除以n即可（这里也可用./）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 方法2：几何平均法求权重</span></span><br><span class="line"><span class="comment">% 第一步：将A的元素按照行相乘得到一个新的列向量</span></span><br><span class="line">clc; A</span><br><span class="line">Prduct_A = prod(A, <span class="number">2</span>)</span><br><span class="line"><span class="comment">% prod函数和max函数类似，一个用于乘，一个用于加</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 第二步：将新向量的每个分量开n次方</span></span><br><span class="line">Prduct_n_A = Prduct_A .^ (<span class="number">1</span>/n)</span><br><span class="line"><span class="comment">%这里最每个元素进行乘方操作，开n次方等价于求1/n</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 第三步：对该列向量进行归一化即可得到权重向量</span></span><br><span class="line"><span class="comment">% 将这个列向量中的每一个元素除以这一个向量的和即可</span></span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;几何平均法求权重的结果为：&#x27;</span>);</span><br><span class="line"><span class="built_in">disp</span>(Prduct_n_A ./ sum(Prduct_n_A))</span><br><span class="line"></span><br><span class="line"><span class="comment">%% 方法3：特征值法求权重</span></span><br><span class="line"><span class="comment">% 第一步：求出矩阵A的最大特征值以及其对应的特征向量</span></span><br><span class="line">clc</span><br><span class="line">[V, D] = eig(A)	<span class="comment">% V是特征向量，D是由特征值构成的对角矩阵（除了对角元素外都为0）</span></span><br><span class="line">Max_eig = <span class="built_in">max</span>(<span class="built_in">max</span>(D)) <span class="comment">% 也可写成max(D(:))</span></span><br><span class="line"><span class="comment">% 找最大特征值虽在位置用到find函数，其可以返回向量或矩阵中不为0的元素的位置索引。</span></span><br><span class="line"><span class="comment">% 找到最大特征值位置后，需要将包含所有特征值的这个对角矩阵D中，不等于0的位置全变为0</span></span><br><span class="line"><span class="comment">% 此时运用矩阵与常数的大小判断运算</span></span><br><span class="line">D == Max_eig</span><br><span class="line">[r, c] = <span class="built_in">find</span>(D == Max_eig, <span class="number">1</span>)</span><br><span class="line"><span class="comment">%找到D中第一个与最大特征值相等元素的位置，记录其行列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 第二步：对求出的特征向量进行归一化即可得到权重</span></span><br><span class="line">V( : , c)</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;特征值法求权重的结果为：&#x27;</span>);</span><br><span class="line"><span class="built_in">disp</span>(V( : , c) ./ sum(V( : , c)))</span><br><span class="line"></span><br><span class="line"><span class="comment">%% 计算一致性比例CR</span></span><br><span class="line">clc</span><br><span class="line">CI = (Max_eig - n) / (n - <span class="number">1</span>)</span><br><span class="line">RI = [<span class="number">0</span> <span class="number">0</span> <span class="number">0.52</span> <span class="number">0.89</span> <span class="number">1.12</span> <span class="number">1.26</span> <span class="number">1.36</span> <span class="number">1.41</span> <span class="number">1.46</span> <span class="number">1.52</span> <span class="number">1.54</span> <span class="number">1.56</span> <span class="number">1.58</span> <span class="number">1.59</span>];	<span class="comment">% RI最多支持n = 15</span></span><br><span class="line">CR = CI/RI(n);</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;一致性指标CI=&#x27;</span>); <span class="built_in">disp</span>(CI);</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;一致性比例RI=&#x27;</span>); <span class="built_in">disp</span>(RI);</span><br><span class="line"><span class="keyword">if</span> CR &lt; <span class="number">0.10</span></span><br><span class="line">	<span class="built_in">disp</span>(<span class="string">&#x27;因为CR &lt; 0.10，所以该判断矩阵A的一致性可以接受&#x27;</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="built_in">disp</span>(<span class="string">&#x27;注意：CR &gt;= 0.10，因此该判断矩阵A需要进行修改&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+  </entry>
+  <entry>
     <title>并查集</title>
     <url>/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>并查集是一种在线维护集合关系的数据结构，它支持两个操作：</p>
@@ -360,6 +639,241 @@
       </tags>
   </entry>
   <entry>
+    <title>快速幂</title>
+    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
+    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
+<p>时间复杂度$O(\log b)$</p>
+<p><strong>原理：</strong></p>
+<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
+<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>插值和拟合</title>
+    <url>/2022/02/09/%E6%8F%92%E5%80%BC%E5%92%8C%E6%8B%9F%E5%90%88/</url>
+    <content><![CDATA[<p>插值和拟合是数学建模中一种基本的数据分析手段。</p>
+<p><strong>插值：</strong>已知函数在某区间（域）内若干点处的值，求该函数在该区间（域）内其它点处的值。</p>
+<p><strong>拟合：</strong>根据离散数据求数据间近似函数关系。</p>
+<p><strong>区别：</strong></p>
+<ul>
+<li>插值函数过已知点，拟合函数不一定过已知点。</li>
+<li>插值主要用于求函数值，拟合主要用于求函数关系，从而进行预测等进一步分析。</li>
+</ul>
+<p>当然，某些特定问题既可以用插值也可以用拟合。</p>
+<h1 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h1><p>已知函数在某区间（域）内若干点处的值，求该函数在该区间（域）内其它点处的值。</p>
+<p>常用的有拉格朗日（Lagrange）插值法和牛顿（Newton）插值法。</p>
+<h2 id="拉格朗日插值法"><a href="#拉格朗日插值法" class="headerlink" title="拉格朗日插值法"></a>拉格朗日插值法</h2><p>在节点上给出节点基函数，然后做基函数的线性组合，组合系数为节点函数值的一种插值多项式。<br>$$<br>f(x) &#x3D; y_1 f_1(x) + y_2 f_2(x) + y_3 f_3(x)<br>$$</p>
+<p>$$<br>f(x) &#x3D; \sum^k_{i&#x3D;0} y \prod {x - x_j \over x_i - x_j}<br>$$</p>
+<h2 id="高次插值的Runge（龙格）现象"><a href="#高次插值的Runge（龙格）现象" class="headerlink" title="高次插值的Runge（龙格）现象"></a>高次插值的Runge（龙格）现象</h2><p>插值多项式的次数超过七时，插值多项式会出现严重的震荡现象，称之为Runge现象。</p>
+<p>因此，在实际中不应使用七次以上的插值。</p>
+<p>避免的常用方法：将插值区间分成若干小区间，在小区间内使用低次（二次，三次）插值，即分段低次插值，如样条函数插值。</p>
+<h2 id="Matlab一维插值"><a href="#Matlab一维插值" class="headerlink" title="Matlab一维插值"></a>Matlab一维插值</h2><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">yi = interp1(x, y, xi, <span class="string">&#x27;method&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>x，y为插值点，xi，yi为被插值点和插值结果，四者通常为向量。</p>
+<p>‘method’表示插值方法：</p>
+<ul>
+<li>‘nearest’：最邻近插值</li>
+<li>‘linear’：线性插值</li>
+<li>‘spline’：三次样条插值</li>
+<li>‘cubic’：立方插值</li>
+<li>缺省：线性插值</li>
+</ul>
+<p><strong>例子：</strong></p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">x = <span class="number">0</span> : <span class="number">2</span>: <span class="number">24</span>;</span><br><span class="line">y = [<span class="number">12</span> <span class="number">9</span> <span class="number">9</span> <span class="number">10</span> <span class="number">18</span> <span class="number">24</span> <span class="number">28</span> <span class="number">27</span> <span class="number">25</span> <span class="number">20</span> <span class="number">18</span> <span class="number">15</span> <span class="number">13</span>];</span><br><span class="line">x1 = <span class="number">13</span>;</span><br><span class="line">y1 = interp1(x, y, x1, <span class="string">&#x27;spline&#x27;</span>);</span><br><span class="line">xi = <span class="number">0</span> : <span class="number">1</span>/<span class="number">3600</span> :<span class="number">24</span>;</span><br><span class="line">yi = interp1(x, y, xi, <span class="string">&#x27;spline&#x27;</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>, xi, yi)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Matlab二维插值"><a href="#Matlab二维插值" class="headerlink" title="Matlab二维插值"></a>Matlab二维插值</h2><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">zi = interp2(x, y, z, xi, yi, <span class="string">&#x27;method&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>x，y，z为插值点，xi，yi为被插值点，zi为输出的插值结果。</p>
+<p>x，y为向量，xi，yi为向量或矩阵，z，zi为矩阵。</p>
+<p>‘method’表示插值方法：</p>
+<ul>
+<li>‘nearest’：最邻近插值</li>
+<li>‘linear’：双线性插值</li>
+<li>‘spline’：双三次样条插值</li>
+<li>‘cubic’：双立方插值</li>
+<li>缺省：双线性插值</li>
+</ul>
+<p><strong>例子：</strong></p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">x = <span class="number">1</span> : <span class="number">5</span>;</span><br><span class="line">y = <span class="number">1</span> : <span class="number">3</span>;</span><br><span class="line">temps = [<span class="number">82</span> <span class="number">81</span> <span class="number">80</span> <span class="number">82</span> <span class="number">84</span>; <span class="number">79</span> <span class="number">63</span> <span class="number">61</span> <span class="number">65</span> <span class="number">81</span>; <span class="number">84</span> <span class="number">84</span> <span class="number">82</span> <span class="number">85</span> <span class="number">86</span>];</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line">mesh(x, y, temps);</span><br><span class="line">xi = <span class="number">1</span> : <span class="number">0.2</span> : <span class="number">5</span>;</span><br><span class="line">yi = <span class="number">1</span> : <span class="number">0.2</span> : <span class="number">3</span>;</span><br><span class="line">zi = interp2(x, y, temps, xi, yi&#x27;, <span class="string">&#x27;cubic&#x27;</span>);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>);</span><br><span class="line">mesh(xi, yi, zi);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">3</span>);</span><br><span class="line">contour(xi, yi, zi, <span class="number">20</span>, <span class="string">&#x27;r&#x27;</span>);</span><br><span class="line">[<span class="built_in">i</span>, <span class="built_in">j</span>] = <span class="built_in">find</span>(zi == <span class="built_in">min</span>(<span class="built_in">min</span>(zi)));</span><br><span class="line">x = xi(<span class="built_in">j</span>), y = yi(<span class="built_in">i</span>), zmin = zi(<span class="built_in">i</span>, <span class="built_in">j</span>)</span><br><span class="line">[<span class="built_in">i</span>, <span class="built_in">j</span>] = <span class="built_in">find</span>(zi == <span class="built_in">max</span>(<span class="built_in">max</span>(zi)));</span><br><span class="line">x = xi(<span class="built_in">j</span>), y = yi(<span class="built_in">i</span>), zmax = zi(<span class="built_in">i</span>, <span class="built_in">j</span>)</span><br></pre></td></tr></table></figure>
+
+<p>xi为行向量，yi为列向量</p>
+<p>plot3（空间曲线），mesh（空间曲面），surf（空间曲面），contour（等高线）是三维作图中的常用命令。</p>
+<p>mesh和surf的区别：mesh是曲面网格图，surf是曲面表面图。</p>
+<p>contour(x, y, z, n)是做出由点(x, y, z)插值而成曲面的n条等高线。</p>
+<p>meshc和surfc可在曲面下方画等高线。</p>
+<p>meshz和surfz是画垂帘图。</p>
+<p>程序最后部分为求最高（低）点。</p>
+<h2 id="Matlab散乱点插值"><a href="#Matlab散乱点插值" class="headerlink" title="Matlab散乱点插值"></a>Matlab散乱点插值</h2><p>前面的插值点(x, y)均为网格点。当点为散乱点时使用本方法进行二维插值。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">griddata(x, y, z, xi, yi, <span class="string">&#x27;method&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>例子：</strong></p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">x = [<span class="number">129</span> <span class="number">140</span> <span class="number">103.5</span> <span class="number">88</span> <span class="number">185.5</span> <span class="number">195</span> <span class="number">105.5</span> <span class="number">157.5</span> <span class="number">107.5</span> <span class="number">77</span> <span class="number">81</span> <span class="number">162</span> <span class="number">162</span> <span class="number">117.5</span>];</span><br><span class="line">y = [<span class="number">7.5</span> <span class="number">141.5</span> <span class="number">23</span> <span class="number">147</span> <span class="number">22.5</span> <span class="number">137.5</span> <span class="number">85.5</span> <span class="number">-6.5</span> <span class="number">-81</span> <span class="number">3</span> <span class="number">56.5</span> <span class="number">-66.5</span> <span class="number">84</span> <span class="number">-33.5</span>];</span><br><span class="line">z = [<span class="number">-4</span> <span class="number">-8</span> <span class="number">-6</span> <span class="number">-8</span> <span class="number">-6</span> <span class="number">-8</span> <span class="number">-8</span> <span class="number">-9</span> <span class="number">-9</span> <span class="number">-8</span> <span class="number">-8</span> <span class="number">-9</span> <span class="number">-4</span> <span class="number">-9</span>];</span><br><span class="line">[xi, yi] = <span class="built_in">meshgrid</span>(<span class="number">75</span> : <span class="number">0.5</span> : <span class="number">200</span>, <span class="number">-70</span> : <span class="number">0.5</span> : <span class="number">150</span>);</span><br><span class="line">zi = griddata(x, y, z, xi, yi, <span class="string">&#x27;cubic&#x27;</span>);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line">meshz(xi, yi, zi);</span><br><span class="line">xlabel(<span class="string">&#x27;X&#x27;</span>), ylabel(<span class="string">&#x27;Y&#x27;</span>), zlabel(<span class="string">&#x27;Z&#x27;</span>);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>), contour(xi, yi, zi, [<span class="number">-5</span> <span class="number">-5</span>], <span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">grid;</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;+&#x27;</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;X&#x27;</span>), ylabel(<span class="string">&#x27;Y&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="拟合"><a href="#拟合" class="headerlink" title="拟合"></a>拟合</h1><p>根据离散数据求数据间近似函数关系。</p>
+<h2 id="拟合的计算"><a href="#拟合的计算" class="headerlink" title="拟合的计算"></a>拟合的计算</h2><p>曲线拟合需要解决两个问题：</p>
+<ul>
+<li>线型的选择</li>
+<li>线型中参数的计算</li>
+</ul>
+<p>线型的选择是拟合计算的关键和难点，通常主要根据专业知识和散点图确定。</p>
+<p>线性拟合中参数的计算可采用最小二乘法，非线性拟合中参数的计算要应用Gauss-Newton迭代法。</p>
+<h2 id="Matlab多项式拟合"><a href="#Matlab多项式拟合" class="headerlink" title="Matlab多项式拟合"></a>Matlab多项式拟合</h2><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">[a, S] = polyfit(x, y, n)</span><br></pre></td></tr></table></figure>
+
+<p>x，y是被拟合数据的自变量和因变量。</p>
+<p>n为拟合多项式次数。</p>
+<p>a为那你和多项式系数构成的向量。</p>
+<p>S为分析拟合效果所需的指标（可省略）。</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">x</td>
+<td>被拟合数据的自变量</td>
+</tr>
+<tr>
+<td align="center">y</td>
+<td>被拟合数据的因变量</td>
+</tr>
+<tr>
+<td align="center">n</td>
+<td>拟合多项式次数</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td>拟合多项式系数构成的向量</td>
+</tr>
+<tr>
+<td align="center">S</td>
+<td>分析拟合效果所需的指标（可省略）</td>
+</tr>
+</tbody></table>
+<p><strong>例子：</strong></p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">x = <span class="number">1</span> : <span class="number">12</span>;</span><br><span class="line">y = [<span class="number">5</span> <span class="number">8</span> <span class="number">9</span> <span class="number">15</span> <span class="number">25</span> <span class="number">29</span> <span class="number">31</span> <span class="number">30</span> <span class="number">22</span> <span class="number">25</span> <span class="number">27</span> <span class="number">24</span>];</span><br><span class="line">a = polyfit(x, y, <span class="number">9</span>)</span><br><span class="line">xp = <span class="number">1</span> : <span class="number">0.1</span> : <span class="number">12</span>;</span><br><span class="line">yp = polyval(a, xp);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;.k&#x27;</span>, xp, yp, <span class="string">&#x27;r&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Matlab非线性拟合"><a href="#Matlab非线性拟合" class="headerlink" title="Matlab非线性拟合"></a>Matlab非线性拟合</h2><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">[b, r] = polyfit(x, y, fun, b0, option)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">x</td>
+<td>被拟合数据的自变量</td>
+</tr>
+<tr>
+<td align="center">y</td>
+<td>被拟合数据的因变量</td>
+</tr>
+<tr>
+<td align="center">fun</td>
+<td>拟合函数</td>
+</tr>
+<tr>
+<td align="center">b0</td>
+<td>拟合函数的初始迭代值</td>
+</tr>
+<tr>
+<td align="center">option</td>
+<td>拟合选项</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td>拟合参数</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td>拟合残差</td>
+</tr>
+</tbody></table>
+<p><strong>例子：</strong><br>$$<br>找好的关系式：y &#x3D;A_1 e^{-x \over t_1} +A_2 e^{-x \over t_2} + y_0<br>$$</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">x = <span class="number">1</span> : <span class="number">16</span>;</span><br><span class="line">y = [<span class="number">4.00</span> <span class="number">6.40</span> <span class="number">8.00</span> <span class="number">8.80</span> <span class="number">9.22</span> <span class="number">9.50</span> <span class="number">9.70</span> <span class="number">9.86</span> <span class="number">10.00</span> <span class="number">10.20</span> <span class="number">10.32</span> <span class="number">10.42</span> <span class="number">10.50</span> <span class="number">10.55</span> <span class="number">10.58</span> <span class="number">10.60</span>];</span><br><span class="line">y1 = @(b, t)b(<span class="number">1</span>) * <span class="built_in">exp</span>(-t / b(<span class="number">2</span>)) + b(<span class="number">3</span>) * <span class="built_in">exp</span>(-t / b(<span class="number">4</span>)) + b(<span class="number">5</span>);</span><br><span class="line">b0 = [<span class="number">-1</span> <span class="number">1</span> <span class="number">-1</span> <span class="number">1</span> <span class="number">0</span>];</span><br><span class="line">a = nlinfit(x, y, y1, b0)</span><br><span class="line">xp = <span class="number">1</span> : <span class="number">0.1</span> : <span class="number">16</span>;</span><br><span class="line">yp = y1(a, xp);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;.k&#x27;</span>, xp, yp, <span class="string">&#x27;r&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Matlab拟合工具箱"><a href="#Matlab拟合工具箱" class="headerlink" title="Matlab拟合工具箱"></a>Matlab拟合工具箱</h2><p>使用Matlab编程进行拟合不便：</p>
+<ul>
+<li>需要编程。如匿名函数等。</li>
+<li>拟合结果不完整。Matlab拟合命令一般只提供拟合系数等基本结果。若要获取表示拟合优劣的统计量有时需要另外计算。</li>
+</ul>
+<p>因此使用Matlab拟合工具箱。</p>
+<p><strong>工具箱的启动：</strong></p>
+<p>在命令窗口键入cftool。</p>
+<p><strong>数据的录入：</strong></p>
+<p>在命令窗口录入自变量x和函数y的数据，然后再Data菜单中即可选中上述数据，并产生Data sets。</p>
+<p>此时工具箱会自动画出散点图。</p>
+<p><strong>拟合：</strong></p>
+<p>点击Fitting -&gt; New fit，可以修改Fit name，选择Data sets（自动）和Type of Fit。</p>
+<p>Apply后即可完成拟合。</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Custom Equations</td>
+<td>用户自定义的函数类型</td>
+</tr>
+<tr>
+<td align="center">Exponential</td>
+<td>指数逼近，2种，a * exp(b * x)、a * exp(b * x) + c * exp(d * x)</td>
+</tr>
+<tr>
+<td align="center">Fourier</td>
+<td>傅里叶逼近，7种，基础型是a0 + a1 * cos(x * w) + b1 * sin(x * w)</td>
+</tr>
+<tr>
+<td align="center">Gaussian</td>
+<td>高斯逼近，8种，基础型是a1 * exp(-((x - b1) &#x2F; c1)^2)</td>
+</tr>
+<tr>
+<td align="center">Interpolant</td>
+<td>插值逼近，4种，linear、nearest neighbor、cubic spline、shape-preserving</td>
+</tr>
+<tr>
+<td align="center">Polynomial</td>
+<td>多形式逼近，9种，…</td>
+</tr>
+<tr>
+<td align="center">Power</td>
+<td>幂逼近，2种，…</td>
+</tr>
+<tr>
+<td align="center">Rational</td>
+<td>有理数逼近，分子分母共有的类型是linear、quadratic、cubic、4-6th degree；此外分子还包括constant型</td>
+</tr>
+<tr>
+<td align="center">Smoothing Spline</td>
+<td>平滑逼近（翻译不太恰当）</td>
+</tr>
+<tr>
+<td align="center">un of Sin Functions</td>
+<td>正弦曲线逼近，8种，基础型是a1 * sin(b1 * x + c1)</td>
+</tr>
+<tr>
+<td align="center">Weibull</td>
+<td>只有一种，a * b * x^(b - 1) * exp(-a * x^b)</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+  </entry>
+  <entry>
     <title>筛法</title>
     <url>/2020/10/25/%E7%AD%9B%E6%B3%95/</url>
     <content><![CDATA[<p>筛法是一种用来求素数的方法。一般来说可以循序渐进的掌握暴力判断素数、埃氏筛法、欧拉筛法。</p>
@@ -393,39 +907,6 @@
       </categories>
       <tags>
         <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>快速幂</title>
-    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
-    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
-<p>时间复杂度$O(\log b)$</p>
-<p><strong>原理：</strong></p>
-<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
-<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>除法取模</title>
-    <url>/2022/05/12/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/</url>
-    <content><![CDATA[<p>由费马小定理可推出：${1 \over a} % m &#x3D; a^{m - 2} % m$，其中$m$为素数。</p>
-<p>那么，${b \over a} % m$就可以变成$b \cdot a^{m - 2} % m$。</p>
-<p>当$m$太大时，可以使用<strong>快速幂</strong>。</p>
-<p><a href="https://blog.csdn.net/qq742762377/article/details/83278688">来源</a></p>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-        <tag>模运算</tag>
       </tags>
   </entry>
   <entry>
@@ -503,6 +984,22 @@
       </categories>
       <tags>
         <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>除法取模</title>
+    <url>/2022/05/12/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/</url>
+    <content><![CDATA[<p>由费马小定理可推出：${1 \over a} % m &#x3D; a^{m - 2} % m$，其中$m$为素数。</p>
+<p>那么，${b \over a} % m$就可以变成$b \cdot a^{m - 2} % m$。</p>
+<p>当$m$太大时，可以使用<strong>快速幂</strong>。</p>
+<p><a href="https://blog.csdn.net/qq742762377/article/details/83278688">来源</a></p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+        <tag>模运算</tag>
       </tags>
   </entry>
 </search>
