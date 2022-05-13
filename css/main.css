@@ -1169,7 +1169,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffa8a3;
+  background: #7fff12;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2670,4 +2670,14 @@ mjx-container + br {
   .pagination {
     margin: 8px 0 0;
   }
+}
+body {
+  background: url("../images/background/background3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+.site-brand-container {
+  background: #465178;
 }

@@ -214,6 +214,126 @@
       </tags>
   </entry>
   <entry>
+    <title>并查集</title>
+    <url>/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<p>并查集是一种在线维护集合关系的数据结构，它支持两个操作：</p>
+<ul>
+<li><strong>合并</strong>：将两个元素所属的集合合并为一个。</li>
+<li><strong>查询</strong>：查询某两个元素是否在同一集合中。</li>
+</ul>
+<p><strong>时间复杂度</strong>：合并与查询都接近$O(1)$。</p>
+<h2 id="普通并查集"><a href="#普通并查集" class="headerlink" title="普通并查集"></a>普通并查集</h2><p>假设我们有n个元素，它们分别使用1~n表示。并查集为了实现维护集合关系，为每个元素增加了一个用来指向其他元素的$fa_i$属性（父亲属性）。该属性初始值$fa_i &#x3D; i$（即指向自己）。并查集就是利用了这个父亲属性将不同的元素串连起来，组成不同的集合。</p>
+<p>比如有3个元素A、B、C，若我们想要使用fa[A] &#x3D; B的这种关系把它们联系起来形成一个集合，我们可能会这样串连他们（都为向上的有向线段）：</p>
+<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.png" alt="img"></p>
+<p>在我们画的图上，我们认为一个点的父亲节点就是该点上方的那个节点，即把图描述出来为：</p>
+<ul>
+<li>fa[A]&#x3D;B、fa[C]&#x3D;B、fa[B]&#x3D;B</li>
+<li>fa[A]&#x3D;B、fa[B]&#x3D;C、fa[C]&#x3D;C</li>
+</ul>
+<p>由于每个元素都是单指向的，所以我们所能连接出的图的顶部有且只有一个元素（如第一个图为B，第二个图为C）。这个元素的fa为它本身，且集合内的任意元素在沿着fa的指引向上追溯时，一定会找到该元素。所以此元素便是该集合的唯一<strong>标识</strong>，这个向上追溯找到标识的操作便是并查集的核心。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">find</span>(fa[x]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了追溯标识的操作，我们便不难定义出合并与查询：</p>
+<p>设x &#x3D; find(A)，y &#x3D; find(B)，即x为A元素所在集合的标识，y为B元素所在集合的标识。</p>
+<p><strong>注</strong>：标识本身也是一个元素。在开始时$fa_i &#x3D; i$，也就是说每个元素单独构成一个只有自己的集合。</p>
+<ul>
+<li><strong>合并</strong>：fa[y] &#x3D; x。将两个元素所属的集合合并为一个。写成fa[x] &#x3D; y效果相同。</li>
+<li><strong>查询</strong>：if(x &#x3D;&#x3D; y) 。查询某两个元素是否在同一集合中。</li>
+</ul>
+<p>看下面这个例子，这是执行了fa[D] &#x3D; B之后集合的样子。</p>
+<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/2.png" alt="img"></p>
+<p>首先我们确认一点，并查集下某个集合的结构就像一棵树，而标识正是这棵树的树根。</p>
+<p>我们发现，随着合并次数的增加，树的深度越来越大，如果我们此时查询G所在集合的标识效率会大打折扣。我们可以通过一个小优化来提升效率。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">  <span class="keyword">return</span> fa[x]=<span class="built_in">find</span>(fa[x]);	<span class="comment">//这里变化了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们在递归的过程中压缩了树的高度，向上找到树根后，在逐级下放的过程中将所有子节点的父节点都改变成了树根，使得树被压缩，从而在不影响集合标识的同时提升了find函数的效率，这是并查集的精髓（在带权并查集中会更有体现）。</p>
+<p>find(G)后树的压缩情况：</p>
+<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/3.png" alt="img"></p>
+<h2 id="种类并查集"><a href="#种类并查集" class="headerlink" title="种类并查集"></a>种类并查集</h2><p><strong>注</strong>：此部分为本人理解，酌情参考。</p>
+<p><a href="https://www.luogu.com.cn/problem/P1525">洛谷P1525 关押罪犯</a></p>
+<p><del>看到最小的最大直接二分答案</del></p>
+<p>分析一下不难发现，我们需要将罪犯划分为两个集合。</p>
+<p>我们可能会使用这种策略：</p>
+<ol>
+<li>将罪犯组的怨气值由大到小排序，后从大到小依次判断。</li>
+<li>若此组可以分开到两个监狱，则分到两个不同的监狱。</li>
+<li>若此组不能被分开到两个监狱（1. 这组的两个人因前面的分配已经被分配到同一个监狱里了。2. 有一个相比两人间的仇恨与这两人都有深仇大恨的人已经入狱了），答案为此组怨气值。</li>
+</ol>
+<p>这个策略是正确的，但若想使用并查集解决便出现了问题。</p>
+<p>并查集所支持的操作是将两个集合合并，而不是将两个集合间划分界限。这时，种类并查集孕育而生，它给了并查集更广泛的意义。</p>
+<p>现在拓宽集合的概念，我们要为每个集合加上一个<strong>标签</strong>。如一个集合的标签为“它们应该在一起”，同样的，我们可以创造一个标签为“A和B应该分到不同监狱”的集合。当然不难发现这个集合是有限制的，我们定义的标签让我们希望这个集合中只有2个元素。与其说现在在用并查集维护集合，不如说我们现在在用并查集维护一种人与人间的<strong>关系</strong>。</p>
+<p>在本题中，由于只有2座监狱，所以存在<strong>传递性</strong>：如果A应与C分开，B也应与C分开，那么A和B就应该在一起。依靠传递性，我们以C为媒介，将A和B间的关系连接了起来。</p>
+<p>这时存在一个问题，我们按照这样的关系进行合并：</p>
+<ul>
+<li>A应与C分开，因此二者放入同一有“A和C应分开”标签的集合，A与C连接</li>
+<li>B应与C分开，因此二者放入同一有“B和C应分开”标签的集合，B与C连接</li>
+<li>哦吼，A、B、C进入了一个集合，关系混乱了</li>
+</ul>
+<p>可以看到，使用这种只能存在2个元素的标签虽然想法很美好，但现实很残酷。</p>
+<p>为了解决这个问题，我们不仅引入了一种标签，还引入了一种媒介。我们对应每一个罪犯X创建一个<strong>分开媒介!X</strong>，如罪犯C的分开媒介!C。!C存在的目的就是与“不能与C在一起”的罪犯连接起来，形成一个集合，理所当然的，“不能与C在一起”便是这个集合的标签。按照这种理念合并：</p>
+<ul>
+<li>A应与C分开，因此A应放入“不能与C在一起”的集合，A与!C连接，<strong>同时C应放入“不能与A在一起”的集合，C与!A连接</strong></li>
+<li>B应与C分开，因此B应放入“不能与C在一起”的集合，B与!C连接，<strong>同时C应放入“不能与B在一起”的集合，C与!B连接</strong></li>
+<li>!C-A-B、!A-C、!B-C，逻辑和结构上很清晰</li>
+</ul>
+<p><strong>注</strong>：C与!C虽有联系但有本质区别，C是真实存在的罪犯，而!C是一种用来表示“不能与C在一起”的关系的媒介，不过两者在编程过程中被视为同等的元素对待。</p>
+<p>题目被解决了，策略如下：</p>
+<p>在代码实现中，若有n个罪犯，对应编号分别为$a_i$，那么编号为$a_i$的罪犯的分开媒介的编号使用$a_i + n$表示。</p>
+<p>若a、b为一组罪犯的两个编号，设x &#x3D; find(a)，y &#x3D; find(b)，nx &#x3D; find(a + n)，ny &#x3D; find(b + n)。</p>
+<ol>
+<li>将罪犯组的怨气值由大到小排序，后从大到小依次判断。</li>
+<li>如果此组可以分开到两个监狱，则fa[x] &#x3D; ny，fa[y] &#x3D; nx。</li>
+<li>如果起了冲突，也就是(x &#x3D;&#x3D; y || nx &#x3D;&#x3D; ny)，输出此组怨气值。</li>
+</ol>
+<p>再来简略的看一道题：</p>
+<p><a href="https://www.luogu.com.cn/problem/P2024">洛谷P2024 食物链</a></p>
+<p>对于一类物种，与其他物种应有3种关系：与X同类，被X吃（X的猎物），X被吃（X的猎人）。</p>
+<p>假设有n个动物，对应编号分别为$a_i$，那么编号为$a_i$的罪犯的猎物媒介的编号使用$a_i + n$表示，猎人媒介的编号使用$a_i + 2n$表示。</p>
+<ul>
+<li>当A和B是同类时：分别合并A和B，A的猎物和B的猎物，A的天敌和B的天敌。</li>
+<li>当A吃B时：分别合并A和B的天敌，A的猎物和B，<strong>A的猎人和B的猎物</strong>（容易被忽略）。</li>
+</ul>
+<p><strong>总结：</strong></p>
+<ul>
+<li>种类并查集是在维护不同事物间的一种<strong>关系</strong>。</li>
+<li>编写时使用多倍长度的数组作为形容多种关系的<strong>媒介</strong>。</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li>一个物品与另一个物品存在多个关系，在合并时要考虑所有关系的合并。</li>
+<li>不同物品间一定要有连续性，也就是“都与A有同一种关系的东西应该是同一类”。</li>
+<li>种类并查集只注重关系，到底哪堆人被分配到了哪个监狱不在考虑范围内。</li>
+</ul>
+<h2 id="带权并查集"><a href="#带权并查集" class="headerlink" title="带权并查集"></a>带权并查集</h2><p><a href="https://www.luogu.com.cn/problem/P1196">洛谷P1196 银河英雄传说</a></p>
+<p>这道题看下来，其中合并和查询的部分使用普通的并查集就可以实现了，问题在于如何求出两个战舰之前的舰数。</p>
+<p>不妨这样想，对于每个战舰$a_i$增加一个权值$d_i$用来表示此战舰与本列队头间的舰数，那么战舰$a_i$与$a_j$间的舰数即为$abs(a_i-a_j)-1$，元素带有权值即为带权并查集。现在要考虑的就是如何更新权值。</p>
+<p>由于每次移动都是将一列舰队并到另一列的后方，那么对于被移动的那列舰队，所有战舰的$d_i$都应更新加上未移动的舰队的长度。由此发现，我们需要知道每队的长度来维护$d_i$，于是设每队的长度为$s_i$。</p>
+<p>设x &#x3D; find(i), y &#x3D; find(j)，每一次移动，都有这样的变化：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">s[y]+=s[x];</span><br><span class="line">s[x]=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>要注意的是，这里修改的是两个战舰所在集合的长度。现在长度修改好了，还需要的是利用更新过的长度去更新被移动的所有战舰的$d_i$，这是带权并查集的关键所在。怎么变，一个一个变吗？那样的话效率就和爆搜没有区别了。带权并查集利用了find()函数中的路径压缩优化步骤，巧妙的在路径压缩的过程中更新了$d_i$的值。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(in==<span class="string">&#x27;M&#x27;</span>)</span><br><span class="line">&#123;</span><br><span class="line">	d[x]+=s[y];	<span class="comment">//被移动舰队的标识战舰的di加上了长度</span></span><br><span class="line">	fa[x]=y;	<span class="comment">//合并，注意此时合并完的舰队的标志战舰已经变为了y，即树根</span></span><br><span class="line">	s[y]+=s[x];</span><br><span class="line">	s[x]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在一开始时，每列舰队只有1架战舰，因此每列的队头都是标识战舰（标识的意思看普通并查集），且<strong>合并操作不会改变这一规律</strong>。</p>
+<p>合并操作完成后，本列舰队的标识战舰为y，同时我们称x战舰为“曾经的标识战舰”易。知$d_y &#x3D; 0$，而$d_x$被加上了$s_y$，由于在这一步操作前x始终为标识战舰，因此可知$d_x &#x3D; s_y$，可以看到整列被移动的舰队中只有它的$d_i$值被修改了。接下来看find()部分：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="type">int</span> root=<span class="built_in">find</span>(fa[x]);	<span class="comment">//首先执行find()的递归操作</span></span><br><span class="line">	d[x]+=d[fa[x]];			<span class="comment">//回溯时距离更新</span></span><br><span class="line">	<span class="keyword">return</span> fa[x]=root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先明确一点，find(x)的操作只会更新x追溯到他的标识战舰的$d_i$的值和这些点的路径。</p>
+<p>我们可以想到，被移动的战舰到队头的距离 &#x3D; 该战舰到曾经的标识战舰的距离（即$d_i$） + 曾经的标识战舰到队头的距离（即$d_x$），而在find()函数向上追溯的过程中，一定能够找到曾经的标识战舰（因为存在路径压缩，所以一定是fa[x]），利用他的值更新自己的值。利用这一点，继续推想：假如曾经的标识战舰处于尚未更新的状态（出现这种情况的原因是因为上面所明确的那一点，也就是还尚未更新过），那么曾经的标识战舰向上追溯又一定能找到“曾经的曾经的标识战舰”，从而利用其值更新自己，后原战舰再根据更新好的曾经的标识战舰的值更新自己的值。由此得出，若想得到正确的曾经的标识战舰的$d_x$则必须要先执行递归find(x)，之后在回溯时更新距离。由于路径压缩的的存在，所有的战舰在更新一次$d_i$后父节点会直接指向最新的标志战舰，而$d_y &#x3D; 0$，从而在当前状态下再次寻找同一战舰时不再更新。这便是路径压缩与$d_i$更新的巧妙配合。</p>
+<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/4.png" alt="img"></p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> fa[<span class="number">30010</span>];</span><br><span class="line"><span class="type">int</span> size[<span class="number">30010</span>];</span><br><span class="line"><span class="type">int</span> d[<span class="number">30010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="type">int</span> root=<span class="built_in">find</span>(fa[x]);</span><br><span class="line">	d[x]+=d[fa[x]];</span><br><span class="line">	<span class="keyword">return</span> fa[x]=root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> s[<span class="number">2</span>];</span><br><span class="line">	<span class="type">int</span> a,b;</span><br><span class="line">	<span class="type">int</span> dx,dy;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">30000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		fa[i]=i;</span><br><span class="line">		size[i]=<span class="number">1</span>;</span><br><span class="line">		d[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%s%d%d&quot;</span>,s+<span class="number">1</span>,&amp;a,&amp;b);</span><br><span class="line">		dx=<span class="built_in">find</span>(a);</span><br><span class="line">		dy=<span class="built_in">find</span>(b);</span><br><span class="line">		<span class="keyword">if</span>(s[<span class="number">1</span>]==<span class="string">&#x27;M&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			d[dx]+=size[dy];</span><br><span class="line">			fa[dx]=dy;</span><br><span class="line">			size[dy]+=size[dx];</span><br><span class="line">			size[dx]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(s[<span class="number">1</span>]==<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dx!=dy) <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">abs</span>(d[a]-d[b])<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.luogu.com.cn/problem/solution/P1525">https://www.luogu.com.cn/problem/solution/P1525</a></p>
+<p><a href="https://www.luogu.com.cn/problem/solution/P2024">https://www.luogu.com.cn/problem/solution/P2024</a></p>
+<p><a href="https://www.luogu.com.cn/problem/solution/P1196">https://www.luogu.com.cn/problem/solution/P1196</a></p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>层次分析法</title>
     <url>/2022/02/09/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/</url>
     <content><![CDATA[<p>层次分析法（AHP）用来解决评价类问题。</p>
@@ -493,23 +613,6 @@
       </categories>
   </entry>
   <entry>
-    <title>快速幂</title>
-    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
-    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
-<p>时间复杂度$O(\log b)$</p>
-<p><strong>原理：</strong></p>
-<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
-<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>归并排序</title>
     <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
@@ -531,128 +634,25 @@
       </categories>
       <tags>
         <tag>排序</tag>
-        <tag>分治</tag>
         <tag>数据结构</tag>
+        <tag>分治</tag>
       </tags>
   </entry>
   <entry>
-    <title>并查集</title>
-    <url>/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-    <content><![CDATA[<p>并查集是一种在线维护集合关系的数据结构，它支持两个操作：</p>
-<ul>
-<li><strong>合并</strong>：将两个元素所属的集合合并为一个。</li>
-<li><strong>查询</strong>：查询某两个元素是否在同一集合中。</li>
-</ul>
-<p><strong>时间复杂度</strong>：合并与查询都接近$O(1)$。</p>
-<h2 id="普通并查集"><a href="#普通并查集" class="headerlink" title="普通并查集"></a>普通并查集</h2><p>假设我们有n个元素，它们分别使用1~n表示。并查集为了实现维护集合关系，为每个元素增加了一个用来指向其他元素的$fa_i$属性（父亲属性）。该属性初始值$fa_i &#x3D; i$（即指向自己）。并查集就是利用了这个父亲属性将不同的元素串连起来，组成不同的集合。</p>
-<p>比如有3个元素A、B、C，若我们想要使用fa[A] &#x3D; B的这种关系把它们联系起来形成一个集合，我们可能会这样串连他们（都为向上的有向线段）：</p>
-<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.png" alt="img"></p>
-<p>在我们画的图上，我们认为一个点的父亲节点就是该点上方的那个节点，即把图描述出来为：</p>
-<ul>
-<li>fa[A]&#x3D;B、fa[C]&#x3D;B、fa[B]&#x3D;B</li>
-<li>fa[A]&#x3D;B、fa[B]&#x3D;C、fa[C]&#x3D;C</li>
-</ul>
-<p>由于每个元素都是单指向的，所以我们所能连接出的图的顶部有且只有一个元素（如第一个图为B，第二个图为C）。这个元素的fa为它本身，且集合内的任意元素在沿着fa的指引向上追溯时，一定会找到该元素。所以此元素便是该集合的唯一<strong>标识</strong>，这个向上追溯找到标识的操作便是并查集的核心。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">find</span>(fa[x]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有了追溯标识的操作，我们便不难定义出合并与查询：</p>
-<p>设x &#x3D; find(A)，y &#x3D; find(B)，即x为A元素所在集合的标识，y为B元素所在集合的标识。</p>
-<p><strong>注</strong>：标识本身也是一个元素。在开始时$fa_i &#x3D; i$，也就是说每个元素单独构成一个只有自己的集合。</p>
-<ul>
-<li><strong>合并</strong>：fa[y] &#x3D; x。将两个元素所属的集合合并为一个。写成fa[x] &#x3D; y效果相同。</li>
-<li><strong>查询</strong>：if(x &#x3D;&#x3D; y) 。查询某两个元素是否在同一集合中。</li>
-</ul>
-<p>看下面这个例子，这是执行了fa[D] &#x3D; B之后集合的样子。</p>
-<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/2.png" alt="img"></p>
-<p>首先我们确认一点，并查集下某个集合的结构就像一棵树，而标识正是这棵树的树根。</p>
-<p>我们发现，随着合并次数的增加，树的深度越来越大，如果我们此时查询G所在集合的标识效率会大打折扣。我们可以通过一个小优化来提升效率。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">  <span class="keyword">return</span> fa[x]=<span class="built_in">find</span>(fa[x]);	<span class="comment">//这里变化了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们在递归的过程中压缩了树的高度，向上找到树根后，在逐级下放的过程中将所有子节点的父节点都改变成了树根，使得树被压缩，从而在不影响集合标识的同时提升了find函数的效率，这是并查集的精髓（在带权并查集中会更有体现）。</p>
-<p>find(G)后树的压缩情况：</p>
-<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/3.png" alt="img"></p>
-<h2 id="种类并查集"><a href="#种类并查集" class="headerlink" title="种类并查集"></a>种类并查集</h2><p><strong>注</strong>：此部分为本人理解，酌情参考。</p>
-<p><a href="https://www.luogu.com.cn/problem/P1525">洛谷P1525 关押罪犯</a></p>
-<p><del>看到最小的最大直接二分答案</del></p>
-<p>分析一下不难发现，我们需要将罪犯划分为两个集合。</p>
-<p>我们可能会使用这种策略：</p>
-<ol>
-<li>将罪犯组的怨气值由大到小排序，后从大到小依次判断。</li>
-<li>若此组可以分开到两个监狱，则分到两个不同的监狱。</li>
-<li>若此组不能被分开到两个监狱（1. 这组的两个人因前面的分配已经被分配到同一个监狱里了。2. 有一个相比两人间的仇恨与这两人都有深仇大恨的人已经入狱了），答案为此组怨气值。</li>
-</ol>
-<p>这个策略是正确的，但若想使用并查集解决便出现了问题。</p>
-<p>并查集所支持的操作是将两个集合合并，而不是将两个集合间划分界限。这时，种类并查集孕育而生，它给了并查集更广泛的意义。</p>
-<p>现在拓宽集合的概念，我们要为每个集合加上一个<strong>标签</strong>。如一个集合的标签为“它们应该在一起”，同样的，我们可以创造一个标签为“A和B应该分到不同监狱”的集合。当然不难发现这个集合是有限制的，我们定义的标签让我们希望这个集合中只有2个元素。与其说现在在用并查集维护集合，不如说我们现在在用并查集维护一种人与人间的<strong>关系</strong>。</p>
-<p>在本题中，由于只有2座监狱，所以存在<strong>传递性</strong>：如果A应与C分开，B也应与C分开，那么A和B就应该在一起。依靠传递性，我们以C为媒介，将A和B间的关系连接了起来。</p>
-<p>这时存在一个问题，我们按照这样的关系进行合并：</p>
-<ul>
-<li>A应与C分开，因此二者放入同一有“A和C应分开”标签的集合，A与C连接</li>
-<li>B应与C分开，因此二者放入同一有“B和C应分开”标签的集合，B与C连接</li>
-<li>哦吼，A、B、C进入了一个集合，关系混乱了</li>
-</ul>
-<p>可以看到，使用这种只能存在2个元素的标签虽然想法很美好，但现实很残酷。</p>
-<p>为了解决这个问题，我们不仅引入了一种标签，还引入了一种媒介。我们对应每一个罪犯X创建一个<strong>分开媒介!X</strong>，如罪犯C的分开媒介!C。!C存在的目的就是与“不能与C在一起”的罪犯连接起来，形成一个集合，理所当然的，“不能与C在一起”便是这个集合的标签。按照这种理念合并：</p>
-<ul>
-<li>A应与C分开，因此A应放入“不能与C在一起”的集合，A与!C连接，<strong>同时C应放入“不能与A在一起”的集合，C与!A连接</strong></li>
-<li>B应与C分开，因此B应放入“不能与C在一起”的集合，B与!C连接，<strong>同时C应放入“不能与B在一起”的集合，C与!B连接</strong></li>
-<li>!C-A-B、!A-C、!B-C，逻辑和结构上很清晰</li>
-</ul>
-<p><strong>注</strong>：C与!C虽有联系但有本质区别，C是真实存在的罪犯，而!C是一种用来表示“不能与C在一起”的关系的媒介，不过两者在编程过程中被视为同等的元素对待。</p>
-<p>题目被解决了，策略如下：</p>
-<p>在代码实现中，若有n个罪犯，对应编号分别为$a_i$，那么编号为$a_i$的罪犯的分开媒介的编号使用$a_i + n$表示。</p>
-<p>若a、b为一组罪犯的两个编号，设x &#x3D; find(a)，y &#x3D; find(b)，nx &#x3D; find(a + n)，ny &#x3D; find(b + n)。</p>
-<ol>
-<li>将罪犯组的怨气值由大到小排序，后从大到小依次判断。</li>
-<li>如果此组可以分开到两个监狱，则fa[x] &#x3D; ny，fa[y] &#x3D; nx。</li>
-<li>如果起了冲突，也就是(x &#x3D;&#x3D; y || nx &#x3D;&#x3D; ny)，输出此组怨气值。</li>
-</ol>
-<p>再来简略的看一道题：</p>
-<p><a href="https://www.luogu.com.cn/problem/P2024">洛谷P2024 食物链</a></p>
-<p>对于一类物种，与其他物种应有3种关系：与X同类，被X吃（X的猎物），X被吃（X的猎人）。</p>
-<p>假设有n个动物，对应编号分别为$a_i$，那么编号为$a_i$的罪犯的猎物媒介的编号使用$a_i + n$表示，猎人媒介的编号使用$a_i + 2n$表示。</p>
-<ul>
-<li>当A和B是同类时：分别合并A和B，A的猎物和B的猎物，A的天敌和B的天敌。</li>
-<li>当A吃B时：分别合并A和B的天敌，A的猎物和B，<strong>A的猎人和B的猎物</strong>（容易被忽略）。</li>
-</ul>
-<p><strong>总结：</strong></p>
-<ul>
-<li>种类并查集是在维护不同事物间的一种<strong>关系</strong>。</li>
-<li>编写时使用多倍长度的数组作为形容多种关系的<strong>媒介</strong>。</li>
-</ul>
-<p><strong>注意：</strong></p>
-<ul>
-<li>一个物品与另一个物品存在多个关系，在合并时要考虑所有关系的合并。</li>
-<li>不同物品间一定要有连续性，也就是“都与A有同一种关系的东西应该是同一类”。</li>
-<li>种类并查集只注重关系，到底哪堆人被分配到了哪个监狱不在考虑范围内。</li>
-</ul>
-<h2 id="带权并查集"><a href="#带权并查集" class="headerlink" title="带权并查集"></a>带权并查集</h2><p><a href="https://www.luogu.com.cn/problem/P1196">洛谷P1196 银河英雄传说</a></p>
-<p>这道题看下来，其中合并和查询的部分使用普通的并查集就可以实现了，问题在于如何求出两个战舰之前的舰数。</p>
-<p>不妨这样想，对于每个战舰$a_i$增加一个权值$d_i$用来表示此战舰与本列队头间的舰数，那么战舰$a_i$与$a_j$间的舰数即为$abs(a_i-a_j)-1$，元素带有权值即为带权并查集。现在要考虑的就是如何更新权值。</p>
-<p>由于每次移动都是将一列舰队并到另一列的后方，那么对于被移动的那列舰队，所有战舰的$d_i$都应更新加上未移动的舰队的长度。由此发现，我们需要知道每队的长度来维护$d_i$，于是设每队的长度为$s_i$。</p>
-<p>设x &#x3D; find(i), y &#x3D; find(j)，每一次移动，都有这样的变化：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">s[y]+=s[x];</span><br><span class="line">s[x]=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-
-<p>要注意的是，这里修改的是两个战舰所在集合的长度。现在长度修改好了，还需要的是利用更新过的长度去更新被移动的所有战舰的$d_i$，这是带权并查集的关键所在。怎么变，一个一个变吗？那样的话效率就和爆搜没有区别了。带权并查集利用了find()函数中的路径压缩优化步骤，巧妙的在路径压缩的过程中更新了$d_i$的值。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(in==<span class="string">&#x27;M&#x27;</span>)</span><br><span class="line">&#123;</span><br><span class="line">	d[x]+=s[y];	<span class="comment">//被移动舰队的标识战舰的di加上了长度</span></span><br><span class="line">	fa[x]=y;	<span class="comment">//合并，注意此时合并完的舰队的标志战舰已经变为了y，即树根</span></span><br><span class="line">	s[y]+=s[x];</span><br><span class="line">	s[x]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在一开始时，每列舰队只有1架战舰，因此每列的队头都是标识战舰（标识的意思看普通并查集），且<strong>合并操作不会改变这一规律</strong>。</p>
-<p>合并操作完成后，本列舰队的标识战舰为y，同时我们称x战舰为“曾经的标识战舰”易。知$d_y &#x3D; 0$，而$d_x$被加上了$s_y$，由于在这一步操作前x始终为标识战舰，因此可知$d_x &#x3D; s_y$，可以看到整列被移动的舰队中只有它的$d_i$值被修改了。接下来看find()部分：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="type">int</span> root=<span class="built_in">find</span>(fa[x]);	<span class="comment">//首先执行find()的递归操作</span></span><br><span class="line">	d[x]+=d[fa[x]];			<span class="comment">//回溯时距离更新</span></span><br><span class="line">	<span class="keyword">return</span> fa[x]=root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>首先明确一点，find(x)的操作只会更新x追溯到他的标识战舰的$d_i$的值和这些点的路径。</p>
-<p>我们可以想到，被移动的战舰到队头的距离 &#x3D; 该战舰到曾经的标识战舰的距离（即$d_i$） + 曾经的标识战舰到队头的距离（即$d_x$），而在find()函数向上追溯的过程中，一定能够找到曾经的标识战舰（因为存在路径压缩，所以一定是fa[x]），利用他的值更新自己的值。利用这一点，继续推想：假如曾经的标识战舰处于尚未更新的状态（出现这种情况的原因是因为上面所明确的那一点，也就是还尚未更新过），那么曾经的标识战舰向上追溯又一定能找到“曾经的曾经的标识战舰”，从而利用其值更新自己，后原战舰再根据更新好的曾经的标识战舰的值更新自己的值。由此得出，若想得到正确的曾经的标识战舰的$d_x$则必须要先执行递归find(x)，之后在回溯时更新距离。由于路径压缩的的存在，所有的战舰在更新一次$d_i$后父节点会直接指向最新的标志战舰，而$d_y &#x3D; 0$，从而在当前状态下再次寻找同一战舰时不再更新。这便是路径压缩与$d_i$更新的巧妙配合。</p>
-<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/4.png" alt="img"></p>
+    <title>快速幂</title>
+    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
+    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
+<p>时间复杂度$O(\log b)$</p>
+<p><strong>原理：</strong></p>
+<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
+<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> fa[<span class="number">30010</span>];</span><br><span class="line"><span class="type">int</span> size[<span class="number">30010</span>];</span><br><span class="line"><span class="type">int</span> d[<span class="number">30010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="type">int</span> root=<span class="built_in">find</span>(fa[x]);</span><br><span class="line">	d[x]+=d[fa[x]];</span><br><span class="line">	<span class="keyword">return</span> fa[x]=root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> s[<span class="number">2</span>];</span><br><span class="line">	<span class="type">int</span> a,b;</span><br><span class="line">	<span class="type">int</span> dx,dy;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">30000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		fa[i]=i;</span><br><span class="line">		size[i]=<span class="number">1</span>;</span><br><span class="line">		d[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%s%d%d&quot;</span>,s+<span class="number">1</span>,&amp;a,&amp;b);</span><br><span class="line">		dx=<span class="built_in">find</span>(a);</span><br><span class="line">		dy=<span class="built_in">find</span>(b);</span><br><span class="line">		<span class="keyword">if</span>(s[<span class="number">1</span>]==<span class="string">&#x27;M&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			d[dx]+=size[dy];</span><br><span class="line">			fa[dx]=dy;</span><br><span class="line">			size[dy]+=size[dx];</span><br><span class="line">			size[dx]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(s[<span class="number">1</span>]==<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dx!=dy) <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">abs</span>(d[a]-d[b])<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.luogu.com.cn/problem/solution/P1525">https://www.luogu.com.cn/problem/solution/P1525</a></p>
-<p><a href="https://www.luogu.com.cn/problem/solution/P2024">https://www.luogu.com.cn/problem/solution/P2024</a></p>
-<p><a href="https://www.luogu.com.cn/problem/solution/P1196">https://www.luogu.com.cn/problem/solution/P1196</a></p>
-]]></content>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>算法比赛</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
+        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
