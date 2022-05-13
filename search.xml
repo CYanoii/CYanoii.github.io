@@ -988,9 +988,9 @@
   </entry>
   <entry>
     <title>除法取模</title>
-    <url>/2022/05/12/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/</url>
-    <content><![CDATA[<p>由费马小定理可推出：${1 \over a} % m &#x3D; a^{m - 2} % m$，其中$m$为素数。</p>
-<p>那么，${b \over a} % m$就可以变成$b \cdot a^{m - 2} % m$。</p>
+    <url>/2022/03/23/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/</url>
+    <content><![CDATA[<p>由费马小定理可推出：${1 \over a} \% m &#x3D; a^{m - 2} \% m$，其中$m$为素数。</p>
+<p>那么，${b \over a} \% m$就可以变成$b \cdot a^{m - 2} \% m$。</p>
 <p>当$m$太大时，可以使用<strong>快速幂</strong>。</p>
 <p><a href="https://blog.csdn.net/qq742762377/article/details/83278688">来源</a></p>
 ]]></content>
