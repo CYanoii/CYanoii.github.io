@@ -1169,7 +1169,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #7fff12;
+  background: #6aff5c;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2680,4 +2680,10 @@ body {
 }
 .site-brand-container {
   background: #465178;
+}
+.posts-expand .post-meta {
+  margin: 3px 0 35px 0;
+}
+.post-block {
+  margin-top: 10px;
 }
