@@ -224,6 +224,13 @@
 
 <p>其余几项如关于（about）、分类（categories）等同理。</p>
 <p><a href="https://www.icode9.com/content-4-1119485.html">参考</a></p>
+<h1 id="如何支持下载-pdf"><a href="#如何支持下载-pdf" class="headerlink" title="如何支持下载 pdf"></a>如何支持下载 pdf</h1><p>安装插件即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-pdf --save</span><br></pre></td></tr></table></figure>
+
+<p>后使用此格式引用就好：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[显示名称](文件.pdf)</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以点击下载了。至于如何在博客上显示 pdf ，由于自己还没有需求，所以没有记录，等以后用到了再回来补充。</p>
 ]]></content>
       <categories>
         <category>问题指南</category>
@@ -351,84 +358,6 @@
       <tags>
         <tag>博弈论</tag>
         <tag>最优解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常忘数学公式语法</title>
-    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
-<table>
-<thead>
-<tr>
-<th align="center">符号</th>
-<th align="center">代码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">点乘</td>
-<td align="center">\cdot</td>
-</tr>
-<tr>
-<td align="center">约等号</td>
-<td align="center">\approx</td>
-</tr>
-<tr>
-<td align="center">累加</td>
-<td align="center">\sum</td>
-</tr>
-<tr>
-<td align="center">累乘</td>
-<td align="center">\prod</td>
-</tr>
-<tr>
-<td align="center">分式</td>
-<td align="center">\over</td>
-</tr>
-<tr>
-<td align="center">小于等于</td>
-<td align="center">\leq</td>
-</tr>
-<tr>
-<td align="center">大于等于</td>
-<td align="center">\geq</td>
-</tr>
-<tr>
-<td align="center">阿尔法</td>
-<td align="center">\alpha</td>
-</tr>
-<tr>
-<td align="center">贝塔</td>
-<td align="center">\beta</td>
-</tr>
-<tr>
-<td align="center">空格</td>
-<td align="center">\</td>
-</tr>
-<tr>
-<td align="center">回车</td>
-<td align="center">\\</td>
-</tr>
-<tr>
-<td align="center">长空格</td>
-<td align="center">\quad</td>
-</tr>
-<tr>
-<td align="center">多行对齐</td>
-<td align="center">begin{aligned} end{aligned}</td>
-</tr>
-<tr>
-<td align="center">大括号</td>
-<td align="center">begin{case} end{case}</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>问题指南</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>语法</tag>
-        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
@@ -709,6 +638,84 @@
       <categories>
         <category>数学建模</category>
       </categories>
+  </entry>
+  <entry>
+    <title>常忘数学公式语法</title>
+    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">点乘</td>
+<td align="center">\cdot</td>
+</tr>
+<tr>
+<td align="center">约等号</td>
+<td align="center">\approx</td>
+</tr>
+<tr>
+<td align="center">累加</td>
+<td align="center">\sum</td>
+</tr>
+<tr>
+<td align="center">累乘</td>
+<td align="center">\prod</td>
+</tr>
+<tr>
+<td align="center">分式</td>
+<td align="center">\over</td>
+</tr>
+<tr>
+<td align="center">小于等于</td>
+<td align="center">\leq</td>
+</tr>
+<tr>
+<td align="center">大于等于</td>
+<td align="center">\geq</td>
+</tr>
+<tr>
+<td align="center">阿尔法</td>
+<td align="center">\alpha</td>
+</tr>
+<tr>
+<td align="center">贝塔</td>
+<td align="center">\beta</td>
+</tr>
+<tr>
+<td align="center">空格</td>
+<td align="center">\</td>
+</tr>
+<tr>
+<td align="center">回车</td>
+<td align="center">\\</td>
+</tr>
+<tr>
+<td align="center">长空格</td>
+<td align="center">\quad</td>
+</tr>
+<tr>
+<td align="center">多行对齐</td>
+<td align="center">begin{aligned} end{aligned}</td>
+</tr>
+<tr>
+<td align="center">大括号</td>
+<td align="center">begin{case} end{case}</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>问题指南</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>语法</tag>
+        <tag>latex</tag>
+      </tags>
   </entry>
   <entry>
     <title>并查集</title>
@@ -1205,6 +1212,22 @@
       </tags>
   </entry>
   <entry>
+    <title>除法取模</title>
+    <url>/2022/03/23/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/</url>
+    <content><![CDATA[<p>由费马小定理可推出：${1 \over a} \% m &#x3D; a^{m - 2} \% m$，其中$m$为素数。</p>
+<p>那么，${b \over a} \% m$就可以变成$b \cdot a^{m - 2} \% m$。</p>
+<p>当$m$太大时，可以使用<strong>快速幂</strong>。</p>
+<p><a href="https://blog.csdn.net/qq742762377/article/details/83278688">来源</a></p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+        <tag>模运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>质因数分解（待完善）</title>
     <url>/2022/03/23/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</url>
     <content><![CDATA[<p>时间复杂度：$O(\log n)$</p>
@@ -1228,22 +1251,6 @@
       <tags>
         <tag>数论</tag>
         <tag>质因数分解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>除法取模</title>
-    <url>/2022/03/23/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/</url>
-    <content><![CDATA[<p>由费马小定理可推出：${1 \over a} \% m &#x3D; a^{m - 2} \% m$，其中$m$为素数。</p>
-<p>那么，${b \over a} \% m$就可以变成$b \cdot a^{m - 2} \% m$。</p>
-<p>当$m$太大时，可以使用<strong>快速幂</strong>。</p>
-<p><a href="https://blog.csdn.net/qq742762377/article/details/83278688">来源</a></p>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-        <tag>模运算</tag>
       </tags>
   </entry>
   <entry>
