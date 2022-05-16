@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在一场CF里临时想到的方法。">
+  <meta name="description" content="如题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="O(nlogn)数组寻找差值">
-<meta property="og:url" content="http://example.com/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/index.html">
+<meta property="og:title" content="质因数分解（待完善）">
+<meta property="og:url" content="http://example.com/2022/03/23/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="渔塘">
-<meta property="og:description" content="在一场CF里临时想到的方法。">
+<meta property="og:description" content="如题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-25T09:34:00.000Z">
-<meta property="article:modified_time" content="2022-05-12T15:54:28.735Z">
+<meta property="article:published_time" content="2022-03-23T15:10:20.000Z">
+<meta property="article:modified_time" content="2022-05-16T03:11:17.377Z">
 <meta property="article:author" content="CYHei_mu">
-<meta property="article:tag" content="排序">
+<meta property="article:tag" content="数论">
+<meta property="article:tag" content="质因数分解">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/">
+<link rel="canonical" href="http://example.com/2022/03/23/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>O(nlogn)数组寻找差值 | 渔塘</title>
+  <title>质因数分解（待完善） | 渔塘</title>
   
 
 
@@ -195,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/23/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -208,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          O(nlogn)数组寻找差值
+          质因数分解（待完善）
         </h1>
 
         <div class="post-meta">
@@ -218,14 +219,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-03-25 17:34:00" itemprop="dateCreated datePublished" datetime="2022-03-25T17:34:00+08:00">2022-03-25</time>
+              <time title="创建时间：2022-03-23 23:10:20" itemprop="dateCreated datePublished" datetime="2022-03-23T23:10:20+08:00">2022-03-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-12 23:54:28" itemprop="dateModified" datetime="2022-05-12T23:54:28+08:00">2022-05-12</time>
+                <time title="修改时间：2022-05-16 11:11:17" itemprop="dateModified" datetime="2022-05-16T11:11:17+08:00">2022-05-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,8 +247,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/03/23/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/23/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -257,16 +258,16 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>713</span>
+              <span>949</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
-            <div class="post-description">在一场CF里临时想到的方法。</div>
+            <div class="post-description">如题。</div>
 
         </div>
       </header>
@@ -277,16 +278,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
-<ol>
-<li>对原数组排序。</li>
-<li>对原数组去重得到数组$b$，长度为$len$。</li>
-<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
-<li>对扩充后的数组排序。</li>
-<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
-</ol>
-<p>会有更简单的办法，但我暂时是想出来了这个。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>时间复杂度：$O(\log n)$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> N 200000</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> p[N+<span class="number">10</span>];			<span class="comment">//p[i]为i是否为素数</span></span><br><span class="line"><span class="type">int</span> vv[N+<span class="number">10</span>];			<span class="comment">//vv[i]为i的一个质因数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=N;i++)</span><br><span class="line">&#123;</span><br><span class="line">	p[i]=<span class="number">1</span>;</span><br><span class="line">	vv[i]=i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(N)+<span class="number">0.5</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(!p[i]) <span class="keyword">continue</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j=i*<span class="number">2</span>;j&lt;=N;j+=i)</span><br><span class="line">	&#123;</span><br><span class="line">		p[j]=<span class="number">0</span>;</span><br><span class="line">		vv[j]=i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接除的方法使用：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> f[N+<span class="number">10</span>];			<span class="comment">//f[i]为质因数i的个数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(x&gt;<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">	f[vv[x]]++;</span><br><span class="line">	x/=vv[x];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开辟vector记录所有分解结果：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt; &gt; factors;		<span class="comment">//factors[i]为i的质因数分解结果</span></span><br><span class="line"></span><br><span class="line">factors.<span class="built_in">resize</span>(N+<span class="number">10</span>);</span><br><span class="line">	</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=N;i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> temp=i;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(temp&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		factors[i].<span class="built_in">push_back</span>(vv[temp]);</span><br><span class="line">		temp/=vv[temp];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> p:factors[x]) f[p]++;		<span class="comment">//和直接除一样储存到f中的方法</span></span><br></pre></td></tr></table></figure>
+
+<p>在$n$过大质因数数组无法存储时这一个数的求法：</p>
+<p>需要先求得一个素数数组p[50010]，对于一个数的效率为$n^{1 \over 2}$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;p[i]*p[i]&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span>(n%p[i]==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		n/=p[i];</span><br><span class="line">		np[p[i]]++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(n&gt;<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">50000</span>) np[n]++;</span><br><span class="line">	<span class="keyword">else</span> np[<span class="number">0</span>]+=n;		<span class="comment">//在np[0]处存储大素数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>似乎还有一种$n^{1 \over 4}$效率的求法，待完善。</p>
 
     </div>
 
@@ -296,7 +301,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"># 排序</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
+              <a href="/tags/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/" rel="tag"># 质因数分解</a>
           </div>
 
         
@@ -305,12 +311,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/03/23/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/" rel="prev" title="质因数分解（待完善）">
-      <i class="fa fa-chevron-left"></i> 质因数分解（待完善）
+    <a href="/2022/03/23/%E9%99%A4%E6%B3%95%E5%8F%96%E6%A8%A1/" rel="prev" title="除法取模">
+      <i class="fa fa-chevron-left"></i> 除法取模
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/11/hello-world/" rel="next" title="Hello World">
-      Hello World <i class="fa fa-chevron-right"></i>
+    <a href="/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/" rel="next" title="O(nlogn)数组寻找差值">
+      O(nlogn)数组寻找差值 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
