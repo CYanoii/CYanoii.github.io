@@ -54,27 +54,6 @@
       </tags>
   </entry>
   <entry>
-    <title>O(nlogn)数组寻找差值</title>
-    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
-    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
-<ol>
-<li>对原数组排序。</li>
-<li>对原数组去重得到数组$b$，长度为$len$。</li>
-<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
-<li>对扩充后的数组排序。</li>
-<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
-</ol>
-<p>会有更简单的办法，但我暂时是想出来了这个。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Codeforces Round #791 (Div. 2) A-C 题解</title>
     <url>/2022/05/15/Codeforces-Round-791-Div-2-A-C-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1679">Codeforces Round #791 (Div. 2)</a></p>
@@ -123,30 +102,24 @@
       </tags>
   </entry>
   <entry>
-    <title>gcd&amp;lcm（待完善）</title>
-    <url>/2022/03/10/gcd-lcm/</url>
-    <content><![CDATA[<h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p><strong>辗转相除法（欧几里得）：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">gcd</span>(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="lcm"><a href="#lcm" class="headerlink" title="lcm"></a>lcm</h1><p>$$<br>a \cdot b &#x3D; \gcd(a, b) * lcm(a, b)<br>$$</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lcm</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a/<span class="built_in">gcd</span>(a,b)*b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="一些性质"><a href="#一些性质" class="headerlink" title="一些性质"></a>一些性质</h1><p>设两个数$i &#x3D; p_1^{a_1} * p_2^{a_2} * p_3^{a_3} * … * p_s^{a_s}$，$j &#x3D; p_1^{b_1} * p_2^{b_2} * p_3^{b_3} * … * p_s^{b_s}$，则由算术基本定理（又叫整数惟一分解定理）得到：</p>
-<p>$\gcd(i, j) &#x3D; p_1^{\min(a_1, b_1)} * p_2^{\min(a_2, b_2)} * p_3^{\min(a_3, b_3)} * … * p_s^{\min(a_s, b_s)}$</p>
-<p>$lcm(i,j) &#x3D; p_1^{\max(a_1, b_1)} * p_2^{\max(a_2, b_2)} * p_3^{\max(a_3,b_3)} * … * p_s^{\max(a_s, b_s)}$</p>
-<p>简写一下：</p>
-<p>设两个数$i &#x3D; \prod^s_{k &#x3D; 1} p_k^{a_k}$，$j &#x3D; \prod^s_{k &#x3D; 1} p_k^{b_k}$，则由算术基本定理（又叫整数惟一分解定理）得到：</p>
-<p>$\gcd(i, j) &#x3D; \prod^s_{k &#x3D; 1} p_k^{\min(a_k, b_k)}$</p>
-<p>$lcm(i,j) &#x3D; \prod^s_{k &#x3D; 1} p_k^{\max(a_k, b_k)}$</p>
-<p><strong>此性质经常与数的质因数分解一起使用。</strong>一些质因数分解的方法请看我的另一篇文章。</p>
+    <title>O(nlogn)数组寻找差值</title>
+    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
+    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
+<ol>
+<li>对原数组排序。</li>
+<li>对原数组去重得到数组$b$，长度为$len$。</li>
+<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
+<li>对扩充后的数组排序。</li>
+<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
+</ol>
+<p>会有更简单的办法，但我暂时是想出来了这个。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法比赛</category>
       </categories>
       <tags>
-        <tag>质因数分解</tag>
-        <tag>数论</tag>
-        <tag>辗转相除法</tag>
+        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -206,6 +179,33 @@
       </tags>
   </entry>
   <entry>
+    <title>gcd&amp;lcm（待完善）</title>
+    <url>/2022/03/10/gcd-lcm/</url>
+    <content><![CDATA[<h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p><strong>辗转相除法（欧几里得）：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">gcd</span>(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="lcm"><a href="#lcm" class="headerlink" title="lcm"></a>lcm</h1><p>$$<br>a \cdot b &#x3D; \gcd(a, b) * lcm(a, b)<br>$$</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lcm</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a/<span class="built_in">gcd</span>(a,b)*b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="一些性质"><a href="#一些性质" class="headerlink" title="一些性质"></a>一些性质</h1><p>设两个数$i &#x3D; p_1^{a_1} * p_2^{a_2} * p_3^{a_3} * … * p_s^{a_s}$，$j &#x3D; p_1^{b_1} * p_2^{b_2} * p_3^{b_3} * … * p_s^{b_s}$，则由算术基本定理（又叫整数惟一分解定理）得到：</p>
+<p>$\gcd(i, j) &#x3D; p_1^{\min(a_1, b_1)} * p_2^{\min(a_2, b_2)} * p_3^{\min(a_3, b_3)} * … * p_s^{\min(a_s, b_s)}$</p>
+<p>$lcm(i,j) &#x3D; p_1^{\max(a_1, b_1)} * p_2^{\max(a_2, b_2)} * p_3^{\max(a_3,b_3)} * … * p_s^{\max(a_s, b_s)}$</p>
+<p>简写一下：</p>
+<p>设两个数$i &#x3D; \prod^s_{k &#x3D; 1} p_k^{a_k}$，$j &#x3D; \prod^s_{k &#x3D; 1} p_k^{b_k}$，则由算术基本定理（又叫整数惟一分解定理）得到：</p>
+<p>$\gcd(i, j) &#x3D; \prod^s_{k &#x3D; 1} p_k^{\min(a_k, b_k)}$</p>
+<p>$lcm(i,j) &#x3D; \prod^s_{k &#x3D; 1} p_k^{\max(a_k, b_k)}$</p>
+<p><strong>此性质经常与数的质因数分解一起使用。</strong>一些质因数分解的方法请看我的另一篇文章。</p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>质因数分解</tag>
+        <tag>数论</tag>
+        <tag>辗转相除法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2022/05/11/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -222,6 +222,23 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>协方差与相关系数</title>
+    <url>/2022/05/18/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</url>
+    <content><![CDATA[<p><strong>协方差</strong>（Covariance）在概率论和统计学中用于衡量两个变量的总体误差。方差是协方差两个变量相同的一种特殊情况。如果两个变量变化趋势一致，协方差为正值，反之为负值。协方差为 0 的两个随机变量被称为是不相关的。</p>
+<p>协方差作为描述 X 和 Y 相关程度的量，在同一物理量纲之下有一定的作用，但同样的两个量采用不同的量纲使它们的协方差在数值上表现出很大的差异。为此引入<strong>相关系数</strong>（Correlation coefficient）研究变量间线性相关的程度。</p>
+<h1 id="计算与性质"><a href="#计算与性质" class="headerlink" title="计算与性质"></a>计算与性质</h1><p><strong>协方差：</strong><br>$$<br>\begin{aligned}<br>    Cov(X, Y)<br>    &amp; &#x3D; E[(X - E[X])(Y - E[Y])] \\<br>    &amp; &#x3D; E[XY] - 2 E[Y]E[X] + E[X]E[Y] \\<br>    &amp; &#x3D; E[XY] - E[X]E[Y] \\<br> \end{aligned}<br>$$</p>
+<p><strong>相关系数：</strong><br>$$<br>\rho_{X, Y} &#x3D; {Cov(X, Y) \over \sqrt{D(X)} \sqrt{D(Y)}}<br>$$</p>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>线性代数</tag>
+        <tag>协方差</tag>
+        <tag>相关性</tag>
+      </tags>
   </entry>
   <entry>
     <title>博客美化指南</title>
@@ -749,6 +766,88 @@
       </categories>
   </entry>
   <entry>
+    <title>常忘数学公式语法</title>
+    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">点乘</td>
+<td align="center">\cdot</td>
+</tr>
+<tr>
+<td align="center">约等号</td>
+<td align="center">\approx</td>
+</tr>
+<tr>
+<td align="center">累加</td>
+<td align="center">\sum</td>
+</tr>
+<tr>
+<td align="center">累乘</td>
+<td align="center">\prod</td>
+</tr>
+<tr>
+<td align="center">分式</td>
+<td align="center">\over</td>
+</tr>
+<tr>
+<td align="center">小于等于</td>
+<td align="center">\leq</td>
+</tr>
+<tr>
+<td align="center">大于等于</td>
+<td align="center">\geq</td>
+</tr>
+<tr>
+<td align="center">阿尔法</td>
+<td align="center">\alpha</td>
+</tr>
+<tr>
+<td align="center">贝塔</td>
+<td align="center">\beta</td>
+</tr>
+<tr>
+<td align="center">ρ</td>
+<td align="center">\rho</td>
+</tr>
+<tr>
+<td align="center">空格</td>
+<td align="center">\</td>
+</tr>
+<tr>
+<td align="center">回车</td>
+<td align="center">\\</td>
+</tr>
+<tr>
+<td align="center">长空格</td>
+<td align="center">\quad</td>
+</tr>
+<tr>
+<td align="center">多行对齐</td>
+<td align="center">begin{aligned} end{aligned}</td>
+</tr>
+<tr>
+<td align="center">大括号</td>
+<td align="center">begin{case} end{case}</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>问题指南</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>语法</tag>
+        <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>并查集</title>
     <url>/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>并查集是一种在线维护集合关系的数据结构，它支持两个操作：</p>
@@ -866,84 +965,6 @@
       </categories>
       <tags>
         <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常忘数学公式语法</title>
-    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
-<table>
-<thead>
-<tr>
-<th align="center">符号</th>
-<th align="center">代码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">点乘</td>
-<td align="center">\cdot</td>
-</tr>
-<tr>
-<td align="center">约等号</td>
-<td align="center">\approx</td>
-</tr>
-<tr>
-<td align="center">累加</td>
-<td align="center">\sum</td>
-</tr>
-<tr>
-<td align="center">累乘</td>
-<td align="center">\prod</td>
-</tr>
-<tr>
-<td align="center">分式</td>
-<td align="center">\over</td>
-</tr>
-<tr>
-<td align="center">小于等于</td>
-<td align="center">\leq</td>
-</tr>
-<tr>
-<td align="center">大于等于</td>
-<td align="center">\geq</td>
-</tr>
-<tr>
-<td align="center">阿尔法</td>
-<td align="center">\alpha</td>
-</tr>
-<tr>
-<td align="center">贝塔</td>
-<td align="center">\beta</td>
-</tr>
-<tr>
-<td align="center">空格</td>
-<td align="center">\</td>
-</tr>
-<tr>
-<td align="center">回车</td>
-<td align="center">\\</td>
-</tr>
-<tr>
-<td align="center">长空格</td>
-<td align="center">\quad</td>
-</tr>
-<tr>
-<td align="center">多行对齐</td>
-<td align="center">begin{aligned} end{aligned}</td>
-</tr>
-<tr>
-<td align="center">大括号</td>
-<td align="center">begin{case} end{case}</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>问题指南</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>语法</tag>
-        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
