@@ -487,6 +487,88 @@
       </tags>
   </entry>
   <entry>
+    <title>常忘数学公式语法</title>
+    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">点乘</td>
+<td align="center">\cdot</td>
+</tr>
+<tr>
+<td align="center">约等号</td>
+<td align="center">\approx</td>
+</tr>
+<tr>
+<td align="center">累加</td>
+<td align="center">\sum</td>
+</tr>
+<tr>
+<td align="center">累乘</td>
+<td align="center">\prod</td>
+</tr>
+<tr>
+<td align="center">分式</td>
+<td align="center">\over</td>
+</tr>
+<tr>
+<td align="center">小于等于</td>
+<td align="center">\leq</td>
+</tr>
+<tr>
+<td align="center">大于等于</td>
+<td align="center">\geq</td>
+</tr>
+<tr>
+<td align="center">阿尔法</td>
+<td align="center">\alpha</td>
+</tr>
+<tr>
+<td align="center">贝塔</td>
+<td align="center">\beta</td>
+</tr>
+<tr>
+<td align="center">ρ</td>
+<td align="center">\rho</td>
+</tr>
+<tr>
+<td align="center">空格</td>
+<td align="center">\</td>
+</tr>
+<tr>
+<td align="center">回车</td>
+<td align="center">\\</td>
+</tr>
+<tr>
+<td align="center">长空格</td>
+<td align="center">\quad</td>
+</tr>
+<tr>
+<td align="center">多行对齐</td>
+<td align="center">begin{aligned} end{aligned}</td>
+</tr>
+<tr>
+<td align="center">大括号</td>
+<td align="center">begin{case} end{case}</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>问题指南</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>语法</tag>
+        <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>层次分析法</title>
     <url>/2022/02/09/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/</url>
     <content><![CDATA[<p>层次分析法（AHP）用来解决评价类问题。</p>
@@ -766,88 +848,6 @@
       </categories>
   </entry>
   <entry>
-    <title>常忘数学公式语法</title>
-    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
-<table>
-<thead>
-<tr>
-<th align="center">符号</th>
-<th align="center">代码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">点乘</td>
-<td align="center">\cdot</td>
-</tr>
-<tr>
-<td align="center">约等号</td>
-<td align="center">\approx</td>
-</tr>
-<tr>
-<td align="center">累加</td>
-<td align="center">\sum</td>
-</tr>
-<tr>
-<td align="center">累乘</td>
-<td align="center">\prod</td>
-</tr>
-<tr>
-<td align="center">分式</td>
-<td align="center">\over</td>
-</tr>
-<tr>
-<td align="center">小于等于</td>
-<td align="center">\leq</td>
-</tr>
-<tr>
-<td align="center">大于等于</td>
-<td align="center">\geq</td>
-</tr>
-<tr>
-<td align="center">阿尔法</td>
-<td align="center">\alpha</td>
-</tr>
-<tr>
-<td align="center">贝塔</td>
-<td align="center">\beta</td>
-</tr>
-<tr>
-<td align="center">ρ</td>
-<td align="center">\rho</td>
-</tr>
-<tr>
-<td align="center">空格</td>
-<td align="center">\</td>
-</tr>
-<tr>
-<td align="center">回车</td>
-<td align="center">\\</td>
-</tr>
-<tr>
-<td align="center">长空格</td>
-<td align="center">\quad</td>
-</tr>
-<tr>
-<td align="center">多行对齐</td>
-<td align="center">begin{aligned} end{aligned}</td>
-</tr>
-<tr>
-<td align="center">大括号</td>
-<td align="center">begin{case} end{case}</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>问题指南</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>语法</tag>
-        <tag>latex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>并查集是一种在线维护集合关系的数据结构，它支持两个操作：</p>
@@ -1003,6 +1003,42 @@
 <p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
 <p><strong>代码：</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>筛法</title>
+    <url>/2020/10/25/%E7%AD%9B%E6%B3%95/</url>
+    <content><![CDATA[<p>筛法是一种用来求素数的方法。一般来说可以循序渐进的掌握暴力判断素数、埃氏筛法、欧拉筛法。</p>
+<h1 id="暴力判断素数"><a href="#暴力判断素数" class="headerlink" title="暴力判断素数"></a>暴力判断素数</h1><p>时间复杂度$O(n^2)$(对于打出素数表来说)</p>
+<p>利用素数只能被$1$和它本身整除的性质，我们可以把需判断的数$x$与$2…n - 1$取余。如果结果均不等于$0$，则为素数。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">bool</span> flag;</span><br><span class="line"> <span class="number">9</span> </span><br><span class="line"><span class="number">10</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">11 </span>&#123;</span><br><span class="line"><span class="number">12</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">13</span>     </span><br><span class="line"><span class="number">14</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">15</span>     &#123;</span><br><span class="line"><span class="number">16</span>         flag=<span class="literal">true</span>;</span><br><span class="line"><span class="number">17</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=i<span class="number">-1</span>;j++)</span><br><span class="line"><span class="number">18</span>         &#123;</span><br><span class="line"><span class="number">19</span>             <span class="keyword">if</span>(i%j==<span class="number">0</span>)</span><br><span class="line"><span class="number">20</span>             &#123;</span><br><span class="line"><span class="number">21</span>                 flag=<span class="literal">false</span>;</span><br><span class="line"><span class="number">22</span>                 <span class="comment">//当出现第一个能被整除的数时立即跳出循环，可提高一定效率</span></span><br><span class="line"><span class="number">23</span>                 <span class="keyword">break</span>;</span><br><span class="line"><span class="number">24</span>             &#125;</span><br><span class="line"><span class="number">25</span>         &#125;</span><br><span class="line"><span class="number">26</span>         </span><br><span class="line"><span class="number">27</span>         <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line"><span class="number">28</span>     &#125;</span><br><span class="line"><span class="number">29</span>     </span><br><span class="line"><span class="number">30</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">31</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个最简单的写法在只判断几个素数时绰绰有余，但是当要打出一个很大的素数表时效率不足。</p>
+<h1 id="埃氏筛法"><a href="#埃氏筛法" class="headerlink" title="埃氏筛法"></a>埃氏筛法</h1><p>时间复杂度$O(n \log n)$</p>
+<p>任意一个素数的倍数是合数是埃氏筛法筛出素数表的主要原理。假设要打出$n$以内的素数表。我们从$2$开始向后遍历，每当遇到一个素数$p$时，便利用此素数将$2…n$内$p<em>2，p</em>3，p*4…$这些合数全部筛去。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"> <span class="number">5</span> </span><br><span class="line"> <span class="number">6</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">7</span> </span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) p[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(n)+<span class="number">0.5</span>;i++)</span><br><span class="line"><span class="number">19</span>         <span class="keyword">for</span>(<span class="type">int</span> j=i*<span class="number">2</span>;j&lt;=n;j+=i) p[j]=<span class="number">0</span>;</span><br><span class="line"><span class="number">20</span>     </span><br><span class="line"><span class="number">21</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">22</span>         <span class="keyword">if</span>(p[i]) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line"><span class="number">23</span>     </span><br><span class="line"><span class="number">24</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">25</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个算法在一般的数据面前已经足够了。不过还可以更快。</p>
+<h1 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h1><p>时间复杂度$O(n)$</p>
+<p>首先观察一下埃氏筛法。我们发现有这样一个问题：在使用素数$2$进行筛去操作时，会筛去素数$6$；在之后利用素数$3$进行筛去操作时，会再筛去一次素数$6$。可见在埃氏筛法的筛去过程中，会出现同一个合数被筛去多次的情况，从而影响了效率。</p>
+<p>相比之下，欧拉筛法是一种线性筛法。它便解决了埃氏筛法中一个合数会被筛去多次的问题，确保了每一个合数都只会被筛去一次，因此具有$O(n)$的效率。它的实现原理是<strong>确保每个合数都只会被它的最小质因数筛掉</strong>。过程大概如下：</p>
+<p>首先我们会建立$2$个数组：$isp$（值为$1&#x2F;0$，$isp[i]$用来表示$i$是否是素数），$p$（用来储存所有的素数）。依旧是打出到$n$的素数表。</p>
+<ol>
+<li><p>从$2$开始遍历$i$。如果$i$是素数，就把它加入到数组$p$中。</p>
+</li>
+<li><p>对于每个$i$使用$j$遍历数组$p$，筛去$i * p[j]$，若$i * p[j] &gt; n$（已经没必要筛去了）或$i \mod p[j] &#x3D;&#x3D; 0$（<strong>这是确保每个合数只筛一次的核心</strong>）就退出循环。</p>
+</li>
+</ol>
+<p><strong>对核心的解释：</strong>假设在$i \mod p[j] &#x3D;&#x3D; 0$时我们继续进行，便筛去了合数$i * p[j+1]$。由于此时$i \mod p[j] &#x3D;&#x3D; 0$，则这个由一个素数和一个合数的乘积组成的合数，一定能转化为一个更小的素数和一个更大的合数的乘积，那么当继续运行时，此合数必然还会被$p[j]$再次筛去，便进行了多余的筛去工作。因此可以说在$i \mod p[j] &#x3D;&#x3D; 0$时退出循环是确保每个合数都只会被它的最小质因数筛掉，即确保了每个合数只被筛一次。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> num=<span class="number">0</span>;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> isp[<span class="number">10000010</span>],p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) isp[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">19</span>     &#123;</span><br><span class="line"><span class="number">20</span>         <span class="keyword">if</span>(isp[i])</span><br><span class="line"><span class="number">21</span>         &#123;</span><br><span class="line"><span class="number">22</span>             num++;</span><br><span class="line"><span class="number">23</span>             p[num]=i;</span><br><span class="line"><span class="number">24</span>         &#125;</span><br><span class="line"><span class="number">25</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=num&amp;&amp;i*p[j]&lt;=n;j++)</span><br><span class="line"><span class="number">26</span>         &#123;</span><br><span class="line"><span class="number">27</span>             isp[i*p[j]]=<span class="number">0</span>;</span><br><span class="line"><span class="number">28</span>             <span class="comment">//确保每个合数都只会被它的最小质因数筛掉</span></span><br><span class="line"><span class="number">29</span>             <span class="keyword">if</span>(i%p[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line"><span class="number">30</span>         &#125;</span><br><span class="line"><span class="number">31</span>     &#125;</span><br><span class="line"><span class="number">32</span>     </span><br><span class="line"><span class="number">33</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=num;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]);</span><br><span class="line"><span class="number">34</span>     </span><br><span class="line"><span class="number">35</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">36</span> &#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>算法比赛</category>
       </categories>
@@ -1227,42 +1263,6 @@
       <categories>
         <category>数学建模</category>
       </categories>
-  </entry>
-  <entry>
-    <title>筛法</title>
-    <url>/2020/10/25/%E7%AD%9B%E6%B3%95/</url>
-    <content><![CDATA[<p>筛法是一种用来求素数的方法。一般来说可以循序渐进的掌握暴力判断素数、埃氏筛法、欧拉筛法。</p>
-<h1 id="暴力判断素数"><a href="#暴力判断素数" class="headerlink" title="暴力判断素数"></a>暴力判断素数</h1><p>时间复杂度$O(n^2)$(对于打出素数表来说)</p>
-<p>利用素数只能被$1$和它本身整除的性质，我们可以把需判断的数$x$与$2…n - 1$取余。如果结果均不等于$0$，则为素数。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">bool</span> flag;</span><br><span class="line"> <span class="number">9</span> </span><br><span class="line"><span class="number">10</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">11 </span>&#123;</span><br><span class="line"><span class="number">12</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">13</span>     </span><br><span class="line"><span class="number">14</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">15</span>     &#123;</span><br><span class="line"><span class="number">16</span>         flag=<span class="literal">true</span>;</span><br><span class="line"><span class="number">17</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=i<span class="number">-1</span>;j++)</span><br><span class="line"><span class="number">18</span>         &#123;</span><br><span class="line"><span class="number">19</span>             <span class="keyword">if</span>(i%j==<span class="number">0</span>)</span><br><span class="line"><span class="number">20</span>             &#123;</span><br><span class="line"><span class="number">21</span>                 flag=<span class="literal">false</span>;</span><br><span class="line"><span class="number">22</span>                 <span class="comment">//当出现第一个能被整除的数时立即跳出循环，可提高一定效率</span></span><br><span class="line"><span class="number">23</span>                 <span class="keyword">break</span>;</span><br><span class="line"><span class="number">24</span>             &#125;</span><br><span class="line"><span class="number">25</span>         &#125;</span><br><span class="line"><span class="number">26</span>         </span><br><span class="line"><span class="number">27</span>         <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line"><span class="number">28</span>     &#125;</span><br><span class="line"><span class="number">29</span>     </span><br><span class="line"><span class="number">30</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">31</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个最简单的写法在只判断几个素数时绰绰有余，但是当要打出一个很大的素数表时效率不足。</p>
-<h1 id="埃氏筛法"><a href="#埃氏筛法" class="headerlink" title="埃氏筛法"></a>埃氏筛法</h1><p>时间复杂度$O(n \log n)$</p>
-<p>任意一个素数的倍数是合数是埃氏筛法筛出素数表的主要原理。假设要打出$n$以内的素数表。我们从$2$开始向后遍历，每当遇到一个素数$p$时，便利用此素数将$2…n$内$p<em>2，p</em>3，p*4…$这些合数全部筛去。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"> <span class="number">5</span> </span><br><span class="line"> <span class="number">6</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">7</span> </span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) p[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(n)+<span class="number">0.5</span>;i++)</span><br><span class="line"><span class="number">19</span>         <span class="keyword">for</span>(<span class="type">int</span> j=i*<span class="number">2</span>;j&lt;=n;j+=i) p[j]=<span class="number">0</span>;</span><br><span class="line"><span class="number">20</span>     </span><br><span class="line"><span class="number">21</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">22</span>         <span class="keyword">if</span>(p[i]) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line"><span class="number">23</span>     </span><br><span class="line"><span class="number">24</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">25</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个算法在一般的数据面前已经足够了。不过还可以更快。</p>
-<h1 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h1><p>时间复杂度$O(n)$</p>
-<p>首先观察一下埃氏筛法。我们发现有这样一个问题：在使用素数$2$进行筛去操作时，会筛去素数$6$；在之后利用素数$3$进行筛去操作时，会再筛去一次素数$6$。可见在埃氏筛法的筛去过程中，会出现同一个合数被筛去多次的情况，从而影响了效率。</p>
-<p>相比之下，欧拉筛法是一种线性筛法。它便解决了埃氏筛法中一个合数会被筛去多次的问题，确保了每一个合数都只会被筛去一次，因此具有$O(n)$的效率。它的实现原理是<strong>确保每个合数都只会被它的最小质因数筛掉</strong>。过程大概如下：</p>
-<p>首先我们会建立$2$个数组：$isp$（值为$1&#x2F;0$，$isp[i]$用来表示$i$是否是素数），$p$（用来储存所有的素数）。依旧是打出到$n$的素数表。</p>
-<ol>
-<li><p>从$2$开始遍历$i$。如果$i$是素数，就把它加入到数组$p$中。</p>
-</li>
-<li><p>对于每个$i$使用$j$遍历数组$p$，筛去$i * p[j]$，若$i * p[j] &gt; n$（已经没必要筛去了）或$i \mod p[j] &#x3D;&#x3D; 0$（<strong>这是确保每个合数只筛一次的核心</strong>）就退出循环。</p>
-</li>
-</ol>
-<p><strong>对核心的解释：</strong>假设在$i \mod p[j] &#x3D;&#x3D; 0$时我们继续进行，便筛去了合数$i * p[j+1]$。由于此时$i \mod p[j] &#x3D;&#x3D; 0$，则这个由一个素数和一个合数的乘积组成的合数，一定能转化为一个更小的素数和一个更大的合数的乘积，那么当继续运行时，此合数必然还会被$p[j]$再次筛去，便进行了多余的筛去工作。因此可以说在$i \mod p[j] &#x3D;&#x3D; 0$时退出循环是确保每个合数都只会被它的最小质因数筛掉，即确保了每个合数只被筛一次。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> num=<span class="number">0</span>;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> isp[<span class="number">10000010</span>],p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) isp[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">19</span>     &#123;</span><br><span class="line"><span class="number">20</span>         <span class="keyword">if</span>(isp[i])</span><br><span class="line"><span class="number">21</span>         &#123;</span><br><span class="line"><span class="number">22</span>             num++;</span><br><span class="line"><span class="number">23</span>             p[num]=i;</span><br><span class="line"><span class="number">24</span>         &#125;</span><br><span class="line"><span class="number">25</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=num&amp;&amp;i*p[j]&lt;=n;j++)</span><br><span class="line"><span class="number">26</span>         &#123;</span><br><span class="line"><span class="number">27</span>             isp[i*p[j]]=<span class="number">0</span>;</span><br><span class="line"><span class="number">28</span>             <span class="comment">//确保每个合数都只会被它的最小质因数筛掉</span></span><br><span class="line"><span class="number">29</span>             <span class="keyword">if</span>(i%p[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line"><span class="number">30</span>         &#125;</span><br><span class="line"><span class="number">31</span>     &#125;</span><br><span class="line"><span class="number">32</span>     </span><br><span class="line"><span class="number">33</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=num;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]);</span><br><span class="line"><span class="number">34</span>     </span><br><span class="line"><span class="number">35</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">36</span> &#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-      </tags>
   </entry>
   <entry>
     <title>网络流</title>
