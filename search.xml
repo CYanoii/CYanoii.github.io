@@ -102,6 +102,27 @@
       </tags>
   </entry>
   <entry>
+    <title>O(nlogn)数组寻找差值</title>
+    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
+    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
+<ol>
+<li>对原数组排序。</li>
+<li>对原数组去重得到数组$b$，长度为$len$。</li>
+<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
+<li>对扩充后的数组排序。</li>
+<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
+</ol>
+<p>会有更简单的办法，但我暂时是想出来了这个。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Codeforces Round #793 (Div. 2) A-C 题解</title>
     <url>/2022/05/23/Codeforces-Round-793-Div-2-A-C-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1682">Codeforces Round #793 (Div. 2)</a></p>
@@ -114,7 +135,7 @@
 <p>实际的题意：有一个 X ，所有的交换都只能等于 X 。找到最大的 X 。</p>
 <p>于是乎误入歧途，一去不复返…模拟贪心都试了。下面说正解。</p>
 <p>首先一点，只有$p_i \neq i - 1$的数都要至少经历一次交换。</p>
-<p>假设 X 已知， X 所在的位置为 pos 。由于 $p_i &amp; p_j \leq \max (p_i, p_j)$，因此 X 一定在所给的数之中。 因为$p_i &amp; p_j &#x3D; X$ ，所以$p_i &amp; X &#x3D; X, p_j &amp; X &#x3D; X$，于是乎可以找到一种不影响任何其他元素的两元素交换方法：</p>
+<p>假设 X 已知， X 所在的位置为 pos 。由于 $p_i \land p_j \leq \max (p_i, p_j)$，因此 X 一定在所给的数之中。 因为$p_i \land p_j &#x3D; X$ ，所以$p_i \land X &#x3D; X, p_j \land X &#x3D; X$，于是乎可以找到一种不影响任何其他元素的两元素交换方法：</p>
 <ol>
 <li>交换 pos 与 i 位置的数</li>
 <li>交换 i 与 j 位置的数</li>
@@ -139,27 +160,6 @@
       <tags>
         <tag>题解</tag>
         <tag>Codeforces</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>O(nlogn)数组寻找差值</title>
-    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
-    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
-<ol>
-<li>对原数组排序。</li>
-<li>对原数组去重得到数组$b$，长度为$len$。</li>
-<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
-<li>对扩充后的数组排序。</li>
-<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
-</ol>
-<p>会有更简单的办法，但我暂时是想出来了这个。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -219,6 +219,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2022/05/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>gcd&amp;lcm（待完善）</title>
     <url>/2022/03/10/gcd-lcm/</url>
     <content><![CDATA[<h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p><strong>辗转相除法（欧几里得）：</strong></p>
@@ -246,37 +264,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/05/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>主成分分析法（待完善）</title>
-    <url>/2022/05/22/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95/</url>
-    <content><![CDATA[<p>在实</p>
-]]></content>
-      <categories>
-        <category>数学建模</category>
-      </categories>
-      <tags>
-        <tag>正交变换</tag>
-        <tag>相关性</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>协方差与相关系数</title>
     <url>/2022/05/18/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</url>
     <content><![CDATA[<p><strong>协方差</strong>（Covariance）在概率论和统计学中用于衡量两个变量的总体误差。方差是协方差两个变量相同的一种特殊情况。如果两个变量变化趋势一致，协方差为正值，反之为负值。协方差为 0 的两个随机变量被称为是不相关的。</p>
@@ -288,9 +275,22 @@
         <category>数学建模</category>
       </categories>
       <tags>
-        <tag>相关性</tag>
         <tag>线性代数</tag>
         <tag>协方差</tag>
+        <tag>相关性</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>主成分分析法（待完善）</title>
+    <url>/2022/05/22/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95/</url>
+    <content><![CDATA[<p>在实</p>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>相关性</tag>
+        <tag>正交变换</tag>
       </tags>
   </entry>
   <entry>
@@ -537,6 +537,100 @@
       <tags>
         <tag>博弈论</tag>
         <tag>最优解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常忘数学公式语法</title>
+    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">点乘</td>
+<td align="center">\cdot</td>
+</tr>
+<tr>
+<td align="center">约等号</td>
+<td align="center">\approx</td>
+</tr>
+<tr>
+<td align="center">累加</td>
+<td align="center">\sum</td>
+</tr>
+<tr>
+<td align="center">累乘</td>
+<td align="center">\prod</td>
+</tr>
+<tr>
+<td align="center">分式</td>
+<td align="center">\over</td>
+</tr>
+<tr>
+<td align="center">小于等于</td>
+<td align="center">\leq</td>
+</tr>
+<tr>
+<td align="center">大于等于</td>
+<td align="center">\geq</td>
+</tr>
+<tr>
+<td align="center">阿尔法</td>
+<td align="center">\alpha</td>
+</tr>
+<tr>
+<td align="center">贝塔</td>
+<td align="center">\beta</td>
+</tr>
+<tr>
+<td align="center">ρ</td>
+<td align="center">\rho</td>
+</tr>
+<tr>
+<td align="center">与</td>
+<td align="center">\&amp; \land</td>
+</tr>
+<tr>
+<td align="center">空格</td>
+<td align="center">\</td>
+</tr>
+<tr>
+<td align="center">回车</td>
+<td align="center">\ \</td>
+</tr>
+<tr>
+<td align="center">长空格</td>
+<td align="center">\quad</td>
+</tr>
+<tr>
+<td align="center">上取整</td>
+<td align="center">\lceil \rceil</td>
+</tr>
+<tr>
+<td align="center">下取整</td>
+<td align="center">\lfloor \rfloor</td>
+</tr>
+<tr>
+<td align="center">多行对齐</td>
+<td align="center">begin{aligned} end{aligned}</td>
+</tr>
+<tr>
+<td align="center">大括号</td>
+<td align="center">begin{case} end{case}</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>问题指南</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>语法</tag>
+        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
@@ -819,96 +913,6 @@
       </categories>
   </entry>
   <entry>
-    <title>常忘数学公式语法</title>
-    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
-<table>
-<thead>
-<tr>
-<th align="center">符号</th>
-<th align="center">代码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">点乘</td>
-<td align="center">\cdot</td>
-</tr>
-<tr>
-<td align="center">约等号</td>
-<td align="center">\approx</td>
-</tr>
-<tr>
-<td align="center">累加</td>
-<td align="center">\sum</td>
-</tr>
-<tr>
-<td align="center">累乘</td>
-<td align="center">\prod</td>
-</tr>
-<tr>
-<td align="center">分式</td>
-<td align="center">\over</td>
-</tr>
-<tr>
-<td align="center">小于等于</td>
-<td align="center">\leq</td>
-</tr>
-<tr>
-<td align="center">大于等于</td>
-<td align="center">\geq</td>
-</tr>
-<tr>
-<td align="center">阿尔法</td>
-<td align="center">\alpha</td>
-</tr>
-<tr>
-<td align="center">贝塔</td>
-<td align="center">\beta</td>
-</tr>
-<tr>
-<td align="center">ρ</td>
-<td align="center">\rho</td>
-</tr>
-<tr>
-<td align="center">空格</td>
-<td align="center">\</td>
-</tr>
-<tr>
-<td align="center">回车</td>
-<td align="center">\\</td>
-</tr>
-<tr>
-<td align="center">长空格</td>
-<td align="center">\quad</td>
-</tr>
-<tr>
-<td align="center">上取整</td>
-<td align="center">\lceil \rceil</td>
-</tr>
-<tr>
-<td align="center">下取整</td>
-<td align="center">\lfloor \rfloor</td>
-</tr>
-<tr>
-<td align="center">多行对齐</td>
-<td align="center">begin{aligned} end{aligned}</td>
-</tr>
-<tr>
-<td align="center">大括号</td>
-<td align="center">begin{case} end{case}</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>问题指南</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>语法</tag>
-        <tag>latex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>并查集是一种在线维护集合关系的数据结构，它支持两个操作：</p>
@@ -1052,6 +1056,39 @@
         <tag>排序</tag>
         <tag>数据结构</tag>
         <tag>分治</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速幂</title>
+    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
+    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
+<p>时间复杂度$O(\log b)$</p>
+<p><strong>原理：</strong></p>
+<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
+<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>打了一个数学建模校赛</title>
+    <url>/2022/05/23/%E6%89%93%E4%BA%86%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%A0%A1%E8%B5%9B/</url>
+    <content><![CDATA[<p>昨天把建模校赛打完了。虽然自己曾经在打完美赛之后说过再也不打建模这种话…然后真香。总结一下，看看自己在这场比赛里能学到什么。</p>
+<p>首先一点就是硬实力差距，知识点的储备很重要。这次在面对题目时很容易没有思路或者思路单一，同时还有很多时候都在犹豫是否要自己造一个模型出来。赛后我的感觉是，很多要考虑自己造模型的地方很有可能早就存在现成的模型供我们利用了，但是我们并不知道它的存在。所以一方面要拓宽一下模型积累，另一方面要多读一些优秀论文，用来强化“是否应该自造模型”的界定。</p>
+<p>之后一点，条理性。这点在分头行动时尤为重要。建模过程中就出现了忘记了需要更正的错误、几个人在做重复的事、忘记了一些重要的事（最后一天临截止发现一个重要公式没放进去确实让人血压升高）等问题。所以在下次建模时有必要专门开一个记录本用来写大纲啊，问题啊之类的，做好记录。</p>
+<p>最后一点，知识点汇总。论文里用到了主成分分析法、拟合、多目标规划、绘图方法等一系列知识，显然它们都是需要我强化记忆写博客记录的，以后会一一补充。</p>
+<p>算是一场印象深刻的校赛吧。每次看到自己与强者的差距都会感到沮丧，只有自己不断行动才能获得一些慰藉。</p>
+]]></content>
+      <categories>
+        <category>悠哉日常</category>
+      </categories>
+      <tags>
+        <tag>数学建模</tag>
       </tags>
   </entry>
   <entry>
@@ -1271,39 +1308,6 @@
       <categories>
         <category>数学建模</category>
       </categories>
-  </entry>
-  <entry>
-    <title>快速幂</title>
-    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
-    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
-<p>时间复杂度$O(\log b)$</p>
-<p><strong>原理：</strong></p>
-<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
-<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>打了一个数学建模校赛</title>
-    <url>/2022/05/23/%E6%89%93%E4%BA%86%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%A0%A1%E8%B5%9B/</url>
-    <content><![CDATA[<p>昨天把建模校赛打完了。虽然自己曾经在打完美赛之后说过再也不打建模这种话…然后真香。总结一下，看看自己在这场比赛里能学到什么。</p>
-<p>首先一点就是硬实力差距，知识点的储备很重要。这次在面对题目时很容易没有思路或者思路单一，同时还有很多时候都在犹豫是否要自己造一个模型出来。赛后我的感觉是，很多要考虑自己造模型的地方很有可能早就存在现成的模型供我们利用了，但是我们并不知道它的存在。所以一方面要拓宽一下模型积累，另一方面要多读一些优秀论文，用来强化“是否应该自造模型”的界定。</p>
-<p>之后一点，条理性。这点在分头行动时尤为重要。建模过程中就出现了忘记了需要更正的错误、几个人在做重复的事、忘记了一些重要的事（最后一天临截止发现一个重要公式没放进去确实让人血压升高）等问题。所以在下次建模时有必要专门开一个记录本用来写大纲啊，问题啊之类的，做好记录。</p>
-<p>最后一点，知识点汇总。论文里用到了主成分分析法、拟合、多目标规划、绘图方法等一系列知识，显然它们都是需要我强化记忆写博客记录的，以后会一一补充。</p>
-<p>算是一场印象深刻的校赛吧。每次看到自己与强者的差距都会感到沮丧，只有自己不断行动才能获得一些慰藉。</p>
-]]></content>
-      <categories>
-        <category>悠哉日常</category>
-      </categories>
-      <tags>
-        <tag>数学建模</tag>
-      </tags>
   </entry>
   <entry>
     <title>筛法</title>
