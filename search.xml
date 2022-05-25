@@ -32,6 +32,46 @@
       </tags>
   </entry>
   <entry>
+    <title>Codeforces Round #793 (Div. 2) A-C 题解</title>
+    <url>/2022/05/23/Codeforces-Round-793-Div-2-A-C-%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://codeforces.com/contest/1682">Codeforces Round #793 (Div. 2)</a></p>
+<p>只写出一道题，好菜，打完不禁引起了我对人生的大思考…</p>
+<h1 id="A-Palindromic-Indices"><a href="#A-Palindromic-Indices" class="headerlink" title="A. Palindromic Indices"></a>A. Palindromic Indices</h1><p>求在一个回文字符串里存在一些位置，在你移除这些位置的字母后字符串还是回文字符串，求这样的位置的个数。显然只有回文字符串最中间位置的同种字母是可以移除的，统计即可。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> len;</span><br><span class="line"><span class="type">char</span> s[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;len);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s+<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="type">char</span> now=<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=(len+<span class="number">1</span>)/<span class="number">2</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> j=len-i+<span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(i==j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==now)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				ans=<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(s[i]!=now)</span><br><span class="line">		&#123;</span><br><span class="line">			now=s[i];</span><br><span class="line">			ans=<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> ans+=<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="B-AND-Sorting"><a href="#B-AND-Sorting" class="headerlink" title="B. AND Sorting"></a>B. AND Sorting</h1><p>死亡题目，因为理解错了题意而浪费了近2个小时：（</p>
+<p>我理解的题意：每次交换时都会得到一个 X ，找到合理的交换方案让本方案里最大的 X 是所有方案中最大的 X 。</p>
+<p>实际的题意：有一个 X ，所有的交换都只能等于 X 。找到最大的 X 。</p>
+<p>于是乎误入歧途，一去不复返…模拟贪心都试了。下面说正解。</p>
+<p>首先一点，只有$p_i \neq i - 1$的数都要至少经历一次交换。</p>
+<p>假设 X 已知， X 所在的位置为 pos 。由于 $p_i \land p_j \leq \max (p_i, p_j)$，因此 X 一定在所给的数之中。 因为$p_i \land p_j &#x3D; X$ ，所以$p_i \land X &#x3D; X, p_j \land X &#x3D; X$，于是乎可以找到一种不影响任何其他元素的两元素交换方法：</p>
+<ol>
+<li>交换 pos 与 i 位置的数</li>
+<li>交换 i 与 j 位置的数</li>
+<li>交换 j 与 pos 位置的数</li>
+</ol>
+<p>之后由于每个位置不对的数都要进行至少一次交换，可以得出 X 为所有要交换数的共同掩码。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=(<span class="number">1</span>&lt;&lt;<span class="number">18</span>)<span class="number">-1</span>;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">		<span class="keyword">if</span>(x!=i<span class="number">-1</span>) ans&amp;=x;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C-LIS-or-Reverse-LIS"><a href="#C-LIS-or-Reverse-LIS" class="headerlink" title="C. LIS or Reverse LIS?"></a>C. LIS or Reverse LIS?</h1><p>将一个序列重新排序，使得$\min (LIS(a), LIS(a’))$最大。（$LIS$为严格最长上升子序列）</p>
+<p><del>最大的最小竟然不是二分了。</del>首先为了方便书写，定义$LDS$为严格最长下降子序列，即求最大的$\min (LIS(a), LDS(a))$。不妨分别思考 a 数组里出现两次及以上的数与只出现一次的数。</p>
+<p><strong>两次及以上的数：</strong></p>
+<p>由于序列的上升与下降要求是严格的，因此从中选出两个数，一个为$LIS$做 1 的贡献，一个为$LDS$做 1 的贡献，多的其实就没有用了。</p>
+<p><strong>只出现一次的数：</strong></p>
+<p>首先思考一件事，$LIS$和$LDS$最多只能有 1 个共同的数。因此应该有一个只出现一次的数为$LIS$和$LDS$同时做 1 的贡献（如果它能做到）。而剩下的就该被$LIS$和$LDS$平分了。</p>
+<p>因此，使用 a 记录出现两次及以上的数，使用 b 记录只出现一次的数，答案应该为$a + \lceil {b \over 2} \rceil$。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> now=<span class="number">-1</span>,num=<span class="number">-1</span>;</span><br><span class="line">	<span class="type">int</span> ans1=<span class="number">0</span>,ans2=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i]!=now)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(num==<span class="number">1</span>) ans1++;</span><br><span class="line">			<span class="keyword">if</span>(num&gt;<span class="number">1</span>) ans2++;</span><br><span class="line">			</span><br><span class="line">			num=<span class="number">1</span>;</span><br><span class="line">			now=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> num++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(num==<span class="number">1</span>) ans1++;</span><br><span class="line">	<span class="keyword">if</span>(num&gt;<span class="number">1</span>) ans2++;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans2+(ans1+<span class="number">1</span>)/<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Codeforces Round #783 (Div. 1) A 题解（存疑）</title>
     <url>/2022/04/20/Codeforces-Round-783-Div-1-A-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/problemset/problem/1667/A">原题：A. Make it Increasing</a></p>
@@ -102,6 +142,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Educational Codeforces Round 129 (Rated for Div. 2) A-D 题解（未完成）</title>
+    <url>/2022/05/24/Educational-Codeforces-Round-129-Rated-for-Div-2-A-D-%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://codeforces.com/contest/1681">Educational Codeforces Round 129 (Rated for Div. 2)</a></p>
+<p>这场感觉良好，似乎找回了一点感觉。不过 D 题差一点写出来还是有点可惜的。</p>
+<h1 id="A-Game-with-Cards"><a href="#A-Game-with-Cards" class="headerlink" title="A. Game with Cards"></a>A. Game with Cards</h1><p>由于双方都选择最优策略，于是乎不论出牌先后，哪方拥有最大的点数牌哪方胜。当双方最大的点数牌相等时，哪方先手哪方胜（因为先手出最大点数牌会让对方无牌可出）。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="type">int</span> max1=<span class="number">0</span>,max2=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">		max1=<span class="built_in">max</span>(max1,x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">		max2=<span class="built_in">max</span>(max2,x);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(max1&gt;max2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Alice\nAlice\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(max1&lt;max2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Bob\nBob\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Alice\nBob\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="B-Card-Trick"><a href="#B-Card-Trick" class="headerlink" title="B. Card Trick"></a>B. Card Trick</h1><p>如果将这一组有顺序排列的牌首尾相接看成一个环，牌顶位置记录标记，那么可以发现“将牌顶 x 张牌置于牌底”这个操作并不会改变环的连接顺序，而只是将记录牌顶位置的标记向后推了 x 位。由此就可以写程序了。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;b[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> index=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		index+=b[i];</span><br><span class="line">		index%=n;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,a[index+<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="C-Double-Sort"><a href="#C-Double-Sort" class="headerlink" title="C. Double Sort"></a>C. Double Sort</h1><p>首先可以看出两个数组元素的对应关系是绑定的，因此可以使用结构体存储，利用 sort 排序结构体的技巧对进行排序，后检查是否能够做到完全排列好。若不行，输出“-1”。</p>
+<p>此时我们有原数组和排序好的数组。由于数据量很小，于是乎想到一种记录交换的方法：遍历原数组，每当发现本位值和本位排序好的值不同时，向后搜寻与排序好的值相同的值的位置，记录答案并交换。由于$n \leq 100$，因此可以在 $10^4$内完成工作。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> ans1[<span class="number">10010</span>],ans2[<span class="number">10010</span>];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> a;</span><br><span class="line">	<span class="type">int</span> b;</span><br><span class="line">&#125;d[<span class="number">110</span>],yuan[<span class="number">110</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(node x,node y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x.a==y.a) <span class="keyword">return</span> x.b&lt;y.b; </span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> x.a&lt;y.a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">same</span><span class="params">(node x,node y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x.a==y.a&amp;&amp;x.b==y.b) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(node &amp;x,node &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	node z=x;</span><br><span class="line">	x=y;</span><br><span class="line">	y=z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;d[i].a);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;d[i].b);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) yuan[i].a=d[i].a;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) yuan[i].b=d[i].b;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">sort</span>(d+<span class="number">1</span>,d+n+<span class="number">1</span>,cmp);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,d[i].a);</span></span><br><span class="line"><span class="comment">//	printf(&quot;\n&quot;);</span></span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,d[i].b);</span></span><br><span class="line"><span class="comment">//	printf(&quot;\n&quot;);</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(d[i].a&lt;d[i<span class="number">-1</span>].a||d[i].b&lt;d[i<span class="number">-1</span>].b)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!<span class="built_in">same</span>(yuan[i],d[i]))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> ind1=i;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">same</span>(yuan[j],d[i]))</span><br><span class="line">				&#123;	</span><br><span class="line">					<span class="type">int</span> ind2=j;</span><br><span class="line">					</span><br><span class="line">					<span class="keyword">if</span>(i!=j)</span><br><span class="line">					&#123;</span><br><span class="line">						ans++;</span><br><span class="line">						</span><br><span class="line">						<span class="keyword">if</span>(ans&gt;<span class="number">10000</span>)</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">							<span class="keyword">return</span>;</span><br><span class="line">						&#125;</span><br><span class="line">						</span><br><span class="line">						ans1[ans]=ind1,ans2[ans]=ind2;</span><br><span class="line">						<span class="built_in">swap</span>(yuan[i],yuan[j]);</span><br><span class="line">					&#125;</span><br><span class="line">					</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=ans;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>,ans1[i],ans2[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="D-Required-Length"><a href="#D-Required-Length" class="headerlink" title="D. Required Length"></a>D. Required Length</h1><p>题解还没出…</p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>O(nlogn)数组寻找差值</title>
     <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
     <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
@@ -123,43 +188,30 @@
       </tags>
   </entry>
   <entry>
-    <title>Codeforces Round #793 (Div. 2) A-C 题解</title>
-    <url>/2022/05/23/Codeforces-Round-793-Div-2-A-C-%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://codeforces.com/contest/1682">Codeforces Round #793 (Div. 2)</a></p>
-<p>只写出一道题，好菜，打完不禁引起了我对人生的大思考…</p>
-<h1 id="A-Palindromic-Indices"><a href="#A-Palindromic-Indices" class="headerlink" title="A. Palindromic Indices"></a>A. Palindromic Indices</h1><p>求在一个回文字符串里存在一些位置，在你移除这些位置的字母后字符串还是回文字符串，求这样的位置的个数。显然只有回文字符串最中间位置的同种字母是可以移除的，统计即可。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> len;</span><br><span class="line"><span class="type">char</span> s[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;len);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s+<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="type">char</span> now=<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=(len+<span class="number">1</span>)/<span class="number">2</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> j=len-i+<span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(i==j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==now)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				ans=<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(s[i]!=now)</span><br><span class="line">		&#123;</span><br><span class="line">			now=s[i];</span><br><span class="line">			ans=<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> ans+=<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>gcd&amp;lcm（待完善）</title>
+    <url>/2022/03/10/gcd-lcm/</url>
+    <content><![CDATA[<h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p><strong>辗转相除法（欧几里得）：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">gcd</span>(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="B-AND-Sorting"><a href="#B-AND-Sorting" class="headerlink" title="B. AND Sorting"></a>B. AND Sorting</h1><p>死亡题目，因为理解错了题意而浪费了近2个小时：（</p>
-<p>我理解的题意：每次交换时都会得到一个 X ，找到合理的交换方案让本方案里最大的 X 是所有方案中最大的 X 。</p>
-<p>实际的题意：有一个 X ，所有的交换都只能等于 X 。找到最大的 X 。</p>
-<p>于是乎误入歧途，一去不复返…模拟贪心都试了。下面说正解。</p>
-<p>首先一点，只有$p_i \neq i - 1$的数都要至少经历一次交换。</p>
-<p>假设 X 已知， X 所在的位置为 pos 。由于 $p_i \land p_j \leq \max (p_i, p_j)$，因此 X 一定在所给的数之中。 因为$p_i \land p_j &#x3D; X$ ，所以$p_i \land X &#x3D; X, p_j \land X &#x3D; X$，于是乎可以找到一种不影响任何其他元素的两元素交换方法：</p>
-<ol>
-<li>交换 pos 与 i 位置的数</li>
-<li>交换 i 与 j 位置的数</li>
-<li>交换 j 与 pos 位置的数</li>
-</ol>
-<p>之后由于每个位置不对的数都要进行至少一次交换，可以得出 X 为所有要交换数的共同掩码。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=(<span class="number">1</span>&lt;&lt;<span class="number">18</span>)<span class="number">-1</span>;</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">		<span class="keyword">if</span>(x!=i<span class="number">-1</span>) ans&amp;=x;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="lcm"><a href="#lcm" class="headerlink" title="lcm"></a>lcm</h1><p>$$<br>a \cdot b &#x3D; \gcd(a, b) * lcm(a, b)<br>$$</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lcm</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a/<span class="built_in">gcd</span>(a,b)*b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="C-LIS-or-Reverse-LIS"><a href="#C-LIS-or-Reverse-LIS" class="headerlink" title="C. LIS or Reverse LIS?"></a>C. LIS or Reverse LIS?</h1><p>将一个序列重新排序，使得$\min (LIS(a), LIS(a’))$最大。（$LIS$为严格最长上升子序列）</p>
-<p><del>最大的最小竟然不是二分了。</del>首先为了方便书写，定义$LDS$为严格最长下降子序列，即求最大的$\min (LIS(a), LDS(a))$。不妨分别思考 a 数组里出现两次及以上的数与只出现一次的数。</p>
-<p><strong>两次及以上的数：</strong></p>
-<p>由于序列的上升与下降要求是严格的，因此从中选出两个数，一个为$LIS$做 1 的贡献，一个为$LDS$做 1 的贡献，多的其实就没有用了。</p>
-<p><strong>只出现一次的数：</strong></p>
-<p>首先思考一件事，$LIS$和$LDS$最多只能有 1 个共同的数。因此应该有一个只出现一次的数为$LIS$和$LDS$同时做 1 的贡献（如果它能做到）。而剩下的就该被$LIS$和$LDS$平分了。</p>
-<p>因此，使用 a 记录出现两次及以上的数，使用 b 记录只出现一次的数，答案应该为$a + \lceil {b \over 2} \rceil$。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> now=<span class="number">-1</span>,num=<span class="number">-1</span>;</span><br><span class="line">	<span class="type">int</span> ans1=<span class="number">0</span>,ans2=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i]!=now)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(num==<span class="number">1</span>) ans1++;</span><br><span class="line">			<span class="keyword">if</span>(num&gt;<span class="number">1</span>) ans2++;</span><br><span class="line">			</span><br><span class="line">			num=<span class="number">1</span>;</span><br><span class="line">			now=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> num++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(num==<span class="number">1</span>) ans1++;</span><br><span class="line">	<span class="keyword">if</span>(num&gt;<span class="number">1</span>) ans2++;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans2+(ans1+<span class="number">1</span>)/<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++) <span class="built_in">solv</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h1 id="一些性质"><a href="#一些性质" class="headerlink" title="一些性质"></a>一些性质</h1><p>设两个数$i &#x3D; p_1^{a_1} * p_2^{a_2} * p_3^{a_3} * … * p_s^{a_s}$，$j &#x3D; p_1^{b_1} * p_2^{b_2} * p_3^{b_3} * … * p_s^{b_s}$，则由算术基本定理（又叫整数惟一分解定理）得到：</p>
+<p>$\gcd(i, j) &#x3D; p_1^{\min(a_1, b_1)} * p_2^{\min(a_2, b_2)} * p_3^{\min(a_3, b_3)} * … * p_s^{\min(a_s, b_s)}$</p>
+<p>$lcm(i,j) &#x3D; p_1^{\max(a_1, b_1)} * p_2^{\max(a_2, b_2)} * p_3^{\max(a_3,b_3)} * … * p_s^{\max(a_s, b_s)}$</p>
+<p>简写一下：</p>
+<p>设两个数$i &#x3D; \prod^s_{k &#x3D; 1} p_k^{a_k}$，$j &#x3D; \prod^s_{k &#x3D; 1} p_k^{b_k}$，则由算术基本定理（又叫整数惟一分解定理）得到：</p>
+<p>$\gcd(i, j) &#x3D; \prod^s_{k &#x3D; 1} p_k^{\min(a_k, b_k)}$</p>
+<p>$lcm(i,j) &#x3D; \prod^s_{k &#x3D; 1} p_k^{\max(a_k, b_k)}$</p>
+<p><strong>此性质经常与数的质因数分解一起使用。</strong>一些质因数分解的方法请看我的另一篇文章。</p>
 ]]></content>
       <categories>
         <category>算法比赛</category>
       </categories>
       <tags>
-        <tag>题解</tag>
-        <tag>Codeforces</tag>
+        <tag>质因数分解</tag>
+        <tag>数论</tag>
+        <tag>辗转相除法</tag>
       </tags>
   </entry>
   <entry>
@@ -237,30 +289,16 @@
 ]]></content>
   </entry>
   <entry>
-    <title>gcd&amp;lcm（待完善）</title>
-    <url>/2022/03/10/gcd-lcm/</url>
-    <content><![CDATA[<h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p><strong>辗转相除法（欧几里得）：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">gcd</span>(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="lcm"><a href="#lcm" class="headerlink" title="lcm"></a>lcm</h1><p>$$<br>a \cdot b &#x3D; \gcd(a, b) * lcm(a, b)<br>$$</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lcm</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a/<span class="built_in">gcd</span>(a,b)*b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="一些性质"><a href="#一些性质" class="headerlink" title="一些性质"></a>一些性质</h1><p>设两个数$i &#x3D; p_1^{a_1} * p_2^{a_2} * p_3^{a_3} * … * p_s^{a_s}$，$j &#x3D; p_1^{b_1} * p_2^{b_2} * p_3^{b_3} * … * p_s^{b_s}$，则由算术基本定理（又叫整数惟一分解定理）得到：</p>
-<p>$\gcd(i, j) &#x3D; p_1^{\min(a_1, b_1)} * p_2^{\min(a_2, b_2)} * p_3^{\min(a_3, b_3)} * … * p_s^{\min(a_s, b_s)}$</p>
-<p>$lcm(i,j) &#x3D; p_1^{\max(a_1, b_1)} * p_2^{\max(a_2, b_2)} * p_3^{\max(a_3,b_3)} * … * p_s^{\max(a_s, b_s)}$</p>
-<p>简写一下：</p>
-<p>设两个数$i &#x3D; \prod^s_{k &#x3D; 1} p_k^{a_k}$，$j &#x3D; \prod^s_{k &#x3D; 1} p_k^{b_k}$，则由算术基本定理（又叫整数惟一分解定理）得到：</p>
-<p>$\gcd(i, j) &#x3D; \prod^s_{k &#x3D; 1} p_k^{\min(a_k, b_k)}$</p>
-<p>$lcm(i,j) &#x3D; \prod^s_{k &#x3D; 1} p_k^{\max(a_k, b_k)}$</p>
-<p><strong>此性质经常与数的质因数分解一起使用。</strong>一些质因数分解的方法请看我的另一篇文章。</p>
+    <title>主成分分析法（待完善）</title>
+    <url>/2022/05/22/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95/</url>
+    <content><![CDATA[<p>在实</p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>数学建模</category>
       </categories>
       <tags>
-        <tag>质因数分解</tag>
-        <tag>数论</tag>
-        <tag>辗转相除法</tag>
+        <tag>正交变换</tag>
+        <tag>相关性</tag>
       </tags>
   </entry>
   <entry>
@@ -275,22 +313,9 @@
         <category>数学建模</category>
       </categories>
       <tags>
+        <tag>相关性</tag>
         <tag>线性代数</tag>
         <tag>协方差</tag>
-        <tag>相关性</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>主成分分析法（待完善）</title>
-    <url>/2022/05/22/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95/</url>
-    <content><![CDATA[<p>在实</p>
-]]></content>
-      <categories>
-        <category>数学建模</category>
-      </categories>
-      <tags>
-        <tag>相关性</tag>
-        <tag>正交变换</tag>
       </tags>
   </entry>
   <entry>
@@ -537,100 +562,6 @@
       <tags>
         <tag>博弈论</tag>
         <tag>最优解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常忘数学公式语法</title>
-    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
-<table>
-<thead>
-<tr>
-<th align="center">符号</th>
-<th align="center">代码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">点乘</td>
-<td align="center">\cdot</td>
-</tr>
-<tr>
-<td align="center">约等号</td>
-<td align="center">\approx</td>
-</tr>
-<tr>
-<td align="center">累加</td>
-<td align="center">\sum</td>
-</tr>
-<tr>
-<td align="center">累乘</td>
-<td align="center">\prod</td>
-</tr>
-<tr>
-<td align="center">分式</td>
-<td align="center">\over</td>
-</tr>
-<tr>
-<td align="center">小于等于</td>
-<td align="center">\leq</td>
-</tr>
-<tr>
-<td align="center">大于等于</td>
-<td align="center">\geq</td>
-</tr>
-<tr>
-<td align="center">阿尔法</td>
-<td align="center">\alpha</td>
-</tr>
-<tr>
-<td align="center">贝塔</td>
-<td align="center">\beta</td>
-</tr>
-<tr>
-<td align="center">ρ</td>
-<td align="center">\rho</td>
-</tr>
-<tr>
-<td align="center">与</td>
-<td align="center">\&amp; \land</td>
-</tr>
-<tr>
-<td align="center">空格</td>
-<td align="center">\</td>
-</tr>
-<tr>
-<td align="center">回车</td>
-<td align="center">\ \</td>
-</tr>
-<tr>
-<td align="center">长空格</td>
-<td align="center">\quad</td>
-</tr>
-<tr>
-<td align="center">上取整</td>
-<td align="center">\lceil \rceil</td>
-</tr>
-<tr>
-<td align="center">下取整</td>
-<td align="center">\lfloor \rfloor</td>
-</tr>
-<tr>
-<td align="center">多行对齐</td>
-<td align="center">begin{aligned} end{aligned}</td>
-</tr>
-<tr>
-<td align="center">大括号</td>
-<td align="center">begin{case} end{case}</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>问题指南</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>语法</tag>
-        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
@@ -911,6 +842,100 @@
       <categories>
         <category>数学建模</category>
       </categories>
+  </entry>
+  <entry>
+    <title>常忘数学公式语法</title>
+    <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">点乘</td>
+<td align="center">\cdot</td>
+</tr>
+<tr>
+<td align="center">约等号</td>
+<td align="center">\approx</td>
+</tr>
+<tr>
+<td align="center">累加</td>
+<td align="center">\sum</td>
+</tr>
+<tr>
+<td align="center">累乘</td>
+<td align="center">\prod</td>
+</tr>
+<tr>
+<td align="center">分式</td>
+<td align="center">\over</td>
+</tr>
+<tr>
+<td align="center">小于等于</td>
+<td align="center">\leq</td>
+</tr>
+<tr>
+<td align="center">大于等于</td>
+<td align="center">\geq</td>
+</tr>
+<tr>
+<td align="center">阿尔法</td>
+<td align="center">\alpha</td>
+</tr>
+<tr>
+<td align="center">贝塔</td>
+<td align="center">\beta</td>
+</tr>
+<tr>
+<td align="center">ρ</td>
+<td align="center">\rho</td>
+</tr>
+<tr>
+<td align="center">与</td>
+<td align="center">\&amp; \land</td>
+</tr>
+<tr>
+<td align="center">空格</td>
+<td align="center">\</td>
+</tr>
+<tr>
+<td align="center">回车</td>
+<td align="center">\ \</td>
+</tr>
+<tr>
+<td align="center">长空格</td>
+<td align="center">\quad</td>
+</tr>
+<tr>
+<td align="center">上取整</td>
+<td align="center">\lceil \rceil</td>
+</tr>
+<tr>
+<td align="center">下取整</td>
+<td align="center">\lfloor \rfloor</td>
+</tr>
+<tr>
+<td align="center">多行对齐</td>
+<td align="center">begin{aligned} end{aligned}</td>
+</tr>
+<tr>
+<td align="center">大括号</td>
+<td align="center">begin{case} end{case}</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>问题指南</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>语法</tag>
+        <tag>latex</tag>
+      </tags>
   </entry>
   <entry>
     <title>并查集</title>
@@ -1420,6 +1445,68 @@
       </categories>
       <tags>
         <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>葵花服务器重启流程</title>
+    <url>/2022/05/25/%E8%91%B5%E8%8A%B1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AF%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<p>葵花服务器每个月都会重启，因此需要手动重新运行处理相关数据的程序。在自己和学长一起折腾半天之后完成了整个流程，在此梳理一遍。</p>
+<h1 id="Step1-连接学校电脑"><a href="#Step1-连接学校电脑" class="headerlink" title="Step1 连接学校电脑"></a>Step1 连接学校电脑</h1><p>服务器登录系统需要学校 ip 访问。因此使用向日葵远程协助软件对学校电脑进行操控。</p>
+<p><img src="/2022/05/25/%E8%91%B5%E8%8A%B1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AF%E6%B5%81%E7%A8%8B/1.png" alt="img"></p>
+<p>输入学校电脑的伙伴识别码与验证码，点击远程协助即可。</p>
+<h1 id="Step2-连接服务器"><a href="#Step2-连接服务器" class="headerlink" title="Step2 连接服务器"></a>Step2 连接服务器</h1><p>打开<strong>浏览器</strong>，在收藏夹中找到<strong>登录运维审计系统</strong>，按照给出的账号与密码登录账号（记住出现提示是否覆盖旧密码时选 × 或否）。目前只有 13 结尾的账号能够使用，登录时会给 spq 学长手机发送验证码，自行索要就好。 登入系统后没有太多需要注意的，根据之前的教程视频打开 linux 系统界面。（为了隐私不展示）</p>
+<p>此时在黑框框页面中提示输入密码。复制提供好的密码，选中黑框框页面后，<strong>单击右键进行粘贴</strong>，同时<strong>等待几秒后再回车</strong>（否则会因系统反映慢登录失败，深坑），提示登录成功即成功连接了服务器。</p>
+<p><img src="/2022/05/25/%E8%91%B5%E8%8A%B1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AF%E6%B5%81%E7%A8%8B/2.png" alt="img"></p>
+<h1 id="Step3-运行代码"><a href="#Step3-运行代码" class="headerlink" title="Step3 运行代码"></a>Step3 运行代码</h1><p>进入系统首先 <code>cd ..</code> 回退一级，均在本目录下 him 开头的文件夹中，进入此文件夹。下面分别运行 spq 学长的代码、 dl 学长的代码。</p>
+<h2 id="spq-部分："><a href="#spq-部分：" class="headerlink" title="spq 部分："></a>spq 部分：</h2><p>有 6 个程序需要运行，这 6 个程序要分别被放入 6 个 screen 内运行。下面以一个程序的运行过程详细举例。</p>
+<ol>
+<li>创建 screen</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -S pm25</span><br></pre></td></tr></table></figure>
+
+<p>此时创建并自动进入了一个叫做”pm25“的环境中。</p>
+<ol start="2">
+<li>切换环境</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda activate spq</span><br></pre></td></tr></table></figure>
+
+<p>此时进入了名为”spq“的 python 环境。</p>
+<ol start="3">
+<li>运行程序</li>
+</ol>
+<p>进入文件所在文件夹，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python SC2_main1to8.py</span><br></pre></td></tr></table></figure>
+
+<p>稍等一会没有报错，就可以使用 Ctrl + A + D 退出本 screen。</p>
+<p>其他5个同理，在资料中都明确告诉了 screen 名与程序的位置。做同样操作即可。</p>
+<p><strong>其他：</strong></p>
+<p>查看 screen 列表：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -ls</span><br></pre></td></tr></table></figure>
+
+<p>进入某个 screen：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -r pid号</span><br></pre></td></tr></table></figure>
+
+<h2 id="dl-部分："><a href="#dl-部分：" class="headerlink" title="dl 部分："></a>dl 部分：</h2><p>打开文件夹，执行 sh 文件即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./run.sh</span><br></pre></td></tr></table></figure>
+
+<p>如想检查程序是否成功运行，打开同一文件夹下的文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim main.out</span><br></pre></td></tr></table></figure>
+
+<p>这是打印输出信息的文件，有内容说明没问题。（附： vim 使用 :q 退出）</p>
+<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><ol>
+<li>Step1 里的等待几秒十分重要。因为这个原因卡了好久</li>
+<li>遇到了一个找不到文件夹的报错。自己去相应位置补充文件夹即可。</li>
+<li>spq 目录下的 DL 里的内容仍属于 spq 部分，与 dl 部分无关。</li>
+<li>运行的程序输出文件读取失败并不一定是程序错误、运行失败等原因，可能只是数据文件本身的问题。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境项目</category>
+      </categories>
+      <tags>
+        <tag>葵花卫星</tag>
+        <tag>linux</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
