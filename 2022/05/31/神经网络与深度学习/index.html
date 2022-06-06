@@ -28,7 +28,7 @@
 <meta property="og:description" content="为了环境项目而学习的一些东西。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-31T13:21:47.000Z">
-<meta property="article:modified_time" content="2022-06-01T13:47:34.678Z">
+<meta property="article:modified_time" content="2022-06-05T15:42:20.133Z">
 <meta property="article:author" content="CYHei_mu">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="神经网络">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-01 21:47:34" itemprop="dateModified" datetime="2022-06-01T21:47:34+08:00">2022-06-01</time>
+                <time title="修改时间：2022-06-05 23:42:20" itemprop="dateModified" datetime="2022-06-05T23:42:20+08:00">2022-06-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,14 +259,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>528</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
             <div class="post-description">为了环境项目而学习的一些东西。</div>
 
@@ -296,15 +296,38 @@
 <li>非凸性</li>
 </ol>
 <p>指这种函数有多个极值，故系统具有多个较稳定的平稳态，这将导致系统演化的多样性。</p>
-<h1 id="人工神经元MP模型"><a href="#人工神经元MP模型" class="headerlink" title="人工神经元MP模型"></a>人工神经元MP模型</h1><p>这里需要一些图。</p>
+<h1 id="人工神经元MP模型与-Hebb-学习律"><a href="#人工神经元MP模型与-Hebb-学习律" class="headerlink" title="人工神经元MP模型与 Hebb 学习律"></a>人工神经元MP模型与 Hebb 学习律</h1><p>这里需要一些图。</p>
 <p>当时的权值都是固定的，预先设置好的。</p>
-<h1 id="Hebb-学习律"><a href="#Hebb-学习律" class="headerlink" title="Hebb 学习律"></a>Hebb 学习律</h1><p>Hebb 考虑调整权值来机器学习。</p>
+<h2 id="Hebb-学习律"><a href="#Hebb-学习律" class="headerlink" title="Hebb 学习律"></a>Hebb 学习律</h2><p>Hebb 考虑调整权值来机器学习。</p>
 <p>反复刺激会加强刺激效果。</p>
-<h2 id="线性联想器"><a href="#线性联想器" class="headerlink" title="线性联想器"></a>线性联想器</h2><p>这里需要一些图。</p>
+<h3 id="线性联想器"><a href="#线性联想器" class="headerlink" title="线性联想器"></a>线性联想器</h3><p>这里需要一些图。</p>
 <p>用目标输出代替实际输出。<br>$$<br>w_{ij} &#x3D; w_{ij} + t_i p_j<br>$$</p>
 <p>$$<br>W &#x3D; TP^T<br>$$</p>
 <p>带入<br>$$<br>Wp_1, Wp_2<br>$$</p>
-
+<h1 id="感知器网络"><a href="#感知器网络" class="headerlink" title="感知器网络"></a>感知器网络</h1><p>监督学习：使用已标记的数据集训练</p>
+<p>分类、回归</p>
+<p>半监督学习：使用一部分标记数据和大量未标记数据做数据集训练</p>
+<p>分类、回归、聚类</p>
+<p>无监督学习：使用未标记的数据集训练</p>
+<p>聚类</p>
+<ul>
+<li>感知机由美国计算机科学家罗森布拉特于1957年提出，其神经元结构就是 MP 模型。</li>
+<li>感知机神经元是在 MP 模基础上加上了学习功能，其权值根据设计目的加以调节。</li>
+<li>感知机特别适合简单的模式分类问题，可解决线性划分问题。</li>
+</ul>
+<p>这里要有一些图。<br>$$<br>n &#x3D; \sum^r_{j &#x3D; 1} w_j p_j + b	\quad a &#x3D; f(n) &#x3D;<br>\begin{cases}<br>    1 \quad n \geq 0 \<br>    0 \quad n &lt; 0 \<br>\end{cases}<br>\<br>a &#x3D; f(W P + b) &#x3D; f(\sum^r_{j &#x3D; 1} w_j p_j + b) &#x3D;<br>\begin{cases}<br>    1 \quad n \geq 0 \<br>    0 \quad n &lt; 0 \<br>\end{cases}<br>$$</p>
+<ul>
+<li>一般感知机结构是一单层神经网络，其激活函数为二值函数。</li>
+</ul>
+<p><strong>感知器的权值与偏差</strong></p>
+<p>设置偏差 b 是为了增加神经网络可塑性，多一个可调参数。</p>
+<p><strong>感知器的图形解释</strong></p>
+<p>任意一组参数 W 和 b ，在输入矢量空间中，可决定一条（超）直线或（超）平面等，在该直线或平面上方输出为 1 ，下放输出为 0 。</p>
+<p><strong>感知器的输入输出关系</strong></p>
+<p>分类能力：感知器只能进行线性分类。</p>
+<p>分类数目：单个神经元可将输入空间的矢量非储层两类。</p>
+<p>s 个神经元组成的感知器将输入空间分成$2^s$类。</p>
+<h2 id="单神经元感知器"><a href="#单神经元感知器" class="headerlink" title="单神经元感知器"></a>单神经元感知器</h2>
     </div>
 
     
@@ -390,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.</span> <span class="nav-text">基本特征</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E5%85%83MP%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">人工神经元MP模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hebb-%E5%AD%A6%E4%B9%A0%E5%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">Hebb 学习律</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%81%94%E6%83%B3%E5%99%A8"><span class="nav-number">3.1.</span> <span class="nav-text">线性联想器</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.</span> <span class="nav-text">基本特征</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E5%85%83MP%E6%A8%A1%E5%9E%8B%E4%B8%8E-Hebb-%E5%AD%A6%E4%B9%A0%E5%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">人工神经元MP模型与 Hebb 学习律</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hebb-%E5%AD%A6%E4%B9%A0%E5%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Hebb 学习律</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%81%94%E6%83%B3%E5%99%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">线性联想器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E5%99%A8%E7%BD%91%E7%BB%9C"><span class="nav-number">3.</span> <span class="nav-text">感知器网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E7%A5%9E%E7%BB%8F%E5%85%83%E6%84%9F%E7%9F%A5%E5%99%A8"><span class="nav-number">3.1.</span> <span class="nav-text">单神经元感知器</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -406,7 +429,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -455,12 +478,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">79k</span>
+    <span title="站点总字数">80k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:12</span>
+    <span title="站点阅读时长">2:14</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

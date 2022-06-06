@@ -142,27 +142,6 @@
       </tags>
   </entry>
   <entry>
-    <title>O(nlogn)数组寻找差值</title>
-    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
-    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
-<ol>
-<li>对原数组排序。</li>
-<li>对原数组去重得到数组$b$，长度为$len$。</li>
-<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
-<li>对扩充后的数组排序。</li>
-<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
-</ol>
-<p>会有更简单的办法，但我暂时是想出来了这个。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Educational Codeforces Round 129 (Rated for Div. 2) A-D 题解</title>
     <url>/2022/05/24/Educational-Codeforces-Round-129-Rated-for-Div-2-A-D-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1681">Educational Codeforces Round 129 (Rated for Div. 2)</a></p>
@@ -192,6 +171,27 @@
       <tags>
         <tag>题解</tag>
         <tag>Codeforces</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>O(nlogn)数组寻找差值</title>
+    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
+    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
+<ol>
+<li>对原数组排序。</li>
+<li>对原数组去重得到数组$b$，长度为$len$。</li>
+<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
+<li>对扩充后的数组排序。</li>
+<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
+</ol>
+<p>会有更简单的办法，但我暂时是想出来了这个。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -493,127 +493,6 @@
       </tags>
   </entry>
   <entry>
-    <title>博弈论</title>
-    <url>/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/</url>
-    <content><![CDATA[<p>博弈论就是指有若干个人进行一些对弈，并且默认每个人都可以找到当前的最优解，最后寻找有没有哪个人有必胜&#x2F;必败的的策略。</p>
-<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p><strong>移动（Move）</strong>：对游戏局面的改变。<br><strong>局面（Position）</strong>：游戏进行中的一种状态。每个局面都对应着一个当前合法操作的集合。<br>​<strong>必败态（P-Position）</strong>：在当前的局面下，先手必败<br>​<strong>必胜态（N-Position）</strong>：在当前的局面下，先手必胜</p>
-<p><strong>有关局面的性质：</strong></p>
-<ul>
-<li>合法操作集合为空的局面是必败态</li>
-<li>可以移动到必败态的局面是必胜态</li>
-<li>只能移动到必胜态的局面是必败态</li>
-</ul>
-<h1 id="公平组合游戏（ICG）"><a href="#公平组合游戏（ICG）" class="headerlink" title="公平组合游戏（ICG）"></a>公平组合游戏（ICG）</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>两名选手</li>
-<li>两名选手轮流行动，每一次行动可以在有限合法操作集合中选择一个</li>
-<li>游戏的任何一种可能的局面，合法操作集合只取决于这个局面本身，不取决于轮到哪名选手操作、以前的任何操作、骰子的点数或者其它因素</li>
-<li>如果轮到某名选手移动，且这个局面的合法的移动集合为空（也就是说此时无法进行移动），则这名选手负</li>
-</ul>
-<h2 id="nim游戏"><a href="#nim游戏" class="headerlink" title="nim游戏"></a>nim游戏</h2><p><a href="https://www.luogu.com.cn/problem/P2197">nim游戏</a></p>
-<p><strong>题目大意</strong>：有n堆石子，每堆有$s_i$个，两人依次从中任意一堆中取至少1个的任意数量的石子，问先手有没有必胜策略。</p>
-<p><strong>在本游戏中可以得到一个结论：</strong><br>$$<br>当且仅当s_1 \oplus s_2 \oplus s_3 \oplus \cdots \oplus s_n &#x3D; 0时，局面为必败态<br>$$<br><strong>证明：</strong></p>
-<ul>
-<li>当石子数量和为0时为必败态（此时异或和为0）</li>
-<li>当各石子堆异或和为$k(k \neq 0)$时，设k的最高位二进制1的位数为j，则我们一定能找到一堆石子$s_i$，且$s_i$的二进制第j位为1。将$s_i$的数量变为$s_i \oplus k$（显然在第j位为1的前提下$s_i &gt; s_i \oplus k$），此时各石子堆异或和便为0了（$x \oplus y \oplus y &#x3D; x$）。（必胜态转必败态）</li>
-<li>若异或和为0且存在数量不为0的石子堆，不能找到一种方法使异或和仍为0。（异或的性质）（必败态转必胜态）</li>
-</ul>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t,n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=t;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> ans,lin;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;ans);</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;lin);</span><br><span class="line">			ans^=lin;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(ans) <span class="built_in">printf</span>(<span class="string">&quot;Yes\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;No\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="SG函数"><a href="#SG函数" class="headerlink" title="SG函数"></a>SG函数</h2><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>给定一个有向无环图和一个起始顶点上的一枚棋子，Alice和Bob交替的将这枚棋子沿有向边进行移动，无法移动者判负。问是否有必胜策略。</p>
-<p>该游戏可以认为是所有ICG游戏的抽象模型。也就是说，任何一个ICG游戏都可以通过把每个局面看成一个顶点，对每个局面和它的子局面连一条有向边来抽象成这个“有向图游戏”。</p>
-<h3 id="函数建立"><a href="#函数建立" class="headerlink" title="函数建立"></a>函数建立</h3><p><strong>mex运算</strong>：这是施加于一个集合的运算，表示最小的不属于这个集合的非负整数，如mex{0, 1, 2, 4} &#x3D; 3、mex{2, 3, 5} &#x3D; 0、mex{} &#x3D; 0。</p>
-<p>对于一个给定的有向无环图，定义关于图的每个顶点的SG函数sg如下：sg(x) &#x3D; mex{sg(y) | y是x的后继 }。也就是说，一个点的SG函数为在它所有后继中都未出现的最小的值。</p>
-<p><strong>注意</strong>：由于这是一种类似递归的定义，所以对于一张有向无环图，每个点的SG值都是会被直接计算出来的。</p>
-<h3 id="函数性质"><a href="#函数性质" class="headerlink" title="函数性质"></a>函数性质</h3><ul>
-<li>没有出边的点，SG值为0。</li>
-<li>对于一个$sg(x) &#x3D; 0$的顶点x，它的后继y都满足$sg(y) \neq 0$。</li>
-<li>对于一个$sg(x) \neq 0$的顶点x，必定存在一个后继y都满足$sg(y) &#x3D; 0$。</li>
-</ul>
-<p>可以发现，SG函数的性质与必败态、必胜态的性质十分相似：</p>
-<ul>
-<li>顶点x所代表的局面是必败态当且仅当$sg(x) &#x3D; 0$。</li>
-<li>顶点x所代表的局面是必胜态当且仅当$sg(x) &gt; 0$。</li>
-</ul>
-<h3 id="SG值的阶"><a href="#SG值的阶" class="headerlink" title="SG值的阶"></a>SG值的阶</h3><p>当$sg(x) &#x3D; k$时，表明对于任意一个$0 \leq i &lt; k$，都存在x的一个后继y满足$sg(y) &#x3D; i$。</p>
-<p>因此当$sg(x) &#x3D; k$时，我们可以把这个点的SG值称为k阶SG值，它一定可以通过移动转换到一个拥有更低阶SG值的点。</p>
-<h2 id="nim游戏与SG函数的联系"><a href="#nim游戏与SG函数的联系" class="headerlink" title="nim游戏与SG函数的联系"></a>nim游戏与SG函数的联系</h2><p>设有$G_1,G_2,G_3, \cdots ,G_n$个有向图游戏，定义游戏$G &#x3D; G_1 + G_2 + G_3 + \cdots + G_n$（游戏本身的加和，不是数学意义上的加和），移动规则为任选一个有向图$G_i$并移动上面的棋子。</p>
-<p>Sprague-Grundy定理就是：<br>$$<br>\begin{aligned}<br>    &amp; 对于任意G &#x3D; G_1 + G_2 + G_3 + \cdots + G_n \\<br>    &amp; 有sg(G) &#x3D; sg(G_1) \oplus sg(G_2) \oplus \cdots \oplus sg(G_n) \\<br>    &amp; SG值相同局面，可以认为局面本质相同<br>\end{aligned}<br>$$<br>也就是说，游戏的和的SG函数值是它所有子游戏的SG函数值的异或。</p>
-<p>之后我们可以发现，若将nim游戏中的每一堆石头看成一个有向图游戏，则nim游戏是一个符合上述定义的多个有向图相加的游戏G。因此我们可以分别计算每一堆石头的有向图所对应的SG值，再将所有的SG值进行异或从而得到nim游戏的SG值，从而找到必胜策略。</p>
-<p><strong>注</strong>：对于任意一张子图$G_i$，它上面的不同的点要理解成本堆石头的当前状态，而不是整个nim游戏的当前状态，是多堆石头的不同状态得到的SG值异或得到了整个nim游戏的SG值，不存在一张有向图代表整个nim游戏（虽然的确可以存在这样一张有向图），而是nim游戏本身就是许多有向图的加和。这是我一开始不理解这个联系的重要一点。</p>
-<p>不妨设第i个有向图游戏的点的值为$s_i$，当且仅当本点与本石子堆还剩$s_i$个石子的状态对应。</p>
-<p>因此还剩一个问题：对于nim游戏来说，由于直接异或每堆石子的数量即可得到答案，因此：<br>$$<br>\begin{aligned}<br>    &amp; sg(G) &#x3D; s_1 \oplus s_2 \oplus s_3 \oplus \cdots \oplus s_n \\<br>    &amp; sg(G) &#x3D; sg(s_1) \oplus sg(s_2) \oplus \cdots \oplus sg(s_n) \\<br>\end{aligned}<br>$$<br>我们可以得到一个结论：$sg(s_i) &#x3D; s_i$。那么为什么？</p>
-<p>这里不做严格证明，不过不难想象，这与SG值阶的转换有关。在标准的nim游戏中，<strong>对于每一堆石子我们每次都可以取任意数量的石子</strong>，由于石子的所有可能数量与有向图上的点一一对应，因此这句话与<strong>本点的SG值可以转换为任意SG值更低阶的点</strong>相对应，也便是<strong>本点的后继是所有小于本点值的点的集合</strong>，因此：<br>$$<br>sg(s_i) &#x3D; mex { x | 0 \leq x &lt; s_i 且x为非负整数 } &#x3D; s_i<br>$$<br>至此，nim游戏与SG函数的联系论述完成。</p>
-<h2 id="nim游戏的变形与SG值的计算方法"><a href="#nim游戏的变形与SG值的计算方法" class="headerlink" title="nim游戏的变形与SG值的计算方法"></a>nim游戏的变形与SG值的计算方法</h2><p>在标准的nim游戏中，我们每次可以取不少于1个的任意个石子，使得在转换中有$sg(s_i) &#x3D; s_i$。但大多的时候转换的规律不会这么简单。</p>
-<p><strong>第一个例子：</strong></p>
-<p><img src="/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/2.png" alt="img"></p>
-<p><img src="/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/3.png" alt="img"></p>
-<p><strong>第二个例子：</strong></p>
-<p>有n个石子，每次只能取{1, 3, 4}个石子，先取完石子者胜利，那么各个数的SG值为多少？</p>
-<p><img src="/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/1.png" alt="img"></p>
-<p>sg[0]&#x3D;0，f[]&#x3D;{1,3,4}；</p>
-<p>x&#x3D;1时，可以取走1-f{1}个石子，剩余{0}个，mex{sg[0]}&#x3D;{0}，故sg[1]&#x3D;1；</p>
-<p>x&#x3D;2时，可以取走2-f{1}个石子，剩余{1}个，mex{sg[1]}&#x3D;{1}，故sg[2]&#x3D;0；</p>
-<p>x&#x3D;3时，可以取走3-f{1,3}个石子，剩余{2,0}个，mex{sg[2],sg[0]}&#x3D;{0,0}，故sg[3]&#x3D;1；</p>
-<p>x&#x3D;4时，可以取走4-f{1,3,4}个石子，剩余{3,1,0}个，mex{sg[3],sg[1],sg[0]}&#x3D;{1,1,0},故sg[4]&#x3D;2；</p>
-<p>x&#x3D;5时，可以取走5-f{1,3,4}个石子，剩余{4,2,1}个，mex{sg[4],sg[2],sg[1]}&#x3D;{2,0,1},故sg[5]&#x3D;3；</p>
-<p>以此类推…</p>
-<table>
-<thead>
-<tr>
-<th align="center">x</th>
-<th align="center">0</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="center">4</th>
-<th align="center">5</th>
-<th align="center">6</th>
-<th align="center">7</th>
-<th align="center">8</th>
-<th align="center">…</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">sg[x]</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">2</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">…</td>
-</tr>
-</tbody></table>
-<p>由此我们可以得到一些规律，总结出<strong>SG值的计算方法</strong>：</p>
-<ul>
-<li>可选步数为任意步，SG(x) &#x3D; x。</li>
-<li>可选步数为1~m的连续整数，SG(x) &#x3D; x % (m+1)。</li>
-<li>可选步数为一系列不连续的数，用模板计算。</li>
-</ul>
-<p><strong>模板</strong> 两种方法我觉得都是搜索</p>
-<p>方法一：打表 f[]可以取走的石子个数,注意f[]需要从小到大排序 sg[]SG函数值；vis[]标记数组，用于求mex{}</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> f[MAXN],sg[MAXN];</span><br><span class="line"><span class="type">bool</span> vis[MAXN];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getSG</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sort</span>(f+<span class="number">1</span>,f+<span class="number">1</span>+n);</span><br><span class="line">	<span class="built_in">memset</span>(sg,<span class="number">0</span>,<span class="built_in">sizeof</span>(sg));</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>; f[j]&lt;=i; j++)<span class="comment">//f排序是为了让每一种取法都循环到</span></span><br><span class="line">			vis[sg[i-f[j]]]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (vis[j]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				sg[i]=j; <span class="keyword">break</span>;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>方法二：dfs s数组是定义特殊取法规则的数组，注意要按照从小到大排序；n表示集合大小 SG函数要初始化为-1，每个集合只需初始化一遍</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> s[MAXN],sg[MAXN],n;</span><br><span class="line"><span class="type">bool</span> vis[MAXN];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">SG_dfs</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (sh[x]!=<span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> sg[x];</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (x&gt;=s[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">SG_dfs</span>(x-s[i]);</span><br><span class="line">			vis[sg[x-s[i]]]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!vis[i])</span><br><span class="line">			<span class="keyword">return</span> sg[x]=i;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.luogu.com.cn/problem/solution/P2197">https://www.luogu.com.cn/problem/solution/P2197</a></p>
-<p><a href="https://blog.csdn.net/amf12345/article/details/97934508">https://blog.csdn.net/amf12345/article/details/97934508</a></p>
-<p><a href="https://baike.baidu.com/item/SG%E5%87%BD%E6%95%B0/1004609?fr=aladdin">https://baike.baidu.com/item/SG%E5%87%BD%E6%95%B0/1004609?fr=aladdin</a></p>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>博弈论</tag>
-        <tag>最优解</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>层次分析法</title>
     <url>/2022/02/09/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/</url>
     <content><![CDATA[<p>层次分析法（AHP）用来解决评价类问题。</p>
@@ -893,6 +772,127 @@
       </categories>
   </entry>
   <entry>
+    <title>博弈论</title>
+    <url>/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/</url>
+    <content><![CDATA[<p>博弈论就是指有若干个人进行一些对弈，并且默认每个人都可以找到当前的最优解，最后寻找有没有哪个人有必胜&#x2F;必败的的策略。</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p><strong>移动（Move）</strong>：对游戏局面的改变。<br><strong>局面（Position）</strong>：游戏进行中的一种状态。每个局面都对应着一个当前合法操作的集合。<br>​<strong>必败态（P-Position）</strong>：在当前的局面下，先手必败<br>​<strong>必胜态（N-Position）</strong>：在当前的局面下，先手必胜</p>
+<p><strong>有关局面的性质：</strong></p>
+<ul>
+<li>合法操作集合为空的局面是必败态</li>
+<li>可以移动到必败态的局面是必胜态</li>
+<li>只能移动到必胜态的局面是必败态</li>
+</ul>
+<h1 id="公平组合游戏（ICG）"><a href="#公平组合游戏（ICG）" class="headerlink" title="公平组合游戏（ICG）"></a>公平组合游戏（ICG）</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>两名选手</li>
+<li>两名选手轮流行动，每一次行动可以在有限合法操作集合中选择一个</li>
+<li>游戏的任何一种可能的局面，合法操作集合只取决于这个局面本身，不取决于轮到哪名选手操作、以前的任何操作、骰子的点数或者其它因素</li>
+<li>如果轮到某名选手移动，且这个局面的合法的移动集合为空（也就是说此时无法进行移动），则这名选手负</li>
+</ul>
+<h2 id="nim游戏"><a href="#nim游戏" class="headerlink" title="nim游戏"></a>nim游戏</h2><p><a href="https://www.luogu.com.cn/problem/P2197">nim游戏</a></p>
+<p><strong>题目大意</strong>：有n堆石子，每堆有$s_i$个，两人依次从中任意一堆中取至少1个的任意数量的石子，问先手有没有必胜策略。</p>
+<p><strong>在本游戏中可以得到一个结论：</strong><br>$$<br>当且仅当s_1 \oplus s_2 \oplus s_3 \oplus \cdots \oplus s_n &#x3D; 0时，局面为必败态<br>$$<br><strong>证明：</strong></p>
+<ul>
+<li>当石子数量和为0时为必败态（此时异或和为0）</li>
+<li>当各石子堆异或和为$k(k \neq 0)$时，设k的最高位二进制1的位数为j，则我们一定能找到一堆石子$s_i$，且$s_i$的二进制第j位为1。将$s_i$的数量变为$s_i \oplus k$（显然在第j位为1的前提下$s_i &gt; s_i \oplus k$），此时各石子堆异或和便为0了（$x \oplus y \oplus y &#x3D; x$）。（必胜态转必败态）</li>
+<li>若异或和为0且存在数量不为0的石子堆，不能找到一种方法使异或和仍为0。（异或的性质）（必败态转必胜态）</li>
+</ul>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t,n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=t;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> ans,lin;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;ans);</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;lin);</span><br><span class="line">			ans^=lin;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(ans) <span class="built_in">printf</span>(<span class="string">&quot;Yes\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;No\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SG函数"><a href="#SG函数" class="headerlink" title="SG函数"></a>SG函数</h2><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>给定一个有向无环图和一个起始顶点上的一枚棋子，Alice和Bob交替的将这枚棋子沿有向边进行移动，无法移动者判负。问是否有必胜策略。</p>
+<p>该游戏可以认为是所有ICG游戏的抽象模型。也就是说，任何一个ICG游戏都可以通过把每个局面看成一个顶点，对每个局面和它的子局面连一条有向边来抽象成这个“有向图游戏”。</p>
+<h3 id="函数建立"><a href="#函数建立" class="headerlink" title="函数建立"></a>函数建立</h3><p><strong>mex运算</strong>：这是施加于一个集合的运算，表示最小的不属于这个集合的非负整数，如mex{0, 1, 2, 4} &#x3D; 3、mex{2, 3, 5} &#x3D; 0、mex{} &#x3D; 0。</p>
+<p>对于一个给定的有向无环图，定义关于图的每个顶点的SG函数sg如下：sg(x) &#x3D; mex{sg(y) | y是x的后继 }。也就是说，一个点的SG函数为在它所有后继中都未出现的最小的值。</p>
+<p><strong>注意</strong>：由于这是一种类似递归的定义，所以对于一张有向无环图，每个点的SG值都是会被直接计算出来的。</p>
+<h3 id="函数性质"><a href="#函数性质" class="headerlink" title="函数性质"></a>函数性质</h3><ul>
+<li>没有出边的点，SG值为0。</li>
+<li>对于一个$sg(x) &#x3D; 0$的顶点x，它的后继y都满足$sg(y) \neq 0$。</li>
+<li>对于一个$sg(x) \neq 0$的顶点x，必定存在一个后继y都满足$sg(y) &#x3D; 0$。</li>
+</ul>
+<p>可以发现，SG函数的性质与必败态、必胜态的性质十分相似：</p>
+<ul>
+<li>顶点x所代表的局面是必败态当且仅当$sg(x) &#x3D; 0$。</li>
+<li>顶点x所代表的局面是必胜态当且仅当$sg(x) &gt; 0$。</li>
+</ul>
+<h3 id="SG值的阶"><a href="#SG值的阶" class="headerlink" title="SG值的阶"></a>SG值的阶</h3><p>当$sg(x) &#x3D; k$时，表明对于任意一个$0 \leq i &lt; k$，都存在x的一个后继y满足$sg(y) &#x3D; i$。</p>
+<p>因此当$sg(x) &#x3D; k$时，我们可以把这个点的SG值称为k阶SG值，它一定可以通过移动转换到一个拥有更低阶SG值的点。</p>
+<h2 id="nim游戏与SG函数的联系"><a href="#nim游戏与SG函数的联系" class="headerlink" title="nim游戏与SG函数的联系"></a>nim游戏与SG函数的联系</h2><p>设有$G_1,G_2,G_3, \cdots ,G_n$个有向图游戏，定义游戏$G &#x3D; G_1 + G_2 + G_3 + \cdots + G_n$（游戏本身的加和，不是数学意义上的加和），移动规则为任选一个有向图$G_i$并移动上面的棋子。</p>
+<p>Sprague-Grundy定理就是：<br>$$<br>\begin{aligned}<br>    &amp; 对于任意G &#x3D; G_1 + G_2 + G_3 + \cdots + G_n \\<br>    &amp; 有sg(G) &#x3D; sg(G_1) \oplus sg(G_2) \oplus \cdots \oplus sg(G_n) \\<br>    &amp; SG值相同局面，可以认为局面本质相同<br>\end{aligned}<br>$$<br>也就是说，游戏的和的SG函数值是它所有子游戏的SG函数值的异或。</p>
+<p>之后我们可以发现，若将nim游戏中的每一堆石头看成一个有向图游戏，则nim游戏是一个符合上述定义的多个有向图相加的游戏G。因此我们可以分别计算每一堆石头的有向图所对应的SG值，再将所有的SG值进行异或从而得到nim游戏的SG值，从而找到必胜策略。</p>
+<p><strong>注</strong>：对于任意一张子图$G_i$，它上面的不同的点要理解成本堆石头的当前状态，而不是整个nim游戏的当前状态，是多堆石头的不同状态得到的SG值异或得到了整个nim游戏的SG值，不存在一张有向图代表整个nim游戏（虽然的确可以存在这样一张有向图），而是nim游戏本身就是许多有向图的加和。这是我一开始不理解这个联系的重要一点。</p>
+<p>不妨设第i个有向图游戏的点的值为$s_i$，当且仅当本点与本石子堆还剩$s_i$个石子的状态对应。</p>
+<p>因此还剩一个问题：对于nim游戏来说，由于直接异或每堆石子的数量即可得到答案，因此：<br>$$<br>\begin{aligned}<br>    &amp; sg(G) &#x3D; s_1 \oplus s_2 \oplus s_3 \oplus \cdots \oplus s_n \\<br>    &amp; sg(G) &#x3D; sg(s_1) \oplus sg(s_2) \oplus \cdots \oplus sg(s_n) \\<br>\end{aligned}<br>$$<br>我们可以得到一个结论：$sg(s_i) &#x3D; s_i$。那么为什么？</p>
+<p>这里不做严格证明，不过不难想象，这与SG值阶的转换有关。在标准的nim游戏中，<strong>对于每一堆石子我们每次都可以取任意数量的石子</strong>，由于石子的所有可能数量与有向图上的点一一对应，因此这句话与<strong>本点的SG值可以转换为任意SG值更低阶的点</strong>相对应，也便是<strong>本点的后继是所有小于本点值的点的集合</strong>，因此：<br>$$<br>sg(s_i) &#x3D; mex { x | 0 \leq x &lt; s_i 且x为非负整数 } &#x3D; s_i<br>$$<br>至此，nim游戏与SG函数的联系论述完成。</p>
+<h2 id="nim游戏的变形与SG值的计算方法"><a href="#nim游戏的变形与SG值的计算方法" class="headerlink" title="nim游戏的变形与SG值的计算方法"></a>nim游戏的变形与SG值的计算方法</h2><p>在标准的nim游戏中，我们每次可以取不少于1个的任意个石子，使得在转换中有$sg(s_i) &#x3D; s_i$。但大多的时候转换的规律不会这么简单。</p>
+<p><strong>第一个例子：</strong></p>
+<p><img src="/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/2.png" alt="img"></p>
+<p><img src="/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/3.png" alt="img"></p>
+<p><strong>第二个例子：</strong></p>
+<p>有n个石子，每次只能取{1, 3, 4}个石子，先取完石子者胜利，那么各个数的SG值为多少？</p>
+<p><img src="/2022/02/12/%E5%8D%9A%E5%BC%88%E8%AE%BA/1.png" alt="img"></p>
+<p>sg[0]&#x3D;0，f[]&#x3D;{1,3,4}；</p>
+<p>x&#x3D;1时，可以取走1-f{1}个石子，剩余{0}个，mex{sg[0]}&#x3D;{0}，故sg[1]&#x3D;1；</p>
+<p>x&#x3D;2时，可以取走2-f{1}个石子，剩余{1}个，mex{sg[1]}&#x3D;{1}，故sg[2]&#x3D;0；</p>
+<p>x&#x3D;3时，可以取走3-f{1,3}个石子，剩余{2,0}个，mex{sg[2],sg[0]}&#x3D;{0,0}，故sg[3]&#x3D;1；</p>
+<p>x&#x3D;4时，可以取走4-f{1,3,4}个石子，剩余{3,1,0}个，mex{sg[3],sg[1],sg[0]}&#x3D;{1,1,0},故sg[4]&#x3D;2；</p>
+<p>x&#x3D;5时，可以取走5-f{1,3,4}个石子，剩余{4,2,1}个，mex{sg[4],sg[2],sg[1]}&#x3D;{2,0,1},故sg[5]&#x3D;3；</p>
+<p>以此类推…</p>
+<table>
+<thead>
+<tr>
+<th align="center">x</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">sg[x]</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<p>由此我们可以得到一些规律，总结出<strong>SG值的计算方法</strong>：</p>
+<ul>
+<li>可选步数为任意步，SG(x) &#x3D; x。</li>
+<li>可选步数为1~m的连续整数，SG(x) &#x3D; x % (m+1)。</li>
+<li>可选步数为一系列不连续的数，用模板计算。</li>
+</ul>
+<p><strong>模板</strong> 两种方法我觉得都是搜索</p>
+<p>方法一：打表 f[]可以取走的石子个数,注意f[]需要从小到大排序 sg[]SG函数值；vis[]标记数组，用于求mex{}</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> f[MAXN],sg[MAXN];</span><br><span class="line"><span class="type">bool</span> vis[MAXN];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getSG</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sort</span>(f+<span class="number">1</span>,f+<span class="number">1</span>+n);</span><br><span class="line">	<span class="built_in">memset</span>(sg,<span class="number">0</span>,<span class="built_in">sizeof</span>(sg));</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>; f[j]&lt;=i; j++)<span class="comment">//f排序是为了让每一种取法都循环到</span></span><br><span class="line">			vis[sg[i-f[j]]]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;=n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (vis[j]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				sg[i]=j; <span class="keyword">break</span>;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：dfs s数组是定义特殊取法规则的数组，注意要按照从小到大排序；n表示集合大小 SG函数要初始化为-1，每个集合只需初始化一遍</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> s[MAXN],sg[MAXN],n;</span><br><span class="line"><span class="type">bool</span> vis[MAXN];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">SG_dfs</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (sh[x]!=<span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> sg[x];</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (x&gt;=s[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">SG_dfs</span>(x-s[i]);</span><br><span class="line">			vis[sg[x-s[i]]]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!vis[i])</span><br><span class="line">			<span class="keyword">return</span> sg[x]=i;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.luogu.com.cn/problem/solution/P2197">https://www.luogu.com.cn/problem/solution/P2197</a></p>
+<p><a href="https://blog.csdn.net/amf12345/article/details/97934508">https://blog.csdn.net/amf12345/article/details/97934508</a></p>
+<p><a href="https://baike.baidu.com/item/SG%E5%87%BD%E6%95%B0/1004609?fr=aladdin">https://baike.baidu.com/item/SG%E5%87%BD%E6%95%B0/1004609?fr=aladdin</a></p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>博弈论</tag>
+        <tag>最优解</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常忘数学公式语法</title>
     <url>/2022/05/15/%E5%B8%B8%E5%BF%98%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>平时写数学公式时，总是忘记一些符号的代码，在此将他们统一记录一下，方便查找。</p>
@@ -973,7 +973,7 @@
 </tr>
 <tr>
 <td align="center">大括号</td>
-<td align="center">begin{case} end{case}</td>
+<td align="center">begin{cases} end{cases}</td>
 </tr>
 </tbody></table>
 ]]></content>
@@ -984,6 +984,32 @@
         <tag>博客</tag>
         <tag>语法</tag>
         <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>归并排序</title>
+    <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
+<p>归并排序的效率稳定。</p>
+<p><strong>时间复杂度</strong>：$O(nlog_n)$</p>
+<h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><p><strong>分</strong>：将原问题分成一些小的问题。</p>
+<p><strong>治</strong>：将分的阶段得到的各答案”修补”在一起。</p>
+<p>本算法使用了递归实现分治，理论上迭代也可。</p>
+<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1.png" alt="img"></p>
+<h1 id="合并有序子序列"><a href="#合并有序子序列" class="headerlink" title="合并有序子序列"></a>合并有序子序列</h1><p>合并有序子序列，即<strong>治</strong>的操作。</p>
+<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.png" alt="img">、<img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/3.png" alt="img"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://www.luogu.com.cn/problem/P1177">模板题点我</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> temp[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> i=l,j=mid+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=mid||j&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;=mid&amp;&amp;j&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=a[j]) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;=mid) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;=r;i++) a[i]=temp[++k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">msort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(r-l&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">msort</span>(l,mid);</span><br><span class="line">		<span class="built_in">msort</span>(mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">psort</span>(l,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">msort</span>(<span class="number">1</span>,n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html">https://www.cnblogs.com/chengxiao/p/6194356.html</a></p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+        <tag>分治</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -1107,32 +1133,6 @@
       </tags>
   </entry>
   <entry>
-    <title>归并排序</title>
-    <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
-<p>归并排序的效率稳定。</p>
-<p><strong>时间复杂度</strong>：$O(nlog_n)$</p>
-<h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><p><strong>分</strong>：将原问题分成一些小的问题。</p>
-<p><strong>治</strong>：将分的阶段得到的各答案”修补”在一起。</p>
-<p>本算法使用了递归实现分治，理论上迭代也可。</p>
-<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1.png" alt="img"></p>
-<h1 id="合并有序子序列"><a href="#合并有序子序列" class="headerlink" title="合并有序子序列"></a>合并有序子序列</h1><p>合并有序子序列，即<strong>治</strong>的操作。</p>
-<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.png" alt="img">、<img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/3.png" alt="img"></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://www.luogu.com.cn/problem/P1177">模板题点我</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> temp[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> i=l,j=mid+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=mid||j&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;=mid&amp;&amp;j&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=a[j]) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;=mid) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;=r;i++) a[i]=temp[++k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">msort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(r-l&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">msort</span>(l,mid);</span><br><span class="line">		<span class="built_in">msort</span>(mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">psort</span>(l,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">msort</span>(<span class="number">1</span>,n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html">https://www.cnblogs.com/chengxiao/p/6194356.html</a></p>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-        <tag>数据结构</tag>
-        <tag>分治</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>快速幂</title>
     <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
     <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
@@ -1148,6 +1148,17 @@
       <tags>
         <tag>数论</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>想法</title>
+    <url>/2022/06/06/%E6%83%B3%E6%B3%95/</url>
+    <content><![CDATA[<p>很早以前就在思考为什么我到了晚上往往被一些琐事纠缠，平时的几件小事和某些情感会被无限放大。搜到过一篇文章把这种情况归结于人到了晚上褪黑素之类的开始分泌，从而让人感到疲劳等等，使得负面情绪变得容易放大，这也算是一种科学解释了。但这种晚上的状态并不一定是消极的，就我多年的熬夜经验看来，熬夜不只会让人变得敏感脆弱，合理的利用也会收获到一段更加平静、专注的无人打扰的时间。</p>
+<p>但今天，显然我被奇怪的琐事缠身了。于是乎原本的博客续写整理计划被搁置，转而写这篇悠哉日记。不过也好，我觉得被记录下的这种思考过程本身也算一份知识点。由于有了今晚的经验，让我对熬夜的禁区有了更充分的认识。坚决不要在晚上思考或去做任何大概率为你带来负面情绪的事情，如果已经做了并伤心了，建议直接睡觉，因为往往事态并没有你此时理解的这么糟糕，是人体的机制在作怪，第二天醒来你会发现其实也没啥。除此之外，好好享受熬夜去学习或者打游戏等事情吧：）</p>
+<p>PS：写完文章就又开心起来了：）</p>
+]]></content>
+      <categories>
+        <category>悠哉日常</category>
+      </categories>
   </entry>
   <entry>
     <title>打了一个数学建模校赛</title>
@@ -1403,15 +1414,38 @@
 <li>非凸性</li>
 </ol>
 <p>指这种函数有多个极值，故系统具有多个较稳定的平稳态，这将导致系统演化的多样性。</p>
-<h1 id="人工神经元MP模型"><a href="#人工神经元MP模型" class="headerlink" title="人工神经元MP模型"></a>人工神经元MP模型</h1><p>这里需要一些图。</p>
+<h1 id="人工神经元MP模型与-Hebb-学习律"><a href="#人工神经元MP模型与-Hebb-学习律" class="headerlink" title="人工神经元MP模型与 Hebb 学习律"></a>人工神经元MP模型与 Hebb 学习律</h1><p>这里需要一些图。</p>
 <p>当时的权值都是固定的，预先设置好的。</p>
-<h1 id="Hebb-学习律"><a href="#Hebb-学习律" class="headerlink" title="Hebb 学习律"></a>Hebb 学习律</h1><p>Hebb 考虑调整权值来机器学习。</p>
+<h2 id="Hebb-学习律"><a href="#Hebb-学习律" class="headerlink" title="Hebb 学习律"></a>Hebb 学习律</h2><p>Hebb 考虑调整权值来机器学习。</p>
 <p>反复刺激会加强刺激效果。</p>
-<h2 id="线性联想器"><a href="#线性联想器" class="headerlink" title="线性联想器"></a>线性联想器</h2><p>这里需要一些图。</p>
+<h3 id="线性联想器"><a href="#线性联想器" class="headerlink" title="线性联想器"></a>线性联想器</h3><p>这里需要一些图。</p>
 <p>用目标输出代替实际输出。<br>$$<br>w_{ij} &#x3D; w_{ij} + t_i p_j<br>$$</p>
 <p>$$<br>W &#x3D; TP^T<br>$$</p>
 <p>带入<br>$$<br>Wp_1, Wp_2<br>$$</p>
-]]></content>
+<h1 id="感知器网络"><a href="#感知器网络" class="headerlink" title="感知器网络"></a>感知器网络</h1><p>监督学习：使用已标记的数据集训练</p>
+<p>分类、回归</p>
+<p>半监督学习：使用一部分标记数据和大量未标记数据做数据集训练</p>
+<p>分类、回归、聚类</p>
+<p>无监督学习：使用未标记的数据集训练</p>
+<p>聚类</p>
+<ul>
+<li>感知机由美国计算机科学家罗森布拉特于1957年提出，其神经元结构就是 MP 模型。</li>
+<li>感知机神经元是在 MP 模基础上加上了学习功能，其权值根据设计目的加以调节。</li>
+<li>感知机特别适合简单的模式分类问题，可解决线性划分问题。</li>
+</ul>
+<p>这里要有一些图。<br>$$<br>n &#x3D; \sum^r_{j &#x3D; 1} w_j p_j + b	\quad a &#x3D; f(n) &#x3D;<br>\begin{cases}<br>    1 \quad n \geq 0 \<br>    0 \quad n &lt; 0 \<br>\end{cases}<br>\<br>a &#x3D; f(W P + b) &#x3D; f(\sum^r_{j &#x3D; 1} w_j p_j + b) &#x3D;<br>\begin{cases}<br>    1 \quad n \geq 0 \<br>    0 \quad n &lt; 0 \<br>\end{cases}<br>$$</p>
+<ul>
+<li>一般感知机结构是一单层神经网络，其激活函数为二值函数。</li>
+</ul>
+<p><strong>感知器的权值与偏差</strong></p>
+<p>设置偏差 b 是为了增加神经网络可塑性，多一个可调参数。</p>
+<p><strong>感知器的图形解释</strong></p>
+<p>任意一组参数 W 和 b ，在输入矢量空间中，可决定一条（超）直线或（超）平面等，在该直线或平面上方输出为 1 ，下放输出为 0 。</p>
+<p><strong>感知器的输入输出关系</strong></p>
+<p>分类能力：感知器只能进行线性分类。</p>
+<p>分类数目：单个神经元可将输入空间的矢量非储层两类。</p>
+<p>s 个神经元组成的感知器将输入空间分成$2^s$类。</p>
+<h2 id="单神经元感知器"><a href="#单神经元感知器" class="headerlink" title="单神经元感知器"></a>单神经元感知器</h2>]]></content>
       <categories>
         <category>环境项目</category>
       </categories>
