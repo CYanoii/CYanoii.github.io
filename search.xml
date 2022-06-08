@@ -32,6 +32,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Codeforces Round #783 (Div. 1) A 题解（存疑）</title>
+    <url>/2022/04/20/Codeforces-Round-783-Div-1-A-%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://codeforces.com/problemset/problem/1667/A">原题：A. Make it Increasing</a></p>
+<p>题目本身比较简单。要想得到递增序列，只需要从$1$到$n$遍历选择不进行增减的点（$0$），后根据递增原则分左右两部分进行搜索计算即可。注意要开long long。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll unsigned long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll a[<span class="number">5200</span>],b[<span class="number">5200</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;a[i]);</span><br><span class="line">		b[i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ll ans=<span class="number">1e18</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=n;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=b[i];</span><br><span class="line">		</span><br><span class="line">		ll num=<span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i+<span class="number">1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i<span class="number">-1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		ans=<span class="built_in">min</span>(ans,num);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是题解的写法比较巧妙。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> n, a[<span class="number">5005</span>], ans=<span class="number">1e18</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> pos=<span class="number">1</span>; pos&lt;=n; pos++) &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> prev=<span class="number">0</span>, sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos<span class="number">-1</span>; i&gt;=<span class="number">1</span>; i--) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];	<span class="comment">//对于模a[i]有余数的情况可以让prev加到刚好被整除的大小，即满足递增条件的最小值</span></span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        prev=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos+<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];</span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        ans=<span class="built_in">min</span>(ans, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>题解注意到了一点：若$b_i - a_i &gt; b_{i - 1}$，则可以认为至少多进行了一次没有必要的操作（即多加了一次$a_i$）。因此我们可以认为对于最优答案存在$b_i \leq b_{i - 1} + a_i$。那么我们假设$prev_i &#x3D; b_{i - 1} + a_i$，则对于第$i$个数应该进行$prev_i &#x2F; a_i$次操作。</p>
+<p>因为$prev_{i - 1} \geq b_{i - 1}$，所以$prev_i \geq prev_{i - 1} + a_i$。由于我们希望总操作次数小，因此$prev_i$该越小越好，所以我们希望取到等于的情况。因此$prev_i &#x3D; prev_{i - 1} + (a_i - prev_{i - 1} % a_i)$。当后面的数更大时，则直接加$a_i$，否则加到刚好被$a_i$整除的大小，即满足递增条件的最小值。</p>
+<p>但我目前还对这种解法存疑。如0 6 7 3，选中0后面进行递增，似乎我的程序是5，题解的程序是7。</p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Codeforces Round #791 (Div. 2) A-C 题解</title>
     <url>/2022/05/15/Codeforces-Round-791-Div-2-A-C-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1679">Codeforces Round #791 (Div. 2)</a></p>
@@ -70,28 +92,6 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> n,p;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> bit1[<span class="number">200010</span>],bit2[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> row[<span class="number">200010</span>],col[<span class="number">200010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add1</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(x&lt;=n)</span><br><span class="line">	&#123;</span><br><span class="line">		bit1[x]+=k;</span><br><span class="line">		x+=<span class="built_in">lowbit</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum1</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=bit1[x];</span><br><span class="line">		x-=<span class="built_in">lowbit</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add2</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(x&lt;=n)</span><br><span class="line">	&#123;</span><br><span class="line">		bit2[x]+=k;</span><br><span class="line">		x+=<span class="built_in">lowbit</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum2</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=bit2[x];</span><br><span class="line">		x-=<span class="built_in">lowbit</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> x,a,b,c,d;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;p);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=p;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(x==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">			</span><br><span class="line">			row[a]++;</span><br><span class="line">			<span class="keyword">if</span>(row[a]==<span class="number">1</span>) <span class="built_in">add1</span>(a,<span class="number">1</span>);</span><br><span class="line">			</span><br><span class="line">			col[b]++;</span><br><span class="line">			<span class="keyword">if</span>(col[b]==<span class="number">1</span>) <span class="built_in">add2</span>(b,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(x==<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">			</span><br><span class="line">			row[a]--;</span><br><span class="line">			<span class="keyword">if</span>(!row[a]) <span class="built_in">add1</span>(a,<span class="number">-1</span>);</span><br><span class="line">			</span><br><span class="line">			col[b]--;</span><br><span class="line">			<span class="keyword">if</span>(!col[b]) <span class="built_in">add2</span>(b,<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(x==<span class="number">3</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>,&amp;a,&amp;b,&amp;c,&amp;d);</span><br><span class="line">			</span><br><span class="line">			<span class="type">int</span> rownum=c-a+<span class="number">1</span>,colnum=d-b+<span class="number">1</span>;</span><br><span class="line">			<span class="type">int</span> nowrownum=<span class="built_in">sum1</span>(c)-<span class="built_in">sum1</span>(a<span class="number">-1</span>);</span><br><span class="line">			<span class="type">int</span> nowcolnum=<span class="built_in">sum2</span>(d)-<span class="built_in">sum2</span>(b<span class="number">-1</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//printf(&quot;%d %d %d %d\n&quot;,rownum,colnum,nowrownum,nowcolnum);</span></span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(rownum==nowrownum||colnum==nowcolnum) <span class="built_in">printf</span>(<span class="string">&quot;Yes\n&quot;</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;No\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h1><p>上一场比赛因为有不会的题，所以题解慢慢再补……</p>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>Codeforces</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Codeforces Round #783 (Div. 1) A 题解（存疑）</title>
-    <url>/2022/04/20/Codeforces-Round-783-Div-1-A-%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://codeforces.com/problemset/problem/1667/A">原题：A. Make it Increasing</a></p>
-<p>题目本身比较简单。要想得到递增序列，只需要从$1$到$n$遍历选择不进行增减的点（$0$），后根据递增原则分左右两部分进行搜索计算即可。注意要开long long。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll unsigned long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll a[<span class="number">5200</span>],b[<span class="number">5200</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;a[i]);</span><br><span class="line">		b[i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ll ans=<span class="number">1e18</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=n;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=b[i];</span><br><span class="line">		</span><br><span class="line">		ll num=<span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i+<span class="number">1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i<span class="number">-1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		ans=<span class="built_in">min</span>(ans,num);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是题解的写法比较巧妙。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> n, a[<span class="number">5005</span>], ans=<span class="number">1e18</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> pos=<span class="number">1</span>; pos&lt;=n; pos++) &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> prev=<span class="number">0</span>, sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos<span class="number">-1</span>; i&gt;=<span class="number">1</span>; i--) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];	<span class="comment">//对于模a[i]有余数的情况可以让prev加到刚好被整除的大小，即满足递增条件的最小值</span></span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        prev=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos+<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];</span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        ans=<span class="built_in">min</span>(ans, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>题解注意到了一点：若$b_i - a_i &gt; b_{i - 1}$，则可以认为至少多进行了一次没有必要的操作（即多加了一次$a_i$）。因此我们可以认为对于最优答案存在$b_i \leq b_{i - 1} + a_i$。那么我们假设$prev_i &#x3D; b_{i - 1} + a_i$，则对于第$i$个数应该进行$prev_i &#x2F; a_i$次操作。</p>
-<p>因为$prev_{i - 1} \geq b_{i - 1}$，所以$prev_i \geq prev_{i - 1} + a_i$。由于我们希望总操作次数小，因此$prev_i$该越小越好，所以我们希望取到等于的情况。因此$prev_i &#x3D; prev_{i - 1} + (a_i - prev_{i - 1} % a_i)$。当后面的数更大时，则直接加$a_i$，否则加到刚好被$a_i$整除的大小，即满足递增条件的最小值。</p>
-<p>但我目前还对这种解法存疑。如0 6 7 3，选中0后面进行递增，似乎我的程序是5，题解的程序是7。</p>
 ]]></content>
       <categories>
         <category>算法比赛</category>
@@ -142,6 +142,27 @@
       </tags>
   </entry>
   <entry>
+    <title>O(nlogn)数组寻找差值</title>
+    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
+    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
+<ol>
+<li>对原数组排序。</li>
+<li>对原数组去重得到数组$b$，长度为$len$。</li>
+<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
+<li>对扩充后的数组排序。</li>
+<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
+</ol>
+<p>会有更简单的办法，但我暂时是想出来了这个。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Educational Codeforces Round 129 (Rated for Div. 2) A-D 题解</title>
     <url>/2022/05/24/Educational-Codeforces-Round-129-Rated-for-Div-2-A-D-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1681">Educational Codeforces Round 129 (Rated for Div. 2)</a></p>
@@ -171,27 +192,6 @@
       <tags>
         <tag>题解</tag>
         <tag>Codeforces</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>O(nlogn)数组寻找差值</title>
-    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
-    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
-<ol>
-<li>对原数组排序。</li>
-<li>对原数组去重得到数组$b$，长度为$len$。</li>
-<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
-<li>对扩充后的数组排序。</li>
-<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
-</ol>
-<p>会有更简单的办法，但我暂时是想出来了这个。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -251,6 +251,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2022/05/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>gcd&amp;lcm（待完善）</title>
     <url>/2022/03/10/gcd-lcm/</url>
     <content><![CDATA[<h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p><strong>辗转相除法（欧几里得）：</strong></p>
@@ -278,24 +296,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/05/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>主成分分析法（待完善）</title>
     <url>/2022/05/22/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95/</url>
     <content><![CDATA[<p>下次一定会写的！</p>
@@ -307,6 +307,17 @@
         <tag>正交变换</tag>
         <tag>相关性</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>六一</title>
+    <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
+    <content><![CDATA[<p>第一天回到家喜提发烧一次，本来以为是终于吹到了空调就激动到没休息好，结果发现确实是发烧了。</p>
+<p>为什么会有发烧这么可爱的病啊！直接睡掉了上午二的网课直到下午2点左右才有了一点精神。</p>
+<p>头晕的厉害，稍微处理了一些事情，学了学神经网络，就又到了睡觉的时间。于是乎美好的六一就被我浪费过去了，我连下楼买点零食的欲望都没有。今天睡一晚就坐等发烧好转，明天什么时候不晕了我什么时候起床：）</p>
+]]></content>
+      <categories>
+        <category>悠哉日常</category>
+      </categories>
   </entry>
   <entry>
     <title>包裹浮动元素</title>
@@ -338,17 +349,6 @@
         <tag>前端</tag>
         <tag>CSS</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>六一</title>
-    <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
-    <content><![CDATA[<p>第一天回到家喜提发烧一次，本来以为是终于吹到了空调就激动到没休息好，结果发现确实是发烧了。</p>
-<p>为什么会有发烧这么可爱的病啊！直接睡掉了上午二的网课直到下午2点左右才有了一点精神。</p>
-<p>头晕的厉害，稍微处理了一些事情，学了学神经网络，就又到了睡觉的时间。于是乎美好的六一就被我浪费过去了，我连下楼买点零食的欲望都没有。今天睡一晚就坐等发烧好转，明天什么时候不晕了我什么时候起床：）</p>
-]]></content>
-      <categories>
-        <category>悠哉日常</category>
-      </categories>
   </entry>
   <entry>
     <title>协方差与相关系数</title>
@@ -969,7 +969,7 @@
 <td>\Delta</td>
 </tr>
 </tbody></table>
-<h1 id="特殊效果类"><a href="#特殊效果类" class="headerlink" title="特殊效果类"></a>特殊效果类</h1><p>在博客上写此类符号时往往要多加一个\，因为单个会被转义掉。</p>
+<h1 id="特殊效果类"><a href="#特殊效果类" class="headerlink" title="特殊效果类"></a>特殊效果类</h1><p>在博客上写此类符号时往往要多加一个\，不然两个的\往往会被转义掉。</p>
 <table>
 <thead>
 <tr>
@@ -1478,42 +1478,6 @@
       </categories>
   </entry>
   <entry>
-    <title>筛法</title>
-    <url>/2020/10/25/%E7%AD%9B%E6%B3%95/</url>
-    <content><![CDATA[<p>筛法是一种用来求素数的方法。一般来说可以循序渐进的掌握暴力判断素数、埃氏筛法、欧拉筛法。</p>
-<h1 id="暴力判断素数"><a href="#暴力判断素数" class="headerlink" title="暴力判断素数"></a>暴力判断素数</h1><p>时间复杂度$O(n^2)$(对于打出素数表来说)</p>
-<p>利用素数只能被$1$和它本身整除的性质，我们可以把需判断的数$x$与$2…n - 1$取余。如果结果均不等于$0$，则为素数。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">bool</span> flag;</span><br><span class="line"> <span class="number">9</span> </span><br><span class="line"><span class="number">10</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">11 </span>&#123;</span><br><span class="line"><span class="number">12</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">13</span>     </span><br><span class="line"><span class="number">14</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">15</span>     &#123;</span><br><span class="line"><span class="number">16</span>         flag=<span class="literal">true</span>;</span><br><span class="line"><span class="number">17</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=i<span class="number">-1</span>;j++)</span><br><span class="line"><span class="number">18</span>         &#123;</span><br><span class="line"><span class="number">19</span>             <span class="keyword">if</span>(i%j==<span class="number">0</span>)</span><br><span class="line"><span class="number">20</span>             &#123;</span><br><span class="line"><span class="number">21</span>                 flag=<span class="literal">false</span>;</span><br><span class="line"><span class="number">22</span>                 <span class="comment">//当出现第一个能被整除的数时立即跳出循环，可提高一定效率</span></span><br><span class="line"><span class="number">23</span>                 <span class="keyword">break</span>;</span><br><span class="line"><span class="number">24</span>             &#125;</span><br><span class="line"><span class="number">25</span>         &#125;</span><br><span class="line"><span class="number">26</span>         </span><br><span class="line"><span class="number">27</span>         <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line"><span class="number">28</span>     &#125;</span><br><span class="line"><span class="number">29</span>     </span><br><span class="line"><span class="number">30</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">31</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个最简单的写法在只判断几个素数时绰绰有余，但是当要打出一个很大的素数表时效率不足。</p>
-<h1 id="埃氏筛法"><a href="#埃氏筛法" class="headerlink" title="埃氏筛法"></a>埃氏筛法</h1><p>时间复杂度$O(n \log n)$</p>
-<p>任意一个素数的倍数是合数是埃氏筛法筛出素数表的主要原理。假设要打出$n$以内的素数表。我们从$2$开始向后遍历，每当遇到一个素数$p$时，便利用此素数将$2…n$内$p<em>2，p</em>3，p*4…$这些合数全部筛去。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"> <span class="number">5</span> </span><br><span class="line"> <span class="number">6</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">7</span> </span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) p[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(n)+<span class="number">0.5</span>;i++)</span><br><span class="line"><span class="number">19</span>         <span class="keyword">for</span>(<span class="type">int</span> j=i*<span class="number">2</span>;j&lt;=n;j+=i) p[j]=<span class="number">0</span>;</span><br><span class="line"><span class="number">20</span>     </span><br><span class="line"><span class="number">21</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">22</span>         <span class="keyword">if</span>(p[i]) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line"><span class="number">23</span>     </span><br><span class="line"><span class="number">24</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">25</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个算法在一般的数据面前已经足够了。不过还可以更快。</p>
-<h1 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h1><p>时间复杂度$O(n)$</p>
-<p>首先观察一下埃氏筛法。我们发现有这样一个问题：在使用素数$2$进行筛去操作时，会筛去素数$6$；在之后利用素数$3$进行筛去操作时，会再筛去一次素数$6$。可见在埃氏筛法的筛去过程中，会出现同一个合数被筛去多次的情况，从而影响了效率。</p>
-<p>相比之下，欧拉筛法是一种线性筛法。它便解决了埃氏筛法中一个合数会被筛去多次的问题，确保了每一个合数都只会被筛去一次，因此具有$O(n)$的效率。它的实现原理是<strong>确保每个合数都只会被它的最小质因数筛掉</strong>。过程大概如下：</p>
-<p>首先我们会建立$2$个数组：$isp$（值为$1&#x2F;0$，$isp[i]$用来表示$i$是否是素数），$p$（用来储存所有的素数）。依旧是打出到$n$的素数表。</p>
-<ol>
-<li><p>从$2$开始遍历$i$。如果$i$是素数，就把它加入到数组$p$中。</p>
-</li>
-<li><p>对于每个$i$使用$j$遍历数组$p$，筛去$i * p[j]$，若$i * p[j] &gt; n$（已经没必要筛去了）或$i \mod p[j] &#x3D;&#x3D; 0$（<strong>这是确保每个合数只筛一次的核心</strong>）就退出循环。</p>
-</li>
-</ol>
-<p><strong>对核心的解释：</strong>假设在$i \mod p[j] &#x3D;&#x3D; 0$时我们继续进行，便筛去了合数$i * p[j+1]$。由于此时$i \mod p[j] &#x3D;&#x3D; 0$，则这个由一个素数和一个合数的乘积组成的合数，一定能转化为一个更小的素数和一个更大的合数的乘积，那么当继续运行时，此合数必然还会被$p[j]$再次筛去，便进行了多余的筛去工作。因此可以说在$i \mod p[j] &#x3D;&#x3D; 0$时退出循环是确保每个合数都只会被它的最小质因数筛掉，即确保了每个合数只被筛一次。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> num=<span class="number">0</span>;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> isp[<span class="number">10000010</span>],p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) isp[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">19</span>     &#123;</span><br><span class="line"><span class="number">20</span>         <span class="keyword">if</span>(isp[i])</span><br><span class="line"><span class="number">21</span>         &#123;</span><br><span class="line"><span class="number">22</span>             num++;</span><br><span class="line"><span class="number">23</span>             p[num]=i;</span><br><span class="line"><span class="number">24</span>         &#125;</span><br><span class="line"><span class="number">25</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=num&amp;&amp;i*p[j]&lt;=n;j++)</span><br><span class="line"><span class="number">26</span>         &#123;</span><br><span class="line"><span class="number">27</span>             isp[i*p[j]]=<span class="number">0</span>;</span><br><span class="line"><span class="number">28</span>             <span class="comment">//确保每个合数都只会被它的最小质因数筛掉</span></span><br><span class="line"><span class="number">29</span>             <span class="keyword">if</span>(i%p[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line"><span class="number">30</span>         &#125;</span><br><span class="line"><span class="number">31</span>     &#125;</span><br><span class="line"><span class="number">32</span>     </span><br><span class="line"><span class="number">33</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=num;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]);</span><br><span class="line"><span class="number">34</span>     </span><br><span class="line"><span class="number">35</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">36</span> &#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>神经网络与深度学习</title>
     <url>/2022/05/31/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><p>机器学习包括神经网络，神经网络是深度学习的重要前置知识点。</p>
@@ -1594,6 +1558,374 @@
 <li>矩阵表示：</li>
 </ul>
 <p>设$E &#x3D; T - A$为误差矢量，<br>$$<br>\begin{aligned}<br>&amp; W &#x3D; W + E P^T \quad or \quad \Delta W &#x3D; E P^T \\<br>&amp; B &#x3D; B + E \quad or \quad \Delta B &#x3D; E \\<br>\end{aligned}<br>$$<br><strong>学习的收敛性：</strong>该算法属于梯度下降法，有解时收敛。</p>
+<h1 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h1><h2 id="张量（Tensor）"><a href="#张量（Tensor）" class="headerlink" title="张量（Tensor）"></a>张量（Tensor）</h2><p><img src="/2022/05/31/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%A0%E9%87%8F.jpg" alt="img"></p>
+<p><strong>Pytorch0.4.0 以前</strong></p>
+<p><code>Variable</code> 是 <code>torch.autograd</code> 中的数据类型，主要用于封装 Tensor ，进行<strong>自动求导</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>data</code></td>
+<td>被包装的 Tensor</td>
+</tr>
+<tr>
+<td><code>grad</code></td>
+<td>data 的梯度</td>
+</tr>
+<tr>
+<td><code>grad_fn</code></td>
+<td>创建 Tensor 的 Function ，是自动求导的关键</td>
+</tr>
+<tr>
+<td><code>requires_grad</code></td>
+<td>指示是否需要梯度</td>
+</tr>
+<tr>
+<td><code>is_leaf</code></td>
+<td>指示是否叶子结点（张量）</td>
+</tr>
+</tbody></table>
+<p><strong>Pytorch0.4.0及以后</strong></p>
+<p>单独有了 Tensor 类型。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dtype</code></td>
+<td>张量的数据类型，有 9 种</td>
+</tr>
+<tr>
+<td><code>shape</code></td>
+<td>张量的形状</td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td>张量所在设备（GPU or CPU）</td>
+</tr>
+</tbody></table>
+<p><code>dtpye</code> 常用 32 位浮点型（<code>torch.float32</code> or <code>torch.float</code>）或 64 位整型（<code>torch.int64</code> or <code>torch.lang</code>）。</p>
+<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h4 id="直接创建"><a href="#直接创建" class="headerlink" title="直接创建"></a>直接创建</h4><p><strong><code>torch.tensor()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.tensor(data,         </span><br><span class="line">             dtype = <span class="literal">None</span>,</span><br><span class="line">             device = <span class="literal">None</span>,</span><br><span class="line">             requires_grad = <span class="literal">False</span>,</span><br><span class="line">             pin_memory = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>data</code></td>
+<td>数据，可以是 list ， numpy</td>
+</tr>
+<tr>
+<td><code>dtype</code></td>
+<td>数据类型，默认与 <code>data</code> 的一致</td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td>所在设备， cuda&#x2F;cpu （cuda 就是 gpu）</td>
+</tr>
+<tr>
+<td><code>requires_grad</code></td>
+<td>是否需要梯度</td>
+</tr>
+<tr>
+<td><code>pin_memory</code></td>
+<td>是否存于锁页内存</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.from_numpy()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.from_numpy(ndarray)</span><br></pre></td></tr></table></figure>
+
+<p>功能：从 numpy 创建 tensor</p>
+<p><strong>注意事项</strong>：从 <code>torch.from_numpy</code> 创建的 tensor 与原 ndarray <strong>共享内存</strong>，当修改其中一个的数据，另一个也将会被改动</p>
+<h4 id="依据数值创建"><a href="#依据数值创建" class="headerlink" title="依据数值创建"></a>依据数值创建</h4><p><strong><code>torch.zeros()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.zeros(*size,</span><br><span class="line">            out = <span class="literal">None</span>,</span><br><span class="line">            dtype = <span class="literal">None</span>,</span><br><span class="line">            layout = torch.strided,</span><br><span class="line">           	device = <span class="literal">None</span>,</span><br><span class="line">           	requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：依 <code>size</code> 创建全 0 张量</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>size</code></td>
+<td>张量的形状，如 (3, 3) ， (3, 224, 224)</td>
+</tr>
+<tr>
+<td><code>out</code></td>
+<td>输出的张量</td>
+</tr>
+<tr>
+<td><code>layout</code></td>
+<td>内存中布局形式，有 <code>strided</code> ， <code>sparse_coo</code> 等</td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td>所在设备， gpu&#x2F;cpu</td>
+</tr>
+<tr>
+<td><code>requires_grad</code></td>
+<td>是否需要梯度</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.zeros_like()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.zeros_like(<span class="built_in">input</span>,</span><br><span class="line">                 dtype = <span class="literal">None</span>,</span><br><span class="line">                 layout = <span class="literal">None</span>,</span><br><span class="line">                 device = <span class="literal">None</span>,</span><br><span class="line">                 requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：依 <code>input</code> 形状创建全 0 张量</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>input</code></td>
+<td>创建与 <code>input</code> 同形状的全 0 张量</td>
+</tr>
+<tr>
+<td><code>dtpye</code></td>
+<td>数据类型</td>
+</tr>
+<tr>
+<td><code>layout</code></td>
+<td>内存中布局形式</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.ones()</code><strong>、</strong><code>torch.ones_like()</code><strong>、</strong><code>torch.full()</code><strong>、</strong><code>torch.full_like()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.ones()		<span class="comment"># 与上面同理，全1</span></span><br><span class="line">torch.ones_like()	<span class="comment"># 与上面同理，全1</span></span><br><span class="line"></span><br><span class="line">torch.full()		<span class="comment"># 与上面同理，在第1、2个参数间多一个参数fill_value，表示张量的值</span></span><br><span class="line">torch.full_like()	<span class="comment"># 与上面同理，在第1、2个参数间多一个参数fill_value，表示张量的值</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong><code>torch.arrange()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.arrange(start = <span class="number">0</span>,</span><br><span class="line">              end,</span><br><span class="line">              step = <span class="number">1</span>,</span><br><span class="line">              out = <span class="literal">None</span>,</span><br><span class="line">              dtype = <span class="literal">None</span>,</span><br><span class="line">              layout = torch.strided,</span><br><span class="line">              device = <span class="literal">None</span>,</span><br><span class="line">              requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：创建等差的 1 维张量</p>
+<p>注意事项：数值区间为 [start, end)</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>start</code></td>
+<td>数列起始值</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>数列“结束值”</td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td>数列公差，默认为 1</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.linspace()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.linspace(start,</span><br><span class="line">               end,</span><br><span class="line">               step = <span class="number">100</span>,</span><br><span class="line">               out = <span class="literal">None</span>,</span><br><span class="line">               dtype = <span class="literal">None</span>,</span><br><span class="line">               layout = torch.strided,</span><br><span class="line">               device = <span class="literal">None</span>,</span><br><span class="line">               requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：创建均分的 1 维张量</p>
+<p>注意事项：数值区间维 [start, end]</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>start</code></td>
+<td>数列起始值</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>数列结束值</td>
+</tr>
+<tr>
+<td><code>steps</code></td>
+<td>数列长度（数列有几个数）</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.logspace()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.logspace(start,</span><br><span class="line">               end,</span><br><span class="line">               step = <span class="number">100</span>,</span><br><span class="line">               base = <span class="number">10.0</span>,</span><br><span class="line">               out = <span class="literal">None</span>,</span><br><span class="line">               dtype = <span class="literal">None</span>,</span><br><span class="line">               layout = torch.strided,</span><br><span class="line">               device = <span class="literal">None</span>,</span><br><span class="line">               requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：创建对数均分的 1 维张量</p>
+<p>注意事项：长度为 <code>steps</code> ，底为 <code>base</code></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>start</code></td>
+<td>数列起始值</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>数列结束值</td>
+</tr>
+<tr>
+<td><code>steps</code></td>
+<td>数列长度（数列有几个数）</td>
+</tr>
+<tr>
+<td><code>base</code></td>
+<td>对数函数的底，默认为 10</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.eye()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.eye(n,</span><br><span class="line">          m = <span class="literal">None</span>,</span><br><span class="line">          out = <span class="literal">None</span>,</span><br><span class="line">          dtype = <span class="literal">None</span>,</span><br><span class="line">          layout = torch.strided,</span><br><span class="line">          device = <span class="literal">None</span>,</span><br><span class="line">          requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：创建单位对角矩阵（2 维张量）</p>
+<p>注意事项：默认为方阵</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>n</code></td>
+<td>矩阵行数</td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td>矩阵列数</td>
+</tr>
+</tbody></table>
+<h4 id="依概率分布创建"><a href="#依概率分布创建" class="headerlink" title="依概率分布创建"></a>依概率分布创建</h4><p><strong><code>torch.normal()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.normal(mean,</span><br><span class="line">             std,</span><br><span class="line">             out = <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">torch.normal(mean,</span><br><span class="line">             std,</span><br><span class="line">             size,</span><br><span class="line">             out = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：生成正态分布（高斯分布）</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>mean</code></td>
+<td>均值</td>
+</tr>
+<tr>
+<td><code>std</code></td>
+<td>标准差</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>前二者都是<strong>标量</strong>时的创建个数</td>
+</tr>
+</tbody></table>
+<p>四种模式：</p>
+<table>
+<thead>
+<tr>
+<th><code>mean</code></th>
+<th><code>std</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>标量</strong></td>
+<td><strong>标量</strong></td>
+</tr>
+<tr>
+<td><strong>标量</strong></td>
+<td>张量</td>
+</tr>
+<tr>
+<td>张量</td>
+<td><strong>标量</strong></td>
+</tr>
+<tr>
+<td>张量</td>
+<td>张量</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.randn()</code><strong>、</strong><code>torch.randn_like()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.randn(*size,</span><br><span class="line">            out = <span class="literal">None</span>,</span><br><span class="line">            dtype = <span class="literal">None</span>,</span><br><span class="line">            layout = torch.strided,</span><br><span class="line">            device = <span class="literal">None</span>,</span><br><span class="line">            requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：生成<strong>标准正态分布</strong></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>size</code></td>
+<td>张量的形状</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.rand()</code><strong>、</strong><code>torch.rand_like()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.rand(*size,</span><br><span class="line">           out = <span class="literal">None</span>,</span><br><span class="line">           dtype = <span class="literal">None</span>,</span><br><span class="line">           layout = torch.strided,</span><br><span class="line">           device = <span class="literal">None</span>,</span><br><span class="line">           requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：在区间 [0, 1) 上，生成<strong>均匀分布</strong></p>
+<p><strong><code>torch.randint()</code><strong>、</strong><code>torch.randint_like()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.randint(low = <span class="number">0</span>,</span><br><span class="line">              high,</span><br><span class="line">              size,</span><br><span class="line">              out = <span class="literal">None</span>,</span><br><span class="line">              dtype = <span class="literal">None</span>,</span><br><span class="line">              layout = torch.strided,</span><br><span class="line">              device = <span class="literal">None</span>,</span><br><span class="line">              requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：区间 [low, high) 生成整数<strong>均匀分布</strong></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>size</code></td>
+<td>张量的形状</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.randperm()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.randprem(n,</span><br><span class="line">               out = <span class="literal">None</span>,</span><br><span class="line">               dtype = <span class="literal">None</span>,</span><br><span class="line">               layout = torch.strided,</span><br><span class="line">               device = <span class="literal">None</span>,</span><br><span class="line">               requires_grad = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：生成从 0 到 n - 1 的随机排列</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>n</code></td>
+<td>张量的长度</td>
+</tr>
+</tbody></table>
+<p><strong><code>torch.bernoulli()</code></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.bernoulli(<span class="built_in">input</span>,</span><br><span class="line">                *,</span><br><span class="line">                generator = <span class="literal">None</span>,</span><br><span class="line">                out = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>功能：以 <code>input</code> 为概率，生成伯努利分布（0 - 1 分布，两点分布）</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>input</code></td>
+<td>概率值</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>环境项目</category>
@@ -1602,6 +1934,42 @@
         <tag>机器学习</tag>
         <tag>神经网络</tag>
         <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>筛法</title>
+    <url>/2020/10/25/%E7%AD%9B%E6%B3%95/</url>
+    <content><![CDATA[<p>筛法是一种用来求素数的方法。一般来说可以循序渐进的掌握暴力判断素数、埃氏筛法、欧拉筛法。</p>
+<h1 id="暴力判断素数"><a href="#暴力判断素数" class="headerlink" title="暴力判断素数"></a>暴力判断素数</h1><p>时间复杂度$O(n^2)$(对于打出素数表来说)</p>
+<p>利用素数只能被$1$和它本身整除的性质，我们可以把需判断的数$x$与$2…n - 1$取余。如果结果均不等于$0$，则为素数。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">bool</span> flag;</span><br><span class="line"> <span class="number">9</span> </span><br><span class="line"><span class="number">10</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">11 </span>&#123;</span><br><span class="line"><span class="number">12</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">13</span>     </span><br><span class="line"><span class="number">14</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">15</span>     &#123;</span><br><span class="line"><span class="number">16</span>         flag=<span class="literal">true</span>;</span><br><span class="line"><span class="number">17</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=i<span class="number">-1</span>;j++)</span><br><span class="line"><span class="number">18</span>         &#123;</span><br><span class="line"><span class="number">19</span>             <span class="keyword">if</span>(i%j==<span class="number">0</span>)</span><br><span class="line"><span class="number">20</span>             &#123;</span><br><span class="line"><span class="number">21</span>                 flag=<span class="literal">false</span>;</span><br><span class="line"><span class="number">22</span>                 <span class="comment">//当出现第一个能被整除的数时立即跳出循环，可提高一定效率</span></span><br><span class="line"><span class="number">23</span>                 <span class="keyword">break</span>;</span><br><span class="line"><span class="number">24</span>             &#125;</span><br><span class="line"><span class="number">25</span>         &#125;</span><br><span class="line"><span class="number">26</span>         </span><br><span class="line"><span class="number">27</span>         <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line"><span class="number">28</span>     &#125;</span><br><span class="line"><span class="number">29</span>     </span><br><span class="line"><span class="number">30</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">31</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个最简单的写法在只判断几个素数时绰绰有余，但是当要打出一个很大的素数表时效率不足。</p>
+<h1 id="埃氏筛法"><a href="#埃氏筛法" class="headerlink" title="埃氏筛法"></a>埃氏筛法</h1><p>时间复杂度$O(n \log n)$</p>
+<p>任意一个素数的倍数是合数是埃氏筛法筛出素数表的主要原理。假设要打出$n$以内的素数表。我们从$2$开始向后遍历，每当遇到一个素数$p$时，便利用此素数将$2…n$内$p<em>2，p</em>3，p*4…$这些合数全部筛去。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"> <span class="number">5</span> </span><br><span class="line"> <span class="number">6</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">7</span> </span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) p[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(n)+<span class="number">0.5</span>;i++)</span><br><span class="line"><span class="number">19</span>         <span class="keyword">for</span>(<span class="type">int</span> j=i*<span class="number">2</span>;j&lt;=n;j+=i) p[j]=<span class="number">0</span>;</span><br><span class="line"><span class="number">20</span>     </span><br><span class="line"><span class="number">21</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">22</span>         <span class="keyword">if</span>(p[i]) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line"><span class="number">23</span>     </span><br><span class="line"><span class="number">24</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">25</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个算法在一般的数据面前已经足够了。不过还可以更快。</p>
+<h1 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h1><p>时间复杂度$O(n)$</p>
+<p>首先观察一下埃氏筛法。我们发现有这样一个问题：在使用素数$2$进行筛去操作时，会筛去素数$6$；在之后利用素数$3$进行筛去操作时，会再筛去一次素数$6$。可见在埃氏筛法的筛去过程中，会出现同一个合数被筛去多次的情况，从而影响了效率。</p>
+<p>相比之下，欧拉筛法是一种线性筛法。它便解决了埃氏筛法中一个合数会被筛去多次的问题，确保了每一个合数都只会被筛去一次，因此具有$O(n)$的效率。它的实现原理是<strong>确保每个合数都只会被它的最小质因数筛掉</strong>。过程大概如下：</p>
+<p>首先我们会建立$2$个数组：$isp$（值为$1&#x2F;0$，$isp[i]$用来表示$i$是否是素数），$p$（用来储存所有的素数）。依旧是打出到$n$的素数表。</p>
+<ol>
+<li><p>从$2$开始遍历$i$。如果$i$是素数，就把它加入到数组$p$中。</p>
+</li>
+<li><p>对于每个$i$使用$j$遍历数组$p$，筛去$i * p[j]$，若$i * p[j] &gt; n$（已经没必要筛去了）或$i \mod p[j] &#x3D;&#x3D; 0$（<strong>这是确保每个合数只筛一次的核心</strong>）就退出循环。</p>
+</li>
+</ol>
+<p><strong>对核心的解释：</strong>假设在$i \mod p[j] &#x3D;&#x3D; 0$时我们继续进行，便筛去了合数$i * p[j+1]$。由于此时$i \mod p[j] &#x3D;&#x3D; 0$，则这个由一个素数和一个合数的乘积组成的合数，一定能转化为一个更小的素数和一个更大的合数的乘积，那么当继续运行时，此合数必然还会被$p[j]$再次筛去，便进行了多余的筛去工作。因此可以说在$i \mod p[j] &#x3D;&#x3D; 0$时退出循环是确保每个合数都只会被它的最小质因数筛掉，即确保了每个合数只被筛一次。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> num=<span class="number">0</span>;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> isp[<span class="number">10000010</span>],p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) isp[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">19</span>     &#123;</span><br><span class="line"><span class="number">20</span>         <span class="keyword">if</span>(isp[i])</span><br><span class="line"><span class="number">21</span>         &#123;</span><br><span class="line"><span class="number">22</span>             num++;</span><br><span class="line"><span class="number">23</span>             p[num]=i;</span><br><span class="line"><span class="number">24</span>         &#125;</span><br><span class="line"><span class="number">25</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=num&amp;&amp;i*p[j]&lt;=n;j++)</span><br><span class="line"><span class="number">26</span>         &#123;</span><br><span class="line"><span class="number">27</span>             isp[i*p[j]]=<span class="number">0</span>;</span><br><span class="line"><span class="number">28</span>             <span class="comment">//确保每个合数都只会被它的最小质因数筛掉</span></span><br><span class="line"><span class="number">29</span>             <span class="keyword">if</span>(i%p[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line"><span class="number">30</span>         &#125;</span><br><span class="line"><span class="number">31</span>     &#125;</span><br><span class="line"><span class="number">32</span>     </span><br><span class="line"><span class="number">33</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=num;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]);</span><br><span class="line"><span class="number">34</span>     </span><br><span class="line"><span class="number">35</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">36</span> &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
