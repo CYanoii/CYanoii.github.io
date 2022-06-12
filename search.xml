@@ -142,27 +142,6 @@
       </tags>
   </entry>
   <entry>
-    <title>O(nlogn)数组寻找差值</title>
-    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
-    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
-<ol>
-<li>对原数组排序。</li>
-<li>对原数组去重得到数组$b$，长度为$len$。</li>
-<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
-<li>对扩充后的数组排序。</li>
-<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
-</ol>
-<p>会有更简单的办法，但我暂时是想出来了这个。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Educational Codeforces Round 129 (Rated for Div. 2) A-D 题解</title>
     <url>/2022/05/24/Educational-Codeforces-Round-129-Rated-for-Div-2-A-D-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1681">Educational Codeforces Round 129 (Rated for Div. 2)</a></p>
@@ -192,6 +171,27 @@
       <tags>
         <tag>题解</tag>
         <tag>Codeforces</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>O(nlogn)数组寻找差值</title>
+    <url>/2022/03/25/O-nlogn-%E6%95%B0%E7%BB%84%E5%AF%BB%E6%89%BE%E5%B7%AE%E5%80%BC/</url>
+    <content><![CDATA[<p>设一个长度为$n$的数组$a$，与一个数$k$，问数组中是否存在$2$个数$a$、$b$使得$| a - b | &#x3D; k$。</p>
+<ol>
+<li>对原数组排序。</li>
+<li>对原数组去重得到数组$b$，长度为$len$。</li>
+<li>扩充数组$b$至长度为$2 \cdot len$使得$b_{i + len} &#x3D; b_i - k$。</li>
+<li>对扩充后的数组排序。</li>
+<li>寻找是否有相邻的相同元素。若有，则存在；反之不存在。</li>
+</ol>
+<p>会有更简单的办法，但我暂时是想出来了这个。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -251,24 +251,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/05/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>gcd&amp;lcm（待完善）</title>
     <url>/2022/03/10/gcd-lcm/</url>
     <content><![CDATA[<h1 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h1><p><strong>辗转相除法（欧几里得）：</strong></p>
@@ -296,6 +278,17 @@
       </tags>
   </entry>
   <entry>
+    <title>六一</title>
+    <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
+    <content><![CDATA[<p>第一天回到家喜提发烧一次，本来以为是终于吹到了空调就激动到没休息好，结果发现确实是发烧了。</p>
+<p>为什么会有发烧这么可爱的病啊！直接睡掉了上午二的网课直到下午2点左右才有了一点精神。</p>
+<p>头晕的厉害，稍微处理了一些事情，学了学神经网络，就又到了睡觉的时间。于是乎美好的六一就被我浪费过去了，我连下楼买点零食的欲望都没有。今天睡一晚就坐等发烧好转，明天什么时候不晕了我什么时候起床：）</p>
+]]></content>
+      <categories>
+        <category>悠哉日常</category>
+      </categories>
+  </entry>
+  <entry>
     <title>主成分分析法（待完善）</title>
     <url>/2022/05/22/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95/</url>
     <content><![CDATA[<p>下次一定会写的！</p>
@@ -309,15 +302,22 @@
       </tags>
   </entry>
   <entry>
-    <title>六一</title>
-    <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
-    <content><![CDATA[<p>第一天回到家喜提发烧一次，本来以为是终于吹到了空调就激动到没休息好，结果发现确实是发烧了。</p>
-<p>为什么会有发烧这么可爱的病啊！直接睡掉了上午二的网课直到下午2点左右才有了一点精神。</p>
-<p>头晕的厉害，稍微处理了一些事情，学了学神经网络，就又到了睡觉的时间。于是乎美好的六一就被我浪费过去了，我连下楼买点零食的欲望都没有。今天睡一晚就坐等发烧好转，明天什么时候不晕了我什么时候起床：）</p>
+    <title>Hello World</title>
+    <url>/2022/05/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-      <categories>
-        <category>悠哉日常</category>
-      </categories>
   </entry>
   <entry>
     <title>包裹浮动元素</title>
@@ -1190,6 +1190,23 @@
       </tags>
   </entry>
   <entry>
+    <title>快速幂</title>
+    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
+    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
+<p>时间复杂度$O(\log b)$</p>
+<p><strong>原理：</strong></p>
+<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
+<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>归并排序</title>
     <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
@@ -1213,23 +1230,6 @@
         <tag>排序</tag>
         <tag>数据结构</tag>
         <tag>分治</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>快速幂</title>
-    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
-    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
-<p>时间复杂度$O(\log b)$</p>
-<p><strong>原理：</strong></p>
-<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
-<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
@@ -1475,6 +1475,15 @@
 ]]></content>
       <categories>
         <category>数学建模</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>收藏夹清理计划</title>
+    <url>/2022/06/12/%E6%94%B6%E8%97%8F%E5%A4%B9%E6%B8%85%E7%90%86%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<p>虽然说表面看上去我好像很多天没有更博客了，但是，非也！最近在学习深度学习的那些课程，所以深度学习相关笔记的那篇文章才是最近的主战场。同时就在昨天肝出了科技论文答辩的内容，让我意识到一个困难的论文选题会给水课这件事带来多大的困难…与此同时的在进行一些奇怪领域的学习，比如苦练俄罗斯方块技巧（Tetris99确实是个好游戏）以及为了辅导其他人一个项目的开发了解了 RTKLIB 的环境配置以及开发指南，同时顺便写了篇文章（由于有偿关系，不会上传）。不过也是在忙完了以上这些事情后，看到最近为了解决一系列问题而凌乱收藏后的收藏夹，外加之早就被搁置的许多知识点还静静的躺在里面，就不免给一个强迫症患者整理的冲动。便正好可以趁明天没事干去慢慢记到自己博客里…不要小看，事实上把其它人的内容整理成自己的文字是一个很耗时间的事情。总之明天会有一波大更新！</p>
+]]></content>
+      <categories>
+        <category>悠哉日常</category>
       </categories>
   </entry>
   <entry>
@@ -2059,7 +2068,7 @@
 <h1 id="Step2-连接服务器"><a href="#Step2-连接服务器" class="headerlink" title="Step2 连接服务器"></a>Step2 连接服务器</h1><p>打开<strong>浏览器</strong>，在收藏夹中找到<strong>登录运维审计系统</strong>，按照给出的账号与密码登录账号（记住出现提示是否覆盖旧密码时选 × 或否）。目前只有 13 结尾的账号能够使用，登录时会给 spq 学长手机发送验证码，自行索要就好。 登入系统后没有太多需要注意的，根据之前的教程视频打开 linux 系统界面。（为了隐私不展示）</p>
 <p>此时在黑框框页面中提示输入密码。复制提供好的密码，选中黑框框页面后，<strong>单击右键进行粘贴</strong>，同时<strong>等待几秒后再回车</strong>（否则会因系统反映慢登录失败，深坑），提示登录成功即成功连接了服务器。</p>
 <p><img src="/2022/05/25/%E8%91%B5%E8%8A%B1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AF%E6%B5%81%E7%A8%8B/2.png" alt="img"></p>
-<h1 id="Step3-运行代码"><a href="#Step3-运行代码" class="headerlink" title="Step3 运行代码"></a>Step3 运行代码</h1><p>进入系统首先 <code>cd ..</code> 回退一级，要运行的代码均在本目录下 him 开头的文件夹中，进入此文件夹。下面分别运行 spq 学长的代码、 dl 学长的代码。</p>
+<h1 id="Step3-运行代码"><a href="#Step3-运行代码" class="headerlink" title="Step3 运行代码"></a>Step3 运行代码</h1><p>进入系统首先 <code>cd ..</code> 回退一级，要运行的代码均在本目录下 him 开头的文件夹中，进入此文件夹。下面分别运行 spq 学长的代码、 dl 学长的代码、 yz 部分代码（这部分是 ftp 传输）。</p>
 <h2 id="spq-部分："><a href="#spq-部分：" class="headerlink" title="spq 部分："></a>spq 部分：</h2><p>有 6 个程序需要运行，这 6 个程序要分别被放入 6 个 screen 内运行。下面以一个程序的运行过程详细举例。</p>
 <ol>
 <li>创建 screen</li>
@@ -2095,12 +2104,19 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim main.out</span><br></pre></td></tr></table></figure>
 
 <p>这是打印输出信息的文件，有内容说明没问题。（附： vim 使用 :q 退出）</p>
+<h2 id="yz-部分："><a href="#yz-部分：" class="headerlink" title="yz 部分："></a>yz 部分：</h2><ol>
+<li>在 &#x2F;himawari 目录下直接输入 <code>lsof nohup.out</code> 查看是否有进程占用该文件，如果没有说明需要重启。</li>
+<li>重启命令为 <code>nohup ./20210630 &amp;</code> 。</li>
+<li>使用 <code>tailf nohup.out</code> 命令查看文件尾是否有启动成功的日志（一些站点信息）。</li>
+</ol>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>代码运行成功一方面要检查 out 文件夹下成果是否完整，一般来说需要有带有 pm2.5 、 pm10 、 dust 、 false 、 real 这些名称的成果；另一方面就是 ftp 传输是否畅通，这部分的检查在 <strong>yz 部分</strong>中有写到。</p>
 <h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><ol>
 <li>Step1 里的等待几秒十分重要。因为这个原因卡了好久。</li>
 <li>遇到了一个找不到文件夹的报错。自己去相应位置补充文件夹即可。</li>
 <li>spq 目录下的 DL 里的内容仍属于 spq 部分，与 dl 部分无关。</li>
 <li>运行的程序输出文件读取失败并不一定是程序错误、运行失败等原因，可能只是数据文件本身的问题。</li>
 <li>程序跑起来后要注意追踪，每隔一段时间就要对程序是否在运作进行检查。</li>
+<li>程序正在运行不代表是没有问题的，要多甄别输出信息。目前引起过在运行但不出结果的一次问题原因为硬盘满了。</li>
 </ol>
 ]]></content>
       <categories>
