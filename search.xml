@@ -338,6 +338,20 @@
 ]]></content>
   </entry>
   <entry>
+    <title>一篇给校友入门OI的建议</title>
+    <url>/2022/07/09/%E4%B8%80%E7%AF%87%E7%BB%99%E6%A0%A1%E5%8F%8B%E5%85%A5%E9%97%A8OI%E7%9A%84%E5%BB%BA%E8%AE%AE/</url>
+    <content><![CDATA[<p>我的文章：<a href="%E7%AE%97%E6%B3%95%E6%AF%94%E8%B5%9B%E7%AE%80%E4%BB%8B%E5%92%8C%E5%A4%87%E8%B5%9B%E5%BB%BA%E8%AE%AE.pdf">算法比赛简介和备赛建议</a></p>
+<p>如题，这篇文章是前段时间应老师需求给老师写的，目的是为她以后手下的打比赛的学生提供一点参考。所以这代表我写的内容会比较照顾“同校的刚入门 OI 的萌新”，因此内容到底适不适合你的现状请自己判断，我只是个无情的上传机器罢了。</p>
+<p>PS：交这篇文章前还和一个人针对“内容是不是应该轻松愉快”这个事情吵了半天…我是支持写的轻松愉快一点的，不然还没开始学就吓跑萌新了，要学会温水煮青蛙嘛（bushi）；但对方认为既然是给老师的东西应该写的正式一点。我无法判断双方对错，不过出于懒的原因我并没有改严肃：）</p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>入门</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>主成分分析法（待完善）</title>
     <url>/2022/05/22/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95/</url>
     <content><![CDATA[<p>下次一定会写的！</p>
@@ -410,66 +424,6 @@
       </tags>
   </entry>
   <entry>
-    <title>博客问题指南</title>
-    <url>/2022/05/11/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>自己在建站的过程也遇到了很多问题，于是在这里给自己写一篇问题指南。</p>
-<p><a href="https://hexo.io/zh-cn/docs">Hexo文档</a></p>
-<p>首先要记住的一点就是，优先在官方文档找解决方案。</p>
-<h1 id="如何开启本地服务器"><a href="#如何开启本地服务器" class="headerlink" title="如何开启本地服务器"></a>如何开启本地服务器</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s          #hexo server，默认端口4000</span><br><span class="line">hexo s -p 1234	#我的本地4000端口似乎被占用，所以要手动换一个端口</span><br></pre></td></tr></table></figure>
-
-<h1 id="如何同步文件"><a href="#如何同步文件" class="headerlink" title="如何同步文件"></a>如何同步文件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean   #清除缓存文件 db.json 和已生成的静态文件 public</span><br><span class="line">hexo g       #生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span><br><span class="line">hexo d       #自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span><br></pre></td></tr></table></figure>
-
-<h1 id="如何支持数学函数"><a href="#如何支持数学函数" class="headerlink" title="如何支持数学函数"></a>如何支持数学函数</h1><p>我采用的方法是使用 next 主题自带的方式。</p>
-<p>打开 next 的 _config.yml，设置 mathjax 为 true ：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>之后，在每篇博客前加入 mathjax: true 即可正常显示数学函数了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 博客问题指南</span><br><span class="line">date: 2022-05-11 10:07:20</span><br><span class="line">tags:</span><br><span class="line">mathjax: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<h1 id="如何支持-md-语法显示图片"><a href="#如何支持-md-语法显示图片" class="headerlink" title="如何支持 md 语法显示图片"></a>如何支持 md 语法显示图片</h1><p>网上给出了诸多解决办法，但我使用了他们的方法后均没有成功，反而把博客搞崩了一次：（。最后我在官方文档里找到了适合我的解决方法，在此复述一遍。</p>
-<p><a href="https://hexo.io/zh-cn/docs/asset-folders">Hexo资源文件夹</a></p>
-<p>首先对 hexo 的 _config.yml 进行如下修改：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>修改后每当进行 new post 时，将会自动生成一个同名文件夹。我们要把需使用的图片放入此文件夹。</p>
-<p>之后安装 hexo-renderer-marked 插件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-marked --save</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，在 hexo 的 _config.yml 中添加如下语句：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>此时，我们就已经可以使用 <code>![](image.jpg)</code> 来引用图片了。</p>
-<h1 id="添加标签产生-Cannot-GET-tags-等问题"><a href="#添加标签产生-Cannot-GET-tags-等问题" class="headerlink" title="添加标签产生 Cannot GET \tags\ 等问题"></a>添加标签产生 Cannot GET \tags\ 等问题</h1><p><img src="/2022/05/11/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/1.png" alt="img"></p>
-<p>在 next 的 _config.yml中取消了 tags 的注释，后产生了此错误。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br></pre></td></tr></table></figure>
-
-<p>原因是还需要进行后续的配置。首先创建新的 page：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
-
-<p>此时 source 文件夹下会新建 tags 文件夹，其下还会产生 index.md 文件，对其进行如下修改：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-05-11 16:15:22</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span>	<span class="comment">#写入本句，这句话的作用似乎是用来识别这个页面是&quot;tags&quot;预置页面</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-<p>在这之后，我们就可以愉快的为文章添加标签了，格式如下：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">博客问题指南</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-05-11 10:07:20</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">&quot;博客&quot;</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">&quot;其他&quot;</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">&quot;另一个&quot;</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-<p>其余几项如关于（about）、分类（categories）等同理。</p>
-<p><a href="https://www.icode9.com/content-4-1119485.html">参考</a></p>
-<h1 id="如何支持下载-pdf"><a href="#如何支持下载-pdf" class="headerlink" title="如何支持下载 pdf"></a>如何支持下载 pdf</h1><p>安装插件即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-pdf --save</span><br></pre></td></tr></table></figure>
-
-<p>后使用此格式引用就好：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[显示名称](文件.pdf)</span><br></pre></td></tr></table></figure>
-
-<p>之后就可以点击下载了。至于如何在博客上显示 pdf ，由于自己还没有需求，所以没有记录，等以后用到了再回来补充。</p>
-]]></content>
-      <categories>
-        <category>问题指南</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>博客美化指南</title>
     <url>/2022/05/15/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h1 id="自定义外观"><a href="#自定义外观" class="headerlink" title="自定义外观"></a>自定义外观</h1><p>打开 next 主题配置文件，进行以下配置：</p>
@@ -526,6 +480,66 @@
 
 <h3 id="管理评论"><a href="#管理评论" class="headerlink" title="管理评论"></a>管理评论</h3><p>评论在这里进行管理：</p>
 <p><img src="/2022/05/15/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E6%8C%87%E5%8D%97/4.png" alt="img"></p>
+]]></content>
+      <categories>
+        <category>问题指南</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客问题指南</title>
+    <url>/2022/05/11/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>自己在建站的过程也遇到了很多问题，于是在这里给自己写一篇问题指南。</p>
+<p><a href="https://hexo.io/zh-cn/docs">Hexo文档</a></p>
+<p>首先要记住的一点就是，优先在官方文档找解决方案。</p>
+<h1 id="如何开启本地服务器"><a href="#如何开启本地服务器" class="headerlink" title="如何开启本地服务器"></a>如何开启本地服务器</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s          #hexo server，默认端口4000</span><br><span class="line">hexo s -p 1234	#我的本地4000端口似乎被占用，所以要手动换一个端口</span><br></pre></td></tr></table></figure>
+
+<h1 id="如何同步文件"><a href="#如何同步文件" class="headerlink" title="如何同步文件"></a>如何同步文件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean   #清除缓存文件 db.json 和已生成的静态文件 public</span><br><span class="line">hexo g       #生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span><br><span class="line">hexo d       #自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span><br></pre></td></tr></table></figure>
+
+<h1 id="如何支持数学函数"><a href="#如何支持数学函数" class="headerlink" title="如何支持数学函数"></a>如何支持数学函数</h1><p>我采用的方法是使用 next 主题自带的方式。</p>
+<p>打开 next 的 _config.yml，设置 mathjax 为 true ：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>之后，在每篇博客前加入 mathjax: true 即可正常显示数学函数了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 博客问题指南</span><br><span class="line">date: 2022-05-11 10:07:20</span><br><span class="line">tags:</span><br><span class="line">mathjax: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h1 id="如何支持-md-语法显示图片"><a href="#如何支持-md-语法显示图片" class="headerlink" title="如何支持 md 语法显示图片"></a>如何支持 md 语法显示图片</h1><p>网上给出了诸多解决办法，但我使用了他们的方法后均没有成功，反而把博客搞崩了一次：（。最后我在官方文档里找到了适合我的解决方法，在此复述一遍。</p>
+<p><a href="https://hexo.io/zh-cn/docs/asset-folders">Hexo资源文件夹</a></p>
+<p>首先对 hexo 的 _config.yml 进行如下修改：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>修改后每当进行 new post 时，将会自动生成一个同名文件夹。我们要把需使用的图片放入此文件夹。</p>
+<p>之后安装 hexo-renderer-marked 插件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-marked --save</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，在 hexo 的 _config.yml 中添加如下语句：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>此时，我们就已经可以使用 <code>![](image.jpg)</code> 来引用图片了。</p>
+<h1 id="添加标签产生-Cannot-GET-tags-等问题"><a href="#添加标签产生-Cannot-GET-tags-等问题" class="headerlink" title="添加标签产生 Cannot GET \tags\ 等问题"></a>添加标签产生 Cannot GET \tags\ 等问题</h1><p><img src="/2022/05/11/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/1.png" alt="img"></p>
+<p>在 next 的 _config.yml中取消了 tags 的注释，后产生了此错误。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br></pre></td></tr></table></figure>
+
+<p>原因是还需要进行后续的配置。首先创建新的 page：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+
+<p>此时 source 文件夹下会新建 tags 文件夹，其下还会产生 index.md 文件，对其进行如下修改：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-05-11 16:15:22</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span>	<span class="comment">#写入本句，这句话的作用似乎是用来识别这个页面是&quot;tags&quot;预置页面</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>在这之后，我们就可以愉快的为文章添加标签了，格式如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">博客问题指南</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022-05-11 10:07:20</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">&quot;博客&quot;</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">&quot;其他&quot;</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">&quot;另一个&quot;</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>其余几项如关于（about）、分类（categories）等同理。</p>
+<p><a href="https://www.icode9.com/content-4-1119485.html">参考</a></p>
+<h1 id="如何支持下载-pdf"><a href="#如何支持下载-pdf" class="headerlink" title="如何支持下载 pdf"></a>如何支持下载 pdf</h1><p>安装插件即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-pdf --save</span><br></pre></td></tr></table></figure>
+
+<p>后使用此格式引用就好：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[显示名称](文件.pdf)</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以点击下载了。至于如何在博客上显示 pdf ，由于自己还没有需求，所以没有记录，等以后用到了再回来补充。</p>
 ]]></content>
       <categories>
         <category>问题指南</category>
@@ -1248,23 +1262,6 @@
       </tags>
   </entry>
   <entry>
-    <title>快速幂</title>
-    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
-    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
-<p>时间复杂度$O(\log b)$</p>
-<p><strong>原理：</strong></p>
-<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
-<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>归并排序</title>
     <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
@@ -1291,6 +1288,23 @@
       </tags>
   </entry>
   <entry>
+    <title>快速幂</title>
+    <url>/2022/03/23/%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
+    <content><![CDATA[<p>快速幂是一种让计算机快速算出$a^b$的算法。</p>
+<p>时间复杂度$O(\log b)$</p>
+<p><strong>原理：</strong></p>
+<p>任意一个十进制数都可以写成$\sum 2^i(i为本数二进制下为1的位的位数-1的)$的形式，这是由十进制与二进制间的转换得来的，如$4_{10} &#x3D; 100_{2} &#x3D; 2^2$、$7_{10} &#x3D; 111_{2} &#x3D; 2^2 + 2^1 + 2^0$、$19_{10} &#x3D; 10011_{2} &#x3D; 2^4 + 2^1 + 2^0$。我们将这种变化应用到$b$上，将原式变形：<br>$$<br>a^b &#x3D; a^{\sum 2^i} &#x3D; \prod a^{2^i}(i为b二进制下为1的位的位数-1)<br>$$<br>即对于代码来说，不断的找到$a^{2^i}$的值进行连乘就可以求得答案，因此我们需要一个简单有效的方法递推$a^{2^i}$的值。</p>
+<p>当$i &#x3D; 1,2,3,…,n$时，易得到递推$a^{2^{i + 1}} &#x3D; {a^{2^i}}^2$。同时伴随的问题便是，$i$为本数二进制下所有为$1$的位的位数$-1$的数组，显然前面的定义大于这个数组，因此要增加一个判定条件，确定$b$的二进制的$i + 1$位是否为$1$。若是，则进行连乘，反之跳过。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>想法</title>
     <url>/2022/06/06/%E6%83%B3%E6%B3%95/</url>
     <content><![CDATA[<p>很早以前就在思考为什么我到了晚上往往被一些琐事纠缠，平时的几件小事和某些情感会被无限放大。搜到过一篇文章把这种情况归结于人到了晚上褪黑素之类的开始分泌，从而让人感到疲劳等等，使得负面情绪变得容易放大，这也算是一种科学解释了。但这种晚上的状态并不一定是消极的，就我多年的熬夜经验看来，熬夜不只会让人变得敏感脆弱，合理的利用也会收获到一段更加平静、专注的无人打扰的时间。</p>
@@ -1302,13 +1316,20 @@
       </categories>
   </entry>
   <entry>
-    <title>收藏夹清理计划</title>
-    <url>/2022/06/12/%E6%94%B6%E8%97%8F%E5%A4%B9%E6%B8%85%E7%90%86%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<p>虽然说表面看上去我好像很多天没有更博客了，但是，非也！最近在学习深度学习的那些课程，所以深度学习相关笔记的那篇文章才是最近的主战场。同时就在昨天肝出了科技论文答辩的内容，让我意识到一个困难的论文选题会给水课这件事带来多大的困难…与此同时的在进行一些奇怪领域的学习，比如苦练俄罗斯方块技巧（Tetris99确实是个好游戏）以及为了辅导其他人一个项目的开发了解了 RTKLIB 的环境配置以及开发指南，同时顺便写了篇文章（由于有偿关系，不会上传）。不过也是在忙完了以上这些事情后，看到最近为了解决一系列问题而凌乱收藏后的收藏夹，外加之早就被搁置的许多知识点还静静的躺在里面，就不免给一个强迫症患者整理的冲动。便正好可以趁明天没事干去慢慢记到自己博客里…不要小看，事实上把其它人的内容整理成自己的文字是一个很耗时间的事情。总之明天会有一波大更新！</p>
+    <title>打了一个数学建模校赛</title>
+    <url>/2022/05/23/%E6%89%93%E4%BA%86%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%A0%A1%E8%B5%9B/</url>
+    <content><![CDATA[<p>昨天把建模校赛打完了。虽然自己曾经在打完美赛之后说过再也不打建模这种话…然后真香。总结一下，看看自己在这场比赛里能学到什么。</p>
+<p>首先一点就是硬实力差距，知识点的储备很重要。这次在面对题目时很容易没有思路或者思路单一，同时还有很多时候都在犹豫是否要自己造一个模型出来。赛后我的感觉是，很多要考虑自己造模型的地方很有可能早就存在现成的模型供我们利用了，但是我们并不知道它的存在。所以一方面要拓宽一下模型积累，另一方面要多读一些优秀论文，用来强化“是否应该自造模型”的界定。</p>
+<p>之后一点，条理性。这点在分头行动时尤为重要。建模过程中就出现了忘记了需要更正的错误、几个人在做重复的事、忘记了一些重要的事（最后一天临截止发现一个重要公式没放进去确实让人血压升高）等问题。所以在下次建模时有必要专门开一个记录本用来写大纲啊，问题啊之类的，做好记录。</p>
+<p>最后一点，知识点汇总。论文里用到了主成分分析法、拟合、多目标规划、绘图方法等一系列知识，显然它们都是需要我强化记忆写博客记录的，以后会一一补充。</p>
+<p>算是一场印象深刻的校赛吧。每次看到自己与强者的差距都会感到沮丧，只有自己不断行动才能获得一些慰藉。</p>
 ]]></content>
       <categories>
         <category>悠哉日常</category>
       </categories>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
   </entry>
   <entry>
     <title>插值和拟合</title>
@@ -1529,20 +1550,13 @@
       </categories>
   </entry>
   <entry>
-    <title>打了一个数学建模校赛</title>
-    <url>/2022/05/23/%E6%89%93%E4%BA%86%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%A0%A1%E8%B5%9B/</url>
-    <content><![CDATA[<p>昨天把建模校赛打完了。虽然自己曾经在打完美赛之后说过再也不打建模这种话…然后真香。总结一下，看看自己在这场比赛里能学到什么。</p>
-<p>首先一点就是硬实力差距，知识点的储备很重要。这次在面对题目时很容易没有思路或者思路单一，同时还有很多时候都在犹豫是否要自己造一个模型出来。赛后我的感觉是，很多要考虑自己造模型的地方很有可能早就存在现成的模型供我们利用了，但是我们并不知道它的存在。所以一方面要拓宽一下模型积累，另一方面要多读一些优秀论文，用来强化“是否应该自造模型”的界定。</p>
-<p>之后一点，条理性。这点在分头行动时尤为重要。建模过程中就出现了忘记了需要更正的错误、几个人在做重复的事、忘记了一些重要的事（最后一天临截止发现一个重要公式没放进去确实让人血压升高）等问题。所以在下次建模时有必要专门开一个记录本用来写大纲啊，问题啊之类的，做好记录。</p>
-<p>最后一点，知识点汇总。论文里用到了主成分分析法、拟合、多目标规划、绘图方法等一系列知识，显然它们都是需要我强化记忆写博客记录的，以后会一一补充。</p>
-<p>算是一场印象深刻的校赛吧。每次看到自己与强者的差距都会感到沮丧，只有自己不断行动才能获得一些慰藉。</p>
+    <title>收藏夹清理计划</title>
+    <url>/2022/06/12/%E6%94%B6%E8%97%8F%E5%A4%B9%E6%B8%85%E7%90%86%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<p>虽然说表面看上去我好像很多天没有更博客了，但是，非也！最近在学习深度学习的那些课程，所以深度学习相关笔记的那篇文章才是最近的主战场。同时就在昨天肝出了科技论文答辩的内容，让我意识到一个困难的论文选题会给水课这件事带来多大的困难…与此同时的在进行一些奇怪领域的学习，比如苦练俄罗斯方块技巧（Tetris99确实是个好游戏）以及为了辅导其他人一个项目的开发了解了 RTKLIB 的环境配置以及开发指南，同时顺便写了篇文章（由于有偿关系，不会上传）。不过也是在忙完了以上这些事情后，看到最近为了解决一系列问题而凌乱收藏后的收藏夹，外加之早就被搁置的许多知识点还静静的躺在里面，就不免给一个强迫症患者整理的冲动。便正好可以趁明天没事干去慢慢记到自己博客里…不要小看，事实上把其它人的内容整理成自己的文字是一个很耗时间的事情。总之明天会有一波大更新！</p>
 ]]></content>
       <categories>
         <category>悠哉日常</category>
       </categories>
-      <tags>
-        <tag>数学建模</tag>
-      </tags>
   </entry>
   <entry>
     <title>日记：熬夜、科三</title>
@@ -1603,24 +1617,15 @@
 </ul>
 <p>综合问题：</p>
 <ul>
-<li><p>要牢记上车下车的步骤</p>
-</li>
-<li><p>上车记得转灯归位</p>
-</li>
-<li><p>安全带要扣紧，听到声响</p>
-</li>
-<li><p>干所有事情前记得踩离合</p>
-</li>
-<li><p>可以挂一档停车</p>
-</li>
-<li><p>最后右转的时候右转灯不用归位，而且千万不要掉下来</p>
-</li>
-<li><p>人行横道不是路口（我也不知道为啥我老是看混这个）</p>
-</li>
-<li><p>掉头后记得变道（不同地方可能不同）</p>
-</li>
-<li><p>变道、会车都只播报一次，播报完做就好（不同地方可能不同）</p>
-</li>
+<li>要牢记上车下车的步骤</li>
+<li>上车记得转灯归位</li>
+<li>安全带要扣紧，听到声响</li>
+<li>干所有事情前记得踩离合</li>
+<li>可以挂一档停车</li>
+<li>最后右转的时候右转灯不用归位，而且千万不要掉下来</li>
+<li>人行横道不是路口（我也不知道为啥我老是看混这个）</li>
+<li>掉头后记得变道（不同地方可能不同）</li>
+<li>变道、会车都只播报一次，播报完做就好（不同地方可能不同）</li>
 </ul>
 ]]></content>
       <categories>
