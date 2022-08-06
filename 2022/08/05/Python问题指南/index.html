@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|微软雅黑:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一篇将我遇到的所有Python问题和解决方法统一记录的文章。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python问题指南">
+<meta property="og:url" content="http://example.com/2022/08/05/Python%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="渔塘">
+<meta property="og:description" content="一篇将我遇到的所有Python问题和解决方法统一记录的文章。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-05T12:03:27.000Z">
+<meta property="article:modified_time" content="2022-08-06T11:05:15.117Z">
+<meta property="article:author" content="CYHei_mu">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/08/05/Python%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Python问题指南 | 渔塘</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">渔塘</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生苦短，摸鱼乃大~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/05/Python%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="CYHei_mu">
+      <meta itemprop="description" content="大学为辅，摸鱼为主~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="渔塘">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python问题指南
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-05 20:03:27" itemprop="dateCreated datePublished" datetime="2022-08-05T20:03:27+08:00">2022-08-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-06 19:05:15" itemprop="dateModified" datetime="2022-08-06T19:05:15+08:00">2022-08-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">问题指南</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/08/05/Python%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/05/Python%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+            <div class="post-description">一篇将我遇到的所有Python问题和解决方法统一记录的文章。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h1><p><code>_</code>在 python 中可以作为一个<strong>标识符</strong>，用于定义变量和方法唯一名称。同时它也是 Python 中的一个<strong>软关键字</strong>，指在某些特定上下文中保留的关键字。截至 python3.10 共有3个软关键字：<code>match</code>，<code>case</code>和<code>_</code>。</p>
+<p><strong>直接使用</strong></p>
+<p><code>_</code>可直接当作变量名使用，也可做变量单词间的分隔符（如<code>student_num</code>）。</p>
+<p><code>_*</code><strong>格式</strong></p>
+<p>当使用<code>from &lt;module&gt; import *</code> 语句调用某个模块中的所有变量和方法时，以<code>_</code>开头的变量和方法不会被导入进脚本中，不属于 API。</p>
+<p>这类似于其他语言中的私有变量 private ，意味着<strong>该方法或属性不应该被从外部直接调用</strong>。</p>
+<p>不过，如果使用对test2.py的引用格式（<code>import test2</code>），则可以使用其中 _* 格式的变量，不过<strong>不建议这样使用（作者将其封装为私有变量就是不想让我们随意调用他们）</strong>。</p>
+<p><code>__*</code><strong>格式</strong></p>
+<p>通常会作为类中的私有变量的名称，访问该类时无法直接通过变量名访问。不过也并不是真的不能访问，使用 <code>__*</code> 命名的变量会在类中被重写为形如 <code>_类名__*</code> 的格式。</p>
+<p>这被称为<strong>私有名称转换</strong>：这样做是为了避免基类及派生类的 “私有” 属性之间产生名称冲突。我们可以通过转换后的变量名称来访问变量。<br> 但是并不推荐这样做，他们<strong>应该只在该类内被访问和使用</strong>。</p>
+<p><code>__*__</code><strong>格式</strong></p>
+<p><strong>在类中使用并重写</strong>的方法或变量，如<code>__init__(self)</code>。</p>
+<p>他们是系统定义的特殊方法名称，通常称为‘dunder’，这些名称由解释器和标准库定义。所有特殊方法可见：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/datamodel.html#specialnames">https://docs.python.org/zh-cn/3/reference/datamodel.html#specialnames</a> 。</p>
+<p>可以使用 <code>__dir__()</code> 方法查看一个对象的所有方法和变量，其中包括特殊方法。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43863487/article/details/125056015">参考</a></p>
+<h2 id="if-name-x3D-x3D-‘-main-’"><a href="#if-name-x3D-x3D-‘-main-’" class="headerlink" title="if __name__ &#x3D;&#x3D; ‘__main__’:"></a>if __name__ &#x3D;&#x3D; ‘__main__’:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br></pre></td></tr></table></figure>
+
+<p>解释这句话的含义：</p>
+<p>同一目录下创建两个文件：</p>
+<p>candf.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">摄氏度和华氏度的相互转换模块</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">c2f</span>(<span class="params">cel</span>):</span><br><span class="line">    fah = cel * <span class="number">1.8</span> + <span class="number">32</span></span><br><span class="line">    <span class="keyword">return</span> fah</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f2c</span>(<span class="params">fah</span>):</span><br><span class="line">    cel = (fah - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line">    <span class="keyword">return</span> cel</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;测试数据：0 摄氏度 = %.2f 华氏度&quot;</span> % c2f(<span class="number">0</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;测试数据：0 华氏度 = %.2f 摄氏度&quot;</span> % f2c(<span class="number">0</span>))</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+
+<p>demo.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> candf</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;32 摄氏度 = %.2f 华氏度&quot;</span> % candf.c2f(<span class="number">32</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;99 华氏度 = %.2f 摄氏度&quot;</span> % candf.f2c(<span class="number">99</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行 demo.py ，看到结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">测试数据：0 摄氏度 = 32.00 华氏度</span><br><span class="line">测试数据：0 华氏度 = -17.78 摄氏度</span><br><span class="line">32 摄氏度 = 89.60 华氏度</span><br><span class="line">99 华氏度 = 37.22 摄氏度</span><br></pre></td></tr></table></figure>
+
+<p>可见 python 将 candf.py 中的测试内容也执行了，这不是我们想要的。想要避免这种情况的关键在于，要让 Python 解释器知道，当前要运行的程度代码，是模块文件本身，还是导入模块的其它程序。</p>
+<p>因此在 demo.py 中增添如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(__name__)</span><br><span class="line"><span class="built_in">print</span>(candf.__name__)</span><br></pre></td></tr></table></figure>
+
+<p>看到结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">__main__</span><br><span class="line">candf</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，当前运行的程序，其<code>__name__</code>的值为<code>__main__</code>，而导入到当前程序中的模块，其<code>__name__</code>值为自己的模块名。</p>
+<p> 因此，<code>if __name__ == &#39;__main__&#39;:</code> 的作用是确保只有单独运行该模块时，此表达式才成立，才可以进入此判断语法，执行其中的测试代码；反之，如果只是作为模块导入到其他程序文件中，则此表达式将不成立，运行其它程序时，也就不会执行该判断语句中的测试代码。</p>
+<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4643.html">参考</a></p>
+<h2 id="call"><a href="#call" class="headerlink" title="__call__"></a>__call__</h2><p>该方法的功能类似于在类中重载 () 运算符，使得类实例对象可以像调用普通函数那样，以“对象名()”的形式使用。</p>
+<p><strong>作用：</strong>为了将<strong>类的实例对象</strong>变为可调用对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>:</span><br><span class="line">    <span class="comment"># 定义__call__方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self,<span class="built_in">str</span></span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;调用__call__()方法&quot;</span>,<span class="built_in">str</span>)</span><br><span class="line"></span><br><span class="line">t = Test()</span><br><span class="line">t(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">调用__call__()方法 Hello</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，通过在 Test 类中实现 __call__() 方法，使得 t 实例对象变为了可调用对象。</p>
+<blockquote>
+<p>Python 中，凡是可以将 () 直接应用到自身并执行，都称为可调用对象。可调用对象包括自定义的函数、Python 内置函数以及本节所讲的类实例对象。</p>
+</blockquote>
+<p>对于可调用对象，实际上“名称()”可以理解为是“名称.__call__()”的简写。仍以上面程序中定义的 t 实例对象为例，其最后一行代码还可以改写为如下形式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t.__call__(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行程序会发现，其运行结果和之前完全相同。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/356059224">参考</a></p>
+<h1 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h1><p><strong>简单理解</strong></p>
+<ul>
+<li><code>super()</code>的作用是按照 MRO 寻找最近的来执行</li>
+<li>可以简单理解成「寻找父类的方法」</li>
+<li>类的 <strong>init</strong> 中非常常见，为了防止父类未被按照合适的方法被初始化</li>
+</ul>
+<p><strong>详细一点解释</strong></p>
+<p><code>super()</code>解决了子类调用父类方法的一些问题， 父类多次被调用时只执行一次， 优化了执行逻辑。</p>
+<p>当存在继承关系的时候，有时候需要在子类中调用父类的方法，此时最简单的方法是把对象调用转换成类调用，需要注意的是这时self参数需要显式传递，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FooParent</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="built_in">print</span>(message)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FooChild</span>(<span class="title class_ inherited__">FooParent</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    FooParent.bar(self, message)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; FooChild().bar(&quot;Hello, Python.&quot;)</span><br><span class="line">Hello, Python.</span><br></pre></td></tr></table></figure>
+
+<p>这样做有一些缺点，比如说如果修改了父类名称，那么在子类中会涉及多处修改，另外， Python 是允许多继承的语言，如上所示的方法在多继承时就需要重复写多次，显得累赘。为了解决这些问题， Python 引入了<code>super()</code>机制，例子代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FooParent</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="built_in">print</span>(message)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FooChild</span>(<span class="title class_ inherited__">FooParent</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="built_in">super</span>(FooChild, self).bar(message)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; FooChild().bar(&quot;Hello, Python.&quot;)</span><br><span class="line">Hello, Python.</span><br></pre></td></tr></table></figure>
+
+<p>表面上看<code>super(FooChild, self).bar(message)</code>方法和<code>FooParent.bar(self, message)</code>方法的结果是一致的，实际上这两种方法的内部处理机制大大不同，不能理解为<strong>“<code>super()</code>就是用来调用父类的方法的”，</strong>当涉及多继承情况时，就会表现出明显的差异来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;A&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>(<span class="title class_ inherited__">A</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;B&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span>(<span class="title class_ inherited__">A</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;C&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span>(B, C):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;D&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">D() </span><br></pre></td></tr></table></figure>
+
+<p>理论执行结果：D B A C A</p>
+<p>实际执行结果：D B C A</p>
+<p>在<code>super()</code>机制里可以保证公共父类仅被执行一次，其调用顺序是遵循 Python 的 <strong>MRO （方法解析顺序）</strong>来执行的，在 Python3 中，MRO 是基于 C3 算法来实现的。</p>
+<p><strong>参考</strong></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000013475016">https://segmentfault.com/q/1010000013475016</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/45619cf50aa7">https://www.jianshu.com/p/45619cf50aa7</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/415729655">https://zhuanlan.zhihu.com/p/415729655</a></p>
+<h1 id="符号"><a href="#符号" class="headerlink" title="@符号"></a>@符号</h1><h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><p>简单理解为把@函数下面的函数作为参数传入了@函数，即在函数外面套上了@函数进行“修饰”。</p>
+<p>可以在模块或者类的定义层内对函数进行修饰。出现在函数定义的前一行，不允许和函数定义在同一行。</p>
+<p><strong>单次使用</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">funcB</span>(<span class="params">funa</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function B&quot;</span>)</span><br><span class="line">    funa()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;test&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@funcB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">funcA</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function A&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(funcA)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function B</span><br><span class="line">function A</span><br><span class="line">test</span><br></pre></td></tr></table></figure>
+
+<p>可以理解为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">funcA = funcB(funcA)</span><br><span class="line"># 如果没有print(funcA)那句便会执行funcA</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>funcB</code>修饰<code>funcA</code>。</p>
+<p><strong>多次使用</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">funcA</span>(<span class="params">A</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function A&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(A)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">funcB</span>(<span class="params">B</span>):</span><br><span class="line">    <span class="built_in">print</span>(B(<span class="number">2</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function B&quot;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">@funcA</span></span><br><span class="line"><span class="meta">@funcB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">funcC</span>(<span class="params">C</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function C&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> C ** <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function C</span><br><span class="line">4</span><br><span class="line">function B</span><br><span class="line">function A</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+
+<p>可以理解为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">funcC = funcB(funcA(func))</span><br><span class="line"><span class="comment"># 这里就是没有使用funcC的情况，会自动执行funcC</span></span><br><span class="line">funcC</span><br></pre></td></tr></table></figure>
+
+<p>先把<code>funcA</code>修饰<code>funcC</code>，之后用<code>funcB</code>修饰这个整体，最后执行。</p>
+<p><strong>带有参数</strong></p>
+<p>更多的看<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7a644520418b">这篇文章</a>吧，我水平不足还不能完全理解。</p>
+<h2 id="staticmethod-和-classmethod"><a href="#staticmethod-和-classmethod" class="headerlink" title="@staticmethod 和  @classmethod"></a>@staticmethod 和  @classmethod</h2><p>@staticmethod 相当于 C++ 里的静态函数。</p>
+<p>@classmethod 相当于 C++ 里常用的一个类调用 Create 来创建自身的用法。</p>
+<h2 id="property"><a href="#property" class="headerlink" title="@property"></a>@property</h2><p>看<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/64487092">这篇文章</a>。</p>
+<h2 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h2><p>如题，但不常用。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7a644520418b">https://www.jianshu.com/p/7a644520418b</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/231703.htm">https://www.jb51.net/article/231703.htm</a></p>
+<p><a target="_blank" rel="noopener" href="https://guoleida.blog.csdn.net/article/details/85001493?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-85001493-blog-89333359.pc_relevant_multi_platform_whitelistv3&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-85001493-blog-89333359.pc_relevant_multi_platform_whitelistv3&amp;utm_relevant_index=1">https://guoleida.blog.csdn.net/article/details/85001493?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-85001493-blog-89333359.pc_relevant_multi_platform_whitelistv3&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-85001493-blog-89333359.pc_relevant_multi_platform_whitelistv3&amp;utm_relevant_index=1</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/162352611">https://zhuanlan.zhihu.com/p/162352611</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/64487092">https://zhuanlan.zhihu.com/p/64487092</a></p>
+<h1 id="pass"><a href="#pass" class="headerlink" title="pass"></a>pass</h1><p><code>pass</code>是空语句，是为了保持程序结构的完整性，它不做任何事情，一般用做占位语句。</p>
+<p>在 Python 中有时候会看到一个 def 函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sample</span>(<span class="params">n_samples</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>该处的<code>pass</code>便是占据一个位置，因为如果定义一个空函数程序会报错，当你没有想好函数的内容是可以用 pass 填充，使程序可以正常运行。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/05/Linux%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/" rel="prev" title="Linux问题指南">
+      <i class="fa fa-chevron-left"></i> Linux问题指南
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E5%88%92%E7%BA%BF"><span class="nav-number">1.</span> <span class="nav-text">下划线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#if-name-x3D-x3D-%E2%80%98-main-%E2%80%99"><span class="nav-number">1.1.</span> <span class="nav-text">if __name__ &#x3D;&#x3D; ‘__main__’:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call"><span class="nav-number">1.2.</span> <span class="nav-text">__call__</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#super"><span class="nav-number">2.</span> <span class="nav-text">super()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">@符号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">3.1.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#staticmethod-%E5%92%8C-classmethod"><span class="nav-number">3.2.</span> <span class="nav-text">@staticmethod 和  @classmethod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#property"><span class="nav-number">3.3.</span> <span class="nav-text">@property</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95"><span class="nav-number">3.4.</span> <span class="nav-text">矩阵乘法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.5.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pass"><span class="nav-number">4.</span> <span class="nav-text">pass</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CYHei_mu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">CYHei_mu</p>
+  <div class="site-description" itemprop="description">大学为辅，摸鱼为主~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CYHei_mu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">97k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:41</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'CA3hrlrhv1qLMiD9zfDM2guF-gzGzoHsz',
+      appKey     : '4S8s4bbqfYAleeoNqzFCbH4X',
+      placeholder: "留下一条友善的评论",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '8' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

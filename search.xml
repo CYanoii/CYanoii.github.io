@@ -188,11 +188,64 @@
 <p><a href="https://www.runoob.com/linux/linux-comm-screen.html">菜鸟教程上的Linux screen命令</a></p>
 ]]></content>
       <categories>
-        <category>语法指南</category>
+        <category>问题指南</category>
       </categories>
       <tags>
         <tag>Linux</tag>
         <tag>screen</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux问题指南</title>
+    <url>/2022/08/05/Linux%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h1 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h1><p>以前写过了，可以搜索”Linux screen基本用法”查看。</p>
+<h1 id="统计文件数量"><a href="#统计文件数量" class="headerlink" title="统计文件数量"></a>统计文件数量</h1><h2 id="一般统计方法"><a href="#一般统计方法" class="headerlink" title="一般统计方法"></a>一般统计方法</h2><ul>
+<li>统计当前目录下文件的个数（不包括目录）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -l | grep &quot;^-&quot; | wc -l</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>统计当前目录下文件的个数（包括子目录）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -lR| grep &quot;^-&quot; | wc -l</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看某目录下文件夹(目录)的个数（包括子目录）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -lR | grep &quot;^d&quot; | wc -l</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>统计当前文件夹下叫某某的文件的数量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find . -name filename | wc -l</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>统计当前文件夹下指定类型的文件的数量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find -name &quot;*.js&quot; | wc -l</span><br></pre></td></tr></table></figure>
+
+<p><strong>命令的解释</strong></p>
+<ul>
+<li>ls -l</li>
+</ul>
+<p>长列表输出该目录下文件信息(注意这里的文件是指目录、链接、设备文件等)，每一行对应一个文件或目录，ls -lR 是列出所有文件，包括子目录。</p>
+<ul>
+<li>grep “^-“</li>
+</ul>
+<p>过滤ls的输出信息，只保留一般文件，只保留目录是 grep “^d”。</p>
+<ul>
+<li>wc -l</li>
+</ul>
+<p>统计输出信息的行数，统计结果就是输出信息的行数，一行信息对应一个文件，所以就是文件的个数。</p>
+<h2 id="文件数量太多的统计方法"><a href="#文件数量太多的统计方法" class="headerlink" title="文件数量太多的统计方法"></a>文件数量太多的统计方法</h2><p>原文中有处理方法，我暂时用不到，不补充了。</p>
+<p><a href="https://laowangblog.com/linux-check-the-number-of-files.html">原文：Linux 统计文件夹目录下文件数量教程</a></p>
+<h1 id="CentOS7安装java17"><a href="#CentOS7安装java17" class="headerlink" title="CentOS7安装java17"></a>CentOS7安装java17</h1><p>这个是开 MC 高版本服务器的时候弄的，具体会写在建服的文章里。待补充</p>
+]]></content>
+      <categories>
+        <category>问题指南</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -293,6 +346,241 @@
       </tags>
   </entry>
   <entry>
+    <title>Python问题指南</title>
+    <url>/2022/08/05/Python%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h1 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h1><p><code>_</code>在 python 中可以作为一个<strong>标识符</strong>，用于定义变量和方法唯一名称。同时它也是 Python 中的一个<strong>软关键字</strong>，指在某些特定上下文中保留的关键字。截至 python3.10 共有3个软关键字：<code>match</code>，<code>case</code>和<code>_</code>。</p>
+<p><strong>直接使用</strong></p>
+<p><code>_</code>可直接当作变量名使用，也可做变量单词间的分隔符（如<code>student_num</code>）。</p>
+<p><code>_*</code><strong>格式</strong></p>
+<p>当使用<code>from &lt;module&gt; import *</code> 语句调用某个模块中的所有变量和方法时，以<code>_</code>开头的变量和方法不会被导入进脚本中，不属于 API。</p>
+<p>这类似于其他语言中的私有变量 private ，意味着<strong>该方法或属性不应该被从外部直接调用</strong>。</p>
+<p>不过，如果使用对test2.py的引用格式（<code>import test2</code>），则可以使用其中 _* 格式的变量，不过<strong>不建议这样使用（作者将其封装为私有变量就是不想让我们随意调用他们）</strong>。</p>
+<p><code>__*</code><strong>格式</strong></p>
+<p>通常会作为类中的私有变量的名称，访问该类时无法直接通过变量名访问。不过也并不是真的不能访问，使用 <code>__*</code> 命名的变量会在类中被重写为形如 <code>_类名__*</code> 的格式。</p>
+<p>这被称为<strong>私有名称转换</strong>：这样做是为了避免基类及派生类的 “私有” 属性之间产生名称冲突。我们可以通过转换后的变量名称来访问变量。<br> 但是并不推荐这样做，他们<strong>应该只在该类内被访问和使用</strong>。</p>
+<p><code>__*__</code><strong>格式</strong></p>
+<p><strong>在类中使用并重写</strong>的方法或变量，如<code>__init__(self)</code>。</p>
+<p>他们是系统定义的特殊方法名称，通常称为‘dunder’，这些名称由解释器和标准库定义。所有特殊方法可见：<a href="https://docs.python.org/zh-cn/3/reference/datamodel.html#specialnames">https://docs.python.org/zh-cn/3/reference/datamodel.html#specialnames</a> 。</p>
+<p>可以使用 <code>__dir__()</code> 方法查看一个对象的所有方法和变量，其中包括特殊方法。</p>
+<p><a href="https://blog.csdn.net/weixin_43863487/article/details/125056015">参考</a></p>
+<h2 id="if-name-x3D-x3D-‘-main-’"><a href="#if-name-x3D-x3D-‘-main-’" class="headerlink" title="if __name__ &#x3D;&#x3D; ‘__main__’:"></a>if __name__ &#x3D;&#x3D; ‘__main__’:</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br></pre></td></tr></table></figure>
+
+<p>解释这句话的含义：</p>
+<p>同一目录下创建两个文件：</p>
+<p>candf.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">摄氏度和华氏度的相互转换模块</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">c2f</span>(<span class="params">cel</span>):</span><br><span class="line">    fah = cel * <span class="number">1.8</span> + <span class="number">32</span></span><br><span class="line">    <span class="keyword">return</span> fah</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f2c</span>(<span class="params">fah</span>):</span><br><span class="line">    cel = (fah - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line">    <span class="keyword">return</span> cel</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;测试数据：0 摄氏度 = %.2f 华氏度&quot;</span> % c2f(<span class="number">0</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;测试数据：0 华氏度 = %.2f 摄氏度&quot;</span> % f2c(<span class="number">0</span>))</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+
+<p>demo.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> candf</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;32 摄氏度 = %.2f 华氏度&quot;</span> % candf.c2f(<span class="number">32</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;99 华氏度 = %.2f 摄氏度&quot;</span> % candf.f2c(<span class="number">99</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行 demo.py ，看到结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">测试数据：0 摄氏度 = 32.00 华氏度</span><br><span class="line">测试数据：0 华氏度 = -17.78 摄氏度</span><br><span class="line">32 摄氏度 = 89.60 华氏度</span><br><span class="line">99 华氏度 = 37.22 摄氏度</span><br></pre></td></tr></table></figure>
+
+<p>可见 python 将 candf.py 中的测试内容也执行了，这不是我们想要的。想要避免这种情况的关键在于，要让 Python 解释器知道，当前要运行的程度代码，是模块文件本身，还是导入模块的其它程序。</p>
+<p>因此在 demo.py 中增添如下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(__name__)</span><br><span class="line"><span class="built_in">print</span>(candf.__name__)</span><br></pre></td></tr></table></figure>
+
+<p>看到结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__main__</span><br><span class="line">candf</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，当前运行的程序，其<code>__name__</code>的值为<code>__main__</code>，而导入到当前程序中的模块，其<code>__name__</code>值为自己的模块名。</p>
+<p> 因此，<code>if __name__ == &#39;__main__&#39;:</code> 的作用是确保只有单独运行该模块时，此表达式才成立，才可以进入此判断语法，执行其中的测试代码；反之，如果只是作为模块导入到其他程序文件中，则此表达式将不成立，运行其它程序时，也就不会执行该判断语句中的测试代码。</p>
+<p><a href="http://c.biancheng.net/view/4643.html">参考</a></p>
+<h2 id="call"><a href="#call" class="headerlink" title="__call__"></a>__call__</h2><p>该方法的功能类似于在类中重载 () 运算符，使得类实例对象可以像调用普通函数那样，以“对象名()”的形式使用。</p>
+<p><strong>作用：</strong>为了将<strong>类的实例对象</strong>变为可调用对象。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>:</span><br><span class="line">    <span class="comment"># 定义__call__方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self,<span class="built_in">str</span></span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;调用__call__()方法&quot;</span>,<span class="built_in">str</span>)</span><br><span class="line"></span><br><span class="line">t = Test()</span><br><span class="line">t(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">调用__call__()方法 Hello</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，通过在 Test 类中实现 __call__() 方法，使得 t 实例对象变为了可调用对象。</p>
+<blockquote>
+<p>Python 中，凡是可以将 () 直接应用到自身并执行，都称为可调用对象。可调用对象包括自定义的函数、Python 内置函数以及本节所讲的类实例对象。</p>
+</blockquote>
+<p>对于可调用对象，实际上“名称()”可以理解为是“名称.__call__()”的简写。仍以上面程序中定义的 t 实例对象为例，其最后一行代码还可以改写为如下形式：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">t.__call__(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行程序会发现，其运行结果和之前完全相同。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/356059224">参考</a></p>
+<h1 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h1><p><strong>简单理解</strong></p>
+<ul>
+<li><code>super()</code>的作用是按照 MRO 寻找最近的来执行</li>
+<li>可以简单理解成「寻找父类的方法」</li>
+<li>类的 <strong>init</strong> 中非常常见，为了防止父类未被按照合适的方法被初始化</li>
+</ul>
+<p><strong>详细一点解释</strong></p>
+<p><code>super()</code>解决了子类调用父类方法的一些问题， 父类多次被调用时只执行一次， 优化了执行逻辑。</p>
+<p>当存在继承关系的时候，有时候需要在子类中调用父类的方法，此时最简单的方法是把对象调用转换成类调用，需要注意的是这时self参数需要显式传递，例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FooParent</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="built_in">print</span>(message)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FooChild</span>(<span class="title class_ inherited__">FooParent</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    FooParent.bar(self, message)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; FooChild().bar(&quot;Hello, Python.&quot;)</span><br><span class="line">Hello, Python.</span><br></pre></td></tr></table></figure>
+
+<p>这样做有一些缺点，比如说如果修改了父类名称，那么在子类中会涉及多处修改，另外， Python 是允许多继承的语言，如上所示的方法在多继承时就需要重复写多次，显得累赘。为了解决这些问题， Python 引入了<code>super()</code>机制，例子代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FooParent</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="built_in">print</span>(message)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FooChild</span>(<span class="title class_ inherited__">FooParent</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="built_in">super</span>(FooChild, self).bar(message)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; FooChild().bar(&quot;Hello, Python.&quot;)</span><br><span class="line">Hello, Python.</span><br></pre></td></tr></table></figure>
+
+<p>表面上看<code>super(FooChild, self).bar(message)</code>方法和<code>FooParent.bar(self, message)</code>方法的结果是一致的，实际上这两种方法的内部处理机制大大不同，不能理解为<strong>“<code>super()</code>就是用来调用父类的方法的”，</strong>当涉及多继承情况时，就会表现出明显的差异来。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;A&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>(<span class="title class_ inherited__">A</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;B&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span>(<span class="title class_ inherited__">A</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;C&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span>(B, C):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;D&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">D() </span><br></pre></td></tr></table></figure>
+
+<p>理论执行结果：D B A C A</p>
+<p>实际执行结果：D B C A</p>
+<p>在<code>super()</code>机制里可以保证公共父类仅被执行一次，其调用顺序是遵循 Python 的 <strong>MRO （方法解析顺序）</strong>来执行的，在 Python3 中，MRO 是基于 C3 算法来实现的。</p>
+<p><strong>参考</strong></p>
+<p><a href="https://segmentfault.com/q/1010000013475016">https://segmentfault.com/q/1010000013475016</a></p>
+<p><a href="https://www.jianshu.com/p/45619cf50aa7">https://www.jianshu.com/p/45619cf50aa7</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/415729655">https://zhuanlan.zhihu.com/p/415729655</a></p>
+<h1 id="符号"><a href="#符号" class="headerlink" title="@符号"></a>@符号</h1><h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><p>简单理解为把@函数下面的函数作为参数传入了@函数，即在函数外面套上了@函数进行“修饰”。</p>
+<p>可以在模块或者类的定义层内对函数进行修饰。出现在函数定义的前一行，不允许和函数定义在同一行。</p>
+<p><strong>单次使用</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">funcB</span>(<span class="params">funa</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function B&quot;</span>)</span><br><span class="line">    funa()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;test&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@funcB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">funcA</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function A&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(funcA)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function B</span><br><span class="line">function A</span><br><span class="line">test</span><br></pre></td></tr></table></figure>
+
+<p>可以理解为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">funcA = funcB(funcA)</span><br><span class="line"># 如果没有print(funcA)那句便会执行funcA</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>funcB</code>修饰<code>funcA</code>。</p>
+<p><strong>多次使用</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">funcA</span>(<span class="params">A</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function A&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(A)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">funcB</span>(<span class="params">B</span>):</span><br><span class="line">    <span class="built_in">print</span>(B(<span class="number">2</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function B&quot;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">@funcA</span></span><br><span class="line"><span class="meta">@funcB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">funcC</span>(<span class="params">C</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function C&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> C ** <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function C</span><br><span class="line">4</span><br><span class="line">function B</span><br><span class="line">function A</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+
+<p>可以理解为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">funcC = funcB(funcA(func))</span><br><span class="line"><span class="comment"># 这里就是没有使用funcC的情况，会自动执行funcC</span></span><br><span class="line">funcC</span><br></pre></td></tr></table></figure>
+
+<p>先把<code>funcA</code>修饰<code>funcC</code>，之后用<code>funcB</code>修饰这个整体，最后执行。</p>
+<p><strong>带有参数</strong></p>
+<p>更多的看<a href="https://www.jianshu.com/p/7a644520418b">这篇文章</a>吧，我水平不足还不能完全理解。</p>
+<h2 id="staticmethod-和-classmethod"><a href="#staticmethod-和-classmethod" class="headerlink" title="@staticmethod 和  @classmethod"></a>@staticmethod 和  @classmethod</h2><p>@staticmethod 相当于 C++ 里的静态函数。</p>
+<p>@classmethod 相当于 C++ 里常用的一个类调用 Create 来创建自身的用法。</p>
+<h2 id="property"><a href="#property" class="headerlink" title="@property"></a>@property</h2><p>看<a href="https://zhuanlan.zhihu.com/p/64487092">这篇文章</a>。</p>
+<h2 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h2><p>如题，但不常用。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/7a644520418b">https://www.jianshu.com/p/7a644520418b</a></p>
+<p><a href="https://www.jb51.net/article/231703.htm">https://www.jb51.net/article/231703.htm</a></p>
+<p><a href="https://guoleida.blog.csdn.net/article/details/85001493?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-85001493-blog-89333359.pc_relevant_multi_platform_whitelistv3&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-85001493-blog-89333359.pc_relevant_multi_platform_whitelistv3&amp;utm_relevant_index=1">https://guoleida.blog.csdn.net/article/details/85001493?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-85001493-blog-89333359.pc_relevant_multi_platform_whitelistv3&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-85001493-blog-89333359.pc_relevant_multi_platform_whitelistv3&amp;utm_relevant_index=1</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/162352611">https://zhuanlan.zhihu.com/p/162352611</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/64487092">https://zhuanlan.zhihu.com/p/64487092</a></p>
+<h1 id="pass"><a href="#pass" class="headerlink" title="pass"></a>pass</h1><p><code>pass</code>是空语句，是为了保持程序结构的完整性，它不做任何事情，一般用做占位语句。</p>
+<p>在 Python 中有时候会看到一个 def 函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sample</span>(<span class="params">n_samples</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>该处的<code>pass</code>便是占据一个位置，因为如果定义一个空函数程序会报错，当你没有想好函数的内容是可以用 pass 填充，使程序可以正常运行。</p>
+]]></content>
+      <categories>
+        <category>问题指南</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity学习笔记-日记</title>
+    <url>/2022/07/16/Unity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>你在浏览的“Unity学习笔记”由三大板块组成：</p>
+<ul>
+<li>Unity学习笔记-索引</li>
+</ul>
+<p>用来按知识索引日记与笔记，属于“十字路口”下的一部分。</p>
+<ul>
+<li>Unity学习笔记-日记</li>
+</ul>
+<p>用来按日期记录日常，属于“悠哉日常”下的一部分。</p>
+<ul>
+<li>Unity学习笔记-笔记</li>
+</ul>
+<p>用来按日期记录知识，属于“游戏开发”下的一部分。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="2022-07-16"><a href="#2022-07-16" class="headerlink" title="2022-07-16"></a>2022-07-16</h2><p>在大概 1 年前，我狠下心克制了自己的懒癌晚期，跟随 <a href="https://space.bilibili.com/370283072?from=search&seid=12449235407068253111&spm_id_from=333.337.0.0">M_Studio 老师</a>免费学习了许多 2D 开发所需的知识，建立了初步的知识框架并完成了“小狐狸”等项目，随后又利用学到的知识自己开发了一个劣质的“打飞机”游戏和仿作了经典的“合成大西瓜”游戏。但随后伴随着上学和懒癌发作，在 1 年内都没有后续了，直到最近我重燃了做游戏的想法，并且脑子里又有了几个以我的实力也许能够实现的游戏蓝图。因为在今年我创立了自己的博客，是一个很好的记笔记的地方，于是我打算把学习的过程记录下来。 </p>
+<p>最近在跟学 M_Studio 老师的<a href="https://www.bilibili.com/video/BV1jg4y1v7qC?spm_id_from=333.999.0.0&vd_source=6f67cf3df36c1099236303f99c042178">开发2D手机游戏并获得收益(新版)</a>这个付费项目，会把过程中学习到的知识点记录下来。</p>
+]]></content>
+      <categories>
+        <category>悠哉日常</category>
+      </categories>
+      <tags>
+        <tag>Unity3D</tag>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity学习笔记-笔记</title>
+    <url>/2022/07/16/Unity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>你在浏览的“Unity学习笔记”由三大板块组成：</p>
+<ul>
+<li>Unity学习笔记-索引</li>
+</ul>
+<p>用来按知识索引日记与笔记，属于“十字路口”下的一部分。</p>
+<ul>
+<li>Unity学习笔记-日记</li>
+</ul>
+<p>用来按日期记录日常，属于“悠哉日常”下的一部分。</p>
+<ul>
+<li>Unity学习笔记-笔记</li>
+</ul>
+<p>用来按日期记录知识，属于“游戏开发”下的一部分。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="2022-07-16"><a href="#2022-07-16" class="headerlink" title="2022-07-16"></a>2022-07-16</h2><p><strong>像素图素材修改注意</strong></p>
+<p>调整像素图时，一般不止修改 <strong>Pixels Per Unit</strong> ，还要连带修改其它两项：</p>
+<p>Pixels Per Unit &#x3D;&gt; 32</p>
+<p>Filter Mode &#x3D;&gt; Point(no filter)</p>
+<p>Compression &#x3D;&gt; None</p>
+<p><strong>update函数与fixedupdate函数的区别</strong></p>
+<p><strong>update：</strong>每帧被调用一次</p>
+<p><strong>fixedupdate：</strong>每隔 Time.fixedDeltaTime 被调用一次。 Time.fixedDeltaTime 默认是0.02s，可以通过 Edit-&gt;ProjectSettings-&gt;Time 来设置。</p>
+<p>因此可以说 update 不稳定， fixedupdate 稳定。</p>
+<p><strong>使用 GetAxis 设计2D角色移动</strong></p>
+<p>Input.GetAxis() &#x3D;&gt; 数值 -1 到 1 ，包括小数，在移动时有滑动的效果</p>
+<p>Input.GetAxisRaw() &#x3D;&gt; 数值 -1 到 1 ，不包括小数，移动直来直去</p>
+<p><strong>使用Header语法让变量更清晰</strong></p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">Header(<span class="string">&quot;States Check&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">bool</span> isGround;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>显示一个范围</strong></p>
+<p>这个函数是官方自带的。（？）</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDrawGizmos</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Gizmos.DrawWireSphere(groundCheck.position, checkRadius);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>游戏开发</category>
+      </categories>
+      <tags>
+        <tag>Unity3D</tag>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity学习笔记-索引</title>
+    <url>/2022/07/16/Unity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%B4%A2%E5%BC%95/</url>
+    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>你在浏览的“Unity学习笔记”由三大板块组成：</p>
+<ul>
+<li>Unity学习笔记-索引</li>
+</ul>
+<p>用来按知识索引日记与笔记，属于“十字路口”下的一部分。</p>
+<ul>
+<li>Unity学习笔记-日记</li>
+</ul>
+<p>用来按日期记录日常，属于“悠哉日常”下的一部分。</p>
+<ul>
+<li>Unity学习笔记-笔记</li>
+</ul>
+<p>用来按日期记录知识，属于“游戏开发”下的一部分。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>2022-07-16</p>
+<p>像素图素材修改注意</p>
+<p>update函数与fixedupdate函数的区别</p>
+<p>使用 GetAxis 设计2D角色移动</p>
+<p>使用Header语法让变量更清晰b</p>
+<p>显示一个范围</p>
+]]></content>
+      <categories>
+        <category>十字路口</category>
+      </categories>
+      <tags>
+        <tag>Unity3D</tag>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>UwU-net论文第一部分阅读，U-net介绍</title>
     <url>/2022/07/15/UwU-net%E8%AE%BA%E6%96%87%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E9%98%85%E8%AF%BB%EF%BC%8CU-net%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<p>先附链接：</p>
@@ -301,6 +589,7 @@
 <p><a href="U-net%E4%BB%8B%E7%BB%8D.pdf">U-net介绍</a></p>
 <p>在搞暑假的煤矿项目的过程中开会的时候我需要报告些东西，第一次报告的是读 UwU-net 这篇论文然后总结标题 <strong>indian Pines classification</strong> 前的部分。本来我是把前面这部分翻译了的（虽然大部分是靠机翻），结果我之前手残弄没了。不过没关系，好在我的总结还在；因为 UwU-net 是基于 U-net 搞出来的，于是我的第二次报告是介绍 U-net ，然后也写了些东西。</p>
 <p><strong>免责声明</strong>：这两篇文章因为是我用来讲解的辅助稿，所以内容难免会显草率，很多重要的地方可能是我口述的而在文章上并没有体现，因此如果你打算看了，要抱有图一乐的精神。另外一点是，这里面的图片全是我从别人博客或视频中弄来的（这真的很抱歉），目的是完善我写的内容。我会在下面贴一下被我借鉴图的视频&#x2F;文章的链接。</p>
+<p><a href="https://blog.csdn.net/qq_33924470/article/details/106891015">从零开始的U-net入门</a></p>
 <p><a href="https://www.bilibili.com/video/BV1Di4y1o7vX?from=search&seid=12747115051071942608&spm_id_from=333.337.0.0&vd_source=6f67cf3df36c1099236303f99c042178">【卷积】直观形象的实例，10分钟彻底搞懂</a></p>
 <p><a href="https://blog.csdn.net/Formlsl/article/details/80373200?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-80373200-blog-106891015.pc_relevant_multi_platform_whitelistv1&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-80373200-blog-106891015.pc_relevant_multi_platform_whitelistv1&utm_relevant_index=1">深入理解深度学习分割网络Ｕnet——U-Net: Convolutional Networks for Biomedical Image Segmentation</a></p>
 <p><a href="https://blog.csdn.net/quiet_girl/article/details/84579038?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165769608716782248599590%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165769608716782248599590&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-84579038-null-null.142%5Ev32%5Enew_blog_fixed_pos,185%5Ev2%5Econtrol&utm_term=%E6%B1%A0%E5%8C%96&spm=1018.2226.3001.4187">[CNN] 卷积、反卷积、池化、反池化</a></p>
