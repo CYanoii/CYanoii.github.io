@@ -678,6 +678,48 @@
       </tags>
   </entry>
   <entry>
+    <title>什么是梯度下降</title>
+    <url>/2022/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</url>
+    <content><![CDATA[<p>在深度学习中会有梯度下降的应用，它被用来得到最小化的损失函数值和模型参数。暂时不去理那些专有名词，说简单一些：梯度下降就是一种找函数最小值的算法。</p>
+<ul>
+<li>第一种理解：梯度下降就像是在函数图像上放了一个球，因为重力影响，最终球会滚到最低处，也便找到了函数最小值。</li>
+</ul>
+<p><img src="/2022/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/2.gif" alt="img"></p>
+<ul>
+<li>第二种理解：方便理解可以把“梯度”理解为“导数”，“下降”理解为“逼近0”，因此一种意会的理解为梯度下降就是在找让一个函数的导数逼近0的变量值。</li>
+</ul>
+<h1 id="主流程"><a href="#主流程" class="headerlink" title="主流程"></a>主流程</h1><p>假设我们有一个简单的函数$f(x) &#x3D; x^2$，我们想知道使$f(x)$最小的值$x_{min}$，开始的位置为$x_0 &#x3D; 10$。图长这样：</p>
+<p><img src="/2022/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/1.jpg" alt="img"></p>
+<p>求梯度：<br>$$<br>\nabla f(x_0) &#x3D; f’(x_0) i &#x3D; (f’(x_0)) &#x3D; (2x |_{x_0 &#x3D; 10}) &#x3D; (20)<br>$$<br>这是在$x$轴上的向量，它指向函数值增长最快的方向，而$- \nabla f(x_0)$就指向减少最快的方向：</p>
+<p><img src="/2022/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/2.jpg" alt="img"></p>
+<p>定义一种运算计算$x_1$。将$x_0$看作一维向量$(x_0)$，和$- \nabla f(x_0)$进行运算：<br>$$<br>(x_1) &#x3D; (x_0) - \eta \nabla f(x_0)<br>$$<br>其中$\eta$称为<strong>步长</strong>，通过它可以控制移的动距离，我们设$\eta &#x3D; 0.2$，那么：<br>$$<br>(x_1) &#x3D; (x_0) - \eta \nabla f(x_0) &#x3D; (6)<br>$$<br>理解为原$x_0$的位置受梯度作为参数向左移动了一段距离，从而逼近了函数最低点。此时便下降到了$x_1 &#x3D; 6$的位置：</p>
+<p><img src="/2022/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/3.jpg" alt="img"></p>
+<p>后续的操作便是重复求梯度，利用梯度移动，直到逼近最低点：</p>
+<p><img src="/2022/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/1.gif" alt="img"></p>
+<p>选取$\eta &#x3D; 0.2$时，重复了10次便比较接近了最小值，这就是全过程了。</p>
+<h1 id="问题解释"><a href="#问题解释" class="headerlink" title="问题解释"></a>问题解释</h1><p><strong>为什么叫梯度下降算法</strong></p>
+<p>把每一次的梯度向量$\nabla f$的模长$|| \nabla f ||$列出来，可以看到是在不断减小的，因此这种方法称为梯度下降法。</p>
+<p><img src="/2022/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/1.png" alt="img"></p>
+<p><strong>步长的选取</strong></p>
+<p>步长可以控制每次移动的距离，它的值的设置要依靠经验。过小时，很难达到谷底；过大时，容易在谷底的两端反复横跳，但下不去。</p>
+<p><strong>高维的情况</strong></p>
+<p>步骤是完全相同的。</p>
+<p><strong>损失函数</strong></p>
+<p>在深度学习里，损失函数的值代表了预测值与实际值间的误差，因此它越小越代表模型效果越好。我们要使用梯度下降求最小值的函数正是损失函数，便正是其被用来得到最小化的损失函数值和模型参数。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.zhihu.com/question/305638940">https://www.zhihu.com/question/305638940</a></p>
+<p><a href="https://blog.csdn.net/wyf2017/article/details/109278430">https://blog.csdn.net/wyf2017/article/details/109278430</a></p>
+<p><a href="https://baike.baidu.com/item/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/4864937?fr=aladdin">https://baike.baidu.com/item/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/4864937?fr=aladdin</a></p>
+]]></content>
+      <categories>
+        <category>环境项目</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>机器学习</tag>
+        <tag>神经网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>六一</title>
     <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
     <content><![CDATA[<p>第一天回到家喜提发烧一次，本来以为是终于吹到了空调就激动到没休息好，结果发现确实是发烧了。</p>
