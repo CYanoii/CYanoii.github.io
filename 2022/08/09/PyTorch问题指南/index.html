@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|微软雅黑:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一篇将我遇到的所有PyTorch问题和解决方法统一记录的文章。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyTorch问题指南">
+<meta property="og:url" content="http://example.com/2022/08/09/PyTorch%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="渔塘">
+<meta property="og:description" content="一篇将我遇到的所有PyTorch问题和解决方法统一记录的文章。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-09T07:27:39.000Z">
+<meta property="article:modified_time" content="2022-08-09T08:12:00.134Z">
+<meta property="article:author" content="CYHei_mu">
+<meta property="article:tag" content="PyTorch">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/08/09/PyTorch%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>PyTorch问题指南 | 渔塘</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">渔塘</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生苦短，摸鱼乃大~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/09/PyTorch%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="CYHei_mu">
+      <meta itemprop="description" content="大学为辅，摸鱼为主~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="渔塘">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PyTorch问题指南
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-09 15:27:39 / 修改时间：16:12:00" itemprop="dateCreated datePublished" datetime="2022-08-09T15:27:39+08:00">2022-08-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">问题指南</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/08/09/PyTorch%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/09/PyTorch%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+            <div class="post-description">一篇将我遇到的所有PyTorch问题和解决方法统一记录的文章。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>写在前面</strong></p>
+<p>2022&#x2F;8&#x2F;9</p>
+<p>本人水平还较弱，没有足够的项目经验，因此内容里很可能有含糊不清和错误之处，请谨慎参考。</p>
+<h1 id="train、eval模式"><a href="#train、eval模式" class="headerlink" title="train、eval模式"></a>train、eval模式</h1><p><code>model.train()</code>和<code>model.eval()</code>分别要在训练和测试中写，它们的作用如下：</p>
+<ul>
+<li><p><code>model.train()</code></p>
+<p>启用 BatchNormalization 和 Dropout，将两者置为 True 。</p>
+</li>
+<li><p><code>model.eval()</code></p>
+<p>不启用 BatchNormalization 和 Dropout，将两者置为 False 。</p>
+</li>
+</ul>
+<p><strong>总结</strong></p>
+<ol>
+<li>在训练模块中一定要写<code>model.train()</code>。</li>
+<li>在评估（或测试）模块中一定要写<code>model.eval()</code>。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36618660/article/details/100147506?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1-100147506-blog-122145651.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1-100147506-blog-122145651.pc_relevant_default&utm_relevant_index=2">原文</a></p>
+<h1 id="forward"><a href="#forward" class="headerlink" title="forward"></a>forward</h1><p>在使用 PyTorch 进行模型训练时，我们可以通过直接向实例化的对象内直接传参即可实现 forward 函数的自动调用，即<code>model(data)</code>等价于<code>model.forward(data)</code>，这很方便，<strong>其原理是在类（class）中使用了 __call__ 函数</strong>。有关 __call__ 的内容我在另一篇名为“Python问题指南”的文中有抄录，可以搜索查看。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, param</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;I can called like a function&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;传入参数的类型是：&#123;&#125;   值为： &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">type</span>(param), param))</span><br><span class="line"></span><br><span class="line">        res = self.forward(param)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, input_</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;forward 函数被调用了&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;in  forward, 传入参数类型是：&#123;&#125;  值为: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">type</span>(input_), input_))</span><br><span class="line">        <span class="keyword">return</span> input_</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Student()</span><br><span class="line"></span><br><span class="line">input_param = a(<span class="string">&#x27;data&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;对象a传入的参数是：&quot;</span>, input_param)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">I can called like a function</span><br><span class="line">传入参数的类型是：&lt;class &#x27;str&#x27;&gt;   值为： data</span><br><span class="line">forward 函数被调用了</span><br><span class="line">in  forward, 传入参数类型是：&lt;class &#x27;str&#x27;&gt;  值为: data</span><br><span class="line">对象a传入的参数是： data</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/357021687">原文</a></p>
+<h1 id="F-pad"><a href="#F-pad" class="headerlink" title="F.pad"></a>F.pad</h1><p>暂未深入研究，贴一篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36998053/article/details/123702623">文章</a>。</p>
+<h1 id="优化器Optimizer"><a href="#优化器Optimizer" class="headerlink" title="优化器Optimizer"></a>优化器Optimizer</h1><p><strong>优化器</strong>主要用在模型训练阶段，用于更新模型中可学习的参数。<code>torch.optim</code>提供了多种优化器<strong>接口</strong>，比如 Adam 、 RAdam 、 SGD 、 ASGD 、 LBFGS 等，<code>Optimizer</code>是所有这些优化器的<strong>父类</strong>。</p>
+<p><strong>主要方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>官方注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add_param_group</td>
+<td>Add a param group to the Optimizer’s param_groups.</td>
+<td>给优化器添加模型中可学习的参数组。</td>
+</tr>
+<tr>
+<td>step</td>
+<td>Performs a single optimization step (parameter update).</td>
+<td>进行一次参数更新。</td>
+</tr>
+<tr>
+<td>zero_grad</td>
+<td>Sets the gradients of all optimized torch.Tensor to zero.</td>
+<td>将上次记录的梯度信息置零，避免梯度累加。</td>
+</tr>
+<tr>
+<td>state_dict</td>
+<td>Returns the state of the optimizer as a dict.</td>
+<td>以字典形式返回优化器的状态信息。</td>
+</tr>
+<tr>
+<td>load_state_dict</td>
+<td>Loads the optimizer state.</td>
+<td>加载以字典形式存储的优化器状态信息。</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hottie_xiaomiao/article/details/124392847">原文在这里</a>，我现在的水平后面看不懂了……以后补。同时还有一篇<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/445009191">相关文章</a>。</p>
+<h1 id="with-torch-no-grad"><a href="#with-torch-no-grad" class="headerlink" title="with torch.no_grad()"></a>with torch.no_grad()</h1><p><code>torch.no_grad()</code> 是一个上下文管理器，被该语句 wrap（包裹） 起来的部分将不会 track（跟踪） 梯度。</p>
+<p>例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([<span class="number">1.1</span>], requires_grad=<span class="literal">True</span>)</span><br><span class="line">b = a * <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">Out[<span class="number">63</span>]: tensor([<span class="number">2.2000</span>], grad_fn=&lt;MulBackward0&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>打印b可看到其 grad_fn 为 mulbackward 表示是做的乘法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b.add_(<span class="number">2</span>)</span><br><span class="line">Out[<span class="number">64</span>]: tensor([<span class="number">4.2000</span>], grad_fn=&lt;AddBackward0&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到不被 wrap 的情况下， b.grad_fn 为 addbackward ，表示这个 add 操作被 track 了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    b.mul_(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">Out[<span class="number">66</span>]: tensor([<span class="number">8.4000</span>], grad_fn=&lt;AddBackward0&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>在被包裹的情况下可以看到 b.grad_fn 还是为 add ， mul 操作没有被 track 。但是注意，乘法操作是被执行了的。</p>
+<p>所以如果有不想被 track 的计算部分可以通过这么一个上下文管理器包裹起来。这样可以执行计算，但该计算不会在反向传播中被记录。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46559271/article/details/105658654">原文</a></p>
+<h1 id="torch-optim-lr-scheduler-ReduceLROnPlateau"><a href="#torch-optim-lr-scheduler-ReduceLROnPlateau" class="headerlink" title="torch.optim.lr_scheduler.ReduceLROnPlateau"></a>torch.optim.lr_scheduler.ReduceLROnPlateau</h1><p>当网络的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87&spm=1001.2101.3001.7020">评价指标</a>不在提升的时候，可以通过降低网络的学习率来提高网络性能。所使用的类：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">torch</span>.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=<span class="string">&#x27;min&#x27;</span>, factor=<span class="number">0.1</span>, patience=<span class="number">10</span>,</span><br><span class="line"> verbose=<span class="literal">False</span>, threshold=<span class="number">0.0001</span>, threshold_mode=<span class="string">&#x27;rel&#x27;</span>, cooldown=<span class="number">0</span>, min_lr=<span class="number">0</span>, eps=<span class="number">1e-08</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>optimer指的是网络的优化器</li>
+<li>mode (str) ，可选择‘min’或者‘max’，min表示当监控量停止下降的时候，学习率将减小，max表示当监控量停止上升的时候，学习率将减小。默认值为‘min’</li>
+<li>factor 学习率每次降低多少，new_lr &#x3D; old_lr * factor</li>
+<li>patience&#x3D;10，容忍网路的性能不提升的次数，高于这个次数就降低学习率</li>
+<li>verbose（bool） - 如果为True，则为每次更新向stdout输出一条消息。 默认值：False</li>
+<li>threshold（float） - 测量新最佳值的阈值，仅关注重大变化。 默认值：1e-4</li>
+<li>cooldown： 减少lr后恢复正常操作之前要等待的时期数。 默认值：0</li>
+<li>min_lr,学习率的下限</li>
+<li>eps ，适用于lr的最小衰减。 如果新旧lr之间的差异小于eps，则忽略更新。 默认值：1e-8。</li>
+</ul>
+<p><strong>注意</strong></p>
+<p>使用的时候需要选择网络的度量指标，使用如下类的step方法实现，例子如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=<span class="number">0.01</span>)</span><br><span class="line">scheduler = ReduceLROnPlateau(optimizer, <span class="string">&#x27;min&#x27;</span>,factor=<span class="number">0.5</span>, patience=<span class="number">4</span>, verbose=<span class="literal">True</span>)</span><br><span class="line">.....</span><br><span class="line">scheduler.step(train_loss)</span><br><span class="line"><span class="comment"># scheduler.step(val_loss)</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40100431/article/details/84311430">原文</a></p>
+<h1 id="自动混合精度（AMP）"><a href="#自动混合精度（AMP）" class="headerlink" title="自动混合精度（AMP）"></a>自动混合精度（AMP）</h1><p>先贴文章：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jimchen1218/p/14315008.html">文章1</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/165152789">文章2</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PyTorch/" rel="tag"># PyTorch</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/" rel="prev" title="什么是梯度下降">
+      <i class="fa fa-chevron-left"></i> 什么是梯度下降
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/11/13/Codeforces-Round-833-Div-2/" rel="next" title="Codeforces Round #833 (Div. 2)">
+      Codeforces Round #833 (Div. 2) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#train%E3%80%81eval%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">train、eval模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forward"><span class="nav-number">2.</span> <span class="nav-text">forward</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#F-pad"><span class="nav-number">3.</span> <span class="nav-text">F.pad</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%99%A8Optimizer"><span class="nav-number">4.</span> <span class="nav-text">优化器Optimizer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#with-torch-no-grad"><span class="nav-number">5.</span> <span class="nav-text">with torch.no_grad()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#torch-optim-lr-scheduler-ReduceLROnPlateau"><span class="nav-number">6.</span> <span class="nav-text">torch.optim.lr_scheduler.ReduceLROnPlateau</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%B7%B7%E5%90%88%E7%B2%BE%E5%BA%A6%EF%BC%88AMP%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">自动混合精度（AMP）</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CYHei_mu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">CYHei_mu</p>
+  <div class="site-description" itemprop="description">大学为辅，摸鱼为主~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CYHei_mu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">104k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:54</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'CA3hrlrhv1qLMiD9zfDM2guF-gzGzoHsz',
+      appKey     : '4S8s4bbqfYAleeoNqzFCbH4X',
+      placeholder: "留下一条友善的评论",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '8' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
