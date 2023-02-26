@@ -2191,6 +2191,28 @@
       </categories>
   </entry>
   <entry>
+    <title>清算</title>
+    <url>/2022/11/26/%E6%B8%85%E7%AE%97/</url>
+    <content><![CDATA[<p>我好久没有像现在一样如此讨厌一些事情了。虽然心情十分低落，但说到底在大部分时候调整回心态所能依靠的还是自己，其不免也是一种成长的方式，而朋友的话还是只分享开心的事情吧。当态度从感性归于理性之后，要做的就是清算了，我要审视一下到底是哪些事情让我这么低落，之后才能有针对性的处理一下它们。</p>
+<ol>
+<li>有一个未入门的老师总是在用不合理的方式问我问题，并且让我对着一个正确的代码浪费 2 天时间查错。</li>
+<li>我试着和朋友分享我的伤心，但朋友很奇怪的跟我卷到了一个没必要的争论中，并且至今都没有化解。</li>
+<li>我组的论文写作从始至终都只有我自己在干活，队员始终跟不上我的进度，反而更像是在延误我的进度。</li>
+<li>论文写作本身难度很高，但似乎在目前看来价值不高。</li>
+<li>我背后始终有着 2 门考试，1 篇科技论文写作，2 个课设和 2 个课设论文的压力没有时间处理。</li>
+<li>莫名其妙要帮忙干莫名奇妙的找差异工作，莫名奇妙的加大工作量，中间出现的各种问题如原数据模糊，数据丢失，数据处理十分十分十分缓慢，通知延误，软件报错等一系列问题将事情严重复杂化。</li>
+<li>疫情封城，发烧 1 天，混采阳性。</li>
+<li>发现了一首我很喜欢的<a href="https://www.bilibili.com/video/BV1iD4y1x7So">歌</a>，但是没有合适的人分享。</li>
+<li>朋友们都玩得很开心，好像只有我自己在负重的落差。</li>
+<li>我还有我自己的英语想学，我还有我自己的游戏制作想学，我还有我自己的竞赛想学等，但均无时间。</li>
+</ol>
+<p>平日的坏心情很少是由某一件事直接激起的，更多的是一件件小事的叠加，这已经是一个老生常谈的道理了。所以说还是要把每件事都拆分开来寻找最优解，争取早点把这些事处理掉。</p>
+]]></content>
+      <categories>
+        <category>悠哉日常</category>
+      </categories>
+  </entry>
+  <entry>
     <title>筛法</title>
     <url>/2020/10/25/%E7%AD%9B%E6%B3%95/</url>
     <content><![CDATA[<p>筛法是一种用来求素数的方法。一般来说可以循序渐进的掌握暴力判断素数、埃氏筛法、欧拉筛法。</p>
@@ -2304,76 +2326,6 @@
       </tags>
   </entry>
   <entry>
-    <title>葵花服务器重启流程</title>
-    <url>/2022/05/25/%E8%91%B5%E8%8A%B1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AF%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<p>葵花服务器每个月都会重启，因此需要手动重新运行处理相关数据的程序。在自己和学长一起折腾半天之后完成了整个流程，在此梳理一遍。</p>
-<h1 id="Step1-连接学校电脑"><a href="#Step1-连接学校电脑" class="headerlink" title="Step1 连接学校电脑"></a>Step1 连接学校电脑</h1><p>服务器登录系统需要学校 ip 访问。因此使用向日葵远程协助软件对学校电脑进行操控。</p>
-<p><img src="/2022/05/25/%E8%91%B5%E8%8A%B1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AF%E6%B5%81%E7%A8%8B/1.png" alt="img"></p>
-<p>输入学校电脑的伙伴识别码与验证码，点击远程协助即可。</p>
-<h1 id="Step2-连接服务器"><a href="#Step2-连接服务器" class="headerlink" title="Step2 连接服务器"></a>Step2 连接服务器</h1><p>打开<strong>浏览器</strong>，在收藏夹中找到<strong>登录运维审计系统</strong>，按照给出的账号与密码登录账号（记住出现提示是否覆盖旧密码时选 × 或否）。目前只有 13 结尾的账号能够使用，登录时会给 spq 学长手机发送验证码，自行索要就好。 登入系统后没有太多需要注意的，根据之前的教程视频打开 linux 系统界面。（为了隐私不展示）</p>
-<p>此时在黑框框页面中提示输入密码。复制提供好的密码，选中黑框框页面后，<strong>单击右键进行粘贴</strong>，同时<strong>等待几秒后再回车</strong>（否则会因系统反映慢登录失败，深坑），提示登录成功即成功连接了服务器。</p>
-<p><img src="/2022/05/25/%E8%91%B5%E8%8A%B1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AF%E6%B5%81%E7%A8%8B/2.png" alt="img"></p>
-<h1 id="Step3-运行代码"><a href="#Step3-运行代码" class="headerlink" title="Step3 运行代码"></a>Step3 运行代码</h1><p>进入系统首先 <code>cd ..</code> 回退一级，要运行的代码均在本目录下 him 开头的文件夹中，进入此文件夹。下面分别运行 spq 学长的代码、 dl 学长的代码、 yz 部分代码（这部分是 ftp 传输）。</p>
-<h2 id="spq-部分："><a href="#spq-部分：" class="headerlink" title="spq 部分："></a>spq 部分：</h2><p>有 6 个程序需要运行，这 6 个程序要分别被放入 6 个 screen 内运行。下面以一个程序的运行过程详细举例。</p>
-<ol>
-<li>创建 screen</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -S pm25</span><br></pre></td></tr></table></figure>
-
-<p>此时创建并自动进入了一个叫做“pm25”的 screen 中。</p>
-<ol start="2">
-<li>切换环境</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda activate spq</span><br></pre></td></tr></table></figure>
-
-<p>此时进入了名为”spq“的 python 环境。</p>
-<ol start="3">
-<li>运行程序</li>
-</ol>
-<p>进入文件所在文件夹，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python SC2_main1to8.py</span><br></pre></td></tr></table></figure>
-
-<p>稍等一会没有报错，就可以使用 Ctrl + A + D 退出本 screen。</p>
-<p>其他5个同理，在资料中都明确告诉了 screen 名与程序的位置。做同样操作即可。</p>
-<p><strong>其他：</strong></p>
-<p>查看 screen 列表：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -ls</span><br></pre></td></tr></table></figure>
-
-<p>进入某个 screen：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -r pid号</span><br></pre></td></tr></table></figure>
-
-<h2 id="dl-部分："><a href="#dl-部分：" class="headerlink" title="dl 部分："></a>dl 部分：</h2><p>打开文件夹，执行 sh 文件即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./run.sh</span><br></pre></td></tr></table></figure>
-
-<p>如想检查程序是否成功运行，打开同一文件夹下的文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim main.out</span><br></pre></td></tr></table></figure>
-
-<p>这是打印输出信息的文件，有内容说明没问题。（附： vim 使用 :q 退出）</p>
-<h2 id="yz-部分："><a href="#yz-部分：" class="headerlink" title="yz 部分："></a>yz 部分：</h2><ol>
-<li>在 &#x2F;himawari 目录下直接输入 <code>lsof nohup.out</code> 查看是否有进程占用该文件，如果没有说明需要重启。</li>
-<li>重启命令为 <code>nohup ./20210630 &amp;</code> 。</li>
-<li>使用 <code>tailf nohup.out</code> 命令查看文件尾是否有启动成功的日志（一些站点信息）。</li>
-</ol>
-<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>代码运行成功一方面要检查 out 文件夹下成果是否完整，一般来说需要有带有 pm2.5 、 pm10 、 dust 、 false 、 real 这些名称的成果；另一方面就是 ftp 传输是否畅通，这部分的检查在 <strong>yz 部分</strong>中有写到。</p>
-<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><ol>
-<li>Step1 里的等待几秒十分重要。因为这个原因卡了好久。</li>
-<li>遇到了一个找不到文件夹的报错。自己去相应位置补充文件夹即可。</li>
-<li>spq 目录下的 DL 里的内容仍属于 spq 部分，与 dl 部分无关。</li>
-<li>运行的程序输出文件读取失败并不一定是程序错误、运行失败等原因，可能只是数据文件本身的问题。</li>
-<li>程序跑起来后要注意追踪，每隔一段时间就要对程序是否在运作进行检查。</li>
-<li>程序正在运行不代表是没有问题的，要多甄别输出信息。目前引起过在运行但不出结果的一次问题原因为硬盘满了。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>环境项目</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>python</tag>
-        <tag>葵花卫星</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>质因数分解（待完善）</title>
     <url>/2022/03/23/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</url>
     <content><![CDATA[<p>时间复杂度：$O(\log n)$</p>
@@ -2398,6 +2350,24 @@
         <tag>质因数分解</tag>
         <tag>数论</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>近日训练与日常杂谈</title>
+    <url>/2023/01/30/%E8%BF%91%E6%97%A5%E8%AE%AD%E7%BB%83%E4%B8%8E%E6%97%A5%E5%B8%B8%E6%9D%82%E8%B0%88/</url>
+    <content><![CDATA[<p>有的时候也会去想有关天赋和努力的事情，每次看到知乎大佬在谈自己cf轻松上到1800时也不免有些迷茫——我已经在1300挣扎了1年了，1800对我来说似乎是一个遥不可及的数字。不过我也看得到我的进步，在最近的3场比赛中我的思维显然比以前更加灵活了一些，也能够从过去中吸取教训解决一道分解质因数的题了，虽然很痛苦。道路依旧很漫长，随着瓶颈期的出现似乎每前进一步都伴随着重重困难，但也还要继续走下去。总结一下收获：</p>
+<h1 id="逆推"><a href="#逆推" class="headerlink" title="逆推"></a>逆推</h1><p><a href="https://codeforces.com/contest/1792/problem/C">Educational Codeforces Round 142 (Rated for Div. 2) C</a></p>
+<p><a href="https://codeforces.com/gym/104128/problem/A">The 2022 ICPC Asia Nanjing Regional Contest A</a></p>
+<p>我没有看正解，我在处理时都是使用了一些逆向思维。在第一道题里，与其去思考在序列内选择数对移到两侧将序列排好序，不如直接对排好序的数组两侧的数对不断内移好思考，能够发现原次序本就连续递增的部分无需操作，判断所有时刻两侧最大所需操作次数的最小值即可；在第二道题里与其认为所有袋鼠一起移动，不如认为是四面墙与洞在反向移动，最后四面墙会使袋鼠数缩减为一个小矩形，洞会留下一个不规则形状的移动轨迹，在确保洞的初始点在地图范围内的前提下使用二维前缀和计算两图像相交即可。</p>
+<h1 id="初始化慎用"><a href="#初始化慎用" class="headerlink" title="初始化慎用"></a>初始化慎用</h1><p><a href="https://codeforces.com/gym/104128/problem/A">The 2022 ICPC Asia Nanjing Regional Contest A</a></p>
+<p>memset很好用，但在面对有t组数据的题目时要慎用，因为可能会有这样一种输入，t很大但是每个n都很小，此时倘若题目时间效率本就紧张再使用memset对每个开到MAXN的数组全部初始化便会超时。此题就是一个例子。</p>
+<h1 id="质因数分解"><a href="#质因数分解" class="headerlink" title="质因数分解"></a>质因数分解</h1><p><a href="https://codeforces.com/contest/1787/problem/B">TypeDB Forces 2023 (Div. 1 + Div. 2, Rated, Prizes!) B</a></p>
+<p>此题算是我进步的标志，我通过翻以前的博客记录艰难的完成了大数的质因数分解，同时也发现了一些自己的遗漏，比如对于每个数组应该开多大并没有做出明确的解释，自己的筛法板子也有一些小问题。我会再整理的。</p>
+<h1 id="DP的理解"><a href="#DP的理解" class="headerlink" title="DP的理解"></a>DP的理解</h1><p><a href="https://codeforces.com/contest/1787/problem/C">TypeDB Forces 2023 (Div. 1 + Div. 2, Rated, Prizes!) C</a></p>
+<p>我好像逐渐领悟到DP的真谛了。此题中的0&#x2F;1是某阶段的两个状态，分别代表本组数以$(x, y)$或$(y,x)$排列，这本质上就是一种枚举所有可能性的暴力，因为这两种状态足以完全表示此前的状态对本步的影响。类似的，我今天才意识到背包问题的阶段是物品，状态是背包容量。虽每个物品有放或不放两个抉择，但并不能像本题一样使用0&#x2F;1，因为此物品能不能放不止由上一个物品放没放所决定，换句话说，应该由之前所有的物品放没放共同决定，即不能完全表示此前的状态对本步的影响。而所有的物品能不能放都被一个共同属性相关联，便是体积，因此要在第二维引入1-m所有大小背包容量的状态。不过如此看来，我觉得似乎把第二维更换为“装后使背包容量还剩1-m”更直观好理解一些，但具体可不可行就还得等我去尝试一下了。</p>
+]]></content>
+      <categories>
+        <category>算法比赛</category>
+      </categories>
   </entry>
   <entry>
     <title>除法取模</title>
