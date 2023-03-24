@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Codeforces Round #783 (Div. 1) A 题解（存疑）</title>
+    <url>/2022/04/20/Codeforces-Round-783-Div-1-A-%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://codeforces.com/problemset/problem/1667/A">原题：A. Make it Increasing</a></p>
+<p>题目本身比较简单。要想得到递增序列，只需要从$1$到$n$遍历选择不进行增减的点（$0$），后根据递增原则分左右两部分进行搜索计算即可。注意要开long long。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll unsigned long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll a[<span class="number">5200</span>],b[<span class="number">5200</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;a[i]);</span><br><span class="line">		b[i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ll ans=<span class="number">1e18</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=n;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=b[i];</span><br><span class="line">		</span><br><span class="line">		ll num=<span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i+<span class="number">1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i<span class="number">-1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		ans=<span class="built_in">min</span>(ans,num);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是题解的写法比较巧妙。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> n, a[<span class="number">5005</span>], ans=<span class="number">1e18</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> pos=<span class="number">1</span>; pos&lt;=n; pos++) &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> prev=<span class="number">0</span>, sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos<span class="number">-1</span>; i&gt;=<span class="number">1</span>; i--) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];	<span class="comment">//对于模a[i]有余数的情况可以让prev加到刚好被整除的大小，即满足递增条件的最小值</span></span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        prev=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos+<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];</span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        ans=<span class="built_in">min</span>(ans, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>题解注意到了一点：若$b_i - a_i &gt; b_{i - 1}$，则可以认为至少多进行了一次没有必要的操作（即多加了一次$a_i$）。因此我们可以认为对于最优答案存在$b_i \leq b_{i - 1} + a_i$。那么我们假设$prev_i &#x3D; b_{i - 1} + a_i$，则对于第$i$个数应该进行$prev_i &#x2F; a_i$次操作。</p>
+<p>因为$prev_{i - 1} \geq b_{i - 1}$，所以$prev_i \geq prev_{i - 1} + a_i$。由于我们希望总操作次数小，因此$prev_i$该越小越好，所以我们希望取到等于的情况。因此$prev_i &#x3D; prev_{i - 1} + (a_i - prev_{i - 1} % a_i)$。当后面的数更大时，则直接加$a_i$，否则加到刚好被$a_i$整除的大小，即满足递增条件的最小值。</p>
+<p>但我目前还对这种解法存疑。如0 6 7 3，选中0后面进行递增，似乎我的程序是5，题解的程序是7。</p>
+]]></content>
+      <categories>
+        <category>OI题解</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>Codeforces</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Codeforces Round #778 D 题解</title>
     <url>/2022/03/28/Codeforces-Round-778-D-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1654/problem/D">原题：D. Potion Brewing Class</a></p>
@@ -21,7 +43,7 @@
 <p>可以说在本题中学到很多东西了。</p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>OI题解</category>
       </categories>
       <tags>
         <tag>题解</tag>
@@ -29,28 +51,6 @@
         <tag>树</tag>
         <tag>质因数分解</tag>
         <tag>模运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Codeforces Round #783 (Div. 1) A 题解（存疑）</title>
-    <url>/2022/04/20/Codeforces-Round-783-Div-1-A-%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://codeforces.com/problemset/problem/1667/A">原题：A. Make it Increasing</a></p>
-<p>题目本身比较简单。要想得到递增序列，只需要从$1$到$n$遍历选择不进行增减的点（$0$），后根据递增原则分左右两部分进行搜索计算即可。注意要开long long。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll unsigned long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll a[<span class="number">5200</span>],b[<span class="number">5200</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;a[i]);</span><br><span class="line">		b[i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ll ans=<span class="number">1e18</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=n;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=b[i];</span><br><span class="line">		</span><br><span class="line">		ll num=<span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i+<span class="number">1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i<span class="number">-1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		ans=<span class="built_in">min</span>(ans,num);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是题解的写法比较巧妙。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> n, a[<span class="number">5005</span>], ans=<span class="number">1e18</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> pos=<span class="number">1</span>; pos&lt;=n; pos++) &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> prev=<span class="number">0</span>, sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos<span class="number">-1</span>; i&gt;=<span class="number">1</span>; i--) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];	<span class="comment">//对于模a[i]有余数的情况可以让prev加到刚好被整除的大小，即满足递增条件的最小值</span></span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        prev=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos+<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];</span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        ans=<span class="built_in">min</span>(ans, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>题解注意到了一点：若$b_i - a_i &gt; b_{i - 1}$，则可以认为至少多进行了一次没有必要的操作（即多加了一次$a_i$）。因此我们可以认为对于最优答案存在$b_i \leq b_{i - 1} + a_i$。那么我们假设$prev_i &#x3D; b_{i - 1} + a_i$，则对于第$i$个数应该进行$prev_i &#x2F; a_i$次操作。</p>
-<p>因为$prev_{i - 1} \geq b_{i - 1}$，所以$prev_i \geq prev_{i - 1} + a_i$。由于我们希望总操作次数小，因此$prev_i$该越小越好，所以我们希望取到等于的情况。因此$prev_i &#x3D; prev_{i - 1} + (a_i - prev_{i - 1} % a_i)$。当后面的数更大时，则直接加$a_i$，否则加到刚好被$a_i$整除的大小，即满足递增条件的最小值。</p>
-<p>但我目前还对这种解法存疑。如0 6 7 3，选中0后面进行递增，似乎我的程序是5，题解的程序是7。</p>
-]]></content>
-      <categories>
-        <category>算法比赛</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -94,7 +94,7 @@
 <h1 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h1><p>上一场比赛因为有不会的题，所以题解慢慢再补……</p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>OI题解</category>
       </categories>
       <tags>
         <tag>题解</tag>
@@ -134,7 +134,7 @@
 
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>OI题解</category>
       </categories>
       <tags>
         <tag>题解</tag>
@@ -219,7 +219,7 @@
 
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>OI题解</category>
       </categories>
       <tags>
         <tag>题解</tag>
@@ -251,7 +251,7 @@
 
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>OI题解</category>
       </categories>
       <tags>
         <tag>题解</tag>
@@ -273,7 +273,7 @@
 <p><a href="https://www.runoob.com/linux/linux-comm-screen.html">菜鸟教程上的Linux screen命令</a></p>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>知识备忘录</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -330,7 +330,7 @@
 <p><a href="https://www.runoob.com/linux/linux-comm-ftp.html">Linux ftp命令</a></p>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>知识备忘录</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -349,7 +349,7 @@
 <p><img src="/2022/06/13/Numpy-%E4%B8%89%E7%BB%B4%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95%E9%97%AE%E9%A2%98/3.png" alt="img"></p>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>知识备忘录</category>
       </categories>
       <tags>
         <tag>python</tag>
@@ -371,7 +371,7 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> b[<span class="number">400010</span>],len;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solv</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) b[i]=<span class="number">0</span>;</span><br><span class="line">    b[len]=<span class="number">1000000010</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(a[i]!=b[len]) b[++len]=a[i];</span><br><span class="line">    	</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++) b[i+len]=b[i]-k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(b+<span class="number">1</span>,b+len*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len*<span class="number">2</span><span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">if</span>(b[i]==b[i+<span class="number">1</span>])</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    		<span class="keyword">return</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>排序</tag>
@@ -424,7 +424,7 @@
 <p>最后贴一篇应该是正解的题解：<a href="https://blog.csdn.net/nuclearsubmarines/article/details/77603154">题解</a></p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>题解</tag>
@@ -541,7 +541,7 @@
 <p><a href="https://zhuanlan.zhihu.com/p/165152789">文章2</a></p>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>人工智能学习笔记</category>
       </categories>
       <tags>
         <tag>PyTorch</tag>
@@ -673,7 +673,7 @@
 <p>该处的<code>pass</code>便是占据一个位置，因为如果定义一个空函数程序会报错，当你没有想好函数的内容是可以用 pass 填充，使程序可以正常运行。</p>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>知识备忘录</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -699,7 +699,7 @@
 <p>最近在跟学 M_Studio 老师的<a href="https://www.bilibili.com/video/BV1jg4y1v7qC?spm_id_from=333.999.0.0&vd_source=6f67cf3df36c1099236303f99c042178">开发2D手机游戏并获得收益(新版)</a>这个付费项目，会把过程中学习到的知识点记录下来。</p>
 ]]></content>
       <categories>
-        <category>悠哉日常</category>
+        <category>游戏开发学习笔记</category>
       </categories>
       <tags>
         <tag>Unity3D</tag>
@@ -745,7 +745,7 @@
 
 ]]></content>
       <categories>
-        <category>游戏开发</category>
+        <category>游戏开发学习笔记</category>
       </categories>
       <tags>
         <tag>Unity3D</tag>
@@ -776,7 +776,7 @@
 <p>显示一个范围</p>
 ]]></content>
       <categories>
-        <category>十字路口</category>
+        <category>游戏开发学习笔记</category>
       </categories>
       <tags>
         <tag>Unity3D</tag>
@@ -827,7 +827,7 @@
 <p><strong>此性质经常与数的质因数分解一起使用。</strong>一些质因数分解的方法请看我的另一篇文章。</p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>质因数分解</tag>
@@ -861,7 +861,7 @@
 <p>PS：交这篇文章前还和一个人针对“内容是不是应该轻松愉快”这个事情吵了半天…我是支持写的轻松愉快一点的，不然还没开始学就吓跑萌新了，要学会温水煮青蛙嘛（bushi）；但对方认为既然是给老师的东西应该写的正式一点。我无法判断双方对错，不过出于懒的原因我并没有改严肃：）</p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>入门</tag>
@@ -873,7 +873,7 @@
     <content><![CDATA[<p>下次一定会写的！</p>
 ]]></content>
       <categories>
-        <category>数学建模</category>
+        <category>数学建模学习笔记</category>
       </categories>
       <tags>
         <tag>正交变换</tag>
@@ -930,7 +930,7 @@
 <p>头晕的厉害，稍微处理了一些事情，学了学神经网络，就又到了睡觉的时间。于是乎美好的六一就被我浪费过去了，我连下楼买点零食的欲望都没有。今天睡一晚就坐等发烧好转，明天什么时候不晕了我什么时候起床：）</p>
 ]]></content>
       <categories>
-        <category>悠哉日常</category>
+        <category>日常</category>
       </categories>
   </entry>
   <entry>
@@ -957,7 +957,7 @@
 <p><img src="/2022/06/02/%E5%8C%85%E8%A3%B9%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0/3.png" alt="img"></p>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>知识备忘录</category>
       </categories>
       <tags>
         <tag>前端</tag>
@@ -973,13 +973,39 @@
 <p><strong>相关系数：</strong><br>$$<br>\rho_{X, Y} &#x3D; {Cov(X, Y) \over \sqrt{D(X)} \sqrt{D(Y)}}<br>$$</p>
 ]]></content>
       <categories>
-        <category>数学建模</category>
+        <category>数学建模学习笔记</category>
       </categories>
       <tags>
         <tag>相关性</tag>
         <tag>线性代数</tag>
         <tag>协方差</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>博客分类总则</title>
+    <url>/2023/03/24/%E5%8D%9A%E5%AE%A2%E5%88%86%E7%B1%BB%E6%80%BB%E5%88%99/</url>
+    <content><![CDATA[<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ul>
+<li>十字路口：一些记录博客的总览文档</li>
+<li>日常：写日记的地方</li>
+<li>OI题解：算法比赛专门放题解的地方</li>
+<li>环境项目：完全与环境项目相关的内容</li>
+<li>知识备忘录：记录基本且通用的知识</li>
+<li>算法竞赛学习笔记：用来分开放置算法比赛知识点笔记</li>
+<li>数学建模学习笔记：用来分开放置数学建模知识点笔记</li>
+<li>游戏开发学习笔记：用来分开放置游戏开发知识点笔记</li>
+<li>人工智能学习笔记：用来分开放置人工智能知识点笔记</li>
+</ul>
+<h1 id="一些具体解释"><a href="#一些具体解释" class="headerlink" title="一些具体解释"></a>一些具体解释</h1><p>学习笔记的侧重是<strong>学习本领域的专业知识</strong>。</p>
+<p>知识备忘录一般存储暂时不能分类知识与通用知识。<strong>其中通用是指会在多个领域涉及到的知识。</strong></p>
+<ol>
+<li><strong>当一门有些通用的知识只与某领域相关时，不应记录在备忘录，而记录在此领域中。</strong>如人工智能的pytorch相关问题应自己保存，因为即使python知识是通用的，但pytorch只与人工智能相关（我是使用的python和pytorch区分开的原则，也就是库与语言本身当作不同知识来对待）。</li>
+<li><strong>在面对同一通用知识在面对不同领域会有不同侧重时不需要合并在知识备忘录，但需要在出现这种情况时在备忘录进行简短的记录。</strong>如在面对如FFT的离散形式和连续形式两种变种的情况时离散形式可以单独放在算法竞赛内；同理算法竞赛涉及到STL时应记录在算法比赛内，因为其对于完整的STL知识来说可能不全且有自己的侧重。</li>
+<li><strong>当一门通用知识同时会在我的多个学习领域出现且没有侧重时，应当转移到知识备忘录，之后在两领域分别调用。</strong>如对于我的世界linux服务器搭建来说，linux基本操作应该放入备忘录。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>十字路口</category>
+      </categories>
   </entry>
   <entry>
     <title>博客美化指南</title>
@@ -1040,7 +1066,7 @@
 <p><img src="/2022/05/15/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E6%8C%87%E5%8D%97/4.png" alt="img"></p>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>知识备忘录</category>
       </categories>
       <tags>
         <tag>博客</tag>
@@ -1100,7 +1126,7 @@
 <p>之后就可以点击下载了。至于如何在博客上显示 pdf ，由于自己还没有需求，所以没有记录，等以后用到了再回来补充。</p>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>知识备忘录</category>
       </categories>
       <tags>
         <tag>博客</tag>
@@ -1220,7 +1246,7 @@
 <p><a href="https://baike.baidu.com/item/SG%E5%87%BD%E6%95%B0/1004609?fr=aladdin">https://baike.baidu.com/item/SG%E5%87%BD%E6%95%B0/1004609?fr=aladdin</a></p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>博弈论</tag>
@@ -1519,7 +1545,7 @@
 
 ]]></content>
       <categories>
-        <category>数学建模</category>
+        <category>数学建模学习笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1691,7 +1717,7 @@
 </tbody></table>
 ]]></content>
       <categories>
-        <category>问题指南</category>
+        <category>知识备忘录</category>
       </categories>
       <tags>
         <tag>博客</tag>
@@ -1813,7 +1839,7 @@
 <p><a href="https://www.luogu.com.cn/problem/solution/P1196">https://www.luogu.com.cn/problem/solution/P1196</a></p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>数据结构</tag>
@@ -1837,7 +1863,7 @@
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html">https://www.cnblogs.com/chengxiao/p/6194356.html</a></p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>排序</tag>
@@ -1856,7 +1882,7 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>==<span class="number">1</span>) ans*=a;</span><br><span class="line">		a*=a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>数论</tag>
@@ -1870,7 +1896,7 @@
 <p>PS：写完文章就又开心起来了：）</p>
 ]]></content>
       <categories>
-        <category>悠哉日常</category>
+        <category>日常</category>
       </categories>
   </entry>
   <entry>
@@ -1883,7 +1909,7 @@
 <p>算是一场印象深刻的校赛吧。每次看到自己与强者的差距都会感到沮丧，只有自己不断行动才能获得一些慰藉。</p>
 ]]></content>
       <categories>
-        <category>悠哉日常</category>
+        <category>日常</category>
       </categories>
       <tags>
         <tag>数学建模</tag>
@@ -2104,7 +2130,7 @@
 </tbody></table>
 ]]></content>
       <categories>
-        <category>数学建模</category>
+        <category>数学建模学习笔记</category>
       </categories>
   </entry>
   <entry>
@@ -2113,7 +2139,7 @@
     <content><![CDATA[<p>虽然说表面看上去我好像很多天没有更博客了，但是，非也！最近在学习深度学习的那些课程，所以深度学习相关笔记的那篇文章才是最近的主战场。同时就在昨天肝出了科技论文答辩的内容，让我意识到一个困难的论文选题会给水课这件事带来多大的困难…与此同时的在进行一些奇怪领域的学习，比如苦练俄罗斯方块技巧（Tetris99确实是个好游戏）以及为了辅导其他人一个项目的开发了解了 RTKLIB 的环境配置以及开发指南，同时顺便写了篇文章（由于有偿关系，不会上传）。不过也是在忙完了以上这些事情后，看到最近为了解决一系列问题而凌乱收藏后的收藏夹，外加之早就被搁置的许多知识点还静静的躺在里面，就不免给一个强迫症患者整理的冲动。便正好可以趁明天没事干去慢慢记到自己博客里…不要小看，事实上把其它人的内容整理成自己的文字是一个很耗时间的事情。总之明天会有一波大更新！</p>
 ]]></content>
       <categories>
-        <category>悠哉日常</category>
+        <category>日常</category>
       </categories>
   </entry>
   <entry>
@@ -2187,7 +2213,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>悠哉日常</category>
+        <category>日常</category>
       </categories>
   </entry>
   <entry>
@@ -2209,7 +2235,7 @@
 <p>平日的坏心情很少是由某一件事直接激起的，更多的是一件件小事的叠加，这已经是一个老生常谈的道理了。所以说还是要把每件事都拆分开来寻找最优解，争取早点把这些事处理掉。</p>
 ]]></content>
       <categories>
-        <category>悠哉日常</category>
+        <category>日常</category>
       </categories>
   </entry>
   <entry>
@@ -2242,7 +2268,7 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="type">int</span> n;</span><br><span class="line"> <span class="number">8</span> <span class="type">int</span> num=<span class="number">0</span>;</span><br><span class="line"> <span class="number">9</span> <span class="type">int</span> isp[<span class="number">10000010</span>],p[<span class="number">10000010</span>];</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">12 </span>&#123;</span><br><span class="line"><span class="number">13</span>     <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line"><span class="number">14</span>     </span><br><span class="line"><span class="number">15</span>     <span class="comment">//初始化</span></span><br><span class="line"><span class="number">16</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++) isp[i]=<span class="number">1</span>;</span><br><span class="line"><span class="number">17</span>     </span><br><span class="line"><span class="number">18</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line"><span class="number">19</span>     &#123;</span><br><span class="line"><span class="number">20</span>         <span class="keyword">if</span>(isp[i])</span><br><span class="line"><span class="number">21</span>         &#123;</span><br><span class="line"><span class="number">22</span>             num++;</span><br><span class="line"><span class="number">23</span>             p[num]=i;</span><br><span class="line"><span class="number">24</span>         &#125;</span><br><span class="line"><span class="number">25</span>         <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=num&amp;&amp;i*p[j]&lt;=n;j++)</span><br><span class="line"><span class="number">26</span>         &#123;</span><br><span class="line"><span class="number">27</span>             isp[i*p[j]]=<span class="number">0</span>;</span><br><span class="line"><span class="number">28</span>             <span class="comment">//确保每个合数都只会被它的最小质因数筛掉</span></span><br><span class="line"><span class="number">29</span>             <span class="keyword">if</span>(i%p[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line"><span class="number">30</span>         &#125;</span><br><span class="line"><span class="number">31</span>     &#125;</span><br><span class="line"><span class="number">32</span>     </span><br><span class="line"><span class="number">33</span>     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=num;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]);</span><br><span class="line"><span class="number">34</span>     </span><br><span class="line"><span class="number">35</span>     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">36</span> &#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>数论</tag>
@@ -2319,7 +2345,7 @@
 <p><a href="https://www.luogu.com.cn/problem/solution/P3376">https://www.luogu.com.cn/problem/solution/P3376</a></p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>图论</tag>
@@ -2344,7 +2370,7 @@
 <p>似乎还有一种$n^{1 \over 4}$效率的求法，待完善。</p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>质因数分解</tag>
@@ -2366,7 +2392,7 @@
 <p>我好像逐渐领悟到DP的真谛了。此题中的0&#x2F;1是某阶段的两个状态，分别代表本组数以$(x, y)$或$(y,x)$排列，这本质上就是一种枚举所有可能性的暴力，因为这两种状态足以完全表示此前的状态对本步的影响。类似的，我今天才意识到背包问题的阶段是物品，状态是背包容量。虽每个物品有放或不放两个抉择，但并不能像本题一样使用0&#x2F;1，因为此物品能不能放不止由上一个物品放没放所决定，换句话说，应该由之前所有的物品放没放共同决定，即不能完全表示此前的状态对本步的影响。而所有的物品能不能放都被一个共同属性相关联，便是体积，因此要在第二维引入1-m所有大小背包容量的状态。不过如此看来，我觉得似乎把第二维更换为“装后使背包容量还剩1-m”更直观好理解一些，但具体可不可行就还得等我去尝试一下了。</p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>OI题解</category>
       </categories>
   </entry>
   <entry>
@@ -2378,7 +2404,7 @@
 <p><a href="https://blog.csdn.net/qq742762377/article/details/83278688">来源</a></p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>模运算</tag>
@@ -3086,7 +3112,7 @@
 <p>触类旁通、举一反三，应该也是一个程序员应有的品质吧。</p>
 ]]></content>
       <categories>
-        <category>算法比赛</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
       <tags>
         <tag>背包问题</tag>
