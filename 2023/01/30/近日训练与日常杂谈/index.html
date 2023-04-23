@@ -28,7 +28,7 @@
 <meta property="og:description" content="虽然能看到进步，但成长的速度还是不尽人意。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-30T13:38:26.000Z">
-<meta property="article:modified_time" content="2023-03-24T09:41:52.733Z">
+<meta property="article:modified_time" content="2023-04-23T03:30:40.373Z">
 <meta property="article:author" content="CYHei_mu">
 <meta name="twitter:card" content="summary">
 
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-24 17:41:52" itemprop="dateModified" datetime="2023-03-24T17:41:52+08:00">2023-03-24</time>
+                <time title="修改时间：2023-04-23 11:30:40" itemprop="dateModified" datetime="2023-04-23T11:30:40+08:00">2023-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,17 +276,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>有的时候也会去想有关天赋和努力的事情，每次看到知乎大佬在谈自己cf轻松上到1800时也不免有些迷茫——我已经在1300挣扎了1年了，1800对我来说似乎是一个遥不可及的数字。不过我也看得到我的进步，在最近的3场比赛中我的思维显然比以前更加灵活了一些，也能够从过去中吸取教训解决一道分解质因数的题了，虽然很痛苦。道路依旧很漫长，随着瓶颈期的出现似乎每前进一步都伴随着重重困难，但也还要继续走下去。总结一下收获：</p>
-<h1 id="逆推"><a href="#逆推" class="headerlink" title="逆推"></a>逆推</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1792/problem/C">Educational Codeforces Round 142 (Rated for Div. 2) C</a></p>
-<p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/104128/problem/A">The 2022 ICPC Asia Nanjing Regional Contest A</a></p>
-<p>我没有看正解，我在处理时都是使用了一些逆向思维。在第一道题里，与其去思考在序列内选择数对移到两侧将序列排好序，不如直接对排好序的数组两侧的数对不断内移好思考，能够发现原次序本就连续递增的部分无需操作，判断所有时刻两侧最大所需操作次数的最小值即可；在第二道题里与其认为所有袋鼠一起移动，不如认为是四面墙与洞在反向移动，最后四面墙会使袋鼠数缩减为一个小矩形，洞会留下一个不规则形状的移动轨迹，在确保洞的初始点在地图范围内的前提下使用二维前缀和计算两图像相交即可。</p>
-<h1 id="初始化慎用"><a href="#初始化慎用" class="headerlink" title="初始化慎用"></a>初始化慎用</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/104128/problem/A">The 2022 ICPC Asia Nanjing Regional Contest A</a></p>
-<p>memset很好用，但在面对有t组数据的题目时要慎用，因为可能会有这样一种输入，t很大但是每个n都很小，此时倘若题目时间效率本就紧张再使用memset对每个开到MAXN的数组全部初始化便会超时。此题就是一个例子。</p>
-<h1 id="质因数分解"><a href="#质因数分解" class="headerlink" title="质因数分解"></a>质因数分解</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1787/problem/B">TypeDB Forces 2023 (Div. 1 + Div. 2, Rated, Prizes!) B</a></p>
-<p>此题算是我进步的标志，我通过翻以前的博客记录艰难的完成了大数的质因数分解，同时也发现了一些自己的遗漏，比如对于每个数组应该开多大并没有做出明确的解释，自己的筛法板子也有一些小问题。我会再整理的。</p>
-<h1 id="DP的理解"><a href="#DP的理解" class="headerlink" title="DP的理解"></a>DP的理解</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1787/problem/C">TypeDB Forces 2023 (Div. 1 + Div. 2, Rated, Prizes!) C</a></p>
-<p>我好像逐渐领悟到DP的真谛了。此题中的0&#x2F;1是某阶段的两个状态，分别代表本组数以$(x, y)$或$(y,x)$排列，这本质上就是一种枚举所有可能性的暴力，因为这两种状态足以完全表示此前的状态对本步的影响。类似的，我今天才意识到背包问题的阶段是物品，状态是背包容量。虽每个物品有放或不放两个抉择，但并不能像本题一样使用0&#x2F;1，因为此物品能不能放不止由上一个物品放没放所决定，换句话说，应该由之前所有的物品放没放共同决定，即不能完全表示此前的状态对本步的影响。而所有的物品能不能放都被一个共同属性相关联，便是体积，因此要在第二维引入1-m所有大小背包容量的状态。不过如此看来，我觉得似乎把第二维更换为“装后使背包容量还剩1-m”更直观好理解一些，但具体可不可行就还得等我去尝试一下了。</p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="2c69797581bc4ddb614b3b0a7c2eedfc2a09be54b6b79ec216ecd7be292cbaea">6fcf1523ddce79b7eefea9a75525b524c632e7fbe3608e66b9e9b6d15757346c0e625f120b006f958dadacd5665fe9994f1516ffef23cfb1ed072d96dd3d14015a9f4fd06bdc57a75bc13e9b7b86ba3976f744bbde858e123c7b995543bc73a189968a4df5599dc1301da4ba23a3edc6b9577a027948b52561d2f9c1a9d02503d46077fb4ce13ef2090da9667edf167e0c6e47f482081e1312502c3d7a0a2b2192b99559c01264181757a761a8c578d51f4d567031aa18837b7ca2f96eae56536e526f3d95dbfa024c541d12d6629fb4827aa0cd7c7e85aafc6e40789c3c33bf74b64897c528a05f97e77eecd2d10e1bbdc8cc850063a48c1bf614170d81f5cab8b11090c0d6020aabc7704d738fd21a71ec6a3b0649cec9b415991c7dd8d86ee4e1001ac27a38ca72ffddf80b338ea063a858644fde1a9b17f6213ff6d7e0a9990b530602006445378886ce64d6cc6c6bdec38011392139c69ebadd771b279e54057d04c1207861174336321156a773e484bc68b59d20784e8e16a93f5507f92b825fe346ee041eab518e17d8f064ce9af7032cb61710ec8d333521350e9aa8b8579a4dffa5df5fdeaf0734b5fcf4ceb831a536df036db6c8477a86ac39641f2b6dca2b6cb3c50d0010d67b1132cfa604e6d9e8f6767a5f45b1e0b6d12697ffd620a1cb07d3fe94fd12b26e7333eaf8bcb3ea871ea6537949a75ccc6c4d505a77694a582553132d85ce108f46d900c990efb0e7e845270550b209c226c2fcd5d57c7c321e1879d87ef989201182b7471d0614f895d6e6f271fd5520ebbf709bdb0872715fd2bef081bfac911955175ea20ff61db18ec8663be1716067ad94cd58144cddea04bf1b60f7f9e3c6f15584d000ff635fd7aa544f19bd9f4f64c62d338d5e33e3d6503c227a9c860b38159e87822e9b0d8857226b5c15e8f325803528cf0487ec1782bb9f2145830eb8338bf54889f26a6a3edc018de95f911e3e4c188f30b7c0cc920165ca6b83837d27c3ba4dfba145cb6aaa999dc91113a5f3f1ad69942f510aa27e229f912fea177eb010b44029d24af0da189857f06e9a6f03197bf5b3a89501582672b9fa932b1d14048ff9879995343f319d1f2a22c8d409bf1da8e961cf3457d31a0ed31b839b0083ce2171e688a79a0854942b177aec2b4ac49c47ce85910a8a2ba8e4dae450b740036db72f6e97f2233aaee2c6e32f00f047e6f4a93241fe654fe23d9a55697d31082acde4c9cf191ac78a6e5da3a8e9bbec5ded085b66cca6806098b661fd986c427c56c05154ce148d1a6a5f7150ce00949ba083512293933ae4183c6c763a9abbf0937bf9681cb20d779122fc23df1c503777b0d9d03621f70041ce68416f2144e1fe99ba431ad6d51f43e1a29f03bc7d5bc5bae863f37ed9c745528dc6d1464cbe51de95ffb868c0b1d38d220ce825b9a270fb492b15e6d8241afed9207336e5051fbcec6029c092da1439729f6a15d874f556f08bf60283c1340f3557c39db00de63b46ed8aaf9afad23cca31804cf34e470b7e7781483d024eafc04132ecabcf0d0e5b6f5967b28cda58324a36466f6ced1bdcba0620baddcff1c0b0310b9768acd6634c039377dc3048e8e1f45119e92a74aa607b3f035bdeac79f08faa66c266bb9a7cef063c579b395f804a4223841002ab08366b350683f29a577ef5a63866897556aeb40b28e5985907ba3b287dd62d5ebcb65d64a0a4d4894ddef6389266097f227379d1b7ff8b4094a796a336de6c3bccead59e0c0322e7ebf5da9304bec65a8576186f9766704ad2d88703015f1ecd4742612bba5f04e317780ba02bef1ed911a043a2d5ee1eca87008949f7627939bcd8f64291d84e67143db554afdf32657dfdb23da4f48013398082bb0506f1b3f5c10305cb8ba2e8f51d1cc64346373983fdd13099e3eb06267e427203218ec4bce1f02aadb56365850d38e94ca5128464b0fca78acc2b7512c7033f5aef5bda79675c7e3607c2bfeaad8fab903c6259cae826f8dc01f80d338a00f4cb9b8c14b867b35731a4f46b0542bdc43a9eac4e309a90d6901cda5b5c82e4846330de279e4dddeac4c54ebdd40ca4f6016474a7cd80a7cf965a8c5e58fe7364be80636e4f2b5b14e5c11bb3c4b6dbe29c3a543e416bad23cea07b040fc1f86fcd686e23417ff74f7df4bb5cc265b35844e8da0f9cd1ea84d7d23cd115b179637ea2b526b34e890d00427699e4209deb6db2ab66748e03468c4ecd93bbee76c2f400200dd5e981e5ea028c831f82a0c04cdf9699d078a8454105dedfaab16c03e9da816115349ea29760844767f56f77c9f8896f7146342ff5864c63d5e3a5f5cc792ae906c54ef2036eb5878d28b9339b67532334aeab8c40b6c0661980983d0883e0dabed443fbf4cdfd4a0b12a6b141a4d3bb7e2f8ac200b1a8b36129f7194ad2e154b5b4e4ab13071945ad402509b465f0c155090d77b2a3175e1669334dec2ddd5a8004e884d17d841aa9e980141e5b131b55948d9e4ca1961cd179d0c2f416fb51575af3e0703ba32f5d25fa25fd89036e8bd6a91605abfc8eb1400e00b04caf5f3b159ccbb980e747c2572f8ff907394dad5b12e9fb39e786fb60e78f8cfc6142c8546ec1c5e5cc66c7073b46ecac07763cd12f9a16f81524a7eab0097585f671f6f2c64cd47aa97a2980e969716cf170f7a53f94b1167cf2f04ea754f5e4cb8e536e9549d11d17d2b90da2319fbebd74f3ab40dd8047074056c371454d804df137b12ec90eb48f008de38e03ba297c7d56f3c79a326f163817f1e10ad89be15fbb1850936074493b4132dd07fb81127fa269a5ba154369da88375fc9da60707026f2c4953de694cee99a050593d9100791d64081aa7322aa46d90d76ebe6e752f62e7b796333b24a98fe8b42bd0efd787e8567af2bfc1dafd4113f62eecd588170399a0be51c7c6c163033a99dc2762df4ffb1aea016f7178361bc6ada18ed3288ae3bb76127a1d7ab742f1a59c897215391fb70fc4ca10b8630dc3a9a4e0c125ba1e667e07185495d8cd6b9fa91e55f621b8bb48fbcc187739ec3544bd078d001cba8bfb863a0bf48c0d4789ee02b8dfb10cac82e5d5c5fbda80d7685bf08cc343013f07cc1d9deb1bc6d2e51099c96ed7179f625e91e78fc6245f85a522141d6a60ec6de4d7443a22165babe4d2d3c0cc1501085396c1cb20d055cc230c42429cdec1b74073dcd7ddff9d986c1ef20bf7d461212eef28b33e32fef84378072814b7dc333a6ff6c145b34182f8fc9017156ebc7083f279dc4ea126fa4a862aa8a8d8b0f9ec2ef067f8f496657ef1aad9a4c28dc614bf919c0217cc814b744105f155e352fcbd93e71e8870ce32e61053282347fec66ad6b421b0f14e2512b68c7a505a3088b42c977fbf4519de7bbdb7e555ba34274f87a76d826dcf3ae3c4fc6f4479859366bd57d1d6a11c2cc8b0a1d984833af898e2c1c17c14eb1dc779e93ec0026917f6156bf79fcfdb8ce84f005ebc6a4b6e8dde9b27bb5a80e7c187faa03af3f54ab92e96cee795eed5dc001f04ce440b9062df8e6c117d0f9bee2347a467894ed5aa3856d9f02232e2ef89239dc0aa374a02cdd0e65f2c8576905dbf83dd6bb81321e67c82dba6ee425f00ba54f8cca356411e55793dae174e8332492067cd3ac5df857b6a79a988beb0209e7c78557e0caa688574f7efae44f10dbc04ca49dfaede45ecd33237bbcfcfcf9d5cdc5b6322ea2d22cdc9fb787489f6672c5991224a804e5dd2dea4306e33f72f0f6e36ce1f77222f7cbdf87e7ad0657bd603f429f417a7cc8c3d55aecb505ce59ac9729d40f624a751330b2c65bfc5871d9107fe50f57efa912632af1a417b662a83862c86ad68c36819f3dfda74e2e29e8b7f9f42f506c578e3e53c1126b05e31931f9256fa36d427f7893dc23388bf54c981f19dde10f08287611701655f14779807ad4ecb51983a1583777aafcb9fbe143db0867f03c1a5e1c46e9a0e8a4eda63ecfb1b08df2e007f0d6a87e103e1ac18671b501a54a1788b735c57ffe7fdad9f10c88d01bea9bcf53995b16b6c44556e908a0185bbe66a67f748a7fae14e76befcd44df80d034f22b2d2b834cffbe24f1eda80d8287537fbd6c9614694d68bedfc099ff57cac2d099bdba9c4aea9ea49026e6a7a16fcd2f8667af315afb925893be0efdfe210d5dda1dc927f7d555149254998e07bba4da8f3e8393d20d07d1afaf4f78935568f86fce0e9e2fe44fb2452100c22f0b7e348efc9705f46418000870ad0cc18a4656f72eb557e5229a40bf74d12091989a267dcdcdd73c6c89bcf300fb85ea4f4d29a75c75f348cedc985e2a93c286243b0c650493b1be8b86667c510f92635263ca3d607ce507e67cbd75de4206f00d99a4dafaab1f89c2e1160217bc63e7dedb25d36b355126287aaf38afb037ede9c13969220a5cb43a6c612f3f9fab1e330aff75f0a667939b25a407bc934019c119782c5d4a9ad3871ea4030899ea46fd8dfe1b4aab169df2d7d341f89c2c416a9d4cada22d287d998cc3df4c3c8c85b7fd74fdbe07fea0ac913c38d491b69c83b419bd832992fa146a1fd2057af208206de6da02608790676e213476fec21a3e0c1572c853933899c1a1c9fc26dbbb06e34dd9a9c84a6e6fa4df08e6d7b7ce10408a991a11d52196d54dc0863ed798cfa628bfce35a0494b9dd0179fa1079635fe3b4f475b7c26978bf9bcbdc87397024430ea64d86606d553cafa373bfa8a8d87ecf117fe6a388692f036f4a4367161a829f7dfe9038d9c19979166a55e93bc138af08d8bc44392e4e58fdf8b0f5e4494d6a27af56a5f1706400259712548968cf6fe135c94c1f9e0a29859c675f6f57e867cb9169adc4c57e3726be062d68ea9a339582e65770ca1a21438faf03bc29c38da375c5412bae107bba0de16905f9bfd05a2a39ca95fd7c374e6b64fda9442c0d71c0cc9f0815be7e8f1a4595c69b921fd83a8f7dad643a5da3ce775441a1fc88adb70a985ca3c8ad4e4c4dcca9289dc2ca4afb49f0dbca437831447f1ee8f3a27d8c6d407591c846b328f16d4e9c96213dbdfcf215b2251f273c6da6021b69b002af709992cab1f46185ff3d0e4b687212a1d05c02abc150d5ac1d1fd48535c98afc2a817b5f2eda418ea3e2f2852850021a09bc693619dbe078d3eda0b905d1daf81ae933efa865aac8951c0a7ea61cbd85ff66093692d917b2d6b5baa4556514025d7de192eaee52c7b30577ee46d9a1dfdc4433a8098ad1dd62a679192780ee86c521870fe1d5c65ea9c8e257f8ae594d34f4d5c62001ef2c8ab3c1b8317f927f1508bfadfdfce9285d42a50ba13fb80ed72feffd8b4312664d84e8c1613ca89db9e290da8a201744a37df1c4e057e471f97cc1cc110b9490f199fc06de2ac2c3d98f732dcc93ef54a28a1fdc334c6258ad6f75b1a378003708728ede1a23805db0040c706edb51085f6227b77f07e820c41d167605e1105265c228a176b</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
 
     
@@ -367,7 +368,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%86%E6%8E%A8"><span class="nav-number">1.</span> <span class="nav-text">逆推</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%85%8E%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">初始化慎用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">质因数分解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DP%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">DP的理解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -383,7 +383,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -432,7 +432,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">105k</span>
+    <span title="站点总字数">106k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
