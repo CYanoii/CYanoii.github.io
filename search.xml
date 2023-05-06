@@ -923,23 +923,20 @@
       </tags>
   </entry>
   <entry>
-    <title>六一</title>
-    <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="bc9529c70b0d5267274fefe4a594d86f1b715ae8e00ec4ff299c75f3e8e194ae">6fcf1523ddce79b7eefea9a75525b52452403c6618583fc3a88b1313632aafdce514474ed6215c69b06af73308678092e51abcf693506ee235725415117b5b01d68d950140903b06580f766a05da922f62e2fecafdc4d29bdee577597d4cea092a17340a0f8e1ead464f01033197e7d635353d741e3bd91b9f1c724f5717ad5602de6dbfe6bbf7f198dcaff10f2480b28764a835754e44ec857dd98e05be1ca21f9e606617592e50c512c080435fedb5b5b70d2c6b5485dbc76a62105f5763a83d14d33a8cf713a430252c2877417d38394cfea608c8eb58d9cab690d5a9897822851196095a2044ec90454221955c37a8b45d25a9cf6e1afeb4659ef0a8cb213f26eaffe0eabc1dadba76b3bb095525ac04b76b1c937d4606a779c1205976023ddd9eaf57b2c6a8ef5d15a88125a17c5c91a82b84d3cf2e4243ba51e673ba736cfd813a9cba15db2a6a94f9c926ed2111b675cca57d4198a0c900c7e17aa182e46eef82c60702eeffd3015848b51b49788f2cf032fd85829ffe0eec5c50160110a70e9886d61566d045f944d0ea1066ca6284ffaae8f70d483452359849a825745f60b0b5ac19055cb541965449b249fe2779855d415fe3413e73190a5fe4eee4eae5ecd48298f3ee3085819ccecba75aeb469820f92620981c31359bd069d438107da11b8a1608b8d3b2e149cfd2f2bc2e5584da804c359dc18b7d7406128d95de74314b34a656104714bfb4b4f19aeb6912e08eab057104856b2c131246690a5ac59946d7140cb1d061309763feed0074449a908acca957c51c4ff312dbcd94e75e339b9378040105f74dcc580821952ff5c8dbfb60def2ecd9c0a99927b1</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <title>全排列</title>
+    <url>/2023/05/01/%E5%85%A8%E6%8E%92%E5%88%97/</url>
+    <content><![CDATA[<h1 id="基于交换的全排列"><a href="#基于交换的全排列" class="headerlink" title="基于交换的全排列"></a>基于交换的全排列</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n=<span class="number">4</span>,a[<span class="number">5</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pl</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,a[i]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=x;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">swap</span>(a[x],a[i]);</span><br><span class="line">		<span class="built_in">pl</span>(x+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">swap</span>(a[x],a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="基于-DFS-的全排列"><a href="#基于-DFS-的全排列" class="headerlink" title="基于 DFS 的全排列"></a>基于 DFS 的全排列</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> n=<span class="number">4</span>,a[<span class="number">5</span>],used[<span class="number">5</span>]=&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pl</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,a[i]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(used[i]) <span class="keyword">continue</span>;</span><br><span class="line">		a[x]=i;</span><br><span class="line">		used[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">pl</span>(x+<span class="number">1</span>);</span><br><span class="line">		used[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
-        <category>日常</category>
+        <category>算法竞赛学习笔记</category>
       </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>排列组合</tag>
+      </tags>
   </entry>
   <entry>
     <title>包裹浮动元素</title>
@@ -971,6 +968,25 @@
         <tag>前端</tag>
         <tag>CSS</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>六一</title>
+    <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="bc9529c70b0d5267274fefe4a594d86f1b715ae8e00ec4ff299c75f3e8e194ae">6fcf1523ddce79b7eefea9a75525b52452403c6618583fc3a88b1313632aafdce514474ed6215c69b06af73308678092e51abcf693506ee235725415117b5b01d68d950140903b06580f766a05da922f62e2fecafdc4d29bdee577597d4cea092a17340a0f8e1ead464f01033197e7d635353d741e3bd91b9f1c724f5717ad5602de6dbfe6bbf7f198dcaff10f2480b28764a835754e44ec857dd98e05be1ca21f9e606617592e50c512c080435fedb5b5b70d2c6b5485dbc76a62105f5763a83d14d33a8cf713a430252c2877417d38394cfea608c8eb58d9cab690d5a9897822851196095a2044ec90454221955c37a8b45d25a9cf6e1afeb4659ef0a8cb213f26eaffe0eabc1dadba76b3bb095525ac04b76b1c937d4606a779c1205976023ddd9eaf57b2c6a8ef5d15a88125a17c5c91a82b84d3cf2e4243ba51e673ba736cfd813a9cba15db2a6a94f9c926ed2111b675cca57d4198a0c900c7e17aa182e46eef82c60702eeffd3015848b51b49788f2cf032fd85829ffe0eec5c50160110a70e9886d61566d045f944d0ea1066ca6284ffaae8f70d483452359849a825745f60b0b5ac19055cb541965449b249fe2779855d415fe3413e73190a5fe4eee4eae5ecd48298f3ee3085819ccecba75aeb469820f92620981c31359bd069d438107da11b8a1608b8d3b2e149cfd2f2bc2e5584da804c359dc18b7d7406128d95de74314b34a656104714bfb4b4f19aeb6912e08eab057104856b2c131246690a5ac59946d7140cb1d061309763feed0074449a908acca957c51c4ff312dbcd94e75e339b9378040105f74dcc580821952ff5c8dbfb60def2ecd9c0a99927b1</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
   </entry>
   <entry>
     <title>协方差与相关系数</title>
@@ -1734,6 +1750,32 @@
       </tags>
   </entry>
   <entry>
+    <title>归并排序</title>
+    <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
+<p>归并排序的效率稳定。</p>
+<p><strong>时间复杂度</strong>：$O(nlog_n)$</p>
+<h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><p><strong>分</strong>：将原问题分成一些小的问题。</p>
+<p><strong>治</strong>：将分的阶段得到的各答案”修补”在一起。</p>
+<p>本算法使用了递归实现分治，理论上迭代也可。</p>
+<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1.png" alt="img"></p>
+<h1 id="合并有序子序列"><a href="#合并有序子序列" class="headerlink" title="合并有序子序列"></a>合并有序子序列</h1><p>合并有序子序列，即<strong>治</strong>的操作。</p>
+<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.png" alt="img">、<img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/3.png" alt="img"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://www.luogu.com.cn/problem/P1177">模板题点我</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> temp[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> i=l,j=mid+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=mid||j&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;=mid&amp;&amp;j&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=a[j]) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;=mid) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;=r;i++) a[i]=temp[++k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">msort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(r-l&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">msort</span>(l,mid);</span><br><span class="line">		<span class="built_in">msort</span>(mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">psort</span>(l,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">msort</span>(<span class="number">1</span>,n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html">https://www.cnblogs.com/chengxiao/p/6194356.html</a></p>
+]]></content>
+      <categories>
+        <category>算法竞赛学习笔记</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+        <tag>分治</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>并查集</title>
     <url>/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>并查集是一种在线维护集合关系的数据结构，它支持两个操作：</p>
@@ -1851,32 +1893,6 @@
       </categories>
       <tags>
         <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>归并排序</title>
-    <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
-<p>归并排序的效率稳定。</p>
-<p><strong>时间复杂度</strong>：$O(nlog_n)$</p>
-<h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><p><strong>分</strong>：将原问题分成一些小的问题。</p>
-<p><strong>治</strong>：将分的阶段得到的各答案”修补”在一起。</p>
-<p>本算法使用了递归实现分治，理论上迭代也可。</p>
-<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1.png" alt="img"></p>
-<h1 id="合并有序子序列"><a href="#合并有序子序列" class="headerlink" title="合并有序子序列"></a>合并有序子序列</h1><p>合并有序子序列，即<strong>治</strong>的操作。</p>
-<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.png" alt="img">、<img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/3.png" alt="img"></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://www.luogu.com.cn/problem/P1177">模板题点我</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> temp[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> i=l,j=mid+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=mid||j&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;=mid&amp;&amp;j&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=a[j]) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;=mid) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;=r;i++) a[i]=temp[++k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">msort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(r-l&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">msort</span>(l,mid);</span><br><span class="line">		<span class="built_in">msort</span>(mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">psort</span>(l,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">msort</span>(<span class="number">1</span>,n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html">https://www.cnblogs.com/chengxiao/p/6194356.html</a></p>
-]]></content>
-      <categories>
-        <category>算法竞赛学习笔记</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-        <tag>数据结构</tag>
-        <tag>分治</tag>
       </tags>
   </entry>
   <entry>
@@ -2194,6 +2210,54 @@
       </categories>
   </entry>
   <entry>
+    <title>树的直径及其性质与尺取法</title>
+    <url>/2023/05/03/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84%E5%8F%8A%E5%85%B6%E6%80%A7%E8%B4%A8%E4%B8%8E%E5%B0%BA%E5%8F%96%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>题目名称：<a href="https://www.luogu.com.cn/problem/P1099">P1099 [NOIP2007 提高组] 树网的核</a></p>
+<p>题目大意：给定一棵带边权无根树，在其直径上求出一段长度不超过 s 的路径 F，使得离路径距离最远的点到路径的距离最短。（摘自题解）</p>
+<p>我在求解这道题时使用到了求取树的直径、树的直径的性质与尺取法，于是在此统一总结。</p>
+<h1 id="求树的直径"><a href="#求树的直径" class="headerlink" title="求树的直径"></a>求树的直径</h1><p>思路是在树上跑两遍 dfs ，第一遍 dfs 找到最深的点后将其作为起点再跑一遍 dfs ，两次找到的最深的点之间的路径即一条树的直径。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	pt[u].book=<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=a[u];i;i=e[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(pt[v].book) <span class="keyword">continue</span>;</span><br><span class="line">		</span><br><span class="line">		pt[v].fa=u;						<span class="comment">//fa存父亲节点</span></span><br><span class="line">		pt[v].fa_dist=e[i].w;			<span class="comment">//fa_dist存到父亲节点的距离</span></span><br><span class="line">		pt[v].dist=pt[u].dist+e[i].w;	<span class="comment">//dist存到根节点的距离</span></span><br><span class="line">		</span><br><span class="line">		<span class="built_in">dfs</span>(v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) pt[i].book=pt[i].dist=pt[i].fa=pt[i].fa_dist=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> rt,x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(pt[i].dist&gt;pt[x].dist) x=i;</span><br><span class="line">	rt=x,x=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) pt[i].book=pt[i].dist=pt[i].fa=pt[i].fa_dist=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">dfs</span>(rt);</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(pt[i].dist&gt;pt[x].dist) x=i;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//记录直径，del存直径节点，len存直径长度</span></span><br><span class="line">	<span class="type">int</span> len=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) pt[i].book=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(pt[x].fa)</span><br><span class="line">	&#123;</span><br><span class="line">		pt[x].book=<span class="number">1</span>;	<span class="comment">//此处会把找到的直径点都标记，可以不标</span></span><br><span class="line">		del[++m]=x;</span><br><span class="line">		len+=pt[x].fa_dist;</span><br><span class="line">		</span><br><span class="line">		x=pt[x].fa;</span><br><span class="line">	&#125;</span><br><span class="line">	pt[rt].book=<span class="number">1</span>,del[++m]=x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="树的直径的性质"><a href="#树的直径的性质" class="headerlink" title="树的直径的性质"></a>树的直径的性质</h1><p>这里只做简单推导，且全部基于<strong>图上所有边权均为正</strong>这一前提。</p>
+<p><strong>性质1：同一颗树若存在多条直径，所有直径必至少交于一点。</strong></p>
+<p>这个不证了。</p>
+<p><strong>性质2：同一颗树若存在多条直径，则这些直径关于他们的重合部分对称。</strong></p>
+<p>可以想象假如不对称那么完全可以选取重合部分和两边较长的部分作为直径，就不再有这多条直径了。</p>
+<p><strong>性质3：对于直径上一点，到它本身距离最远的点一定是直径的某个端点。</strong></p>
+<p>假如真的有一个距离更远的点，那么完全可以用另一半直径接到这个点再从这个点接到那个距离更远的点组成一条更长的直径。</p>
+<h1 id="解这道题的一些思考"><a href="#解这道题的一些思考" class="headerlink" title="解这道题的一些思考"></a>解这道题的一些思考</h1><p>题解里有些部分解释的不是很清楚，我再基于我的理解进行复述，以下简称<strong>直径上选择的路径</strong>为<strong>路径</strong>：</p>
+<p>对一条路径来说，有两种距离可以左右最终答案：</p>
+<ol>
+<li>路径端点到直径端点的距离。</li>
+<li>非直径上的其它点到路径的最短距离。</li>
+</ol>
+<p>之后是核心部分，我们发现将<strong>非直径上的其它点到路径的最短距离</strong>替换为<strong>非直径上的其它点到直径的最短距离</strong>后答案不会改变。这种替换使得程序能够对这种距离进行<strong>预处理</strong>，从而在量级上提高时间效率。那么为什么可以这样替换？</p>
+<p>其实我们可以 2 中的路径再次细分为两类：</p>
+<ol>
+<li>路径端点到直径端点的距离。</li>
+<li>非直径上的其它点到路径的最短距离，<strong>且这个最短距离不包括任何一段直径</strong></li>
+<li>非直径上的其它点到路径的最短距离，<strong>且这个最短距离中包含了直径</strong></li>
+</ol>
+<p><img src="/2023/05/03/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84%E5%8F%8A%E5%85%B6%E6%80%A7%E8%B4%A8%E4%B8%8E%E5%B0%BA%E5%8F%96%E6%B3%95/1.png" alt="img"></p>
+<p>这张图片中红色为直径，黄色为路径，蓝色就是 2 的情况，绿色就是 3 的情况。我们发现蓝色部分就可以总结为<strong>非直径上的其它点到直径的最短距离</strong>，而绿色部分永远小于黄色部分的端点到直径端点的距离，即<strong>非直径上的其它点到路径的最短距离，且这个最短距离中包含了直径</strong>永远小于<strong>路径端点到直径端点的距离</strong>，而答案是取最大值，则 3 永远会被 1 覆盖而使答案不受影响，同时绿色部分刨去在直径上的长度就更小了，即通过预处理多求出来的<strong>非直径上的其它点到直径的最短距离</strong>更短，更不会对答案造成影响。</p>
+<p>再多看一下那段黑色，假设那段加中间部分加左下蓝色部分也是一条直径也没什么问题，只是会得到一个和<strong>路径端点到直径端点的距离</strong>相等的距离。同时假如绿色部分冒出的部分非常长，长过了黑色部分，那么此时也就不是这两条直径了，<strong>包含上绿色部分会组成一个新的更长的直径</strong>。</p>
+<h1 id="尺取法"><a href="#尺取法" class="headerlink" title="尺取法"></a>尺取法</h1><p>尺取法是一种线性算法。记 ( l , r ) 为一个序列内以 l 为起点的最短合法区间，如果有 r 随 l 的增大而增大的话，我们就可以使用尺取法。具体的做法就是不断的枚举 l ，同时求出 r 。因为 r 随 l 增大而增大，所以 r 只有 n 次变化的机会，所以时间复杂度为 O(n) 。 </p>
+<p>此题最后剩余的问题变成了在一段线段上找一段长度小于 s 的区间使得这段区间到线段两端点的距离的最大值最小，自然想到了尺取法。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> l=<span class="number">1</span>,r=<span class="number">1</span>,ss=<span class="number">0</span>;		<span class="comment">//l记录左端点位置，r记录右端点位置，ss记录当前长度</span></span><br><span class="line"><span class="type">int</span> disl=<span class="number">0</span>,disr=len;	<span class="comment">//disl记录左端点到左边界距离，disr记录右端点到右边界距离</span></span><br><span class="line"><span class="type">int</span> ans=<span class="number">99999999</span>;</span><br><span class="line"><span class="keyword">while</span>(r&lt;=m)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(ss&lt;=s)</span><br><span class="line">	&#123;</span><br><span class="line">		ans=<span class="built_in">min</span>(ans,<span class="built_in">max</span>(disl,disr));	<span class="comment">//如果当前合法就更新答案</span></span><br><span class="line">		ss+=pt[del[r]].fa_dist;</span><br><span class="line">		disr-=pt[del[r]].fa_dist;</span><br><span class="line">		r++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		ss-=pt[del[l]].fa_dist;</span><br><span class="line">		disl+=pt[del[l]].fa_dist;</span><br><span class="line">		l++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="关于题目的其它"><a href="#关于题目的其它" class="headerlink" title="关于题目的其它"></a>关于题目的其它</h1><p>题目本身数据很小，所以许多做法都能通过，还有跑最短路或者二分的解法，就不再一一看了。</p>
+<p>还有一种说我使用尺取法的这一部可以写用了单调队列优化的动归，具体的代码因为我太蒻了没有看太明白，看上去感觉还是尺取法…只能说仁者见仁智者见智了。</p>
+]]></content>
+      <categories>
+        <category>算法竞赛学习笔记</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
+        <tag>树的直径</tag>
+        <tag>尺取法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>清算</title>
     <url>/2022/11/26/%E6%B8%85%E7%AE%97/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -2329,7 +2393,7 @@
     <title>蓝桥杯省二反思</title>
     <url>/2023/04/23/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E4%BA%8C%E5%8F%8D%E6%80%9D/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="dff0379b1d1fecceddc22e20b0ff945f44b5d160c6cf8a2355359a537b0ccc69">6fcf1523ddce79b7eefea9a75525b524cc28394ed74c15007beed5e4609071a7656fea4ebf48db4e7430448fac03e5cacb0fca42682612294c53278a7098e862bcb2fed72525bf5021084bbe8a794ce743391111720b90d81c315fede0baef4b3f46a73a53a45ca10e2f2f93caed71fcebd7fa1708ec50f1d86b64ca1f2191294a31e960cd72dfca8c6fb444d48ab650cc15e90906d4b89de0f61ee7fff81b2939d06ccf352f5152157c4586e12ee502b84933e136915803550a05d00e8c6b858bf480399badcc7dc28b08cf7a1d7ea8792a07216fe32ca8b2fb8af5ab31dc21572af4c3c39e15e7862dd67c83d9e92307ad2d0dafd42c8cb443d3d83c2ec95b7bb3621d2afd834fbb5d792c75d49a8d7f9278aade14ba77762408fcd2300e3071f08a47ef40cf93d4e3dd3ba3f61b51772b3c95abaacfd928e923f8bb17c8ba27c6b673375e98ada7da428b0b04bdc89b74299d5241c5639a7f5bc8a91d0aa2f023d1dcad16c49e77441bd63126109d949bbc18fb2e860fbd1dc34ef661bd6d7869ba791be1fb1ed9c90d03f8007b0559bdfd1bc2931f4203405092537130f9f75fee8121c42c6236e4ba7d7b059ac367c099fc42dd006d06534081fafb8dbd58f32d6366cce0b862bf6df2764212b94e72657031fa13b1c0db245e921ce9fb6248d56175a2eed8f5e9a25ceefe7057a7624d4f39f0edf212ec35cc3f53775bfcdbd86f44e25e3c0601e7760fb78add156e105f944bb9878098f276f74e371429e468a7b263cf67a041b0168a0bbc6c1c0ac177017d0e5c9ca73cc31813b2962f07892c5b49337fb08650c441d11ba69ae26f92a857546327e43274e348ea9f8113c2da9206be259e9fadcc2faee482660a2a7ae1156dfc4f2f4f4a3c64cf41ed086d0b0b7019d42fd974750d36f1d629d19e8c98df95df7515c582a23038852ccd3106a32d1e0a23bb30a298767378941b1a2d2651bee300ab1ac069308e8b82f3edf3b042749f1a1791bb75864a35b68028beab0d0d4503df1eac6aa9d190d033416d86f2805dae796fdaf49f4be9683ff7fdc4bd3b30af659c5b0bf083ccfe50c5714cccd2f642c45bd4e15d287a5c2bf0a56ed5d91031f7a49ec49c8092379ab59c5cdd74173b0a46a8eacd5f65607db063ff139ee5c5add97058038b349ffadef628d39c884ddf092d000579f184d876816d53c2ab1a14a68ab61d892d103066eef5d387cae114862d01c159464c31cd9f16a5619edf0ec3bebfcd396821cbfcda278ac45bcad3681c7a8166ddca152dd0903ae0a536504aeec2af3dbbc09a7945b5e68cd4f778d47b9858056c586682099a38a5f8fb54dbc3c93addad65fbde7fdf1c2d06a56caf63e9433823c8ebc01a6223b77b3ecdfb369b85690a4bb9dc6efebb2a260a36e07166e6af15cb789999da6cac37d33484d4c23be5fd360abba1fb6eb08418da30019d7bb482217072e65b49e20896c17c5dc7439fab6fd293efd8012befe91a9632c0f767a4b2ce626563a41f0cccd4d49d22c1e9b875c128bf7328c6eb2a81368b7940d6edf5b43e8b9eead72b20d49bdaf631d0c1308f138c122f6b5b9bb626ba9416e80f499d1d9c1bb178207f623a353cf136319e0cd425914ed934f736ea5ea5bd0782e026856c137a72ec59b9ef6aa53df14b78593739a4077ed88ecd9d204c5a82432e4f84cbe2c445399205731941c82ec9c32b3e0451de1b82cf93d5e9be573004ecb3dbcc470291a7f6ba72f458fb7ffe62ff3aed61f7baef60ebbfb86431bea028a80ed7249302853ebbe892ed365739a78f1c966754b2453b8f381e05446a2b0c3647f4d04d027d133e52bd37add512f64a47c0acbe872f57161c987fdc99ab332fb939f5d42b10b337fefaf6ca10e5cd677a8a6cc3e009bb8e99075a946d087fd5898662fe9fd75149c03e90d666797f3adf3d9fb5e124835cb6c63998d16111322ff1f134649ef06e215cd4a8d0f4c22dbd906d44d0aa82a0ea3daae747507f1e90e145907d8ebeac6623190a8c121878f47823a86b67049ed94301304e3bbb135472e5dbef8586869e806c26b508c2ac38af398630b54a6bf96a471bbbcb</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="d0c1223aa624c031e2e58c9d90ff732a5559bc1064c1313eaa81cc65a7a3b0d8">6fcf1523ddce79b7eefea9a75525b524cc28394ed74c15007beed5e4609071a7656fea4ebf48db4e7430448fac03e5cacb0fca42682612294c53278a7098e862bcb2fed72525bf5021084bbe8a794ce743391111720b90d81c315fede0baef4b3f46a73a53a45ca10e2f2f93caed71fcebd7fa1708ec50f1d86b64ca1f2191294a31e960cd72dfca8c6fb444d48ab650b45c6177e94810ceb0b785c3793aa9afe6238e8ff8f353282e5c8909644a1dffd65541e1398f8bb5ec58fda6fd6b422e8d0a167c1487a710c41f4dfb0f3d79c99d7af97481a168a9c8ff1a44e6f7b5008ac99202b5ea70fdd373d1dc41350aa4628c085d260258a5943aa0801b78029e752ac6e7d5a06bc94e36e83ccc21b55f81516ae4ccb205c5562568b0ccfbd357add8c430049b0a1898a39c330fbb8400580aeda12078dd2a96015afa148d5ba2cb3559998e9fe84d43e58155c612680371fdfa72bb20c7fa15b5b251e674c300bcab725c6fff0d2d1e537b3c283695d34b3b3d27b1dd328b8bea119626617d0d4b71de98cf5eb8aef7ee6e3a58075b25ce821834c4ea6ab16495978da97350db2f5369be09b293de52d99a2a349c116c207b0c92670d9eede7ff66edff113c1d8b5936431e587b8272a1be93f6d1a493af54d15034bd41591b2c59087a6ca8a2502fb7e4630214ef614ba3d2d450c2acb4af51dba5d05a68c8b6c4a0202b23a4a7f50a7a56de2a01313fe6d7c474fcfeedb059d4c58fb85c69f011048b1efb763c06f7ff3f30893eaf18f0f677c4ddded5aeb252c9bf551842c2f1c73d687dd0356928412b70bf702652cb024d6007f9a99262ccc7a56385118ba436796bc53269078b22d240139a8ec3834b271256f355a75caa2b9581ca0da2d4f722796c641fa257b3e76b3af9be8e98d7017962c2b814fd3230cdfa4b706fba36562a4eaa486ac3c4591ff15aac8f452e11034880160f00f7e079ece48f39f1b1a701b4816845448d97a28d951efe8856ad31e0f828e94f2ced80b3688e47371b6ecc3b3e6f99b4bdf1ab3ab87cc9181d853be1625fd6c4be97a67e5ba54351e20eda6180a9d847606cc0b1ce6767303672f71ee9f7ec5c6a7310e1f73ce6fef0409b6e9803f5adf94724baabfb3911925a0207fefbf65307cd9aaa25b4687caaf6f35b6338ec7b10240e8b1b2b9da819e7e4568cf29658ce14c79f27f228673323cc84883781c0f0ffd2484b13e5873be2a8669903c5e9544c1cac17a54d911507dde388ce9717a572e8c3fa60fc01f70bc650a50653f096d6a5e2675408a00f24ac655837571ca27a73991fb6991d8a1ffba1d418da8164b1e35c477fb9da0203edf287b349fb3076408e77029653474519b11c932dda853b0ff51e4437e4d70311f505f5065eb2e714f2ff09bd0b3ec4c828f25a900230658a6e9a2a802baf9eda9fd2eb7de4405f39e93d3e4009676ceece40d1c55cc97a765ceb8bb83fdeb7ca27bb9179987038a362fe47d402d57be23d7ca430a2448af7f15441ea54e421e6fa36b24c7bf947f59f0cd179e337e9f6d1077359fdc5ebdc2ef3b1ebe667386ff3273647afb5bddb5ab6deb3917e73cfff0645155a4cda5652625f4b56887bce8fdec59a008f188049bc4eeca70705f2a6ff956bbda5dbe134d63fcee8c386ccdbbea5af54e1d9ed8047d5d0f2c2d360d57190a5133d2c83ea8834833a6aff85cf0817913eb1482be7d018e6e8d255cf2817a5dfd915fb6c0ffec51cbc94488d246cd69f01db8dbf8422dabc6188ecf72aaec2e8a5beceebd985a8ee3ad47647228955f9811cbf83e63675543bc9bff06ff8fe92610a17be1e189b58a382056b22b94a65be552196e90f4b450a7070646d52c3f466ab358d7a776c146207f5270fb61b3fc741e2d00470b953604151bd6c309633cff8f87746b053ec70479da83da530ca947919bdaeaf775f0475ad81c2bc1e87c0a6d726746a2e1c362b5ef0430f3d84761d0a5cf69e56200a3b6c5510ba232231e1e5885cdb1c5823f1f76ce7e31beffec5cd1bf21ae18dcd926380efeffbd2b612977b100d40b3181f62f873b0aadde7a5aeb91d6a483187454ca0a3f66b2b8b8a142ca667cf57675999c1a7d530f687c63a21b64815ce41958f7b167633b066b9798291b83c207a44ed128fec581fb3bcd6bfa18491494e2e6efdbc29e6694fe5d91ec4ea733f310377504f17869e39f0b4d34cc2e02b5422c2dceda5472c188ce80f8fff2bedaca2b776b1af</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-default">
       <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
