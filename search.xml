@@ -292,6 +292,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux screen基本用法</title>
+    <url>/2022/06/13/Linux-screen%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="创建-screen"><a href="#创建-screen" class="headerlink" title="创建 screen"></a>创建 screen</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -S screen名称</span><br></pre></td></tr></table></figure>
+
+<h1 id="进入-screen"><a href="#进入-screen" class="headerlink" title="进入 screen"></a>进入 screen</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -r screen名称/ID</span><br><span class="line">screen -d -r screen名称/ID</span><br></pre></td></tr></table></figure>
+
+<h1 id="展示-screen-列表"><a href="#展示-screen-列表" class="headerlink" title="展示 screen 列表"></a>展示 screen 列表</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -ls</span><br></pre></td></tr></table></figure>
+
+<h1 id="关闭-screen"><a href="#关闭-screen" class="headerlink" title="关闭 screen"></a>关闭 screen</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -S screenID -X quit</span><br></pre></td></tr></table></figure>
+
+<h1 id="切回主屏幕"><a href="#切回主屏幕" class="headerlink" title="切回主屏幕"></a>切回主屏幕</h1><p>ctrl + A + D</p>
+<p><a href="https://www.runoob.com/linux/linux-comm-screen.html">菜鸟教程上的Linux screen命令</a></p>
+]]></content>
+      <categories>
+        <category>知识备忘录</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>screen</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux问题指南</title>
     <url>/2022/08/05/Linux%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h1 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h1><p>以前写过了，可以搜索”Linux screen基本用法”查看。</p>
@@ -345,28 +367,6 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux screen基本用法</title>
-    <url>/2022/06/13/Linux-screen%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="创建-screen"><a href="#创建-screen" class="headerlink" title="创建 screen"></a>创建 screen</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -S screen名称</span><br></pre></td></tr></table></figure>
-
-<h1 id="进入-screen"><a href="#进入-screen" class="headerlink" title="进入 screen"></a>进入 screen</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -r screen名称/ID</span><br><span class="line">screen -d -r screen名称/ID</span><br></pre></td></tr></table></figure>
-
-<h1 id="展示-screen-列表"><a href="#展示-screen-列表" class="headerlink" title="展示 screen 列表"></a>展示 screen 列表</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -ls</span><br></pre></td></tr></table></figure>
-
-<h1 id="关闭-screen"><a href="#关闭-screen" class="headerlink" title="关闭 screen"></a>关闭 screen</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -S screenID -X quit</span><br></pre></td></tr></table></figure>
-
-<h1 id="切回主屏幕"><a href="#切回主屏幕" class="headerlink" title="切回主屏幕"></a>切回主屏幕</h1><p>ctrl + A + D</p>
-<p><a href="https://www.runoob.com/linux/linux-comm-screen.html">菜鸟教程上的Linux screen命令</a></p>
-]]></content>
-      <categories>
-        <category>知识备忘录</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>screen</tag>
       </tags>
   </entry>
   <entry>
