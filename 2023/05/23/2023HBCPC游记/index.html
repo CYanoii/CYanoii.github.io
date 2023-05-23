@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|微软雅黑:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="疫情终于跑了！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023HBCPC游记">
+<meta property="og:url" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/index.html">
+<meta property="og:site_name" content="渔塘">
+<meta property="og:description" content="疫情终于跑了！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E8%B7%AF%E8%BF%87%E8%80%8C%E5%B7%B2.jpg">
+<meta property="og:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%BE%88%E5%83%8F%E6%91%B8%E8%80%81%E5%B8%88.jpg">
+<meta property="og:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E6%A5%BC.jpg">
+<meta property="og:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E9%A3%9F%E5%A0%82.jpg">
+<meta property="og:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%BC%80%E5%B9%95%E5%BC%8F.jpg">
+<meta property="og:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E6%B5%B7%E8%BE%B9.jpg">
+<meta property="og:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%B7%B7%E5%A4%96.jpg">
+<meta property="og:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%B7%B7%E9%87%8C.jpg">
+<meta property="article:published_time" content="2023-05-23T09:00:34.000Z">
+<meta property="article:modified_time" content="2023-05-23T09:55:34.694Z">
+<meta property="article:author" content="CYHei_mu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E8%B7%AF%E8%BF%87%E8%80%8C%E5%B7%B2.jpg">
+
+<link rel="canonical" href="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2023HBCPC游记 | 渔塘</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">渔塘</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生苦短，摸鱼乃大</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="CYHei_mu">
+      <meta itemprop="description" content="泥潭中挣扎的人向往着点点星光">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="渔塘">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2023HBCPC游记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-05-23 17:00:34 / 修改时间：17:55:34" itemprop="dateCreated datePublished" datetime="2023-05-23T17:00:34+08:00">2023-05-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%97%A5%E5%B8%B8/" itemprop="url" rel="index"><span itemprop="name">日常</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+            <div class="post-description">疫情终于跑了！</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>原本痛苦于比完赛后冗杂繁多的事情来着，但是干活干了一天还在实验室里，想休息又不能说像在宿舍一样躺在床上，干脆趁现在记录下HBCPC的游记。在我本就短暂的竞赛生涯经历过了大学两年线上赛后，我终于迎来了第一次的线下比赛机会。说不激动是假的，但是成绩对我来说仍然有些不尽人意，省二对于一个想要冲锋ICPC的选手还是太渺茫了。</p>
+<h1 id="5-x2F-19-DAY1"><a href="#5-x2F-19-DAY1" class="headerlink" title="5&#x2F;19 DAY1"></a>5&#x2F;19 DAY1</h1><p>首先要炫耀的就是成功翘掉了两节课！我们是中午出发坐客车，1个小时后转火车硬卧，晚上7点半左右就到宾馆了。然后就开始讨论吃什么的问题，最后的决定是汉堡。结果走了40分钟到了地方的时候看到老旧的招牌跟上二楼昏黄的灯光，小作坊无疑，然后就直接不敢进去了…于是乎转战商场去吃KFC，之后我用实际行动证明了“即使你有10年没有骑过车子了但是只要一上车你还是会骑”这件事。接着就是理所当然的骑车到了商场吃汉堡王（？），然后回宾馆还打了一场CF div3，冲着一道写对了的题检查了20分钟…最后死活搞到2点才睡的，不过这个点对于我平时的作息规律倒也不算很晚。</p>
+<p>去汉堡王路过的很大的商场：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E8%B7%AF%E8%BF%87%E8%80%8C%E5%B7%B2.jpg" alt="img"></p>
+<p>很像摸老师：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%BE%88%E5%83%8F%E6%91%B8%E8%80%81%E5%B8%88.jpg" alt="img"></p>
+<h1 id="5-x2F-20-DAY2"><a href="#5-x2F-20-DAY2" class="headerlink" title="5&#x2F;20 DAY2"></a>5&#x2F;20 DAY2</h1><p>起床，领资源，线下赛的衣服可比线上时潦草的衣服正规多了，穿上去还是挺舒服的。中午吃饭感受了一下东秦的食堂，比较小同时也比我们学校贵一些，不过饭也是要更好吃的，环境也更好一些，有点羡慕。</p>
+<p>参加赛前宣讲，场馆很大，老师很正式，我甚至还看到了老队友wjq！聊了聊他提到自己已经三银退役了，十分羡慕。</p>
+<p>然后是训练赛，快速秒掉一个二分一个质因数，然后在一道和蓝桥杯岛屿的题十分类似的题上卡了好久，但是在最后20分钟抖机灵搞了出来，还是很激动的。线下赛的气球确实很有意思，<del>尤其是我们的气球会伸到对面队伍那边去的恶意</del>。</p>
+<p>晚上骑车去海边！看完海去秦皇小巷吃东西！全是小吃，然后房子也挺好看的，感觉对于景点来讲，只有这种地方人挤人才能让人讨厌不起来吧。</p>
+<p>这一天的安排实在是太满了，以至于现在回想起来好像是好几天的事情一样。</p>
+<p>比赛的楼，非常大：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E6%A5%BC.jpg" alt="img"></p>
+<p>食堂（把右边的队友截掉了）：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E9%A3%9F%E5%A0%82.jpg" alt="img"></p>
+<p>开幕式：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%BC%80%E5%B9%95%E5%BC%8F.jpg" alt="img"></p>
+<p>海边：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E6%B5%B7%E8%BE%B9.jpg" alt="img"></p>
+<p>巷外：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%B7%B7%E5%A4%96.jpg" alt="img"></p>
+<p>巷里：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%B7%B7%E9%87%8C.jpg" alt="img"></p>
+<h1 id="5-x2F-21-DAY3"><a href="#5-x2F-21-DAY3" class="headerlink" title="5&#x2F;21 DAY3"></a>5&#x2F;21 DAY3</h1><p>开赛！今年的签到是真的签到了，直接输出比赛名称。之后快速做完另一个签到，卡在了二维格雷码，当时的脑子里使劲回忆当年打CSP的那道格雷码，最后用两重dfs写出来了。然后就是两个半小时的痛苦面具解奇偶树…但我严重怀疑这是道原题，我在CF上打到过和它十分类似的题目，也万幸是打过类似的题目，这道题才能够最后得以解决。之后一个小时本来都要摆了，结果仔细看了看最后一题发现并不是博弈论，而是一个类似树上LCA的题目，强忍疲惫竟然在最后一小时解决了，通过的时候我自己都有点难以置信，然后就是激动，再然后就是气球。最终战绩5题，省二。</p>
+<p>最后又去了趟海边，老师又请我们吃了饭，这是一次很珍贵美好的回忆，但到最后坐上返途的车时又有点惆怅。一个是这段时间过的实在很快，3点回到学校后睡醒，就如同一切都未发送过一样…另一个是ICPC获奖相较于我现在的水平来说，大概是一种奢求。我又能怎么办呢？总会有人谈到队友的重要性，但在农大目前的情况来看，自从wyc走后能继续坚持在这条路的只剩我自己了。但是无所谓，我必须够到一次铜，这没有退让的余地。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/03/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84%E5%8F%8A%E5%85%B6%E6%80%A7%E8%B4%A8%E4%B8%8E%E5%B0%BA%E5%8F%96%E6%B3%95/" rel="prev" title="树的直径及其性质与尺取法">
+      <i class="fa fa-chevron-left"></i> 树的直径及其性质与尺取法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#5-x2F-19-DAY1"><span class="nav-number">1.</span> <span class="nav-text">5&#x2F;19 DAY1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-x2F-20-DAY2"><span class="nav-number">2.</span> <span class="nav-text">5&#x2F;20 DAY2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-x2F-21-DAY3"><span class="nav-number">3.</span> <span class="nav-text">5&#x2F;21 DAY3</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CYHei_mu"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">CYHei_mu</p>
+  <div class="site-description" itemprop="description">泥潭中挣扎的人向往着点点星光</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CYHei_mu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">110k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:04</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'CA3hrlrhv1qLMiD9zfDM2guF-gzGzoHsz',
+      appKey     : '4S8s4bbqfYAleeoNqzFCbH4X',
+      placeholder: "留下一条友善的评论",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '8' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

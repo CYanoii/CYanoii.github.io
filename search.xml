@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2023HBCPC游记</title>
+    <url>/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/</url>
+    <content><![CDATA[<p>原本痛苦于比完赛后冗杂繁多的事情来着，但是干活干了一天还在实验室里，想休息又不能说像在宿舍一样躺在床上，干脆趁现在记录下HBCPC的游记。在我本就短暂的竞赛生涯经历过了大学两年线上赛后，我终于迎来了第一次的线下比赛机会。说不激动是假的，但是成绩对我来说仍然有些不尽人意，省二对于一个想要冲锋ICPC的选手还是太渺茫了。</p>
+<h1 id="5-x2F-19-DAY1"><a href="#5-x2F-19-DAY1" class="headerlink" title="5&#x2F;19 DAY1"></a>5&#x2F;19 DAY1</h1><p>首先要炫耀的就是成功翘掉了两节课！我们是中午出发坐客车，1个小时后转火车硬卧，晚上7点半左右就到宾馆了。然后就开始讨论吃什么的问题，最后的决定是汉堡。结果走了40分钟到了地方的时候看到老旧的招牌跟上二楼昏黄的灯光，小作坊无疑，然后就直接不敢进去了…于是乎转战商场去吃KFC，之后我用实际行动证明了“即使你有10年没有骑过车子了但是只要一上车你还是会骑”这件事。接着就是理所当然的骑车到了商场吃汉堡王（？），然后回宾馆还打了一场CF div3，冲着一道写对了的题检查了20分钟…最后死活搞到2点才睡的，不过这个点对于我平时的作息规律倒也不算很晚。</p>
+<p>去汉堡王路过的很大的商场：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E8%B7%AF%E8%BF%87%E8%80%8C%E5%B7%B2.jpg" alt="img"></p>
+<p>很像摸老师：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%BE%88%E5%83%8F%E6%91%B8%E8%80%81%E5%B8%88.jpg" alt="img"></p>
+<h1 id="5-x2F-20-DAY2"><a href="#5-x2F-20-DAY2" class="headerlink" title="5&#x2F;20 DAY2"></a>5&#x2F;20 DAY2</h1><p>起床，领资源，线下赛的衣服可比线上时潦草的衣服正规多了，穿上去还是挺舒服的。中午吃饭感受了一下东秦的食堂，比较小同时也比我们学校贵一些，不过饭也是要更好吃的，环境也更好一些，有点羡慕。</p>
+<p>参加赛前宣讲，场馆很大，老师很正式，我甚至还看到了老队友wjq！聊了聊他提到自己已经三银退役了，十分羡慕。</p>
+<p>然后是训练赛，快速秒掉一个二分一个质因数，然后在一道和蓝桥杯岛屿的题十分类似的题上卡了好久，但是在最后20分钟抖机灵搞了出来，还是很激动的。线下赛的气球确实很有意思，<del>尤其是我们的气球会伸到对面队伍那边去的恶意</del>。</p>
+<p>晚上骑车去海边！看完海去秦皇小巷吃东西！全是小吃，然后房子也挺好看的，感觉对于景点来讲，只有这种地方人挤人才能让人讨厌不起来吧。</p>
+<p>这一天的安排实在是太满了，以至于现在回想起来好像是好几天的事情一样。</p>
+<p>比赛的楼，非常大：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E6%A5%BC.jpg" alt="img"></p>
+<p>食堂（把右边的队友截掉了）：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E9%A3%9F%E5%A0%82.jpg" alt="img"></p>
+<p>开幕式：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%BC%80%E5%B9%95%E5%BC%8F.jpg" alt="img"></p>
+<p>海边：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E6%B5%B7%E8%BE%B9.jpg" alt="img"></p>
+<p>巷外：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%B7%B7%E5%A4%96.jpg" alt="img"></p>
+<p>巷里：</p>
+<p><img src="/2023/05/23/2023HBCPC%E6%B8%B8%E8%AE%B0/%E5%B7%B7%E9%87%8C.jpg" alt="img"></p>
+<h1 id="5-x2F-21-DAY3"><a href="#5-x2F-21-DAY3" class="headerlink" title="5&#x2F;21 DAY3"></a>5&#x2F;21 DAY3</h1><p>开赛！今年的签到是真的签到了，直接输出比赛名称。之后快速做完另一个签到，卡在了二维格雷码，当时的脑子里使劲回忆当年打CSP的那道格雷码，最后用两重dfs写出来了。然后就是两个半小时的痛苦面具解奇偶树…但我严重怀疑这是道原题，我在CF上打到过和它十分类似的题目，也万幸是打过类似的题目，这道题才能够最后得以解决。之后一个小时本来都要摆了，结果仔细看了看最后一题发现并不是博弈论，而是一个类似树上LCA的题目，强忍疲惫竟然在最后一小时解决了，通过的时候我自己都有点难以置信，然后就是激动，再然后就是气球。最终战绩5题，省二。</p>
+<p>最后又去了趟海边，老师又请我们吃了饭，这是一次很珍贵美好的回忆，但到最后坐上返途的车时又有点惆怅。一个是这段时间过的实在很快，3点回到学校后睡醒，就如同一切都未发送过一样…另一个是ICPC获奖相较于我现在的水平来说，大概是一种奢求。我又能怎么办呢？总会有人谈到队友的重要性，但在农大目前的情况来看，自从wyc走后能继续坚持在这条路的只剩我自己了。但是无所谓，我必须够到一次铜，这没有退让的余地。</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Codeforces Round #778 D 题解</title>
     <url>/2022/03/28/Codeforces-Round-778-D-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1654/problem/D">原题：D. Potion Brewing Class</a></p>
@@ -939,6 +972,25 @@
       </tags>
   </entry>
   <entry>
+    <title>六一</title>
+    <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="bc9529c70b0d5267274fefe4a594d86f1b715ae8e00ec4ff299c75f3e8e194ae">6fcf1523ddce79b7eefea9a75525b52452403c6618583fc3a88b1313632aafdce514474ed6215c69b06af73308678092e51abcf693506ee235725415117b5b01d68d950140903b06580f766a05da922f62e2fecafdc4d29bdee577597d4cea092a17340a0f8e1ead464f01033197e7d635353d741e3bd91b9f1c724f5717ad5602de6dbfe6bbf7f198dcaff10f2480b28764a835754e44ec857dd98e05be1ca21f9e606617592e50c512c080435fedb5b5b70d2c6b5485dbc76a62105f5763a83d14d33a8cf713a430252c2877417d38394cfea608c8eb58d9cab690d5a9897822851196095a2044ec90454221955c37a8b45d25a9cf6e1afeb4659ef0a8cb213f26eaffe0eabc1dadba76b3bb095525ac04b76b1c937d4606a779c1205976023ddd9eaf57b2c6a8ef5d15a88125a17c5c91a82b84d3cf2e4243ba51e673ba736cfd813a9cba15db2a6a94f9c926ed2111b675cca57d4198a0c900c7e17aa182e46eef82c60702eeffd3015848b51b49788f2cf032fd85829ffe0eec5c50160110a70e9886d61566d045f944d0ea1066ca6284ffaae8f70d483452359849a825745f60b0b5ac19055cb541965449b249fe2779855d415fe3413e73190a5fe4eee4eae5ecd48298f3ee3085819ccecba75aeb469820f92620981c31359bd069d438107da11b8a1608b8d3b2e149cfd2f2bc2e5584da804c359dc18b7d7406128d95de74314b34a656104714bfb4b4f19aeb6912e08eab057104856b2c131246690a5ac59946d7140cb1d061309763feed0074449a908acca957c51c4ff312dbcd94e75e339b9378040105f74dcc580821952ff5c8dbfb60def2ecd9c0a99927b1</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+  </entry>
+  <entry>
     <title>包裹浮动元素</title>
     <url>/2022/06/02/%E5%8C%85%E8%A3%B9%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0/</url>
     <content><![CDATA[<p>当一个 div 的子元素为浮动元素时，这个 div 是不能将其子元素包裹住的。具体情况如下：</p>
@@ -968,25 +1020,6 @@
         <tag>前端</tag>
         <tag>CSS</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>六一</title>
-    <url>/2022/06/01/%E5%85%AD%E4%B8%80/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="bc9529c70b0d5267274fefe4a594d86f1b715ae8e00ec4ff299c75f3e8e194ae">6fcf1523ddce79b7eefea9a75525b52452403c6618583fc3a88b1313632aafdce514474ed6215c69b06af73308678092e51abcf693506ee235725415117b5b01d68d950140903b06580f766a05da922f62e2fecafdc4d29bdee577597d4cea092a17340a0f8e1ead464f01033197e7d635353d741e3bd91b9f1c724f5717ad5602de6dbfe6bbf7f198dcaff10f2480b28764a835754e44ec857dd98e05be1ca21f9e606617592e50c512c080435fedb5b5b70d2c6b5485dbc76a62105f5763a83d14d33a8cf713a430252c2877417d38394cfea608c8eb58d9cab690d5a9897822851196095a2044ec90454221955c37a8b45d25a9cf6e1afeb4659ef0a8cb213f26eaffe0eabc1dadba76b3bb095525ac04b76b1c937d4606a779c1205976023ddd9eaf57b2c6a8ef5d15a88125a17c5c91a82b84d3cf2e4243ba51e673ba736cfd813a9cba15db2a6a94f9c926ed2111b675cca57d4198a0c900c7e17aa182e46eef82c60702eeffd3015848b51b49788f2cf032fd85829ffe0eec5c50160110a70e9886d61566d045f944d0ea1066ca6284ffaae8f70d483452359849a825745f60b0b5ac19055cb541965449b249fe2779855d415fe3413e73190a5fe4eee4eae5ecd48298f3ee3085819ccecba75aeb469820f92620981c31359bd069d438107da11b8a1608b8d3b2e149cfd2f2bc2e5584da804c359dc18b7d7406128d95de74314b34a656104714bfb4b4f19aeb6912e08eab057104856b2c131246690a5ac59946d7140cb1d061309763feed0074449a908acca957c51c4ff312dbcd94e75e339b9378040105f74dcc580821952ff5c8dbfb60def2ecd9c0a99927b1</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
   </entry>
   <entry>
     <title>协方差与相关系数</title>
@@ -1750,32 +1783,6 @@
       </tags>
   </entry>
   <entry>
-    <title>归并排序</title>
-    <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
-<p>归并排序的效率稳定。</p>
-<p><strong>时间复杂度</strong>：$O(nlog_n)$</p>
-<h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><p><strong>分</strong>：将原问题分成一些小的问题。</p>
-<p><strong>治</strong>：将分的阶段得到的各答案”修补”在一起。</p>
-<p>本算法使用了递归实现分治，理论上迭代也可。</p>
-<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1.png" alt="img"></p>
-<h1 id="合并有序子序列"><a href="#合并有序子序列" class="headerlink" title="合并有序子序列"></a>合并有序子序列</h1><p>合并有序子序列，即<strong>治</strong>的操作。</p>
-<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.png" alt="img">、<img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/3.png" alt="img"></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://www.luogu.com.cn/problem/P1177">模板题点我</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> temp[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> i=l,j=mid+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=mid||j&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;=mid&amp;&amp;j&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=a[j]) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;=mid) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;=r;i++) a[i]=temp[++k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">msort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(r-l&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">msort</span>(l,mid);</span><br><span class="line">		<span class="built_in">msort</span>(mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">psort</span>(l,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">msort</span>(<span class="number">1</span>,n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html">https://www.cnblogs.com/chengxiao/p/6194356.html</a></p>
-]]></content>
-      <categories>
-        <category>算法竞赛学习笔记</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-        <tag>分治</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>并查集是一种在线维护集合关系的数据结构，它支持两个操作：</p>
@@ -1893,6 +1900,32 @@
       </categories>
       <tags>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>归并排序</title>
+    <url>/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p>归并排序（MERGE-SORT）是利用<strong>归并</strong>的思想实现的排序方法，采用了分治策略。</p>
+<p>归并排序的效率稳定。</p>
+<p><strong>时间复杂度</strong>：$O(nlog_n)$</p>
+<h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><p><strong>分</strong>：将原问题分成一些小的问题。</p>
+<p><strong>治</strong>：将分的阶段得到的各答案”修补”在一起。</p>
+<p>本算法使用了递归实现分治，理论上迭代也可。</p>
+<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1.png" alt="img"></p>
+<h1 id="合并有序子序列"><a href="#合并有序子序列" class="headerlink" title="合并有序子序列"></a>合并有序子序列</h1><p>合并有序子序列，即<strong>治</strong>的操作。</p>
+<p><img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.png" alt="img">、<img src="/2022/02/11/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/3.png" alt="img"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://www.luogu.com.cn/problem/P1177">模板题点我</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> temp[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">psort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> i=l,j=mid+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=mid||j&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;=mid&amp;&amp;j&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=a[j]) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;=mid) temp[++k]=a[i++];</span><br><span class="line">			<span class="keyword">else</span> temp[++k]=a[j++];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;=r;i++) a[i]=temp[++k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">msort</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(r-l&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">msort</span>(l,mid);</span><br><span class="line">		<span class="built_in">msort</span>(mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">psort</span>(l,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">msort</span>(<span class="number">1</span>,n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html">https://www.cnblogs.com/chengxiao/p/6194356.html</a></p>
+]]></content>
+      <categories>
+        <category>算法竞赛学习笔记</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+        <tag>数据结构</tag>
+        <tag>分治</tag>
       </tags>
   </entry>
   <entry>
