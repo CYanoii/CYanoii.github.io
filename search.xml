@@ -3218,8 +3218,8 @@
 <p>此方法时间与空间复杂度均为$O(VN)$。</p>
 <p><strong>优化空间复杂度：</strong></p>
 <p>空间复杂度可优化为$O(V)$。</p>
-<p>发现只需要$i-1$个物品的状态就可以得出$i$个物品时的状态，因此可以进行压缩成两行的二维数组。</p>
-<p>再次发现只需要容量小于$v$的状态就可以得出容量为$v$的状态，因此可以使用倒序压缩成一行的一维数组。</p>
+<p>发现只需要$i-1$个物品的状态$F[i-1, 0 \dots V]$就可以得出$i$个物品时的状态$F[i, 0 \dots V]$，因此可以进行压缩成两行的二维数组。</p>
+<p>再次发现只需要的$i-1$个物品容量小于等于$v$的状态$F[i-1, 0 \dots v]$就可以得出的$i$个物品容量为$v$的状态$F[i, v]$，因此可以使用倒序压缩成一行的一维数组。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">memset</span>(F,<span class="number">0</span>,<span class="built_in">sizeof</span>(F));</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> v=V;v&gt;=C[i];v--)</span><br><span class="line">        F[v]=<span class="built_in">max</span>(F[v],F[v-C[i]]+W[i]);</span><br></pre></td></tr></table></figure>
 
 <p>由于使用一维数组解01背包的程序在以后会多次用到，所以抽象出一个处理一件01背包中的物品的函数：</p>
