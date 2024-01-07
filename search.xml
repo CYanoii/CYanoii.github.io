@@ -34,6 +34,73 @@
       </categories>
   </entry>
   <entry>
+    <title>C++ 编译器相关</title>
+    <url>/2023/12/07/C-%E7%BC%96%E8%AF%91%E5%99%A8%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>在开始之前我们先放一段 Hello World：hello.c</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后就是一段老生常谈的描述了：</p>
+<p>要想让这段代码在 Linux 上运行，我们需要使用 GCC：</p>
+<ol>
+<li><strong>预编译</strong>：将 hello.c 和 stdio.h 预编译为 hello.i</li>
+<li><strong>编译</strong>：将 hello.i 编译为 hello.s</li>
+<li><strong>汇编</strong>：将 hello.s 翻译为机器指令 hello.o（.o 目标文件）</li>
+<li><strong>链接</strong>：链接各种需要的库和其他目标文件（该 hello 程序不需要）得到可执行文件 hello.out（相当于 Windows 的 .exe）</li>
+</ol>
+<p>整个过程将高级语言翻译成了机器语言，而<strong>编译器</strong>，就是这样的一个工具。GCC 可以完成从预编译编译，汇编，链接整个过程。</p>
+<p>但是平时使用 Visual Studio 等软件时并没有接触到这个过程，因为 VS 是高度集成开发环境（IDE、Integrated Development Environment），集成了代码编辑器，编译器，调试器和图像化用户界面，上述所有程序编译和链接过程都用一步 <strong>build 构建</strong>带过了。</p>
+<h1 id="GNU"><a href="#GNU" class="headerlink" title="GNU"></a>GNU</h1><p><strong>GNU 计划</strong>，又称革奴计划，是由 Richard Stallman 在 1983 年 9 月 27 日公开发起的。它的目标是创建一套完全自由的操作系统。因为当时 1969 年在贝尔实验室诞生的 Unix 是商业操作系统。因此 <strong>Stallman 便是开源运动的先驱</strong>。而他最初的目标”创建一套完全自由的操作系统”也实现了，就是 GNU&#x2F;Linux，简称 Linux。</p>
+<p>Linux 内核最初是由 Linus Torvalds 在赫尔辛基大学读书时出于个人爱好而编写的，第一版于 1991 年发布，当时仅一万行代码。1992 年 Linux 与<strong>其他 GNU 软件结合（自然包括 GCC）</strong>，完全自由的操作系统正式诞生。</p>
+<h1 id="GCC-x2F-G"><a href="#GCC-x2F-G" class="headerlink" title="GCC&#x2F;G++"></a>GCC&#x2F;G++</h1><p>首先我们可以将 GCC&#x2F;G++ 看成一个整体，不存在 GCC 专门编译 C 语言，G++ 专门编译 C++ 语言这种分别，因为编程语言发展至今是非常复杂的，编译器同样也是。我们将两者都看成 GCC，GCC 支持 C、C++ 和 Fortran 语言。</p>
+<p>而 GCC（GNU Compiler Collection，GNU 编译器集合），就是 GNU 运动的代表性成果，它的初衷是为 GNU 的自由系统开发完整的编译器。</p>
+<p><strong>所以，在 Linux 甚至 Windows 上各种涉及开发环境配置，源码编译的地方，都离不开 GCC 和 G++。</strong></p>
+<h1 id="MinGW-w64-x2F-MSVC"><a href="#MinGW-w64-x2F-MSVC" class="headerlink" title="MinGW(-w64)&#x2F;MSVC"></a>MinGW(-w64)&#x2F;MSVC</h1><p>MinGW(Minimalist GNUfor Windows)，它是一个可自由使用和自由发布的 Windows 特定头文件和使用 GNU 工具集导入库的集合，允许你在 Windows 平台生成本地的 Windows 程序而不需要第三方 C 运行时(C Runtime)库。通俗来讲 GCC 本身是 Linux 上的编译器套件，不能在 Windows 上运行，而 MinGW 则是 GCC 在 Windows 上的移植。</p>
+<p>运行时库：支持程序运行的基本函数的集合，一般是静态库 lib 或动态库 dll。</p>
+<p>最早的 MinGW 项目只支持编译 32 位程序，后来分支出的 MinGW-w64 项目则同时支持编译 32&#x2F;64 位程序。MinGW-w64 项目目前的状况比较复杂，有多个发行分支，具体可以参看<a href="https://link.zhihu.com/?target=https://www.mingw-w64.org/downloads/">官网的下载页</a>。目前 Windows 上最新、最靠谱的发行分支就是 <strong>MSYS2</strong>（GCC 版本 12.2.0-6）。关于 MinGW 和 MinGW-w64 的渊源，可以看<a href="https://link.zhihu.com/?target=https://github.com/FrankHB/pl-docs/blob/master/zh-CN/mingw-vs-mingw-v64.md%23:~:text=MinGW%20%E5%92%8C%20MinGW-W64%20%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F">这篇科普</a>。</p>
+<p>而 MSVC，就是上文所说的第三方 C 运行时库：由微软开发的 VC 运行时库，被 Visual Studio IDE 所集成。所以我们使用 VS 时会附带 MSVC 编译器。</p>
+<p>所以可以看到，MinGW 和 MSVC 都是 Windows C&#x2F;C++ 语言编译支持，配置环境时遇到两者择其一即可。</p>
+<h1 id="MSYS2"><a href="#MSYS2" class="headerlink" title="MSYS2"></a>MSYS2</h1><p><strong>MSYS2</strong>(Minimal SYStem 2)是与 MinGW-w64 配套的<strong>命令行环境</strong>，它为 Windows 提供了类似 Linux 的命令和<strong>包管理器</strong> pacman，可以直接在命令行查找、安装和卸载各种第三方库和开发工具。</p>
+<p>MSYS2 实际上是由 6 个独立的子环境组成的。每个子环境会有一个单独的文件夹，和一个专门的命令行界面入口。</p>
+<ul>
+<li>MSYS 环境是基础环境，包含各种 Linux 命令行工具（例如 pacman 等），其它子环境都继承于它。但在这个子环境里编译的程序<strong>依赖于 MSYS2 的动态库</strong>，因此直接把编译出来的 .exe 发给其他人的话会无法运行，需要带上 &#x2F;usr&#x2F;bin 文件夹下的 MSYS-2.0.dll 等依赖库才行。<strong>一般不建议使用</strong>。（需要完整 Linux 环境的请考虑 <strong>WSL</strong> 或者虚拟机）</li>
+<li>MINGW64 环境编译的程序不依赖 MSYS2，只依赖于 Windows 自带的 C 语言库 msvcrt，较为通用。</li>
+<li>UCRT64 与 MINGW64 类似，但依赖于比较新的 C 语言库 ucrt，这个库 Win10&#x2F;11 自带，也是目前微软家的 <a href="https://link.zhihu.com/?target=https://visualstudio.microsoft.com/zh-hans/">Visual Studio</a> 使用的库，但 Win7&#x2F;XP 可能需要手动安装。未来将会替代 MINGW64。</li>
+<li>CLANG64 环境使用 LLVM 工具链而非 GCC 工具链，所有配套环境都是基于 LLVM 的（比如这个环境里的 gcc.exe 其实是 clang.exe 的重命名）。</li>
+<li>MINGW32 和 CLANG32 顾名思义，使用 32 位的 MinGW&#x2F;clang 工具链，如果没有特殊需求基本不用考虑，用 64 位版本就好。</li>
+</ul>
+<p>最早只有 MSYS，MINGW64 和 MINGW32 三个子环境，子环境数量由于开发的需要正在增加，将来可能还会加入 CLANGARM64（可用于 Android 程序编译）。</p>
+<h1 id="LLVM-的-Clang-x2F-Clang"><a href="#LLVM-的-Clang-x2F-Clang" class="headerlink" title="LLVM 的 Clang&#x2F;Clang++"></a>LLVM 的 Clang&#x2F;Clang++</h1><p>LLVM（Low Level Virtual Machine，底层虚拟机)） 是构架编译器(compiler)的框架系统，以 C++ 编写而成，用于优化以任意程序语言编写的程序的编译时间(compile-time)、链接时间(link-time)、运行时间(run-time)以及空闲时间(idle-time)，对开发者保持开放，并兼容已有脚本。</p>
+<p>Clang 可以用来编译 C，C++，ObjectiveC 等语言，是以 LLVM 为后端的一款高效易用，并且与 IDE 结合很好的编译前端。它的目标是提供一个 GNU 编译器套装(GCC)的替代品，支持了 GNU 编译器大多数的编译设置以及非官方语言的扩展。</p>
+<p>LLVM 计划启动于 2000 年，最初由美国 UIUC 大学的 Chris Lattner 博士主持开展。2006 年 Chris Lattner 加盟 Apple Inc. 并致力于 LLVM 在 Apple 开发体系中的应用。Apple 也是 LLVM 计划的主要资助者。目前 LLVM 已经被苹果 IOS 开发工具、Xilinx Vivado、Facebook、Google 等各大公司采用。</p>
+<p>严格来讲，LLVM 不是一个编译器或编译器后端，而是编译器基础设施框架(The LLVM Compiler Infrastructure)。但是很多语境会把 LLVM 当作后端。在理解 LLVM 时，可以认为它包括了一个狭义的 LLVM 和一个广义的 LLVM。广义的 LLVM 就是指 The LLVM Compiler Infrastructure，可以理解为这是一个用来构造编译器的工具；而狭义的 LLVM 其实就是聚焦于编译器后端功能（代码生成、代码优化、JIT 等）的一系列模块和库。</p>
+<p>从功能上讲，GCC &#x3D; Clang + 狭义的 LLVM。GCC 包括前端部分、中间优化部分和后端部分；而 Clang 负责前端，狭义的 LLVM 负责优化和后端部分。</p>
+<h1 id="Make-x2F-CMake"><a href="#Make-x2F-CMake" class="headerlink" title="Make&#x2F;CMake"></a>Make&#x2F;CMake</h1><p>有了编译器 GCC 等等， <strong>为什么要有 make 这个构建生成器</strong>，同样是老生常谈的内容。</p>
+<p>编译 hello.c 非常简单，只需要</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ gcc hello.c</span><br></pre></td></tr></table></figure>
+
+<p>就可以了，但当项目庞大起来后，假设 hello.c 依赖与 a.c、b.c，而 a.c 又依赖于库 w.lib，每一次编译，我们都要重新编写一次 gcc 编译命令行吗？</p>
+<p>所以，GNU 发明了 make 这个工具软件，可以编写 makefile 文件来指定特定的项目构建过程，当项目一个文件的代码更改时，我们只需要重新 make 一下就可以了。</p>
+<p>但 make 依然有很多不足，比如</p>
+<ol>
+<li>make 对于类 unix 系统是通用的，但对 windows 系统并不友好(不能跨平台)</li>
+<li>make 语法简单，也就导致了它功能的限制</li>
+<li>不同编译器的语法规则不同，编写的 makefile 语法如果适合 GCC 则不适合 MSVC</li>
+</ol>
+<p>所以，CMake 就应运而生啦。</p>
+<p><strong>CMake 是比 Make 更高一层的工具</strong>，Make 是编写对应编译器的 makefile 从而实现编译，而 CMake 是写一份独立的 CmakeList.txt 文件，然后该文件会根据当前系统环境选择适合的构建生成器（如 VS 或者 make），然后将 CmakeList.txt 翻译为适合的文件，再进一步调用系统编译器进行项目构建。</p>
+<h1 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h1><p><a href="https://zhuanlan.zhihu.com/p/401188789">给萌新的C&#x2F;C++环境搭建攻略（VSCode和MSYS2） - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/448884264">捋一捋gcc&#x2F;g++&#x2F;MingW&#x2F;MSVC与make&#x2F;CMake的关系 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/357803433">详解三大编译器：gcc、llvm 和 clang - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/424081696">GCC和clang&#x2F;LLVM - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>知识备忘录</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Codeforces Round #778 D 题解</title>
     <url>/2022/03/28/Codeforces-Round-778-D-%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://codeforces.com/contest/1654/problem/D">原题：D. Potion Brewing Class</a></p>
@@ -885,6 +952,32 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>一些 C 的问题</title>
+    <url>/2024/01/07/%E4%B8%80%E4%BA%9B-C-%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="lib-dll-h"><a href="#lib-dll-h" class="headerlink" title=".lib .dll .h"></a>.lib .dll .h</h1><p>常见的库文件有 <strong>.lib</strong> 和 <strong>.dll</strong> 两种形式，分别是静态库和动态库。</p>
+<ul>
+<li>静态库在形成 exe 文件时，全部被打包进去。</li>
+<li>动态库只是在运行的时候用到的函数才会被导入到 exe 中，可以动态的加载和卸载。</li>
+<li>.lib 和 .dll 都是对 .c 或 .cpp 的打包，而打包者需要写 .h 让使用者了解他们是怎么使用的。</li>
+</ul>
+<h1 id="多文件编译"><a href="#多文件编译" class="headerlink" title="多文件编译"></a>多文件编译</h1><p>只需要引入 .h，所有 .c 都要编译汇编，链接时利用引入的 .h 将编译汇编好的 .o 文件相互链接联系起来。</p>
+<p>include 的内容是被直接复制过去的，这样思考 .h 文件的用途时比较容易理解。</p>
+<h1 id="VS-Code-C-环境文件"><a href="#VS-Code-C-环境文件" class="headerlink" title="VS Code C 环境文件"></a>VS Code C 环境文件</h1><ul>
+<li><strong>settings.json</strong>：总配置文件，如使用 Code Runner 的话要在这里面配置。</li>
+<li><strong>c_cpp_properties.json</strong>：C&#x2F;C++ 拓展的配置文件。</li>
+<li><strong>tasks.json</strong>：点击运行之后，VS Code 将从 tasks.json 中查看如何构建并运行程序。</li>
+<li><strong>launch.json</strong>：用于自定义调试。</li>
+</ul>
+<h1 id="VS-Code-CMake"><a href="#VS-Code-CMake" class="headerlink" title="VS Code CMake"></a>VS Code CMake</h1><p>C&#x2F;C++ 与 CMake 的关系可以类比 Java 与 Maven 的关系。</p>
+]]></content>
+      <categories>
+        <category>知识备忘录</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
   </entry>
   <entry>
     <title>一篇给校友入门OI的建议</title>
