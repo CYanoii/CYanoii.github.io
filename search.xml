@@ -1084,6 +1084,18 @@
       </categories>
   </entry>
   <entry>
+    <title>前缀和与前缀和的和公式</title>
+    <url>/2024/03/29/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C%E7%9A%84%E5%92%8C%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<p>$1 + 2 + \dots + i$ 的求和公式：</p>
+<p>$$<br>\begin{aligned}<br>  &amp; 1 + 2 + \dots + i \\<br>&#x3D; &amp; {1 + 2 + \dots + i + 1 + 2 + \dots + i \over 2} \\<br>&#x3D; &amp; {(1 + i) + (2 + i - 1) + \dots + (i + 1) \over 2} \\<br>&#x3D; &amp; {i \times (i + 1) \over 2} \\<br>\end{aligned}<br>$$</p>
+<p>$1 + (1 + 2) + \dots + (1 + 2 + \dots + i)$ 的求和公式：</p>
+<p>$$<br>\begin{aligned}<br>  &amp; 1 + (1 + 2) + \dots + (1 + 2 + \dots + i) \\<br>&#x3D; &amp; {1 \times 2 \over 2} + {2 \times 3 \over 2} + \dots + {i \times (i + 1) \over 2} \\<br>&#x3D; &amp; {1 \over 2} (1 \times 2 + 2 \times 3 + \dots + i \times (i + 1)) \\<br>&#x3D; &amp; {1 \over 6} (1 \times 2 \times 3 + 2 \times 3 \times (4 - 1) + \dots + i \times (i + 1) \times ((i + 2) - (i - 1))) \\<br> &#x3D; &amp; {1 \over 6} (1 \times 2 \times 3 - 1 \times 2 \times 3 + 2 \times 3 \times 4 - \dots - (i - 1) \times i \times (i + 1) + i \times (i + 1) \times (i + 2)) \\<br>&#x3D; &amp; {i \times (i + 1) \times (i + 2) \over 6} \\<br>\end{aligned}<br>$$</p>
+]]></content>
+      <categories>
+        <category>算法竞赛学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>包裹浮动元素</title>
     <url>/2022/06/02/%E5%8C%85%E8%A3%B9%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0/</url>
     <content><![CDATA[<p>当一个 div 的子元素为浮动元素时，这个 div 是不能将其子元素包裹住的。具体情况如下：</p>
@@ -1274,6 +1286,10 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[显示名称](文件.pdf)</span><br></pre></td></tr></table></figure>
 
 <p>之后就可以点击下载了。至于如何在博客上显示 pdf ，由于自己还没有需求，所以没有记录，等以后用到了再回来补充。</p>
+<h1 id="本地与服务器不同的语法"><a href="#本地与服务器不同的语法" class="headerlink" title="本地与服务器不同的语法"></a>本地与服务器不同的语法</h1><ol>
+<li>在本地图片被存储在与 post 同名的文件夹下，而在服务器上图片被视为与 post 在同一目录下。</li>
+<li>本地的 <code>\\</code> 在服务器会被视为 <code>\</code>，因此在书写 latex 语法时的 <code>\\</code> 为了在服务器上正确使用应写为 <code>\\\\</code>。</li>
+</ol>
 ]]></content>
       <categories>
         <category>知识备忘录</category>
@@ -2457,6 +2473,49 @@
         <tag>二进制</tag>
         <tag>位运算</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>洛谷 P1280 尼克的任务</title>
+    <url>/2024/03/29/%E6%B4%9B%E8%B0%B7-P1280-%E5%B0%BC%E5%85%8B%E7%9A%84%E4%BB%BB%E5%8A%A1/</url>
+    <content><![CDATA[<p>题目传送门：<a href="https://www.luogu.com.cn/problem/P1280">P1280 尼克的任务 - 洛谷</a></p>
+<h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>尼克每天上班之前都连接上英特网，接收他的上司发来的邮件，这些邮件包含了尼克主管的部门当天要完成的全部任务，每个任务由一个开始时刻与一个持续时间构成。</p>
+<p>尼克的一个工作日为 $n$ 分钟，从第 $1$ 分钟开始到第 $n$ 分钟结束。当尼克到达单位后他就开始干活，公司一共有 $k$ 个任务需要完成。如果在同一时刻有多个任务需要完成，尼克可以任选其中的一个来做，而其余的则由他的同事完成，反之如果只有一个任务，则该任务必需由尼克去完成，假如某些任务开始时刻尼克正在工作，则这些任务也由尼克的同事完成。如果某任务于第 $p$ 分钟开始，持续时间为 $t$ 分钟，则该任务将在第 $(p+t-1)$ 分钟结束。</p>
+<p>写一个程序计算尼克应该如何选取任务，才能获得最大的空暇时间。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入数据第一行含两个用空格隔开的整数 $n$ 和 $k$。</p>
+<p>接下来共有 $k$ 行，每一行有两个用空格隔开的整数 $p$ 和 $t$，表示该任务从第 $p$ 分钟开始，持续时间为 $t$ 分钟。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出文件仅一行，包含一个整数，表示尼克可能获得的最大空暇时间。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">15 6</span><br><span class="line">1 2</span><br><span class="line">1 6</span><br><span class="line">4 11</span><br><span class="line">8 5</span><br><span class="line">8 1</span><br><span class="line">11 5</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><h4 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h4><ul>
+<li>对于 $100%$ 的数据，保证 $1 \leq n \leq 10^4,1 \leq k \leq 10^4,1 \leq p \leq n,1 \leq p+t-1 \leq n$。</li>
+</ul>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>这个题在我印象中我有反复写它两三次了，但是每次都是因为时间相隔太久而忘记了动规的写法，直到这一次校内新生杯出题我把它抄了过来并写了一份题解，我觉得才能算是完全理解了这个题的解法。</p>
+<p>此题将时刻做阶段划分，有正向与反向两种思路。</p>
+<p>首先介绍更为直观的反向 DP 思路：</p>
+<p><strong>将时刻作为阶段划分的标志，设 $dp[i]$ 为第 $i$ 分钟开始到第 $n$ 分钟结束所能休息的最大时间。</strong>考虑第 $i$ 分钟开始无任务和有任务两种情况：</p>
+<ul>
+<li>如果没有任务，则第 $i$ 分钟在休息，因此 $dp[i] &#x3D; dp[i + 1] + 1$；</li>
+<li>如果有任务，则必须选一个任务做，此时的最大休息时间应和做完任务的最大休息时间相同，即 $dp[i] &#x3D; \max (dp[i + ren[j].t])$，其中 $ren[j].t$ 代表从第 $i$ 分钟开始的所有 $j$ 个任务的持续时间。</li>
+</ul>
+<p>正向思路不算严格的 DP，更类似于特殊的最长路问题：</p>
+<p><strong>将时刻作为阶段划分的标志，设 $dp[i]$ 为在确实可达第 $i$ 分钟开始的前提下（指第 $i$ 分钟开始时不在任务中），第 $1$ 分钟开始到第 $i$ 分钟开始所能休息的最大时间。</strong>设 $dp$ 数组为无穷小代表所有点不可达，初始化 $dp[1] &#x3D; 0$，考虑第 $i$ 分钟开始且可达的情况下无任务和有任务两种情况：</p>
+<ul>
+<li>如果有任务，则必须选一个任务做，做完每个任务的最大休息时间应被此时的最大休息时间更新，即 $dp[dp[i + ren[j].t]] &#x3D; \max (dp[i + ren[j].t], dp[i])$，其中 $ren[j].t$ 代表从第 $i$ 分钟开始的所有 $j$ 个任务的持续时间；</li>
+<li>如果没有任务，则第 $i$ 分钟在休息，<strong>同时注意到该点可能被任务提前更新过</strong>，因此 $dp[i + 1] &#x3D; \max(dp[i + 1], dp[i] + 1)$。</li>
+</ul>
+<p>要注意的是，在正向思路中 $dp[i]$ 是在遍历到 $i$ 前就被反复更新的，直到遍历到 $i$ 时，$dp[i]$ 的值才为第 $1$ 分钟开始到第 $i$ 分钟开始所能休息的最大时间。</p>
+<p>注：在反向思路中，第 $i$ 分钟前开始的任务不会被考虑；在正向思路中，第 $i$ 分钟后才结束的任务会被考虑。</p>
+<p><strong>反向思路 标准程序 C++11</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"><span class="type">int</span> num[<span class="number">10010</span>];</span><br><span class="line"><span class="type">int</span> dp[<span class="number">10010</span>];</span><br><span class="line"><span class="type">int</span> whi=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">work</span> &#123;<span class="type">int</span> st,ti;&#125;ren[<span class="number">10010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(work a,work b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.st&gt;b.st;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> p,t;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=k;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;ren[i].st,&amp;ren[i].ti);</span><br><span class="line">		num[ren[i].st]++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">sort</span>(ren+<span class="number">1</span>,ren+k+<span class="number">1</span>,cmp);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!num[i]) dp[i]=dp[i+<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=num[i];j++)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i]=<span class="built_in">max</span>(dp[i],dp[i+ren[whi].ti]);</span><br><span class="line">				whi++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,dp[<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>正向思路 标准程序 C++11</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"><span class="type">int</span> num[<span class="number">10010</span>];</span><br><span class="line"><span class="type">int</span> dp[<span class="number">10010</span>];</span><br><span class="line"><span class="type">int</span> whi=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">work</span> &#123;<span class="type">int</span> st,ti;&#125;ren[<span class="number">10010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(work a,work b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.st&lt;b.st;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> p,t;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=k;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;ren[i].st,&amp;ren[i].ti);</span><br><span class="line">		num[ren[i].st]++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">sort</span>(ren+<span class="number">1</span>,ren+k+<span class="number">1</span>,cmp);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i]=<span class="number">-99999999</span>;</span><br><span class="line">	dp[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!num[i]) dp[i+<span class="number">1</span>]=<span class="built_in">max</span>(dp[i+<span class="number">1</span>],dp[i]+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=num[i];j++)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+ren[whi].ti]=<span class="built_in">max</span>(dp[i+ren[whi].ti],dp[i]);</span><br><span class="line">				whi++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,dp[n+<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>OI题解</category>
+      </categories>
   </entry>
   <entry>
     <title>清算</title>
