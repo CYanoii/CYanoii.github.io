@@ -28,8 +28,9 @@
 <meta property="og:description" content="如题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-08T14:20:50.000Z">
-<meta property="article:modified_time" content="2024-04-09T09:38:33.500Z">
+<meta property="article:modified_time" content="2024-04-10T02:36:04.031Z">
 <meta property="article:author" content="CYanoii">
+<meta property="article:tag" content="OI 知识">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2024/04/08/%E4%BA%8C%E5%88%86%E7%9A%84%E8%87%AA%E9%94%81%E9%97%AE%E9%A2%98%E7%AD%89%E7%BB%86%E8%8A%82%E9%97%AE%E9%A2%98/">
@@ -224,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-09 17:38:33" itemprop="dateModified" datetime="2024-04-09T17:38:33+08:00">2024-04-09</time>
+                <time title="修改时间：2024-04-10 10:36:04" itemprop="dateModified" datetime="2024-04-10T10:36:04+08:00">2024-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +233,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">算法竞赛学习笔记</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
             </span>
 
@@ -310,7 +311,7 @@
 <h2 id="开闭区间问题"><a href="#开闭区间问题" class="headerlink" title="开闭区间问题"></a>开闭区间问题</h2><p>设初始的左右边界 $l&#x3D;a, r&#x3D;b$，开闭区间问题即我想知道最终可能遍历到的所有位置是否包括 $a$ 和 $b$。决定开闭区间的因素就是上述 <code>mid</code> 的计算方式与循环终止方式之间的排列组合。</p>
 <p>当 <code>mid=(l+r)/2</code> 时，<code>mid</code> 偏左，因此数组第一位一定能走到，则左闭。考虑答案为数组最后一位时的极限情况：</p>
 <ul>
-<li>若 <code>l&lt;=r</code> 时循环终止，循环在最后执行完 <code>l=mid+1​</code> 后依然能够判断最后一位 $b$，则右闭，总情况为 $[l, r]$。</li>
+<li>若 <code>l&lt;=r</code> 时循环终止，循环在最后执行完 <code>l=mid+1</code> 后依然能够判断最后一位 $b$，则右闭，总情况为 $[l, r]$。</li>
 <li>若 <code>l&lt;r</code> 时循环终止，循环在最后执行完 <code>l=mid+1</code> 后终止，不能判断最后一位 $b$，则右开，总情况为 $[l, r)$。</li>
 </ul>
 <p>当 <code>mid=(l+r+1)/2</code> 时，<code>mid</code> 偏右，因此数组最后一位一定能走到，则右区间闭。考虑答案为数组第一位时的极限情况：</p>
@@ -327,6 +328,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OI-%E7%9F%A5%E8%AF%86/" rel="tag"># OI 知识</a>
+          </div>
 
         
 
@@ -420,13 +424,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

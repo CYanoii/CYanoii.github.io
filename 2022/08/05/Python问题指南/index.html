@@ -28,8 +28,9 @@
 <meta property="og:description" content="一篇将我遇到的所有Python问题和解决方法统一记录的文章。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-05T12:03:27.000Z">
-<meta property="article:modified_time" content="2023-03-24T09:44:03.185Z">
+<meta property="article:modified_time" content="2024-04-10T02:40:37.043Z">
 <meta property="article:author" content="CYanoii">
+<meta property="article:tag" content="知识备忘">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
 
@@ -225,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-24 17:44:03" itemprop="dateModified" datetime="2023-03-24T17:44:03+08:00">2023-03-24</time>
+                <time title="修改时间：2024-04-10 10:40:37" itemprop="dateModified" datetime="2024-04-10T10:40:37+08:00">2024-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -233,7 +234,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%A4%87%E5%BF%98%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">知识备忘录</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
             </span>
 
@@ -277,18 +278,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h1><p><code>_</code>在 python 中可以作为一个<strong>标识符</strong>，用于定义变量和方法唯一名称。同时它也是 Python 中的一个<strong>软关键字</strong>，指在某些特定上下文中保留的关键字。截至 python3.10 共有3个软关键字：<code>match</code>，<code>case</code>和<code>_</code>。</p>
+        <h1 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h1><p><code>_</code>在 python 中可以作为一个<strong>标识符</strong>，用于定义变量和方法唯一名称。同时它也是 Python 中的一个<strong>软关键字</strong>，指在某些特定上下文中保留的关键字。截至 python3.10 共有3个软关键字：<code>match</code>，<code>case</code>和 <code>_</code>。</p>
 <p><strong>直接使用</strong></p>
-<p><code>_</code>可直接当作变量名使用，也可做变量单词间的分隔符（如<code>student_num</code>）。</p>
+<p><code>_</code>可直接当作变量名使用，也可做变量单词间的分隔符（如 <code>student_num</code>）。</p>
 <p><code>_*</code><strong>格式</strong></p>
-<p>当使用<code>from &lt;module&gt; import *</code> 语句调用某个模块中的所有变量和方法时，以<code>_</code>开头的变量和方法不会被导入进脚本中，不属于 API。</p>
+<p>当使用 <code>from &lt;module&gt; import *</code> 语句调用某个模块中的所有变量和方法时，以 <code>_</code>开头的变量和方法不会被导入进脚本中，不属于 API。</p>
 <p>这类似于其他语言中的私有变量 private ，意味着<strong>该方法或属性不应该被从外部直接调用</strong>。</p>
 <p>不过，如果使用对test2.py的引用格式（<code>import test2</code>），则可以使用其中 _* 格式的变量，不过<strong>不建议这样使用（作者将其封装为私有变量就是不想让我们随意调用他们）</strong>。</p>
 <p><code>__*</code><strong>格式</strong></p>
 <p>通常会作为类中的私有变量的名称，访问该类时无法直接通过变量名访问。不过也并不是真的不能访问，使用 <code>__*</code> 命名的变量会在类中被重写为形如 <code>_类名__*</code> 的格式。</p>
 <p>这被称为<strong>私有名称转换</strong>：这样做是为了避免基类及派生类的 “私有” 属性之间产生名称冲突。我们可以通过转换后的变量名称来访问变量。<br> 但是并不推荐这样做，他们<strong>应该只在该类内被访问和使用</strong>。</p>
 <p><code>__*__</code><strong>格式</strong></p>
-<p><strong>在类中使用并重写</strong>的方法或变量，如<code>__init__(self)</code>。</p>
+<p><strong>在类中使用并重写</strong>的方法或变量，如 <code>__init__(self)</code>。</p>
 <p>他们是系统定义的特殊方法名称，通常称为‘dunder’，这些名称由解释器和标准库定义。所有特殊方法可见：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/datamodel.html#specialnames">https://docs.python.org/zh-cn/3/reference/datamodel.html#specialnames</a> 。</p>
 <p>可以使用 <code>__dir__()</code> 方法查看一个对象的所有方法和变量，其中包括特殊方法。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43863487/article/details/125056015">参考</a></p>
@@ -312,7 +313,7 @@
 <p>看到结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">__main__</span><br><span class="line">candf</span><br></pre></td></tr></table></figure>
 
-<p>可以看到，当前运行的程序，其<code>__name__</code>的值为<code>__main__</code>，而导入到当前程序中的模块，其<code>__name__</code>值为自己的模块名。</p>
+<p>可以看到，当前运行的程序，其 <code>__name__</code>的值为 <code>__main__</code>，而导入到当前程序中的模块，其 <code>__name__</code>值为自己的模块名。</p>
 <p> 因此，<code>if __name__ == &#39;__main__&#39;:</code> 的作用是确保只有单独运行该模块时，此表达式才成立，才可以进入此判断语法，执行其中的测试代码；反之，如果只是作为模块导入到其他程序文件中，则此表达式将不成立，运行其它程序时，也就不会执行该判断语句中的测试代码。</p>
 <p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4643.html">参考</a></p>
 <h2 id="call"><a href="#call" class="headerlink" title="__call__"></a>__call__</h2><p>该方法的功能类似于在类中重载 () 运算符，使得类实例对象可以像调用普通函数那样，以“对象名()”的形式使用。</p>
@@ -344,17 +345,17 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; FooChild().bar(&quot;Hello, Python.&quot;)</span><br><span class="line">Hello, Python.</span><br></pre></td></tr></table></figure>
 
-<p>这样做有一些缺点，比如说如果修改了父类名称，那么在子类中会涉及多处修改，另外， Python 是允许多继承的语言，如上所示的方法在多继承时就需要重复写多次，显得累赘。为了解决这些问题， Python 引入了<code>super()</code>机制，例子代码如下：</p>
+<p>这样做有一些缺点，比如说如果修改了父类名称，那么在子类中会涉及多处修改，另外， Python 是允许多继承的语言，如上所示的方法在多继承时就需要重复写多次，显得累赘。为了解决这些问题， Python 引入了 <code>super()</code>机制，例子代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FooParent</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="built_in">print</span>(message)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FooChild</span>(<span class="title class_ inherited__">FooParent</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">bar</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="built_in">super</span>(FooChild, self).bar(message)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; FooChild().bar(&quot;Hello, Python.&quot;)</span><br><span class="line">Hello, Python.</span><br></pre></td></tr></table></figure>
 
-<p>表面上看<code>super(FooChild, self).bar(message)</code>方法和<code>FooParent.bar(self, message)</code>方法的结果是一致的，实际上这两种方法的内部处理机制大大不同，不能理解为<strong>“<code>super()</code>就是用来调用父类的方法的”，</strong>当涉及多继承情况时，就会表现出明显的差异来。</p>
+<p>表面上看 <code>super(FooChild, self).bar(message)</code>方法和 <code>FooParent.bar(self, message)</code>方法的结果是一致的，实际上这两种方法的内部处理机制大大不同，不能理解为<strong>“<code>super()</code>就是用来调用父类的方法的”，</strong>当涉及多继承情况时，就会表现出明显的差异来。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;A&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>(<span class="title class_ inherited__">A</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;B&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span>(<span class="title class_ inherited__">A</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;C&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span>(B, C):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;D&quot;</span>)</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">D() </span><br></pre></td></tr></table></figure>
 
 <p>理论执行结果：D B A C A</p>
 <p>实际执行结果：D B C A</p>
-<p>在<code>super()</code>机制里可以保证公共父类仅被执行一次，其调用顺序是遵循 Python 的 <strong>MRO （方法解析顺序）</strong>来执行的，在 Python3 中，MRO 是基于 C3 算法来实现的。</p>
+<p>在 <code>super()</code>机制里可以保证公共父类仅被执行一次，其调用顺序是遵循 Python 的 <strong>MRO （方法解析顺序）</strong>来执行的，在 Python3 中，MRO 是基于 C3 算法来实现的。</p>
 <p><strong>参考</strong></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000013475016">https://segmentfault.com/q/1010000013475016</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/45619cf50aa7">https://www.jianshu.com/p/45619cf50aa7</a></p>
@@ -370,7 +371,7 @@
 <p>可以理解为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">funcA = funcB(funcA)</span><br><span class="line"># 如果没有print(funcA)那句便会执行funcA</span><br></pre></td></tr></table></figure>
 
-<p>使用<code>funcB</code>修饰<code>funcA</code>。</p>
+<p>使用 <code>funcB</code>修饰 <code>funcA</code>。</p>
 <p><strong>多次使用</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">funcA</span>(<span class="params">A</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function A&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(A)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">funcB</span>(<span class="params">B</span>):</span><br><span class="line">    <span class="built_in">print</span>(B(<span class="number">2</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function B&quot;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">@funcA</span></span><br><span class="line"><span class="meta">@funcB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">funcC</span>(<span class="params">C</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;function C&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> C ** <span class="number">2</span></span><br></pre></td></tr></table></figure>
 
@@ -380,7 +381,7 @@
 <p>可以理解为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">funcC = funcB(funcA(func))</span><br><span class="line"><span class="comment"># 这里就是没有使用funcC的情况，会自动执行funcC</span></span><br><span class="line">funcC</span><br></pre></td></tr></table></figure>
 
-<p>先把<code>funcA</code>修饰<code>funcC</code>，之后用<code>funcB</code>修饰这个整体，最后执行。</p>
+<p>先把 <code>funcA</code>修饰 <code>funcC</code>，之后用 <code>funcB</code>修饰这个整体，最后执行。</p>
 <p><strong>带有参数</strong></p>
 <p>更多的看<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7a644520418b">这篇文章</a>吧，我水平不足还不能完全理解。</p>
 <h2 id="staticmethod-和-classmethod"><a href="#staticmethod-和-classmethod" class="headerlink" title="@staticmethod 和  @classmethod"></a>@staticmethod 和  @classmethod</h2><p>@staticmethod 相当于 C++ 里的静态函数。</p>
@@ -396,7 +397,7 @@
 <p>在 Python 中有时候会看到一个 def 函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sample</span>(<span class="params">n_samples</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
-<p>该处的<code>pass</code>便是占据一个位置，因为如果定义一个空函数程序会报错，当你没有想好函数的内容是可以用 pass 填充，使程序可以正常运行。</p>
+<p>该处的 <code>pass</code>便是占据一个位置，因为如果定义一个空函数程序会报错，当你没有想好函数的内容是可以用 pass 填充，使程序可以正常运行。</p>
 
     </div>
 
@@ -406,6 +407,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E7%9F%A5%E8%AF%86%E5%A4%87%E5%BF%98/" rel="tag"># 知识备忘</a>
               <a href="/tags/Python/" rel="tag"># Python</a>
           </div>
 
@@ -504,13 +506,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

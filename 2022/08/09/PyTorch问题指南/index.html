@@ -28,9 +28,9 @@
 <meta property="og:description" content="一篇将我遇到的所有PyTorch问题和解决方法统一记录的文章。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-09T07:27:39.000Z">
-<meta property="article:modified_time" content="2023-03-24T09:44:10.261Z">
+<meta property="article:modified_time" content="2024-04-10T02:40:47.202Z">
 <meta property="article:author" content="CYanoii">
-<meta property="article:tag" content="PyTorch">
+<meta property="article:tag" content="知识备忘">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
 
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-24 17:44:10" itemprop="dateModified" datetime="2023-03-24T17:44:10+08:00">2023-03-24</time>
+                <time title="修改时间：2024-04-10 10:40:47" itemprop="dateModified" datetime="2024-04-10T10:40:47+08:00">2024-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,7 +234,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">人工智能学习笔记</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
             </span>
 
@@ -281,7 +281,7 @@
         <p><strong>写在前面</strong></p>
 <p>2022&#x2F;8&#x2F;9</p>
 <p>本人水平还较弱，没有足够的项目经验，因此内容里很可能有含糊不清和错误之处，请谨慎参考。</p>
-<h1 id="train、eval模式"><a href="#train、eval模式" class="headerlink" title="train、eval模式"></a>train、eval模式</h1><p><code>model.train()</code>和<code>model.eval()</code>分别要在训练和测试中写，它们的作用如下：</p>
+<h1 id="train、eval模式"><a href="#train、eval模式" class="headerlink" title="train、eval模式"></a>train、eval模式</h1><p><code>model.train()</code>和 <code>model.eval()</code>分别要在训练和测试中写，它们的作用如下：</p>
 <ul>
 <li><p><code>model.train()</code></p>
 <p>启用 BatchNormalization 和 Dropout，将两者置为 True 。</p>
@@ -292,11 +292,11 @@
 </ul>
 <p><strong>总结</strong></p>
 <ol>
-<li>在训练模块中一定要写<code>model.train()</code>。</li>
-<li>在评估（或测试）模块中一定要写<code>model.eval()</code>。</li>
+<li>在训练模块中一定要写 <code>model.train()</code>。</li>
+<li>在评估（或测试）模块中一定要写 <code>model.eval()</code>。</li>
 </ol>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36618660/article/details/100147506?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1-100147506-blog-122145651.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1-100147506-blog-122145651.pc_relevant_default&utm_relevant_index=2">原文</a></p>
-<h1 id="forward"><a href="#forward" class="headerlink" title="forward"></a>forward</h1><p>在使用 PyTorch 进行模型训练时，我们可以通过直接向实例化的对象内直接传参即可实现 forward 函数的自动调用，即<code>model(data)</code>等价于<code>model.forward(data)</code>，这很方便，<strong>其原理是在类（class）中使用了 __call__ 函数</strong>。有关 __call__ 的内容我在另一篇名为“Python问题指南”的文中有抄录，可以搜索查看。</p>
+<h1 id="forward"><a href="#forward" class="headerlink" title="forward"></a>forward</h1><p>在使用 PyTorch 进行模型训练时，我们可以通过直接向实例化的对象内直接传参即可实现 forward 函数的自动调用，即 <code>model(data)</code>等价于 <code>model.forward(data)</code>，这很方便，<strong>其原理是在类（class）中使用了 __call__ 函数</strong>。有关 __call__ 的内容我在另一篇名为“Python问题指南”的文中有抄录，可以搜索查看。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, param</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;I can called like a function&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;传入参数的类型是：&#123;&#125;   值为： &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">type</span>(param), param))</span><br><span class="line"></span><br><span class="line">        res = self.forward(param)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, input_</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;forward 函数被调用了&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;in  forward, 传入参数类型是：&#123;&#125;  值为: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">type</span>(input_), input_))</span><br><span class="line">        <span class="keyword">return</span> input_</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Student()</span><br><span class="line"></span><br><span class="line">input_param = a(<span class="string">&#x27;data&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;对象a传入的参数是：&quot;</span>, input_param)</span><br></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
@@ -390,7 +390,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/PyTorch/" rel="tag"># PyTorch</a>
+              <a href="/tags/%E7%9F%A5%E8%AF%86%E5%A4%87%E5%BF%98/" rel="tag"># 知识备忘</a>
               <a href="/tags/Python/" rel="tag"># Python</a>
           </div>
 
@@ -489,13 +489,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

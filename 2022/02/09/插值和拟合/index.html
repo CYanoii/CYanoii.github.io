@@ -28,8 +28,9 @@
 <meta property="og:description" content="数学建模中一种基本的数据分析手段。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-09T09:35:00.000Z">
-<meta property="article:modified_time" content="2023-03-24T09:41:12.543Z">
+<meta property="article:modified_time" content="2024-04-10T02:35:29.866Z">
 <meta property="article:author" content="CYanoii">
+<meta property="article:tag" content="数学建模竞赛">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2022/02/09/%E6%8F%92%E5%80%BC%E5%92%8C%E6%8B%9F%E5%90%88/">
@@ -224,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-24 17:41:12" itemprop="dateModified" datetime="2023-03-24T17:41:12+08:00">2023-03-24</time>
+                <time title="修改时间：2024-04-10 10:35:29" itemprop="dateModified" datetime="2024-04-10T10:35:29+08:00">2024-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +233,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">数学建模学习笔记</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
             </span>
 
@@ -287,7 +288,8 @@
 <p>当然，某些特定问题既可以用插值也可以用拟合。</p>
 <h1 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h1><p>已知函数在某区间（域）内若干点处的值，求该函数在该区间（域）内其它点处的值。</p>
 <p>常用的有拉格朗日（Lagrange）插值法和牛顿（Newton）插值法。</p>
-<h2 id="拉格朗日插值法"><a href="#拉格朗日插值法" class="headerlink" title="拉格朗日插值法"></a>拉格朗日插值法</h2><p>在节点上给出节点基函数，然后做基函数的线性组合，组合系数为节点函数值的一种插值多项式。<br>$$<br>f(x) &#x3D; y_1 f_1(x) + y_2 f_2(x) + y_3 f_3(x)<br>$$</p>
+<h2 id="拉格朗日插值法"><a href="#拉格朗日插值法" class="headerlink" title="拉格朗日插值法"></a>拉格朗日插值法</h2><p>在节点上给出节点基函数，然后做基函数的线性组合，组合系数为节点函数值的一种插值多项式。</p>
+<p>$$<br>f(x) &#x3D; y_1 f_1(x) + y_2 f_2(x) + y_3 f_3(x)<br>$$</p>
 <p>$$<br>f(x) &#x3D; \sum^k_{i&#x3D;0} y \prod {x - x_j \over x_i - x_j}<br>$$</p>
 <h2 id="高次插值的Runge（龙格）现象"><a href="#高次插值的Runge（龙格）现象" class="headerlink" title="高次插值的Runge（龙格）现象"></a>高次插值的Runge（龙格）现象</h2><p>插值多项式的次数超过七时，插值多项式会出现严重的震荡现象，称之为Runge现象。</p>
 <p>因此，在实际中不应使用七次以上的插值。</p>
@@ -417,7 +419,8 @@
 <td>拟合残差</td>
 </tr>
 </tbody></table>
-<p><strong>例子：</strong><br>$$<br>找好的关系式：y &#x3D;A_1 e^{-x \over t_1} +A_2 e^{-x \over t_2} + y_0<br>$$</p>
+<p><strong>例子：</strong></p>
+<p>$$<br>找好的关系式：y &#x3D;A_1 e^{-x \over t_1} +A_2 e^{-x \over t_2} + y_0<br>$$</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">1</span> : <span class="number">16</span>;</span><br><span class="line">y = [<span class="number">4.00</span> <span class="number">6.40</span> <span class="number">8.00</span> <span class="number">8.80</span> <span class="number">9.22</span> <span class="number">9.50</span> <span class="number">9.70</span> <span class="number">9.86</span> <span class="number">10.00</span> <span class="number">10.20</span> <span class="number">10.32</span> <span class="number">10.42</span> <span class="number">10.50</span> <span class="number">10.55</span> <span class="number">10.58</span> <span class="number">10.60</span>];</span><br><span class="line">y1 = @(b, t)b(<span class="number">1</span>) * <span class="built_in">exp</span>(-t / b(<span class="number">2</span>)) + b(<span class="number">3</span>) * <span class="built_in">exp</span>(-t / b(<span class="number">4</span>)) + b(<span class="number">5</span>);</span><br><span class="line">b0 = [<span class="number">-1</span> <span class="number">1</span> <span class="number">-1</span> <span class="number">1</span> <span class="number">0</span>];</span><br><span class="line">a = nlinfit(x, y, y1, b0)</span><br><span class="line">xp = <span class="number">1</span> : <span class="number">0.1</span> : <span class="number">16</span>;</span><br><span class="line">yp = y1(a, xp);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;.k&#x27;</span>, xp, yp, <span class="string">&#x27;r&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <h2 id="Matlab拟合工具箱"><a href="#Matlab拟合工具箱" class="headerlink" title="Matlab拟合工具箱"></a>Matlab拟合工具箱</h2><p>使用Matlab编程进行拟合不便：</p>
@@ -494,6 +497,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AB%9E%E8%B5%9B/" rel="tag"># 数学建模竞赛</a>
+          </div>
 
         
 
@@ -590,13 +596,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
