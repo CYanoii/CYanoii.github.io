@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="忘记了...自己看吧。">
+  <meta name="description" content="字符串子串遍历优化问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 783 A 题解（存疑）">
-<meta property="og:url" content="http://example.com/2022/04/20/Codeforces-Round-783-A-%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="【题解】洛谷 P1787 [入门赛 #22] 非众数 Hard Version">
+<meta property="og:url" content="http://example.com/2024/05/02/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7-P1787-%E5%85%A5%E9%97%A8%E8%B5%9B-22-%E9%9D%9E%E4%BC%97%E6%95%B0-Hard-Version/index.html">
 <meta property="og:site_name" content="渔塘">
-<meta property="og:description" content="忘记了...自己看吧。">
+<meta property="og:description" content="字符串子串遍历优化问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-20T04:58:00.000Z">
-<meta property="article:modified_time" content="2024-04-10T02:38:50.731Z">
+<meta property="article:published_time" content="2024-05-02T01:53:18.000Z">
+<meta property="article:modified_time" content="2024-05-03T05:13:53.033Z">
 <meta property="article:author" content="CYanoii">
+<meta property="article:tag" content="OI 比赛">
 <meta property="article:tag" content="OI 题解">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/04/20/Codeforces-Round-783-A-%E9%A2%98%E8%A7%A3/">
+<link rel="canonical" href="http://example.com/2024/05/02/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7-P1787-%E5%85%A5%E9%97%A8%E8%B5%9B-22-%E9%9D%9E%E4%BC%97%E6%95%B0-Hard-Version/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>Codeforces Round 783 A 题解（存疑） | 渔塘</title>
+  <title>【题解】洛谷 P1787 [入门赛 #22] 非众数 Hard Version | 渔塘</title>
   
 
 
@@ -195,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/Codeforces-Round-783-A-%E9%A2%98%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/02/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7-P1787-%E5%85%A5%E9%97%A8%E8%B5%9B-22-%E9%9D%9E%E4%BC%97%E6%95%B0-Hard-Version/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -208,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Codeforces Round 783 A 题解（存疑）
+          【题解】洛谷 P1787 [入门赛 #22] 非众数 Hard Version
         </h1>
 
         <div class="post-meta">
@@ -218,14 +219,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-04-20 12:58:00" itemprop="dateCreated datePublished" datetime="2022-04-20T12:58:00+08:00">2022-04-20</time>
+              <time title="创建时间：2024-05-02 09:53:18" itemprop="dateCreated datePublished" datetime="2024-05-02T09:53:18+08:00">2024-05-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-10 10:38:50" itemprop="dateModified" datetime="2024-04-10T10:38:50+08:00">2024-04-10</time>
+                <time title="修改时间：2024-05-03 13:13:53" itemprop="dateModified" datetime="2024-05-03T13:13:53+08:00">2024-05-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,8 +247,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/04/20/Codeforces-Round-783-A-%E9%A2%98%E8%A7%A3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/20/Codeforces-Round-783-A-%E9%A2%98%E8%A7%A3/" itemprop="commentCount"></span>
+    <a title="valine" href="/2024/05/02/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7-P1787-%E5%85%A5%E9%97%A8%E8%B5%9B-22-%E9%9D%9E%E4%BC%97%E6%95%B0-Hard-Version/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/05/02/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7-P1787-%E5%85%A5%E9%97%A8%E8%B5%9B-22-%E9%9D%9E%E4%BC%97%E6%95%B0-Hard-Version/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -257,16 +258,16 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
-            <div class="post-description">忘记了...自己看吧。</div>
+            <div class="post-description">字符串子串遍历优化问题。</div>
 
         </div>
       </header>
@@ -277,16 +278,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1667/A">原题：A. Make it Increasing</a></p>
-<p>题目本身比较简单。要想得到递增序列，只需要从$1$到$n$遍历选择不进行增减的点（$0$），后根据递增原则分左右两部分进行搜索计算即可。注意要开long long。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll unsigned long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll a[<span class="number">5200</span>],b[<span class="number">5200</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;a[i]);</span><br><span class="line">		b[i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ll ans=<span class="number">1e18</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">1</span>;v&lt;=n;v++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=b[i];</span><br><span class="line"></span><br><span class="line">		ll num=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i+<span class="number">1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=v+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			ll bol=a[i<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">if</span>(i<span class="number">-1</span>==v) bol=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;=bol)</span><br><span class="line">			&#123;</span><br><span class="line">				num+=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">				a[i]*=(bol/a[i]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> num++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		ans=<span class="built_in">min</span>(ans,num);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是题解的写法比较巧妙。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> n, a[<span class="number">5005</span>], ans=<span class="number">1e18</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> pos=<span class="number">1</span>; pos&lt;=n; pos++) &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> prev=<span class="number">0</span>, sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos<span class="number">-1</span>; i&gt;=<span class="number">1</span>; i--) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];	<span class="comment">//对于模a[i]有余数的情况可以让prev加到刚好被整除的大小，即满足递增条件的最小值</span></span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        prev=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=pos+<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            prev+=a[i]-prev%a[i];</span><br><span class="line">            sum+=prev/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        ans=<span class="built_in">min</span>(ans, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>题解注意到了一点：若$b_i - a_i &gt; b_{i - 1}$，则可以认为至少多进行了一次没有必要的操作（即多加了一次$a_i$）。因此我们可以认为对于最优答案存在$b_i \leq b_{i - 1} + a_i$。那么我们假设$prev_i &#x3D; b_{i - 1} + a_i$，则对于第$i$个数应该进行$prev_i &#x2F; a_i$次操作。</p>
-<p>因为$prev_{i - 1} \geq b_{i - 1}$，所以$prev_i \geq prev_{i - 1} + a_i$。由于我们希望总操作次数小，因此$prev_i$该越小越好，所以我们希望取到等于的情况。因此$prev_i &#x3D; prev_{i - 1} + (a_i - prev_{i - 1} % a_i)$。当后面的数更大时，则直接加$a_i$，否则加到刚好被$a_i$整除的大小，即满足递增条件的最小值。</p>
-<p>但我目前还对这种解法存疑。如0 6 7 3，选中0后面进行递增，似乎我的程序是5，题解的程序是7。</p>
+        <p><strong>题目传送门：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1787">P1787 洛谷 [入门赛 #22] 非众数 Hard Version</a></strong></p>
+<p><strong>题解传送门：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/article/167o6gpe">洛谷 2024 年 4 月入门赛 H 题加强版题解</a></strong></p>
+<p>这道题是<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/contest/166340">【LGR-182-Div.4】洛谷入门赛 #22</a>中最后一题的 Hard Version，并不计入本场比赛的排名。比较有趣的是这场比赛似乎是我生涯里第一次网络赛 AK。题目的题解一直找不到，我是过了很久才在 yummy 的博客里发现的。</p>
+<p>暴力的话就是遍历区间左边界、右边界、区间本身，就是 $O(n^3)$ 了（忽略了字符数量带来的常数），时间爆炸，于是逐层考虑优化。算一个串没有绝对众数需要考虑所有出现的字母数量都不超过一半，而算一个串有绝对众数可以外层遍历字符，内层遍历判断当前字符在该串是否达到了一半及以上，这种针对字符的遍历让结构更为清晰。因此答案的计算方法为所有非空子串数减去绝对众数子串数。</p>
+<p>在计算某个字符 $ch$ 对串的影响时，可以将本字符记为 $+ 1$ 分，其它字符记为 $- 1$ 分，那么一个子串 $s_{l \dots r}$ 以该字符为绝对众数，当且仅当这个子串总分是正数。如果记 $sum_x$ 为 $s_{1 \dots x}$ 的总分（前缀和），则是 $s_{l \dots r}$ 该字符为绝对众数的子串当且仅当 $sum_r - sum_{l - 1} &gt; 0$。此时时间复杂度降至 $O(n^2)$。</p>
+<p>由于 $sum_{x + 1}$ 只能可能等于 $sum_x + 1$ 或 $sum_x - 1$，即是连续变化的，因此在从前往后计算 $sum$ 的同时，用一个桶记录当前每种 $sum$ 的个数，在 $sum$ 更新时同时更新当前有多少个前缀和比当前 $sum$ 小（相减后大于 $0$）并记录到答案中。此时时间复杂度降至 $O(n)$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> s[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> bu[<span class="number">200010</span>];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	n=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	ans=(ll)n*(n+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">char</span> c=<span class="string">&#x27;a&#x27;</span>;c&lt;=<span class="string">&#x27;z&#x27;</span>;c++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> sum=n;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">2</span>*n;i++) bu[i]=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">		<span class="type">int</span> les=<span class="number">0</span>;</span><br><span class="line">		bu[sum]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==c)</span><br><span class="line">			&#123;</span><br><span class="line">				les+=bu[sum];</span><br><span class="line">				sum++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				sum--;</span><br><span class="line">				les-=bu[sum];</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">			bu[sum]++;</span><br><span class="line">			ans-=les;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -296,6 +294,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/OI-%E6%AF%94%E8%B5%9B/" rel="tag"># OI 比赛</a>
               <a href="/tags/OI-%E9%A2%98%E8%A7%A3/" rel="tag"># OI 题解</a>
           </div>
 
@@ -305,12 +304,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/03/P1072-Hankson-%E7%9A%84%E8%B6%A3%E5%91%B3%E9%A2%98-%E9%A2%98%E8%A7%A3/" rel="prev" title="P1072 Hankson 的趣味题 题解">
-      <i class="fa fa-chevron-left"></i> P1072 Hankson 的趣味题 题解
+    <a href="/2024/05/01/%E3%80%90%E6%80%BB%E8%A7%88%E3%80%91OI-%E6%A8%A1%E6%9D%BF%E4%B8%8E%E7%9F%A5%E8%AF%86%E7%B4%A2%E5%BC%95/" rel="prev" title="OI 【总览】模板与知识索引">
+      <i class="fa fa-chevron-left"></i> OI 【总览】模板与知识索引
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/11/hello-world/" rel="next" title="Hello World">
-      Hello World <i class="fa fa-chevron-right"></i>
+    <a href="/2024/05/03/%E4%B8%80%E7%B1%BB%E9%80%9A%E8%BF%87%E4%BA%8C%E5%88%86%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%8C%96%E7%9A%84%E5%AD%90%E4%B8%B2%E9%97%AE%E9%A2%98/" rel="next" title="一类通过二分进行优化的子串问题">
+      一类通过二分进行优化的子串问题 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -386,7 +385,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -435,12 +434,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">134k</span>
+    <span title="站点总字数">146k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:44</span>
+    <span title="站点阅读时长">4:04</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

@@ -20,21 +20,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="从HBCPC一道题目中得到的启发。">
+  <meta name="description" content="从HBCPC一道题目中得到的启发，涉及到奇偶树和拼接数优化。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="奇偶树和拼接数优化">
-<meta property="og:url" content="http://example.com/2023/06/07/%E5%A5%87%E5%81%B6%E6%A0%91%E5%92%8C%E6%8B%BC%E6%8E%A5%E6%95%B0%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="【题解】2023HBCPC C. 路径计数">
+<meta property="og:url" content="http://example.com/2023/06/07/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%912023HBCPC-C-%E8%B7%AF%E5%BE%84%E8%AE%A1%E6%95%B0/index.html">
 <meta property="og:site_name" content="渔塘">
-<meta property="og:description" content="从HBCPC一道题目中得到的启发。">
+<meta property="og:description" content="从HBCPC一道题目中得到的启发，涉及到奇偶树和拼接数优化。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-07T03:22:09.000Z">
-<meta property="article:modified_time" content="2024-04-10T02:36:58.725Z">
+<meta property="article:modified_time" content="2024-05-03T02:36:20.465Z">
 <meta property="article:author" content="CYanoii">
-<meta property="article:tag" content="OI 题解">
+<meta property="article:tag" content="OI 比赛">
 <meta property="article:tag" content="OI 知识">
+<meta property="article:tag" content="OI 题解">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2023/06/07/%E5%A5%87%E5%81%B6%E6%A0%91%E5%92%8C%E6%8B%BC%E6%8E%A5%E6%95%B0%E4%BC%98%E5%8C%96/">
+<link rel="canonical" href="http://example.com/2023/06/07/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%912023HBCPC-C-%E8%B7%AF%E5%BE%84%E8%AE%A1%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>奇偶树和拼接数优化 | 渔塘</title>
+  <title>【题解】2023HBCPC C. 路径计数 | 渔塘</title>
   
 
 
@@ -196,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/07/%E5%A5%87%E5%81%B6%E6%A0%91%E5%92%8C%E6%8B%BC%E6%8E%A5%E6%95%B0%E4%BC%98%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/07/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%912023HBCPC-C-%E8%B7%AF%E5%BE%84%E8%AE%A1%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -209,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          奇偶树和拼接数优化
+          【题解】2023HBCPC C. 路径计数
         </h1>
 
         <div class="post-meta">
@@ -226,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-10 10:36:58" itemprop="dateModified" datetime="2024-04-10T10:36:58+08:00">2024-04-10</time>
+                <time title="修改时间：2024-05-03 10:36:20" itemprop="dateModified" datetime="2024-05-03T10:36:20+08:00">2024-05-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,8 +248,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2023/06/07/%E5%A5%87%E5%81%B6%E6%A0%91%E5%92%8C%E6%8B%BC%E6%8E%A5%E6%95%B0%E4%BC%98%E5%8C%96/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/06/07/%E5%A5%87%E5%81%B6%E6%A0%91%E5%92%8C%E6%8B%BC%E6%8E%A5%E6%95%B0%E4%BC%98%E5%8C%96/" itemprop="commentCount"></span>
+    <a title="valine" href="/2023/06/07/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%912023HBCPC-C-%E8%B7%AF%E5%BE%84%E8%AE%A1%E6%95%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/06/07/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%912023HBCPC-C-%E8%B7%AF%E5%BE%84%E8%AE%A1%E6%95%B0/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -267,7 +268,7 @@
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               <span>5 分钟</span>
             </span>
-            <div class="post-description">从HBCPC一道题目中得到的启发。</div>
+            <div class="post-description">从HBCPC一道题目中得到的启发，涉及到奇偶树和拼接数优化。</div>
 
         </div>
       </header>
@@ -312,7 +313,7 @@
 <p>$$<br>\begin{align}<br>ans_2 &amp; &#x3D; o_1 e_2 + o_1 e_3 + o_2 e_1 + o_2 e_3 + o_3 e_1 + o_3 e_2 \\<br>  &amp; &#x3D; o_1 e_2 + o_1 e_3 + o_2 e_3 +  e_1 o_2 + e_1 o_3  + e_2 o_3 \\<br> &amp; &#x3D; (o_1 e_2 + (o_1 + o_2) e_3) + (e_1 o_2 + (e_1 + e_2) o_3)<br>\end{align}<br>$$</p>
 <p>原式被拆分为两个类似的部分，第一部分中，对于每项乘积，前者为按编号增加的奇数贡献的累加，后者为按编号增加的偶数贡献。第二部分是同理的。此种计算方法的效率为 $O(n)$ ，且与树的遍历过程十分匹配。这种计算方法我总感觉在其它处学习过或者写过，也觉得有些像秦九韶算法，但终究没有搜索到。不过也可能是赛场上我的思考方式导致了我直接看出了这种优化方法。（当时想的是第一个奇数贡献应该跟后续其它的偶数贡献结合，之后第二个奇数贡献再跟它的后续其它偶数贡献结合，偶数贡献同理，于是直接写出了第一步改写后的式子，想想也是有些幸运）</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>由于代码缺乏评测，所以我只能保证下面的代码能够复现我考场上的思路，不能保证其正确性。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll ans=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> book[<span class="number">100010</span>],eve[<span class="number">100010</span>],odd[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> a[<span class="number">100010</span>],tot=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">bian</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> to;</span><br><span class="line">	<span class="type">int</span> next;</span><br><span class="line">	<span class="type">int</span> w;</span><br><span class="line">&#125;e[<span class="number">200020</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> from,<span class="type">int</span> to,<span class="type">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tot++;</span><br><span class="line">	e[tot].next=a[from];</span><br><span class="line">	a[from]=tot;</span><br><span class="line">	e[tot].to=to;</span><br><span class="line">	e[tot].w=w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	book[x]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> sumeve=<span class="number">0</span>,sumodd=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=a[x];i;i=e[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> tto=e[i].to;</span><br><span class="line">		<span class="type">int</span> ww=e[i].w;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">if</span>(book[tto]) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">dfs</span>(tto);</span><br><span class="line">	</span><br><span class="line">		<span class="type">int</span> noweve,nowodd;</span><br><span class="line">		<span class="keyword">if</span>(ww==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			noweve=eve[tto]+<span class="number">1</span>;</span><br><span class="line">			nowodd=odd[tto];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			noweve=odd[tto];</span><br><span class="line">			nowodd=eve[tto]+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		eve[x]+=noweve;</span><br><span class="line">		odd[x]+=nowodd;</span><br><span class="line">	</span><br><span class="line">		ans+=nowodd;</span><br><span class="line">		ans+=sumeve*nowodd;</span><br><span class="line">		ans+=sumodd*noweve;</span><br><span class="line">		sumeve+=noweve;</span><br><span class="line">		sumodd+=nowodd;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> x,y,z;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">		z%=<span class="number">2</span>;</span><br><span class="line">		<span class="built_in">add</span>(x,y,z);</span><br><span class="line">		<span class="built_in">add</span>(y,x,z);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll ans=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> book[<span class="number">100010</span>],eve[<span class="number">100010</span>],odd[<span class="number">100010</span>];</span><br><span class="line"><span class="type">int</span> a[<span class="number">100010</span>],tot=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">bian</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> to;</span><br><span class="line">	<span class="type">int</span> next;</span><br><span class="line">	<span class="type">int</span> w;</span><br><span class="line">&#125;e[<span class="number">200020</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> from,<span class="type">int</span> to,<span class="type">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tot++;</span><br><span class="line">	e[tot].next=a[from];</span><br><span class="line">	a[from]=tot;</span><br><span class="line">	e[tot].to=to;</span><br><span class="line">	e[tot].w=w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	book[x]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> sumeve=<span class="number">0</span>,sumodd=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=a[x];i;i=e[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> tto=e[i].to;</span><br><span class="line">		<span class="type">int</span> ww=e[i].w;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(book[tto]) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">dfs</span>(tto);</span><br><span class="line"></span><br><span class="line">		<span class="type">int</span> noweve,nowodd;</span><br><span class="line">		<span class="keyword">if</span>(ww==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			noweve=eve[tto]+<span class="number">1</span>;</span><br><span class="line">			nowodd=odd[tto];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			noweve=odd[tto];</span><br><span class="line">			nowodd=eve[tto]+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		eve[x]+=noweve;</span><br><span class="line">		odd[x]+=nowodd;</span><br><span class="line"></span><br><span class="line">		ans+=nowodd;</span><br><span class="line">		ans+=sumeve*nowodd;</span><br><span class="line">		ans+=sumodd*noweve;</span><br><span class="line">		sumeve+=noweve;</span><br><span class="line">		sumodd+=nowodd;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> x,y,z;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">		z%=<span class="number">2</span>;</span><br><span class="line">		<span class="built_in">add</span>(x,y,z);</span><br><span class="line">		<span class="built_in">add</span>(y,x,z);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -322,8 +323,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/OI-%E9%A2%98%E8%A7%A3/" rel="tag"># OI 题解</a>
+              <a href="/tags/OI-%E6%AF%94%E8%B5%9B/" rel="tag"># OI 比赛</a>
               <a href="/tags/OI-%E7%9F%A5%E8%AF%86/" rel="tag"># OI 知识</a>
+              <a href="/tags/OI-%E9%A2%98%E8%A7%A3/" rel="tag"># OI 题解</a>
           </div>
 
         
@@ -414,7 +416,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -463,12 +465,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">134k</span>
+    <span title="站点总字数">146k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:44</span>
+    <span title="站点阅读时长">4:04</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
