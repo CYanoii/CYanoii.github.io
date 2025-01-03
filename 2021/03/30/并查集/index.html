@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/3.png">
 <meta property="og:image" content="http://example.com/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/4.png">
 <meta property="article:published_time" content="2021-03-30T08:21:00.000Z">
-<meta property="article:modified_time" content="2024-04-10T02:32:40.000Z">
+<meta property="article:modified_time" content="2025-01-02T12:57:31.594Z">
 <meta property="article:author" content="CYanoii">
 <meta property="article:tag" content="OI 知识">
 <meta name="twitter:card" content="summary">
@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-10 10:32:40" itemprop="dateModified" datetime="2024-04-10T10:32:40+08:00">2024-04-10</time>
+                <time title="修改时间：2025-01-02 20:57:31" itemprop="dateModified" datetime="2025-01-02T20:57:31+08:00">2025-01-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,7 +290,8 @@
 <p><strong>时间复杂度</strong>：合并与查询都接近$O(1)$。</p>
 <h2 id="普通并查集"><a href="#普通并查集" class="headerlink" title="普通并查集"></a>普通并查集</h2><p>假设我们有n个元素，它们分别使用1~n表示。并查集为了实现维护集合关系，为每个元素增加了一个用来指向其他元素的$fa_i$属性（父亲属性）。该属性初始值$fa_i &#x3D; i$（即指向自己）。并查集就是利用了这个父亲属性将不同的元素串连起来，组成不同的集合。</p>
 <p>比如有3个元素A、B、C，若我们想要使用fa[A] &#x3D; B的这种关系把它们联系起来形成一个集合，我们可能会这样串连他们（都为向上的有向线段）：</p>
-<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.png" alt="img"></p>
+<img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.png" class="" title="img">
+
 <p>在我们画的图上，我们认为一个点的父亲节点就是该点上方的那个节点，即把图描述出来为：</p>
 <ul>
 <li>fa[A]&#x3D;B、fa[C]&#x3D;B、fa[B]&#x3D;B</li>
@@ -307,14 +308,16 @@
 <li><strong>查询</strong>：if(x &#x3D;&#x3D; y) 。查询某两个元素是否在同一集合中。</li>
 </ul>
 <p>看下面这个例子，这是执行了fa[D] &#x3D; B之后集合的样子。</p>
-<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/2.png" alt="img"></p>
+<img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/2.png" class="" title="img">
+
 <p>首先我们确认一点，并查集下某个集合的结构就像一棵树，而标识正是这棵树的树根。</p>
 <p>我们发现，随着合并次数的增加，树的深度越来越大，如果我们此时查询G所在集合的标识效率会大打折扣。我们可以通过一个小优化来提升效率。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">  <span class="keyword">return</span> fa[x]=<span class="built_in">find</span>(fa[x]);	<span class="comment">//这里变化了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们在递归的过程中压缩了树的高度，向上找到树根后，在逐级下放的过程中将所有子节点的父节点都改变成了树根，使得树被压缩，从而在不影响集合标识的同时提升了find函数的效率，这是并查集的精髓（在带权并查集中会更有体现）。</p>
 <p>find(G)后树的压缩情况：</p>
-<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/3.png" alt="img"></p>
+<img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/3.png" class="" title="img">
+
 <h2 id="种类并查集"><a href="#种类并查集" class="headerlink" title="种类并查集"></a>种类并查集</h2><p><strong>注</strong>：此部分为本人理解，酌情参考。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1525">洛谷P1525 关押罪犯</a></p>
 <p><del>看到最小的最大直接二分答案</del></p>
@@ -386,7 +389,8 @@
 
 <p>首先明确一点，find(x)的操作只会更新x追溯到他的标识战舰的$d_i$的值和这些点的路径。</p>
 <p>我们可以想到，被移动的战舰到队头的距离 &#x3D; 该战舰到曾经的标识战舰的距离（即$d_i$） + 曾经的标识战舰到队头的距离（即$d_x$），而在find()函数向上追溯的过程中，一定能够找到曾经的标识战舰（因为存在路径压缩，所以一定是fa[x]），利用他的值更新自己的值。利用这一点，继续推想：假如曾经的标识战舰处于尚未更新的状态（出现这种情况的原因是因为上面所明确的那一点，也就是还尚未更新过），那么曾经的标识战舰向上追溯又一定能找到“曾经的曾经的标识战舰”，从而利用其值更新自己，后原战舰再根据更新好的曾经的标识战舰的值更新自己的值。由此得出，若想得到正确的曾经的标识战舰的$d_x$则必须要先执行递归find(x)，之后在回溯时更新距离。由于路径压缩的的存在，所有的战舰在更新一次$d_i$后父节点会直接指向最新的标志战舰，而$d_y &#x3D; 0$，从而在当前状态下再次寻找同一战舰时不再更新。这便是路径压缩与$d_i$更新的巧妙配合。</p>
-<p><img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/4.png" alt="img"></p>
+<img src="/2021/03/30/%E5%B9%B6%E6%9F%A5%E9%9B%86/4.png" class="" title="img">
+
 <p><strong>代码：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line"><span class="type">int</span> fa[<span class="number">30010</span>];</span><br><span class="line"><span class="type">int</span> size[<span class="number">30010</span>];</span><br><span class="line"><span class="type">int</span> d[<span class="number">30010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="type">int</span> root=<span class="built_in">find</span>(fa[x]);</span><br><span class="line">	d[x]+=d[fa[x]];</span><br><span class="line">	<span class="keyword">return</span> fa[x]=root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> s[<span class="number">2</span>];</span><br><span class="line">	<span class="type">int</span> a,b;</span><br><span class="line">	<span class="type">int</span> dx,dy;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">30000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		fa[i]=i;</span><br><span class="line">		size[i]=<span class="number">1</span>;</span><br><span class="line">		d[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%s%d%d&quot;</span>,s+<span class="number">1</span>,&amp;a,&amp;b);</span><br><span class="line">		dx=<span class="built_in">find</span>(a);</span><br><span class="line">		dy=<span class="built_in">find</span>(b);</span><br><span class="line">		<span class="keyword">if</span>(s[<span class="number">1</span>]==<span class="string">&#x27;M&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			d[dx]+=size[dy];</span><br><span class="line">			fa[dx]=dy;</span><br><span class="line">			size[dy]+=size[dx];</span><br><span class="line">			size[dx]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(s[<span class="number">1</span>]==<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dx!=dy) <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">abs</span>(d[a]-d[b])<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -493,7 +497,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -506,7 +510,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -533,7 +537,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -542,12 +546,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">160k</span>
+    <span title="站点总字数">162k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:26</span>
+    <span title="站点阅读时长">4:30</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

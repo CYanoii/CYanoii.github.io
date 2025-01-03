@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/05/11/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/1.png">
 <meta property="article:published_time" content="2022-05-11T02:07:20.000Z">
-<meta property="article:modified_time" content="2024-04-10T02:35:02.000Z">
+<meta property="article:modified_time" content="2025-01-03T14:59:33.318Z">
 <meta property="article:author" content="CYanoii">
 <meta property="article:tag" content="知识备忘">
 <meta property="article:tag" content="博客搭建">
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-10 10:35:02" itemprop="dateModified" datetime="2024-04-10T10:35:02+08:00">2024-04-10</time>
+                <time title="修改时间：2025-01-03 22:59:33" itemprop="dateModified" datetime="2025-01-03T22:59:33+08:00">2025-01-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,14 +260,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
             <div class="post-description">建博客中遇到的所有问题的记录。</div>
 
@@ -307,7 +307,8 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>此时，我们就已经可以使用 <code>![](image.jpg)</code> 来引用图片了。</p>
-<h1 id="添加标签产生-Cannot-GET-tags-等问题"><a href="#添加标签产生-Cannot-GET-tags-等问题" class="headerlink" title="添加标签产生 Cannot GET \tags\ 等问题"></a>添加标签产生 Cannot GET \tags\ 等问题</h1><p><img src="/2022/05/11/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/1.png" alt="img"></p>
+<h1 id="添加标签产生-Cannot-GET-tags-等问题"><a href="#添加标签产生-Cannot-GET-tags-等问题" class="headerlink" title="添加标签产生 Cannot GET \tags\ 等问题"></a>添加标签产生 Cannot GET \tags\ 等问题</h1><img src="/2022/05/11/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%8C%87%E5%8D%97/1.png" class="" title="img">
+
 <p>在 next 的 _config.yml中取消了 tags 的注释，后产生了此错误。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br></pre></td></tr></table></figure>
 
@@ -333,6 +334,27 @@
 <li>在本地图片被存储在与 post 同名的文件夹下，而在服务器上图片被视为与 post 在同一目录下。</li>
 <li>本地的 <code>\\</code> 在服务器会被视为 <code>\</code>，因此在书写 latex 语法时的 <code>\\</code> 为了在服务器上正确使用应写为 <code>\\\\</code>。</li>
 </ol>
+<h1 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h1><p><strong>参考链接：<a target="_blank" rel="noopener" href="https://novnan.github.io/Hexo/hexo-draft/">Hexo 文章保存为草稿 | novnan’s notes</a></strong></p>
+<p><strong>传统建立文章方式：</strong></p>
+<p>使用 <code>hexo new &lt;title&gt;</code> 新建文章会将新文章建立在 <code>source/_posts</code> 目录下，当使用 <code>hexo generate</code> 编译 markdown 文件时，会将其 HTML 结果编译在 <code>public</code> 目录下，之后 <code>hexo deploy</code> 将会把 <code>public</code> 目录下所有文章部署到 GitHub。随后伴随着两个问题：</p>
+<ul>
+<li>若存在未编辑完成的文章，其也会随着 <code>hexo deploy</code> 一起部署到 GitHub。</li>
+<li>新建文章的时间会被指定为发表时间，而在逻辑上说文章是在一段时间写完之后才发表的。</li>
+</ul>
+<p><strong>建立文章草稿：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 另外提供 <code>draft</code> 机制，它的原理是新文章将建立在 <code>source/_drafts</code> 目录下，因此 <code>hexo generate</code> 并不会将其编译到 <code>public</code> 目录下，所以 <code>hexo deploy</code> 也不会将其部署到 GitHub。</p>
+<p><strong>本机预览草稿：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo S --draft</span><br></pre></td></tr></table></figure>
+
+<p>虽然 <code>hexo generate</code> 不会编译 <code>source/_drafts</code> 目录下的文章，但 Hexo 的 <code>Hexo server</code> 另外提供 <code>--draft</code> 参数，这让我们只要搭配 <code>hexo-browsersync</code> plugins，就可以达到一边编辑 <code>markdown</code> 文章，一边使用浏览器预览的目的。</p>
+<p><strong>将草稿发布为正式文章：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo P &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>&lt;filename&gt;</code> 为不包含 <code>md</code> 后缀的文章名称。它的原理只是将文章从 <code>source/_drafts</code> 移动到 <code>source/_posts</code> 而已。</p>
+<p>之后的 <code>hexo generate</code> 与 <code>hexo deploy</code> 的用法就完全一样了。</p>
+<p>若日后想将正式文章转为为草稿，只需手动将文章从 <code>source/_posts</code> 目录移动到 <code>source/_drafts</code> 目录即可。</p>
 
     </div>
 
@@ -418,7 +440,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">如何开启本地服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">如何同步文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">如何支持数学函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81-md-%E8%AF%AD%E6%B3%95%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87"><span class="nav-number">4.</span> <span class="nav-text">如何支持 md 语法显示图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE%E4%BA%A7%E7%94%9F-Cannot-GET-tags-%E7%AD%89%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">添加标签产生 Cannot GET \tags\ 等问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E4%B8%8B%E8%BD%BD-pdf"><span class="nav-number">6.</span> <span class="nav-text">如何支持下载 pdf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">本地与服务器不同的语法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">如何开启本地服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">如何同步文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">如何支持数学函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81-md-%E8%AF%AD%E6%B3%95%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87"><span class="nav-number">4.</span> <span class="nav-text">如何支持 md 语法显示图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE%E4%BA%A7%E7%94%9F-Cannot-GET-tags-%E7%AD%89%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">添加标签产生 Cannot GET \tags\ 等问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E4%B8%8B%E8%BD%BD-pdf"><span class="nav-number">6.</span> <span class="nav-text">如何支持下载 pdf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">本地与服务器不同的语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8D%89%E7%A8%BF"><span class="nav-number">8.</span> <span class="nav-text">草稿</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -434,7 +456,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -447,7 +469,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -474,7 +496,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -483,12 +505,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">160k</span>
+    <span title="站点总字数">162k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:26</span>
+    <span title="站点阅读时长">4:30</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
