@@ -143,6 +143,11 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-链接">
+
+    <a href="/links" rel="section"><i class="fas fa-link fa-fw"></i>链接</a>
+
+  </li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -302,7 +307,7 @@
 <p><strong>回报：</strong>$G_t &#x3D; R_{t + 1} + \gamma R_{t + 2} + \gamma^2 R_{t + 3} + \dots + \gamma^{T - 1} R_T &#x3D; \sum_{i &#x3D; 0}^\infty \gamma^i R_{t + i + 1} \ (T \to \infty) \ \gamma \in [0, 1]$。</p>
 <p><strong>价值函数：</strong>$v_\pi (s) &#x3D; E_\pi [G_t | S_t &#x3D; s]$。在回溯图中同时存在着多种可能的路径，只是执行后最终会选择一条，而在执行的过程中选择哪个动作、动作会导致多少奖励、动作会使现状态转到哪个新状态，都存在概率分布。因此要求期望进行加权平均。</p>
 <p><strong>回溯图：</strong></p>
-<img src="/2024/10/20/马尔可夫决策过程/回溯图1.png"  style="zoom: 50%;" />
+<img src="/2024/10/20/马尔可夫决策过程/回溯图1.png" style="zoom: 50%;" />
 
 <h1 id="贝尔曼期望方程和最优方程"><a href="#贝尔曼期望方程和最优方程" class="headerlink" title="贝尔曼期望方程和最优方程"></a>贝尔曼期望方程和最优方程</h1><h2 id="贝尔曼期望方程"><a href="#贝尔曼期望方程" class="headerlink" title="贝尔曼期望方程"></a>贝尔曼期望方程</h2><p><strong>MDP：</strong>$S, A(s), R, P$。</p>
 <p><strong>$P$：</strong>$p(s’, r | s, a) \triangleq Pr { S_{t + 1} &#x3D; s’, R_{t + 1} &#x3D; r | S_t &#x3D; s, A_t &#x3D; a }$。</p>
@@ -318,7 +323,7 @@
 <li>$q_\pi (s, a) &#x3D; \sum_{s’, r} p(s’, r | s, a) \cdot [r + \gamma \sum_{a’} \pi(a’ | s’) \cdot q_\pi (s’, a’)]$。</li>
 </ul>
 <p><strong>回溯图：</strong></p>
-<img src="/2024/10/20/马尔可夫决策过程/回溯图2.png"  style="zoom: 50%;" />
+<img src="/2024/10/20/马尔可夫决策过程/回溯图2.png" style="zoom: 50%;" />
 
 <h2 id="贝尔曼最优方程"><a href="#贝尔曼最优方程" class="headerlink" title="贝尔曼最优方程"></a>贝尔曼最优方程</h2><p>$\begin{cases} v_\star (s) \triangleq \max_\pi v_\pi (s) \ q_\star (s, a) \triangleq \max_\pi q_\pi (s, a) \ \end{cases}$。</p>
 <p>记 $\pi_\star &#x3D; \arg \max_\pi v_\pi (s) &#x3D; \arg \max_\pi q_\pi (s, a)$。</p>
@@ -482,12 +487,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">172k</span>
+    <span title="站点总字数">175k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:47</span>
+    <span title="站点阅读时长">4:52</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

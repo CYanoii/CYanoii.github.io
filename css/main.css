@@ -1169,7 +1169,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff5ec6;
+  background: #705eff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2698,4 +2698,73 @@ body {
 ​,
 .header-inner {
   background: rgba(255,255,255,0.95);
+}
+.link-navigation a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border-bottom: none;
+}
+.link-navigation::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.link-navigation {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+.card {
+  box-shadow: rgba(0,0,0,0.05) 0px 6px 24px 0px, rgba(0,0,0,0.08) 0px 0px 0px 1px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 20px 15px 20px;
+  border-radius: 8px;
+  transition-duration: 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0,0,0,0.1) 0px 8px 28px 0px, rgba(0,0,0,0.12) 0px 0px 0px 1px;
+}
+.card .ava {
+  flex-shrink: 0;
+  width: 3rem !important;
+  height: 3rem !important;
+  border-radius: 4px;
+  margin-bottom: 0 !important;
+  object-fit: cover;
+}
+.card .card-header {
+  flex: 1;
+  overflow: hidden;
+}
+.card .card-header .title {
+  width: 100%;
+  font-style: normal;
+  color: #294d6d;
+  font-weight: bold;
+  transition: color 0.15s ease;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.card:hover .card-header .title {
+  color: #e5386f;
+}
+.card .card-header .info {
+  width: 100%;
+  font-style: normal;
+  color: #818181;
+  font-size: 14px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

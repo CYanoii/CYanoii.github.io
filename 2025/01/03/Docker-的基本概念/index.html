@@ -148,6 +148,11 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-链接">
+
+    <a href="/links" rel="section"><i class="fas fa-link fa-fw"></i>链接</a>
+
+  </li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -280,17 +285,17 @@
       
         <p>内容主要来源：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14s4y1i7Vf">【GeekHour】30分钟Docker入门教程</a></p>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Docker 是一个用于构建（build）、运行（run）、传送（share）应用程序的平台。 Docker 可以将应用程序和它运行时所需要的各种依赖包、第三方软件库、配置文件等打包在一起，以便在任何环境中都可以正确地运行。</p>
-<img src="/2025/01/03/Docker-的基本概念/image-20250103224210029.png"  alt="image-20250103224221019" style="zoom: 40%;" />
+<img src="/2025/01/03/Docker-的基本概念/image-20250103224210029.png" alt="image-20250103224221019" style="zoom: 40%;" />
 
 <h1 id="Docker-和-虚拟机的区别"><a href="#Docker-和-虚拟机的区别" class="headerlink" title="Docker 和 虚拟机的区别"></a>Docker 和 虚拟机的区别</h1><p>虚拟机（VM）和容器（Container）都是虚拟化（Hypervisor）技术，而 Docker 是容器的一种实现。Docker 的容器方案比虚拟机方案来说不需要额外运行完整的操作系统、使用资源少、启动速度快得多。</p>
 <p>虚拟机的架构：</p>
-<img src="/2025/01/03/Docker-的基本概念/image-20250103214339638.png"  alt="image-20250103214339638" style="zoom:25%;" />
+<img src="/2025/01/03/Docker-的基本概念/image-20250103214339638.png" alt="image-20250103214339638" style="zoom:25%;" />
 
 <p>Docker 的架构：</p>
-<img src="/2025/01/03/Docker-的基本概念/image-20250103214418251.png"  alt="image-20250103214418251" style="zoom:25%;" />
+<img src="/2025/01/03/Docker-的基本概念/image-20250103214418251.png" alt="image-20250103214418251" style="zoom:25%;" />
 
 <h1 id="基本原理和概念"><a href="#基本原理和概念" class="headerlink" title="基本原理和概念"></a>基本原理和概念</h1><p>Docker 使用 Client-Server 架构模式，Docker Client 和 Docker Daemon 通过 Socket 或者 RESTful API 进行通信。</p>
-<img src="/2025/01/03/Docker-的基本概念/image-20250103214921743.png"  alt="image-20250103214921743" style="zoom: 33%;" />
+<img src="/2025/01/03/Docker-的基本概念/image-20250103214921743.png" alt="image-20250103214921743" style="zoom: 33%;" />
 
 <ul>
 <li>Docker 守护进程（Docker Daemon）：负责管理 Docker 的各种资源，是一个后台进程，用来接收并处理来自 Docker 客户端的请求，然后将结果返回给客户端。</li>
@@ -314,7 +319,7 @@
 </ul>
 <h1 id="逻辑卷"><a href="#逻辑卷" class="headerlink" title="逻辑卷"></a>逻辑卷</h1><p>逻辑卷是 Docker 中用来存储数据的。Docker 容器中的数据不会持久化，逻辑卷用来解决这一问题，它可以把容器中的目录或者指定路径映射到宿主机的某一个目录或者位置上，这样就可以将数据保存到宿主机的磁盘上，实现了数据的持久化。</p>
 <h1 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h1><p>Docker Compose 是一个 Docker 官方开源的项目，是一个用来定义和运行多个 Docker 容器应用程序的工具。Docker Compose 通过一个单独的 docker-compose.yaml 的配置文件来将一组相互关联的容器组合在一起。</p>
-<img src="/2025/01/03/Docker-的基本概念/image-20250103223744985.png"  alt="image-20250103223744985" style="zoom: 25%;" />
+<img src="/2025/01/03/Docker-的基本概念/image-20250103223744985.png" alt="image-20250103223744985" style="zoom: 25%;" />
     </div>
 
     
@@ -465,12 +470,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">172k</span>
+    <span title="站点总字数">175k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:47</span>
+    <span title="站点阅读时长">4:52</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
